@@ -8,9 +8,9 @@ import { Anchor } from '@/components/ui/Anchor';
 import { Card } from '@/components/ui/Card';
 import { Container } from '@/components/ui/Container';
 import { CustomMDX } from '@/components/ui/Markdown';
-import { siteConfig } from '@/config/site';
 import { projectLayouts } from '@/lib/grid';
-import { getAllProjects } from '@/utils/mdx';
+import { getAllProjects } from '@/lib/mdx';
+import { siteConfig } from '@/resources/site';
 
 type Params = Promise<{ slug: string }>;
 

@@ -1,12 +1,13 @@
 'use client';
 
+import type React from 'react';
 import { FaArrowRight } from 'react-icons/fa6';
 import { Anchor } from '@/components/ui/Anchor';
 import { Container } from '@/components/ui/Container';
 import useMounted from '@/hooks/useMounted';
 import { cn } from '@/lib/utils';
 
-export default function NotFound() {
+const NotFound = (): React.JSX.Element => {
 	const isMounted = useMounted();
 
 	return (
@@ -35,4 +36,6 @@ export default function NotFound() {
 			</div>
 		</Container>
 	);
-}
+};
+
+export default NotFound;

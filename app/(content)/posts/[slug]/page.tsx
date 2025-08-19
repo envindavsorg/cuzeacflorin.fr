@@ -4,9 +4,9 @@ import Script from 'next/script';
 import { FaX } from 'react-icons/fa6';
 import { Anchor } from '@/components/ui/Anchor';
 import { CustomMDX } from '@/components/ui/Markdown';
-import { siteConfig } from '@/config/site';
+import { getAllPosts } from '@/lib/mdx';
 import { formatDate } from '@/lib/utils';
-import { getAllPosts } from '@/utils/mdx';
+import { siteConfig } from '@/resources/site';
 
 type Params = Promise<{ slug: string }>;
 

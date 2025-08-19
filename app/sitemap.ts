@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
-import { siteConfig } from '@/config/site';
-import { getAllPosts, getAllProjects } from '@/utils/mdx';
+import { getAllPosts, getAllProjects } from '@/lib/mdx';
+import { siteConfig } from '@/resources/site';
 
 export default function sitemap(): MetadataRoute.Sitemap {
 	const routes = [''].map((route) => ({
