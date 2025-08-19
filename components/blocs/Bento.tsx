@@ -1,5 +1,6 @@
 'use client';
 
+import type React from 'react';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import {
 	Responsive,
@@ -7,24 +8,24 @@ import {
 	WidthProvider,
 } from 'react-grid-layout';
 import useBreakpoint from '@/hooks/useBreakpoint';
+import { breakpoints, cols, heights } from '@/lib/consts';
 import { cn } from '@/lib/utils';
-import { breakpoints, cols, heights } from '@/utils/consts';
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
 const useIsomorphicLayoutEffect =
 	typeof window === 'undefined' ? useEffect : useLayoutEffect;
 
-interface LayoutProps {
+interface BentoProps {
 	filter?: FilterType;
 }
 
-export default function GridLayout({
+export const Bento = ({
 	layouts,
 	className,
 	children,
 	filter,
-}: Readonly<ResponsiveProps & LayoutProps>) {
+}: Readonly<ResponsiveProps & BentoProps>): React.JSX.Element => {
 	const [isMounted, setMounted] = useState(false);
 	const [isDraggable, setDraggable] = useState(true);
 	const { breakpoint, setBreakpoint } = useBreakpoint();
@@ -51,6 +52,7 @@ export default function GridLayout({
 
 	const opacityValue = (section: string) =>
 		filter === 'all' || section === filter ? 1 : 0.25;
+	console.log(opacityValue);
 
 	return (
 		<section
@@ -106,4 +108,4 @@ export default function GridLayout({
 			)}
 		</section>
 	);
-}
+};

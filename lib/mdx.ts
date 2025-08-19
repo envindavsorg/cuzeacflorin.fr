@@ -23,9 +23,9 @@ type MDXData<T extends BaseMetadata> = {
 
 const FRONTMATTER_REGEX = /^---\s*([\s\S]*?)\s*---/;
 
-function parseFrontmatter<T extends BaseMetadata>(
+const parseFrontmatter = <T extends BaseMetadata>(
 	fileContent: string,
-): MDXData<T> {
+): MDXData<T> => {
 	const match = FRONTMATTER_REGEX.exec(fileContent);
 	if (!match) throw new Error('Invalid frontmatter');
 
@@ -48,10 +48,10 @@ function parseFrontmatter<T extends BaseMetadata>(
 	const metadata = rawMetadata as unknown as T;
 
 	return { metadata, content, slug: '' };
-}
+};
 
-function getMDXData<T extends BaseMetadata>(dir: string): MDXData<T>[] {
-	return fs
+const getMDXData = <T extends BaseMetadata>(dir: string): MDXData<T>[] =>
+	fs
 		.readdirSync(dir, { withFileTypes: true })
 		.filter(
 			(dirent) => dirent.isFile() && path.extname(dirent.name) === '.mdx',
@@ -66,7 +66,6 @@ function getMDXData<T extends BaseMetadata>(dir: string): MDXData<T>[] {
 				content,
 			};
 		});
-}
 
 export const getAllPosts = (): MDXData<PostMetadata>[] =>
 	getMDXData<PostMetadata>(path.join(process.cwd(), 'content/posts'));

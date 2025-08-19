@@ -1,12 +1,12 @@
 import type React from 'react';
 
-interface GridItemProps {
+interface BentoItemProps {
 	component: React.ComponentType;
 }
 
-export const GridItem = ({
+export const BentoItem = ({
 	component: Component,
 	...props
 }: Readonly<
-	GridItemProps & React.HTMLAttributes<HTMLDivElement>
+	BentoItemProps & React.HTMLAttributes<HTMLDivElement>
 >): React.JSX.Element => <div {...props}>{<Component />}</div>;

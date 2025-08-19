@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import type React from 'react';
 import { Fragment, useId } from 'react';
-import { GridItem } from '@/components/grid/item';
-import GridLayout from '@/components/grid/layout';
+import { Bento } from '@/components/blocs/Bento';
+import { BentoItem } from '@/components/blocs/BentoItem';
 import { Container } from '@/components/ui/Container';
 import { gridItems, layouts } from '@/lib/grid';
 import { generateOgMetadata } from '@/lib/image';
@@ -85,15 +85,15 @@ const Home = (): React.JSX.Element => {
 			</Container>
 
 			<main className="mx-auto w-full max-w-7xl px-8 pt-0 pb-24 max-lg:px-4">
-				<GridLayout layouts={layouts}>
+				<Bento layouts={layouts}>
 					{gridItems.map((item) => (
-						<GridItem
+						<BentoItem
 							key={item.i}
 							id={item.i}
 							component={item.component}
 						/>
 					))}
-				</GridLayout>
+				</Bento>
 			</main>
 		</Fragment>
 	);
