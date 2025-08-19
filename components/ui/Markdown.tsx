@@ -1,12 +1,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import { type ComponentPropsWithoutRef, createElement } from 'react';
+import React, { type ComponentPropsWithoutRef, createElement } from 'react';
 import { toKebabCase } from '@/lib/utils';
 
 type AnchorProps = ComponentPropsWithoutRef<'a'>;
 
-function Anchor({ href, children, ...props }: Readonly<AnchorProps>) {
+const Anchor = ({
+	href,
+	children,
+	...props
+}: Readonly<AnchorProps>): React.JSX.Element => {
 	const className = 'text-blue-500 hover:text-blue-700';
 
 	if (href?.startsWith('/')) {
@@ -36,21 +40,19 @@ function Anchor({ href, children, ...props }: Readonly<AnchorProps>) {
 			{children}
 		</a>
 	);
-}
+};
 
-function RoundedImage({ ...props }) {
-	return (
-		<Image
-			src={props.src}
-			alt={props.alt}
-			className="rounded-lg"
-			draggable="false"
-			{...props}
-		/>
-	);
-}
+const RoundedImage = ({ ...props }): React.JSX.Element => (
+	<Image
+		src={props.src}
+		alt={props.alt}
+		className="rounded-lg"
+		draggable="false"
+		{...props}
+	/>
+);
 
-function createHeading(level: number) {
+const createHeading = (level: number) => {
 	const Heading = ({ children }: { children: string }) => {
 		const slug = toKebabCase(children);
 		return createElement(
@@ -70,7 +72,7 @@ function createHeading(level: number) {
 	Heading.displayName = `Heading${level}`;
 
 	return Heading;
-}
+};
 
 const components = {
 	h1: createHeading(1),
@@ -83,12 +85,10 @@ const components = {
 	a: Anchor,
 };
 
-export function CustomMDX({ ...props }) {
-	return (
-		<MDXRemote
-			{...props}
-			source={props.source}
-			components={{ ...components, ...(props.components || {}) }}
-		/>
-	);
-}
+export const CustomMDX = ({ ...props }): React.JSX.Element => (
+	<MDXRemote
+		{...props}
+		source={props.source}
+		components={{ ...components, ...(props.components || {}) }}
+	/>
+);

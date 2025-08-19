@@ -4,13 +4,13 @@ import { MoonIcon, SunIcon } from '@phosphor-icons/react';
 import { AnimatePresence, motion } from 'motion/react';
 import { useTheme } from 'next-themes';
 import type React from 'react';
-import { useEffect, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
 import { Card } from '@/components/ui/Card';
 import { Pattern } from '@/components/ui/Pattern';
 import { cn } from '@/lib/utils';
 
-export const Theme = (): React.JSX.Element => {
+export const Theme = memo((): React.JSX.Element => {
 	const { theme, setTheme } = useTheme();
 	const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 	const buttonRef = useRef<HTMLButtonElement | null>(null);
@@ -126,4 +126,4 @@ export const Theme = (): React.JSX.Element => {
 			<Pattern />
 		</Card>
 	);
-};
+});

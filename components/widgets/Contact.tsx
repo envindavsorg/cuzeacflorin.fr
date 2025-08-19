@@ -1,10 +1,19 @@
+import type React from 'react';
+import { memo } from 'react';
 import { FaArrowRight } from 'react-icons/fa6';
-import Card from '@/components/ux/card';
+import { Card } from '@/components/ui/Card';
 import socials from '@/config/socials';
+import { cn } from '@/lib/utils';
 
-export default function Contact() {
-	return (
-		<Card className="flex flex-col justify-center gap-6 p-8">
+export const Contact = memo(
+	(): React.JSX.Element => (
+		<Card
+			className={cn(
+				'relative justify-center gap-6 rounded-3xl px-8 py-2',
+				'size-full select-none overflow-hidden md:cursor-grab md:active:cursor-grabbing',
+				'shadow-xs transition-shadow duration-300 hover:shadow-sm',
+			)}
+		>
 			<h2 className="font-pixelify-sans text-2xl max-md:text-center">
 				Have an interesting project in mind? 👋
 			</h2>
@@ -37,5 +46,5 @@ export default function Contact() {
 				</div>
 			</div>
 		</Card>
-	);
-}
+	),
+);

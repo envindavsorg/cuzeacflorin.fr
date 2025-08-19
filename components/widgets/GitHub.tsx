@@ -1,15 +1,23 @@
 import Link from 'next/link';
+import type React from 'react';
+import { memo } from 'react';
 import { FaArrowRight } from 'react-icons/fa6';
-import Anchor from '@/components/ux/anchor';
-import Card from '@/components/ux/card';
-import { formatDate } from '@/lib/utils';
+import { Anchor } from '@/components/ui/Anchor';
+import { Card } from '@/components/ui/Card';
+import { cn, formatDate } from '@/lib/utils';
 import { getLatestPost } from '@/utils/mdx';
 
-export default function Article() {
+export const GitHub = memo((): React.JSX.Element => {
 	const post = getLatestPost();
 
 	return (
-		<Card className="flex flex-col justify-center gap-6 p-8">
+		<Card
+			className={cn(
+				'relative justify-center gap-6 rounded-3xl px-8 py-2',
+				'size-full select-none overflow-hidden md:cursor-grab md:active:cursor-grabbing',
+				'shadow-xs transition-shadow duration-300 hover:shadow-sm',
+			)}
+		>
 			<h2
 				className="truncate font-pixelify-sans text-2xl"
 				title={post.metadata.title}
@@ -36,4 +44,4 @@ export default function Article() {
 			</div>
 		</Card>
 	);
-}
+});

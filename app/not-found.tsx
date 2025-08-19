@@ -1,8 +1,8 @@
 'use client';
 
 import { FaArrowRight } from 'react-icons/fa6';
+import { Anchor } from '@/components/ui/Anchor';
 import { Container } from '@/components/ui/Container';
-import Anchor from '@/components/ux/anchor';
 import useMounted from '@/hooks/useMounted';
 import { cn } from '@/lib/utils';
 

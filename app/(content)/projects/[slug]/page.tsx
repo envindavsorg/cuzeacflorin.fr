@@ -1,12 +1,13 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import Script from 'next/script';
 import { FaArrowRight, FaX } from 'react-icons/fa6';
 import GridLayout from '@/components/grid/layout';
+import { Anchor } from '@/components/ui/Anchor';
+import { Card } from '@/components/ui/Card';
 import { Container } from '@/components/ui/Container';
-import Anchor from '@/components/ux/anchor';
-import Card from '@/components/ux/card';
-import { CustomMDX } from '@/components/ux/mdx';
+import { CustomMDX } from '@/components/ui/Markdown';
 import { siteConfig } from '@/config/site';
 import { projectLayouts } from '@/lib/grid';
 import { getAllProjects } from '@/utils/mdx';
@@ -16,7 +17,11 @@ type Params = Promise<{ slug: string }>;
 export const generateStaticParams = async () =>
 	getAllProjects().map((project) => ({ slug: project.slug }));
 
-export const generateMetadata = async ({ params }: { params: Params }) => {
+export const generateMetadata = async ({
+	params,
+}: {
+	params: Params;
+}): Promise<Metadata | undefined> => {
 	const { slug } = await params;
 
 	const project = getAllProjects().find((project) => project.slug === slug);
@@ -71,6 +76,7 @@ const ProjectPage = async ({ params }: { params: Params }) => {
 
 	return (
 		<>
+			{/** biome-ignore lint/correctness/useUniqueElementIds: remove later */}
 			<Script
 				id="json-ld"
 				type="application/ld+json"

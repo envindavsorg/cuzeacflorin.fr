@@ -57,9 +57,9 @@ export default function GridLayout({
 			className={cn(
 				'relative mx-auto w-full pb-20',
 				'max-w-[320px]',
-				'min-[375px]:max-w-[375px]',
-				'min-[800px]:max-w-[800px]',
-				'min-[1201px]:max-w-[1200px]',
+				'sm:max-w-[375px]',
+				'md:max-w-[800px]',
+				'lg:max-w-[1200px]',
 				isMounted
 					? 'translate-y-0 opacity-100'
 					: '-translate-y-6 opacity-0',

@@ -1,8 +1,9 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Script from 'next/script';
 import { FaX } from 'react-icons/fa6';
-import Anchor from '@/components/ux/anchor';
-import { CustomMDX } from '@/components/ux/mdx';
+import { Anchor } from '@/components/ui/Anchor';
+import { CustomMDX } from '@/components/ui/Markdown';
 import { siteConfig } from '@/config/site';
 import { formatDate } from '@/lib/utils';
 import { getAllPosts } from '@/utils/mdx';
@@ -12,7 +13,11 @@ type Params = Promise<{ slug: string }>;
 export const generateStaticParams = async () =>
 	getAllPosts().map((post) => ({ slug: post.slug }));
 
-export const generateMetadata = async ({ params }: { params: Params }) => {
+export const generateMetadata = async ({
+	params,
+}: {
+	params: Params;
+}): Promise<Metadata | undefined> => {
 	const { slug } = await params;
 
 	const post = getAllPosts().find((post) => post.slug === slug);
@@ -81,6 +86,7 @@ const PostPage = async ({ params }: { params: Params }) => {
 				</Anchor>
 			</header>
 			<main className="mx-auto max-w-prose px-4 py-10">
+				{/** biome-ignore lint/correctness/useUniqueElementIds: remove later */}
 				<Script
 					id="json-ld"
 					type="application/ld+json"

@@ -1,15 +1,23 @@
 import Image from 'next/image';
+import type React from 'react';
+import { memo } from 'react';
 import { FaArrowRight } from 'react-icons/fa6';
-import Anchor from '@/components/ux/anchor';
-import Card from '@/components/ux/card';
-import { toKebabCase } from '@/lib/utils';
+import { Anchor } from '@/components/ui/Anchor';
+import { Card } from '@/components/ui/Card';
+import { cn, toKebabCase } from '@/lib/utils';
 import projectImage from '@/public/projects/next-blog-starter.png';
 
-export default function Project() {
+export const Project = memo((): React.JSX.Element => {
 	const projectName = 'Next Blog Starter';
 
 	return (
-		<Card className="group relative bg-red-100">
+		<Card
+			className={cn(
+				'group relative justify-center gap-6 rounded-3xl bg-red-100 px-8 py-2',
+				'size-full select-none overflow-hidden md:cursor-grab md:active:cursor-grabbing',
+				'shadow-xs transition-shadow duration-300 hover:shadow-sm',
+			)}
+		>
 			<Image
 				src={projectImage}
 				alt={toKebabCase(projectName)}
@@ -36,4 +44,4 @@ export default function Project() {
 			</div>
 		</Card>
 	);
-}
+});
