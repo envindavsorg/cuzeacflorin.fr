@@ -4,8 +4,8 @@ import { memo } from 'react';
 import { FaArrowRight } from 'react-icons/fa6';
 import { Anchor } from '@/components/ui/Anchor';
 import { Card } from '@/components/ui/Card';
+import { getLatestPost } from '@/lib/mdx';
 import { cn, formatDate } from '@/lib/utils';
-import { getLatestPost } from '@/utils/mdx';
 
 export const GitHub = memo((): React.JSX.Element => {
 	const post = getLatestPost();

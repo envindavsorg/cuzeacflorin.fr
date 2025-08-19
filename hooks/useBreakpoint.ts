@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { breakpoints } from '@/utils/consts';
+import { breakpoints } from '@/lib/consts';
 
 const useBreakpoint = () => {
 	const [breakpoint, setBreakpoint] = useState<string>('');

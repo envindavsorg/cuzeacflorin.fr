@@ -2,8 +2,8 @@ import type React from 'react';
 import { memo } from 'react';
 import { FaArrowRight } from 'react-icons/fa6';
 import { Card } from '@/components/ui/Card';
-import socials from '@/config/socials';
 import { cn } from '@/lib/utils';
+import socials from '@/resources/socials';
 
 export const Contact = memo(
 	(): React.JSX.Element => (
