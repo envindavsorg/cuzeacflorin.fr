@@ -28,7 +28,7 @@ export async function updateLinkedInFollowers() {
 		await page.waitForLoadState('networkidle');
 
 		const followers = await page
-			.locator('text=/\\d+\\s*followers?/i')
+			.locator('text=/\\d+\\s*abonnés?/i')
 			.first()
 			.textContent();
 
