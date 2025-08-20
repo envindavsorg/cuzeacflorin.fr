@@ -1,7 +1,7 @@
 import { ArrowsCounterClockwiseIcon } from '@phosphor-icons/react';
-import { motion, useAnimate } from 'motion/react';
+import { motion } from 'motion/react';
 import type React from 'react';
-import { memo, type RefObject, useCallback } from 'react';
+import { memo, type RefObject, useCallback, useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import { logger } from '@/lib/logger';
 
@@ -49,7 +49,7 @@ export const ToggleAvatar = memo(
 		isUserInteractionRef,
 		setHasUserInteracted,
 	}: ToggleAvatarProps): React.JSX.Element => {
-		const [iconScope, animateIcon] = useAnimate<HTMLDivElement>();
+		const [isRotated, setIsRotated] = useState(false);
 		const pulse = useCallback(async () => {
 			if (!(pulseScope.current && isUserInteractionRef.current)) {
 				return;
@@ -84,33 +84,21 @@ export const ToggleAvatar = memo(
 
 		const handleClick = useCallback(async () => {
 			isUserInteractionRef.current = true;
-			setHasUserInteracted(true);
-
 			const newAvatar = 1 - avatar;
-			const rotationAngle = newAvatar ? -ROTATION_ANGLE : ROTATION_ANGLE;
-
-			if (iconScope.current) {
-				iconScope.current.style.transform = 'rotate(0deg)';
-				await animateIcon(
-					iconScope.current,
-					{ rotate: rotationAngle },
-					ANIMATION_CONFIG.rotate
-				);
-			}
-
 			setAvatar(newAvatar);
+			setIsRotated(!isRotated);
+			setHasUserInteracted(true);
 			await pulse();
 		}, [
 			pulse,
 			setAvatar,
 			avatar,
-			animateIcon,
-			iconScope,
+			isRotated,
 			setHasUserInteracted,
 			isUserInteractionRef,
 		]);
 
-		const MotionButton: MotionButton = motion.create(Button);
+		const MotionButton = motion.create(Button);
 
 		return (
 			<MotionButton
@@ -122,8 +110,12 @@ export const ToggleAvatar = memo(
 				whileTap={{ scale: 0.95 }}
 			>
 				<motion.div
+					animate={{ rotate: isRotated ? ROTATION_ANGLE : -ROTATION_ANGLE }}
 					className="flex items-center justify-center p-2"
-					ref={iconScope}
+					transition={{
+						duration: ANIMATION_CONFIG.rotate.duration,
+						ease: ANIMATION_CONFIG.rotate.ease,
+					}}
 				>
 					<ArrowsCounterClockwiseIcon className="size-5" weight="regular" />
 				</motion.div>
