@@ -153,7 +153,7 @@ export const LocationWidget = memo((): React.JSX.Element => {
 								whileHover={{ scale: 1.05 }}
 								whileTap={{ scale: 0.95 }}
 							>
-								<MinusIcon className="size-5" weight="regular" />
+								<MinusIcon className="size-4.5" weight="regular" />
 							</MotionButton>
 							<MotionButton
 								disabled={!canZoomIn}
@@ -163,7 +163,7 @@ export const LocationWidget = memo((): React.JSX.Element => {
 								whileHover={{ scale: 1.05 }}
 								whileTap={{ scale: 0.95 }}
 							>
-								<PlusIcon className="size-5" weight="regular" />
+								<PlusIcon className="size-4.5" weight="regular" />
 							</MotionButton>
 						</div>
 					)}

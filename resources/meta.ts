@@ -104,8 +104,12 @@ export const generateMetadata = (options: MetadataOptions = {}): Metadata => {
 		referrer: 'origin-when-cross-origin',
 		publisher: `${PROFILE_CONFIG.firstName} ${PROFILE_CONFIG.lastName}`,
 		icons: {
-			icon: '/favicon.ico',
-			shortcut: '/favicon-16x16.png',
+			icon: [
+				{ url: '/favicon.ico', sizes: '32x32' },
+				{ url: '/favicon-16x16.png', sizes: '16x16' },
+				{ url: '/favicon-32x32.png', sizes: '32x32' },
+			],
+			shortcut: '/favicon.ico',
 			apple: '/icon.png',
 		},
 		robots: {

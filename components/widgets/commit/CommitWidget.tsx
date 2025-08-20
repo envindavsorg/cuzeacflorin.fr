@@ -34,7 +34,6 @@ export const CommitWidget = memo(async (): Promise<React.JSX.Element> => {
 							<span className="ms-1 text-lg md:text-xl">commits</span>
 						</Counter>
 					</div>
-
 					<p className="text-muted-foreground text-sm">
 						- effectués en tout, sur GitHub cette année ...
 					</p>

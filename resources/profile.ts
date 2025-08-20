@@ -17,6 +17,11 @@ export const PROFILE_CONFIG = {
 		years: CURRENT_YEAR - START_DEV_YEAR,
 	},
 
+	linkedin: {
+		url: 'https://www.linkedin.com/in/cuzeacflorin/',
+		handle: 'cuzeacflorin',
+	},
+
 	location: {
 		zoom: {
 			max: 12,

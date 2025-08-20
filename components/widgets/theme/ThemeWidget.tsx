@@ -11,19 +11,32 @@ import { Pattern } from '@/components/ui/Pattern';
 import { cn } from '@/lib/utils';
 
 export const ThemeWidget = memo((): React.JSX.Element => {
-	const { theme, setTheme } = useTheme();
+	const { theme, setTheme, resolvedTheme } = useTheme();
 	const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+	const [isMounted, setIsMounted] = useState<boolean>(false);
+	const [hasUserInteracted, setHasUserInteracted] = useState<boolean>(false);
+	const isUserInitiatedRef = useRef<boolean>(false);
 	const buttonRef = useRef<HTMLButtonElement | null>(null);
 
 	useEffect(() => {
+		setIsMounted(true);
 		setIsDarkMode(theme === 'dark');
 	}, [theme]);
 
+	useEffect(() => {
+		if (isMounted && !isUserInitiatedRef.current) {
+			setIsDarkMode(theme === 'dark');
+		}
+		isUserInitiatedRef.current = false;
+	}, [theme, isMounted]);
+
 	const changeTheme = () => {
-		if (!buttonRef.current) {
+		if (!(buttonRef.current && isMounted)) {
 			return;
 		}
 
+		setHasUserInteracted(true);
+		isUserInitiatedRef.current = true;
 		const newTheme = theme === 'dark' ? 'light' : 'dark';
 
 		if (document.startViewTransition && buttonRef.current) {
@@ -63,6 +76,19 @@ export const ThemeWidget = memo((): React.JSX.Element => {
 		}
 	};
 
+	const lightPhrase = 'Vous êtes en mode lampe de bureau IKEA 💡';
+	const darkPhrase = 'Vous êtes un développeur à 3h du matin 🦉';
+	const mode = isMounted
+		? resolvedTheme === 'dark'
+			? 'Mode sombre'
+			: 'Mode clair'
+		: 'Quel mode ?';
+	const phrase = isMounted
+		? resolvedTheme === 'dark'
+			? darkPhrase
+			: lightPhrase
+		: 'Choisissez entre la lumière et l’obscurité';
+
 	return (
 		<Card
 			className={cn(
@@ -89,35 +115,58 @@ export const ThemeWidget = memo((): React.JSX.Element => {
 						<motion.div
 							animate={{ scale: 1, rotate: 0 }}
 							exit={{ scale: 0, rotate: 90 }}
-							initial={{ scale: 0, rotate: -90 }}
+							initial={
+								hasUserInteracted
+									? { scale: 0, rotate: -90 }
+									: { scale: 1, rotate: 0 }
+							}
 							key="sun"
-							transition={{
-								type: 'spring',
-								stiffness: 200,
-								damping: 20,
-								duration: 0.5,
-							}}
+							transition={
+								hasUserInteracted
+									? {
+											type: 'spring',
+											stiffness: 200,
+											damping: 20,
+											duration: 0.5,
+										}
+									: { duration: 0 }
+							}
 						>
-							<SunIcon className="size-18 text-current" weight="regular" />
+							<SunIcon className="size-18 text-theme" weight="regular" />
 						</motion.div>
 					) : (
 						<motion.div
 							animate={{ scale: 1, rotate: 0 }}
 							exit={{ scale: 0, rotate: -90 }}
-							initial={{ scale: 0, rotate: 90 }}
+							initial={
+								hasUserInteracted
+									? { scale: 0, rotate: 90 }
+									: { scale: 1, rotate: 0 }
+							}
 							key="moon"
-							transition={{
-								type: 'spring',
-								stiffness: 200,
-								damping: 20,
-								duration: 0.5,
-							}}
+							transition={
+								hasUserInteracted
+									? {
+											type: 'spring',
+											stiffness: 200,
+											damping: 20,
+											duration: 0.5,
+										}
+									: { duration: 0 }
+							}
 						>
-							<MoonIcon className="size-18 text-current" weight="regular" />
+							<MoonIcon className="size-18 text-theme" weight="regular" />
 						</motion.div>
 					)}
 				</AnimatePresence>
 			</motion.button>
+
+			<div className="flex flex-col items-center justify-center gap-y-2">
+				<h3 className="font-bold font-pixelify-sans text-theme text-xl md:text-3xl">
+					{mode}
+				</h3>
+				<p className="text-center text-muted-foreground text-sm">{phrase}</p>
+			</div>
 
 			<Pattern />
 		</Card>

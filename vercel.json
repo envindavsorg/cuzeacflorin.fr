@@ -1,0 +1,13 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron/update-linkedin",
+      "schedule": "0 */6 * * *"
+    }
+  ],
+  "functions": {
+    "app/api/cron/update-linkedin/route.ts": {
+      "maxDuration": 60
+    }
+  }
+}

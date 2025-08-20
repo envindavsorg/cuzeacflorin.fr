@@ -16,7 +16,8 @@
     "rules": {
       "recommended": true,
       "style": {
-        "noMagicNumbers": "off"
+        "noMagicNumbers": "off",
+        "noNestedTernary": "off"
       },
       "security": {
         "noDangerouslySetInnerHtml": "off"

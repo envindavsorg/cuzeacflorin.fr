@@ -56,12 +56,12 @@ export const Title = memo(
 				<span className="sr-only">{name}</span>
 			</h2>
 			{pronounce && (
-				<p className="text-muted-foreground text-xs">
+				<p className="mt-1 text-muted-foreground text-xs">
 					- se prononce <span className="font-semibold">{pronounce}</span>
 				</p>
 			)}
 			{subtitle && (
-				<p className="text-muted-foreground text-xs">
+				<p className="mt-1 text-muted-foreground text-xs">
 					- <span className="font-semibold">{subtitle}</span>
 				</p>
 			)}
