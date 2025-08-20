@@ -5,7 +5,7 @@ import { BioWidget } from '@/components/widgets/bio/BioWidget';
 import { Contact } from '@/components/widgets/Contact';
 import { CommitWidget } from '@/components/widgets/commit/CommitWidget';
 import { GitHub } from '@/components/widgets/GitHub';
-import { LinkedIn } from '@/components/widgets/LinkedIn';
+import { LinkedInWidget } from '@/components/widgets/linkedin/LinkedInWidget';
 import { LocationWidget } from '@/components/widgets/location/LocationWidget';
 import { Portfolio } from '@/components/widgets/Portfolio';
 import { Project } from '@/components/widgets/Project';
@@ -23,7 +23,7 @@ export const gridItems: GridItem[] = [
 	{ i: 'commit', component: CommitWidget },
 	{ i: 'article', component: Article },
 	{ i: 'theme', component: ThemeWidget },
-	{ i: 'linkedin', component: LinkedIn },
+	{ i: 'linkedin', component: LinkedInWidget },
 	{ i: 'contact', component: Contact },
 	{ i: 'portfolio', component: Portfolio },
 	{ i: 'github', component: GitHub },
