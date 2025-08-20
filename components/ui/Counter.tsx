@@ -4,12 +4,12 @@ import NumberFlow from '@number-flow/react';
 import type React from 'react';
 import { memo, useEffect, useState } from 'react';
 
-interface CounterProps {
+type CounterProps = {
 	value: number;
 	interval?: number;
 	children?: React.ReactNode;
 	className?: string;
-}
+};
 
 export const Counter = memo(
 	({
@@ -38,11 +38,10 @@ export const Counter = memo(
 
 		return (
 			<span className={className}>
-				<NumberFlow value={displayValue} respectMotionPreference />{' '}
-				{children}
+				<NumberFlow respectMotionPreference value={displayValue} /> {children}
 			</span>
 		);
-	},
+	}
 );
 
 Counter.displayName = 'Counter';

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import Script from 'next/script';
 import { FaArrowRight, FaX } from 'react-icons/fa6';
-import GridLayout from '@/components/grid/layout';
+import { Bento } from '@/components/blocs/Bento';
 import { Anchor } from '@/components/ui/Anchor';
 import { Card } from '@/components/ui/Card';
 import { Container } from '@/components/ui/Container';
@@ -24,7 +24,9 @@ export const generateMetadata = async ({
 }): Promise<Metadata | undefined> => {
 	const { slug } = await params;
 
-	const project = getAllProjects().find((project) => project.slug === slug);
+	const project = getAllProjects().find(
+		(project: any) => project.slug === slug
+	);
 	if (!project) {
 		return;
 	}
@@ -76,17 +78,13 @@ const ProjectPage = async ({ params }: { params: Params }) => {
 
 	return (
 		<>
-			{/** biome-ignore lint/correctness/useUniqueElementIds: remove later */}
 			<Script
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
 				id="json-ld"
 				type="application/ld+json"
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
 			/>
 			<header className="flex items-center justify-center pt-10">
-				<Anchor
-					className="inline-flex hover:mb-6 hover:scale-125"
-					href="/"
-				>
+				<Anchor className="inline-flex hover:mb-6 hover:scale-125" href="/">
 					<FaX />
 					<div className="sr-only">Close</div>
 				</Anchor>
@@ -105,16 +103,16 @@ const ProjectPage = async ({ params }: { params: Params }) => {
 								{JSON.parse(project.metadata.links).map(
 									(link: { url: string; name: string }) => (
 										<Anchor
-											key={link.url}
-											href={link.url}
-											target="_blank"
-											rel="noreferrer nofollow noopener"
 											className="inline-flex px-5 py-3 text-sm"
+											href={link.url}
+											key={link.url}
+											rel="noreferrer nofollow noopener"
+											target="_blank"
 										>
 											{link.name}
 											<FaArrowRight className="-rotate-45 transition-transform duration-300 group-hover:rotate-0" />
 										</Anchor>
-									),
+									)
 								)}
 							</div>
 						</div>
@@ -124,27 +122,24 @@ const ProjectPage = async ({ params }: { params: Params }) => {
 					</div>
 				</Container>
 				{project.metadata.images && (
-					<GridLayout
-						layouts={projectLayouts}
-						className="-mt-8 pb-16"
-					>
+					<Bento className="-mt-8 pb-16" layouts={projectLayouts}>
 						{JSON.parse(project.metadata.images).map(
 							(image: { i: string; url: string }) => (
 								<div key={image.i}>
 									<Card className="relative">
 										<Image
-											src={image.url}
 											alt={project.metadata.title}
+											draggable="false"
 											fill
 											objectFit="cover"
 											sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-											draggable="false"
+											src={image.url}
 										/>
 									</Card>
 								</div>
-							),
+							)
 						)}
-					</GridLayout>
+					</Bento>
 				)}
 			</main>
 		</>

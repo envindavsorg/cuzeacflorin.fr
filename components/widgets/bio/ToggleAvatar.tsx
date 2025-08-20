@@ -112,7 +112,7 @@ export const ToggleAvatar = memo(
 						ease: ANIMATION_CONFIG.rotate.ease,
 					}}
 				>
-					<ArrowsCounterClockwiseIcon className="size-5" weight="bold" />
+					<ArrowsCounterClockwiseIcon className="size-5" weight="regular" />
 				</motion.div>
 			</MotionButton>
 		);

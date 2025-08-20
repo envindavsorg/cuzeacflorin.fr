@@ -16,7 +16,7 @@ import { PROFILE_CONFIG } from '@/resources/profile';
 
 const { firstName, lastName, pronounce, welcome, experience } = PROFILE_CONFIG;
 
-export const Description = memo((): React.JSX.Element => {
+export const BioWidget = memo((): React.JSX.Element => {
 	const [avatar, setAvatar] = useState(0);
 	const [pulseScope, animatePulse] = useAnimate<HTMLDivElement>();
 	const { resolvedTheme } = useTheme();
@@ -77,4 +77,4 @@ export const Description = memo((): React.JSX.Element => {
 	);
 });
 
-Description.displayName = 'Description';
+BioWidget.displayName = 'BioWidget';

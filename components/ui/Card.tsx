@@ -6,11 +6,11 @@ const Card = ({
 	...props
 }: React.ComponentProps<'div'>): React.JSX.Element => (
 	<div
-		data-slot="card"
 		className={cn(
 			'flex flex-col gap-6 rounded-md border bg-card py-3 text-card-foreground',
-			className,
+			className
 		)}
+		data-slot="card"
 		{...props}
 	/>
 );
@@ -20,11 +20,11 @@ const CardHeader = ({
 	...props
 }: React.ComponentProps<'div'>): React.JSX.Element => (
 	<div
-		data-slot="card-header"
 		className={cn(
 			'@container/card-header z-10 grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-3 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-3',
-			className,
+			className
 		)}
+		data-slot="card-header"
 		{...props}
 	/>
 );
@@ -34,8 +34,8 @@ const CardTitle = ({
 	...props
 }: React.ComponentProps<'div'>): React.JSX.Element => (
 	<div
-		data-slot="card-title"
 		className={cn('z-10 font-semibold leading-none', className)}
+		data-slot="card-title"
 		{...props}
 	/>
 );
@@ -45,8 +45,8 @@ const CardDescription = ({
 	...props
 }: React.ComponentProps<'div'>): React.JSX.Element => (
 	<div
-		data-slot="card-description"
 		className={cn('z-10 text-muted-foreground text-sm', className)}
+		data-slot="card-description"
 		{...props}
 	/>
 );
@@ -56,11 +56,11 @@ const CardAction = ({
 	...props
 }: React.ComponentProps<'div'>): React.JSX.Element => (
 	<div
-		data-slot="card-action"
 		className={cn(
 			'z-10 col-start-2 row-span-2 row-start-1 self-start justify-self-end',
-			className,
+			className
 		)}
+		data-slot="card-action"
 		{...props}
 	/>
 );
@@ -70,8 +70,8 @@ const CardContent = ({
 	...props
 }: React.ComponentProps<'div'>): React.JSX.Element => (
 	<div
-		data-slot="card-content"
 		className={cn('z-10 px-3', className)}
+		data-slot="card-content"
 		{...props}
 	/>
 );
@@ -81,11 +81,8 @@ const CardFooter = ({
 	...props
 }: React.ComponentProps<'div'>): React.JSX.Element => (
 	<div
+		className={cn('z-10 flex items-center px-3 [.border-t]:pt-3', className)}
 		data-slot="card-footer"
-		className={cn(
-			'z-10 flex items-center px-3 [.border-t]:pt-3',
-			className,
-		)}
 		{...props}
 	/>
 );

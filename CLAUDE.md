@@ -66,7 +66,7 @@ pnpm add [package-name]
 
 #### Component Architecture
 - **Grid System**: Responsive grid layout using `react-grid-layout` with breakpoint-specific configurations
-- **Widget Components**: Modular widgets in `/components/grid/widgets/` (Article, Contact, Description, LinkedIn, Location, Project, CV, Theme)
+- **Widget Components**: Modular widgets in `/components/grid/widgets/` (Article, Contact, BioWidget, LinkedIn, LocationWidget, Project, CV, ThemeWidget)
 - **UI Components**: Reusable UI elements in `/components/ui/` with Radix UI integration
 - **Icon System**: Technology-specific icons in `/components/icons/content/`
 

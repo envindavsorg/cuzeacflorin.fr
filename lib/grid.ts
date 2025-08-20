@@ -1,15 +1,15 @@
 import type React from 'react';
 import type { Layout } from 'react-grid-layout';
 import { Article } from '@/components/widgets/Article';
+import { BioWidget } from '@/components/widgets/bio/BioWidget';
 import { Contact } from '@/components/widgets/Contact';
-import { CV } from '@/components/widgets/CV';
-import { Description } from '@/components/widgets/Description';
+import { CommitWidget } from '@/components/widgets/commit/CommitWidget';
 import { GitHub } from '@/components/widgets/GitHub';
 import { LinkedIn } from '@/components/widgets/LinkedIn';
-import { Location } from '@/components/widgets/Location';
+import { LocationWidget } from '@/components/widgets/location/LocationWidget';
 import { Portfolio } from '@/components/widgets/Portfolio';
 import { Project } from '@/components/widgets/Project';
-import { Theme } from '@/components/widgets/Theme';
+import { ThemeWidget } from '@/components/widgets/theme/ThemeWidget';
 
 type GridItem = {
 	i: string;
@@ -17,12 +17,12 @@ type GridItem = {
 };
 
 export const gridItems: GridItem[] = [
-	{ i: 'description', component: Description },
-	{ i: 'location', component: Location },
+	{ i: 'bio', component: BioWidget },
+	{ i: 'location', component: LocationWidget },
 	{ i: 'project', component: Project },
-	{ i: 'cv', component: CV },
+	{ i: 'commit', component: CommitWidget },
 	{ i: 'article', component: Article },
-	{ i: 'theme', component: Theme },
+	{ i: 'theme', component: ThemeWidget },
 	{ i: 'linkedin', component: LinkedIn },
 	{ i: 'contact', component: Contact },
 	{ i: 'portfolio', component: Portfolio },
@@ -33,10 +33,10 @@ type Layouts = 'lg' | 'md' | 'sm';
 
 export const layouts: { [key in Layouts]: Layout[] } = {
 	lg: [
-		{ i: 'description', x: 0, y: 0, w: 2, h: 1, isResizable: false },
+		{ i: 'bio', x: 0, y: 0, w: 2, h: 1, isResizable: false },
 		{ i: 'location', x: 2, y: 0, w: 1, h: 1, isResizable: false },
 		{ i: 'project', x: 3, y: 0, w: 1, h: 2, isResizable: false },
-		{ i: 'cv', x: 0, y: 1, w: 1, h: 1, isResizable: false },
+		{ i: 'commit', x: 0, y: 1, w: 1, h: 1, isResizable: false },
 		{ i: 'article', x: 0, y: 2, w: 2, h: 1, isResizable: false },
 		{ i: 'theme', x: 1, y: 0, w: 1, h: 1, isResizable: false },
 		{ i: 'linkedin', x: 3, y: 2, w: 1, h: 1, isResizable: false },
@@ -45,10 +45,10 @@ export const layouts: { [key in Layouts]: Layout[] } = {
 		{ i: 'github', x: 0, y: 3, w: 2, h: 1, isResizable: false },
 	],
 	md: [
-		{ i: 'description', x: 0, y: 0, w: 2, h: 2, isResizable: false },
+		{ i: 'bio', x: 0, y: 0, w: 2, h: 2, isResizable: false },
 		{ i: 'location', x: 2, y: 0, w: 1, h: 1, isResizable: false },
 		{ i: 'project', x: 3, y: 0, w: 1, h: 2, isResizable: false },
-		{ i: 'cv', x: 0, y: 2, w: 2, h: 1, isResizable: false },
+		{ i: 'commit', x: 0, y: 2, w: 2, h: 1, isResizable: false },
 		{ i: 'linkedin', x: 3, y: 2, w: 1, h: 1, isResizable: false },
 		{ i: 'theme', x: 1, y: 5, w: 1, h: 1, isResizable: false },
 		{ i: 'article', x: 0, y: 3, w: 2, h: 2, isResizable: false },
@@ -57,10 +57,10 @@ export const layouts: { [key in Layouts]: Layout[] } = {
 		{ i: 'github', x: 2, y: 3, w: 2, h: 1, isResizable: false },
 	],
 	sm: [
-		{ i: 'description', x: 0, y: 0, w: 2, h: 2, isResizable: false },
+		{ i: 'bio', x: 0, y: 0, w: 2, h: 2, isResizable: false },
 		{ i: 'location', x: 0, y: 2, w: 2, h: 1, isResizable: false },
 		{ i: 'project', x: 1, y: 3, w: 1, h: 2, isResizable: false },
-		{ i: 'cv', x: 0, y: 6, w: 2, h: 2, isResizable: false },
+		{ i: 'commit', x: 0, y: 6, w: 2, h: 2, isResizable: false },
 		{ i: 'linkedin', x: 1, y: 5, w: 1, h: 1, isResizable: false },
 		{ i: 'theme', x: 0, y: 3, w: 1, h: 1, isResizable: false },
 		{ i: 'article', x: 0, y: 8, w: 2, h: 2, isResizable: false },

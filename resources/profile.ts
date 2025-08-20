@@ -18,13 +18,14 @@ export const PROFILE_CONFIG = {
 	},
 
 	location: {
-		city: 'Paris',
-		region: 'Île de France',
-		country: 'France',
-		coordinates: {
-			latitude: 48.858_093,
-			longitude: 2.294_694,
+		zoom: {
+			max: 12,
+			min: 3,
+			default: 10,
+			step: 0.5,
 		},
+		latitude: 48.858_093,
+		longitude: 2.294_694,
 	},
 
 	work: {
