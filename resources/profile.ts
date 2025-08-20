@@ -1,11 +1,6 @@
-import {
-	KeyboardIcon,
-	MonitorIcon,
-	PaletteIcon,
-} from '@phosphor-icons/react/dist/ssr';
-import avatar from '@/images/avatar.webp';
 import me from '@/images/me.webp';
-import { withSequentialUIDs } from '@/lib/uid';
+import memoji1 from '@/images/memojis/memoji1.webp';
+import memoji2 from '@/images/memojis/memoji2.webp';
 
 const CURRENT_YEAR = new Date().getFullYear();
 const START_DEV_YEAR = 2017;
@@ -18,24 +13,6 @@ export const PROFILE_CONFIG = {
 	welcome: 'crée, code, innove',
 	genId: '@cuzeacflorin',
 
-	titles: withSequentialUIDs(
-		[
-			{
-				label: 'développeur web',
-				icon: KeyboardIcon,
-			},
-			{
-				label: 'front-end',
-				icon: MonitorIcon,
-			},
-			{
-				label: 'designer UX / UI',
-				icon: PaletteIcon,
-			},
-		],
-		'title',
-	),
-
 	experience: {
 		years: CURRENT_YEAR - START_DEV_YEAR,
 	},
@@ -45,8 +22,8 @@ export const PROFILE_CONFIG = {
 		region: 'Île de France',
 		country: 'France',
 		coordinates: {
-			latitude: 48.858093,
-			longitude: 2.294694,
+			latitude: 48.858_093,
+			longitude: 2.294_694,
 		},
 	},
 
@@ -63,5 +40,5 @@ export const PROFILE_CONFIG = {
 		alt: 'Ma vraie photo de profil :)',
 	},
 
-	avatars: [me, avatar],
+	avatars: [memoji1, memoji2],
 } as const;

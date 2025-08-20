@@ -3,7 +3,6 @@ import { motion } from 'motion/react';
 import type React from 'react';
 import { memo, type RefObject, useCallback, useState } from 'react';
 import { Button } from '@/components/ui/Button';
-import { logger } from '@/lib/logger';
 
 type ToggleAvatarProps = {
 	animatePulse: (sequence: any[], options?: any) => any;
@@ -55,31 +54,27 @@ export const ToggleAvatar = memo(
 				return;
 			}
 
-			try {
-				pulseScope.current.style.backgroundColor = color;
-				pulseScope.current.style.opacity = '0';
-				pulseScope.current.style.transform = 'scale(1)';
+			pulseScope.current.style.backgroundColor = color;
+			pulseScope.current.style.opacity = '0';
+			pulseScope.current.style.transform = 'scale(1)';
 
-				await animatePulse([
-					[
-						pulseScope.current,
-						{
-							scale: [1, ANIMATION_CONFIG.pulse.scale],
-							opacity: [ANIMATION_CONFIG.pulse.initialOpacity, 0],
-						},
-						{
-							duration: ANIMATION_CONFIG.pulse.duration,
-							ease: GENTLE_EASE,
-						},
-					],
-				]);
+			await animatePulse([
+				[
+					pulseScope.current,
+					{
+						scale: [1, ANIMATION_CONFIG.pulse.scale],
+						opacity: [ANIMATION_CONFIG.pulse.initialOpacity, 0],
+					},
+					{
+						duration: ANIMATION_CONFIG.pulse.duration,
+						ease: GENTLE_EASE,
+					},
+				],
+			]);
 
-				pulseScope.current.style.backgroundColor = 'transparent';
-				pulseScope.current.style.opacity = '0';
-				pulseScope.current.style.transform = 'scale(1)';
-			} catch (error) {
-				logger.error('Avatar pulse animation error:', error);
-			}
+			pulseScope.current.style.backgroundColor = 'transparent';
+			pulseScope.current.style.opacity = '0';
+			pulseScope.current.style.transform = 'scale(1)';
 		}, [animatePulse, pulseScope, color, isUserInteractionRef.current]);
 
 		const handleClick = useCallback(async () => {
@@ -117,7 +112,7 @@ export const ToggleAvatar = memo(
 						ease: ANIMATION_CONFIG.rotate.ease,
 					}}
 				>
-					<ArrowsCounterClockwiseIcon className="size-5" weight="regular" />
+					<ArrowsCounterClockwiseIcon className="size-5" weight="bold" />
 				</motion.div>
 			</MotionButton>
 		);

@@ -1,5 +1,5 @@
 import type React from 'react';
-import { Fragment, memo } from 'react';
+import { memo } from 'react';
 import { cn } from '@/lib/utils';
 
 type LetterProps = {
@@ -8,34 +8,34 @@ type LetterProps = {
 
 const Letters = memo(
 	({ text }: LetterProps): React.JSX.Element => (
-		<Fragment>
+		<>
 			{text.split('').map((char: string, idx: number) => (
 				<span
-					key={`letter-${char}-${idx + 1}`}
 					className="inline-block"
+					key={`letter-${char}-${idx + 1}`}
 					style={{ transitionDelay: `${idx * 25}ms` }}
 				>
 					{char === ' ' ? ' ' : char}
 				</span>
 			))}
-		</Fragment>
-	),
+		</>
+	)
 );
 
-interface TitleProps {
+type TitleProps = {
 	name: string;
 	pronounce?: string;
 	title?: string;
 	subtitle?: string;
-}
+};
 
 export const Title = memo(
 	({ name, pronounce, subtitle, title }: TitleProps): React.JSX.Element => (
 		<div className="flex-1">
 			<h2
 				className={cn(
-					'flex flex-col gap-y-3',
-					'font-bold font-pixelify-sans text-3xl transition-element md:text-4xl',
+					'flex flex-col gap-y-3 transition-element',
+					'font-bold font-pixelify-sans text-3xl md:text-4xl'
 				)}
 			>
 				{title ? (
@@ -57,8 +57,7 @@ export const Title = memo(
 			</h2>
 			{pronounce && (
 				<p className="text-muted-foreground text-xs">
-					- se prononce{' '}
-					<span className="font-semibold">{pronounce}</span>
+					- se prononce <span className="font-semibold">{pronounce}</span>
 				</p>
 			)}
 			{subtitle && (
@@ -67,7 +66,7 @@ export const Title = memo(
 				</p>
 			)}
 		</div>
-	),
+	)
 );
 
 Title.displayName = 'Title';
