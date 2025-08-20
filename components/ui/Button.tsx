@@ -10,7 +10,7 @@ export const buttonVariants = cva(
 		'focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50',
 		'disabled:pointer-events-none disabled:opacity-50',
 		'aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40',
-		'[&_svg:not([class*="size-"])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0',
+		'[&_svg:not([class*="size-"])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0'
 	),
 	{
 		variants: {
@@ -23,21 +23,28 @@ export const buttonVariants = cva(
 					'border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50',
 				secondary:
 					'bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80',
-				ghost: 'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',
+				ghost:
+					'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',
 				link: 'text-primary underline-offset-4 hover:underline',
+				icon: cn(
+					'border bg-background dark:border-input',
+					'outline-hidden hover:outline-hidden',
+					'ring-gray-200/45 hover:ring-2 dark:ring-gray-200/30',
+					'transition-all duration-300 ease-out'
+				),
 			},
 			size: {
 				default: 'h-9 px-4 py-2 has-[>svg]:px-3',
 				sm: 'h-8 gap-1.5 rounded-md px-3 has-[>svg]:px-2.5',
 				lg: 'h-10 rounded-md px-6 has-[>svg]:px-4',
-				icon: 'size-9',
+				icon: 'size-10 rounded-full',
 			},
 		},
 		defaultVariants: {
 			variant: 'default',
 			size: 'default',
 		},
-	},
+	}
 );
 
 type ButtonProps = React.ComponentProps<'button'> &
@@ -56,8 +63,8 @@ export const Button = ({
 
 	return (
 		<Comp
-			data-slot="button"
 			className={cn(buttonVariants({ variant, size, className }))}
+			data-slot="button"
 			{...props}
 		/>
 	);

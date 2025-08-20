@@ -1,61 +1,59 @@
 {
-	"name": "portfolio",
-	"author": {
-		"name": "Maulana Ahmad Aji Triadi",
-		"email": "maulanaajk@gmail.com"
-	},
-	"version": "2.1.0",
-	"private": true,
-	"scripts": {
-		"dev": "next dev --turbo",
-		"build": "next build",
-		"start": "next start",
-		"lint": "next lint"
-	},
-	"dependencies": {
-		"@number-flow/react": "^0.5.10",
-		"@phosphor-icons/react": "^2.1.10",
-		"@radix-ui/react-slot": "^1.2.3",
-		"@tailwindcss/postcss": "^4.1.12",
-		"@tsparticles/engine": "^3.9.1",
-		"@tsparticles/react": "^3.0.0",
-		"@tsparticles/slim": "^3.9.1",
-		"@vercel/analytics": "^1.5.0",
-		"@vercel/speed-insights": "^1.2.0",
-		"clsx": "^2.1.1",
-		"cobe": "^0.6.4",
-		"mapbox-gl": "^3.13.0",
-		"motion": "^12.23.12",
-		"next": "^15.4.6",
-		"next-mdx-remote": "^5.0.0",
-		"next-themes": "^0.3.0",
-		"octokit": "^5.0.3",
-		"react": "^19.1.1",
-		"react-dom": "^19.1.1",
-		"react-grid-layout": "1.3.4",
-		"react-icons": "^5.5.0",
-		"react-map-gl": "^7.1.9",
-		"swr": "^2.3.6",
-		"tailwind-merge": "^2.6.0",
-		"tslog": "^4.9.3",
-		"zustand": "^5.0.7"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "^2.2.0",
-		"@tailwindcss/typography": "^0.5.16",
-		"@types/mdx": "^2.0.13",
-		"@types/node": "^22.17.2",
-		"@types/react": "^18.3.23",
-		"@types/react-dom": "^18.3.7",
-		"@types/react-grid-layout": "^1.3.5",
-		"autoprefixer": "^10.4.21",
-		"class-variance-authority": "^0.7.1",
-		"postcss": "^8.5.6",
-		"tailwindcss": "^4.1.12",
-		"taze": "^19.1.0",
-		"typescript": "^5.9.2"
-	},
-	"trustedDependencies": [
-		"@tailwindcss/oxide"
-	]
+  "name": "portfolio",
+  "author": {
+    "name": "Maulana Ahmad Aji Triadi",
+    "email": "maulanaajk@gmail.com"
+  },
+  "version": "2.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbo",
+    "build": "next build",
+    "start": "next start",
+    "lint": "biome check ."
+  },
+  "dependencies": {
+    "@number-flow/react": "^0.5.10",
+    "@phosphor-icons/react": "^2.1.10",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@tailwindcss/postcss": "^4.1.12",
+    "@tsparticles/engine": "^3.9.1",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.9.1",
+    "@vercel/analytics": "^1.5.0",
+    "@vercel/speed-insights": "^1.2.0",
+    "clsx": "^2.1.1",
+    "cobe": "^0.6.4",
+    "motion": "^12.23.12",
+    "next": "^15.5.0",
+    "next-mdx-remote": "^5.0.0",
+    "next-themes": "^0.4.6",
+    "octokit": "^5.0.3",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-grid-layout": "1.3.4",
+    "react-icons": "^5.5.0",
+    "swr": "^2.3.6",
+    "tslog": "^4.9.3",
+    "zustand": "^5.0.8"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.2.0",
+    "@tailwindcss/typography": "^0.5.16",
+    "@types/mdx": "^2.0.13",
+    "@types/node": "^24.3.0",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "@types/react-grid-layout": "^1.3.5",
+    "class-variance-authority": "^0.7.1",
+    "postcss": "^8.5.6",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss": "^4.1.12",
+    "taze": "^19.1.1",
+    "typescript": "^5.9.2",
+    "ultracite": "^5.2.4"
+  },
+  "trustedDependencies": [
+    "@tailwindcss/oxide"
+  ]
 }

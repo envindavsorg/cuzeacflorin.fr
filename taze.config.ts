@@ -2,7 +2,7 @@ import { defineConfig } from 'taze';
 
 export default defineConfig({
 	// ignore packages from bumping
-	exclude: ['mapbox-gl', 'react-map-gl'],
+	exclude: ['react-grid-layout'],
 	// fetch latest package info from registry without cache
 	force: true,
 	// write to package.json

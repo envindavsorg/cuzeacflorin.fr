@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import type React from 'react';
-import { Fragment, useId } from 'react';
+import { useId } from 'react';
 import { Bento } from '@/components/blocs/Bento';
 import { BentoItem } from '@/components/blocs/BentoItem';
 import { Container } from '@/components/ui/Container';
@@ -66,36 +66,29 @@ const Home = (): React.JSX.Element => {
 	const structuredDataId: string = useId();
 
 	return (
-		<Fragment>
+		<>
 			<Script
-				id={structuredDataId}
-				type="application/ld+json"
 				dangerouslySetInnerHTML={{
 					__html: JSON.stringify(structuredData),
 				}}
+				id={structuredDataId}
+				type="application/ld+json"
 			/>
 
-			<Container
-				as="header"
-				className="flex items-center justify-between py-0"
-			>
+			<Container as="header" className="flex items-center justify-between py-0">
 				<h1 className="hidden">
 					{firstName} {lastName}
 				</h1>
 			</Container>
 
-			<main className="mx-auto w-full max-w-7xl px-8 pt-0 pb-24 max-lg:px-4">
+			<main>
 				<Bento layouts={layouts}>
 					{gridItems.map((item) => (
-						<BentoItem
-							key={item.i}
-							id={item.i}
-							component={item.component}
-						/>
+						<BentoItem component={item.component} id={item.i} key={item.i} />
 					))}
 				</Bento>
 			</main>
-		</Fragment>
+		</>
 	);
 };
 

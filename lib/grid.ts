@@ -1,22 +1,20 @@
 import type React from 'react';
 import type { Layout } from 'react-grid-layout';
-import {
-	Article,
-	Contact,
-	CV,
-	Description,
-	GitHub,
-	LinkedIn,
-	Location,
-	Portfolio,
-	Project,
-	Theme,
-} from '@/components/widgets';
+import { Article } from '@/components/widgets/Article';
+import { Contact } from '@/components/widgets/Contact';
+import { CV } from '@/components/widgets/CV';
+import { Description } from '@/components/widgets/Description';
+import { GitHub } from '@/components/widgets/GitHub';
+import { LinkedIn } from '@/components/widgets/LinkedIn';
+import { Location } from '@/components/widgets/Location';
+import { Portfolio } from '@/components/widgets/Portfolio';
+import { Project } from '@/components/widgets/Project';
+import { Theme } from '@/components/widgets/Theme';
 
-interface GridItem {
+type GridItem = {
 	i: string;
 	component: React.ComponentType;
-}
+};
 
 export const gridItems: GridItem[] = [
 	{ i: 'description', component: Description },
@@ -68,7 +66,7 @@ export const layouts: { [key in Layouts]: Layout[] } = {
 		{ i: 'article', x: 0, y: 8, w: 2, h: 2, isResizable: false },
 		{ i: 'contact', x: 0, y: 9, w: 2, h: 2, isResizable: false },
 		{ i: 'portfolio', x: 0, y: 4, w: 1, h: 2, isResizable: false },
-		{ i: 'github', x: 0, y: 10, w: 2, h: 1, isResizable: false },
+		{ i: 'github', x: 0, y: 10, w: 2, h: 2, isResizable: false },
 	],
 };
 
