@@ -5,30 +5,37 @@ import { motion } from 'motion/react';
 import Link from 'next/link';
 import type React from 'react';
 import { Button } from '@/components/ui/Button';
+import { cn } from '@/lib/utils';
 import { PROFILE_CONFIG } from '@/resources/profile';
 
 const { linkedin } = PROFILE_CONFIG;
 
-export const ActionLink = (): React.JSX.Element => {
+type LinkedinLinkProps = {
+	className?: string;
+};
+
+export const LinkedinLink = ({
+	className,
+}: LinkedinLinkProps): React.JSX.Element => {
 	const MotionButton = motion.create(Button);
 
 	return (
 		<MotionButton
-			className="absolute right-5 bottom-5 bg-white"
+			className={cn('group bg-white', className)}
 			size="icon"
 			variant="icon"
 			whileHover={{ scale: 1.05 }}
 			whileTap={{ scale: 0.95 }}
 		>
-			<Link
-				aria-label="Découvrez mon profil LinkedIn !"
-				href={linkedin.url}
-			>
+			<Link aria-label={linkedin.label} href={linkedin.url}>
 				<ArrowUpRightIcon
 					className="size-4.5 text-black transition-transform duration-300 group-hover:rotate-45"
 					weight="regular"
 				/>
+				<span className="sr-only">{linkedin.handle}</span>
 			</Link>
 		</MotionButton>
 	);
 };
+
+LinkedinLink.displayName = 'LinkedinLink';

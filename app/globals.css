@@ -40,7 +40,6 @@
 	/* custom colors */
 	--theme: hsl(24, 90%, 47%);
 	--theme-background: oklch(0.965 0.005 17.25);
-	--linkedin: oklch(0.516 0.163 254.728);
 }
 
 @theme inline {
@@ -82,7 +81,6 @@
 	/* custom colors */
 	--color-theme: var(--theme);
 	--color-theme-background: var(--theme-background);
-	--color-linkedin: var(--linkedin);
 	/* custom fonts */
 	--font-geist-sans: var(--font-geist-sans);
 	--font-geist-mono: var(--font-geist-mono);
@@ -134,7 +132,6 @@
 	/* custom colors */
 	--theme: hsl(51, 97%, 64%);
 	--theme-background: oklch(0.154 0.009 264.28);
-	--linkedin: oklch(0.516 0.163 254.728);
 }
 
 body.overflow-hidden {

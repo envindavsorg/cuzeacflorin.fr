@@ -3,8 +3,9 @@ import type React from 'react';
 import { memo, Suspense } from 'react';
 import { Card } from '@/components/ui/Card';
 import { Pattern } from '@/components/ui/Pattern';
-import { CommitWidgetContent } from '@/components/widgets/commit/CommitWidgetContent';
-import { CommitWidgetSkeleton } from '@/components/widgets/commit/CommitWidgetSkeleton';
+import { DataContent } from '@/components/widgets/commit/DataContent';
+import { DataSkeleton } from '@/components/widgets/commit/DataSkeleton';
+import { GitHubLink } from '@/components/widgets/commit/GitHubLink';
 import { cn } from '@/lib/utils';
 
 export const CommitWidget = memo(
@@ -16,19 +17,21 @@ export const CommitWidget = memo(
 				'shadow-xs transition-shadow duration-300 hover:shadow-sm',
 			)}
 		>
+			<GitHubLink className="absolute top-5 right-5" />
+
 			<div className="flex h-full flex-col justify-between">
 				<div className="inline-block">
-					<GithubLogoIcon className="size-18" weight="regular" />
+					<GithubLogoIcon className="size-18 text-violet-600 dark:text-violet-300" />
 				</div>
-				<div className="flex flex-col gap-y-2">
+				<div className="flex flex-col gap-y-1">
 					<div className="flex items-center gap-x-3">
-						<GitCommitIcon className="size-6" weight="regular" />
-						<Suspense fallback={<CommitWidgetSkeleton />}>
-							<CommitWidgetContent />
+						<GitCommitIcon className="size-7" />
+						<Suspense fallback={<DataSkeleton />}>
+							<DataContent />
 						</Suspense>
 					</div>
 					<p className="text-muted-foreground text-sm">
-						- effectués en tout, sur GitHub cette année ...
+						- effectués cette année
 					</p>
 				</div>
 			</div>

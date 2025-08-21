@@ -22,7 +22,14 @@ export const PROFILE_CONFIG = {
 
 	linkedin: {
 		url: 'https://www.linkedin.com/in/cuzeacflorin/',
-		handle: 'cuzeacflorin',
+		handle: '@cuzeacflorin',
+		label: 'Découvrez mon profil LinkedIn !',
+	},
+
+	github: {
+		url: 'https://github.com/envindavsorg',
+		handle: '@envindavsorg',
+		label: 'Découvrez mon profil GitHub !',
 	},
 
 	location: {

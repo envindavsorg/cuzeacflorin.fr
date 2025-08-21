@@ -27,12 +27,12 @@ export const ProfileImage = ({
 		? { opacity: 1, scale: 1, rotate: 0 }
 		: undefined;
 
-	const exitRotate = avatar === 0 ? ROTATION_ANGLE : -ROTATION_ANGLE;
+	const exitRotate = avatar % 2 === 0 ? ROTATION_ANGLE : -ROTATION_ANGLE;
 	const exit = isUserInteraction
 		? { opacity: 0, scale: SCALE_SMALL, rotate: exitRotate }
 		: undefined;
 
-	const initialRotate = avatar === 0 ? -ROTATION_ANGLE : ROTATION_ANGLE;
+	const initialRotate = avatar % 2 === 0 ? -ROTATION_ANGLE : ROTATION_ANGLE;
 	const initial = isUserInteraction
 		? { opacity: 0, scale: SCALE_SMALL, rotate: initialRotate }
 		: { opacity: 1, scale: 1, rotate: 0 };

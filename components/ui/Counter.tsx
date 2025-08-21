@@ -3,10 +3,12 @@
 import NumberFlow from '@number-flow/react';
 import type React from 'react';
 import { memo, useEffect, useState } from 'react';
+import { cn } from '@/lib/utils';
 
 type CounterProps = {
 	value: number;
 	interval?: number;
+	step?: number;
 	children?: React.ReactNode;
 	className?: string;
 };
@@ -15,6 +17,7 @@ export const Counter = memo(
 	({
 		value,
 		interval = 150,
+		step = 1,
 		children,
 		className,
 	}: CounterProps): React.JSX.Element => {
@@ -22,26 +25,42 @@ export const Counter = memo(
 
 		useEffect(() => {
 			let current = 0;
+			let timeoutId: NodeJS.Timeout;
 			setDisplayValue(0);
 
 			if (value > 0) {
+				const totalSteps = Math.ceil(value / step);
+				const actualStep = value / totalSteps;
+
 				const tick = () => {
-					current += 1;
-					setDisplayValue(current);
-					if (current < value) {
-						setTimeout(tick, interval);
+					current += actualStep;
+
+					if (current >= value) {
+						setDisplayValue(value);
+						return;
 					}
+
+					setDisplayValue(Math.round(current));
+					timeoutId = setTimeout(tick, interval);
 				};
-				tick();
+
+				timeoutId = setTimeout(tick, 100);
 			}
-		}, [value, interval]);
+
+			return () => {
+				if (timeoutId) {
+					clearTimeout(timeoutId);
+				}
+			};
+		}, [value, interval, step]);
 
 		return (
-			<span className={className}>
-				<NumberFlow respectMotionPreference value={displayValue} /> {children}
+			<span className={cn('flex items-baseline gap-x-2', className)}>
+				<NumberFlow respectMotionPreference value={displayValue} />{' '}
+				{children}
 			</span>
 		);
-	}
+	},
 );
 
 Counter.displayName = 'Counter';

@@ -30,7 +30,7 @@ export const BioWidget = memo((): React.JSX.Element => {
 			className={cn(
 				'relative justify-center gap-4 rounded-3xl px-8 lg:py-2',
 				'size-full select-none overflow-hidden md:cursor-grab md:active:cursor-grabbing',
-				'shadow-xs transition-shadow duration-300 hover:shadow-sm'
+				'shadow-xs transition-shadow duration-300 hover:shadow-sm',
 			)}
 		>
 			<div className="flex flex-col gap-y-4 lg:flex-row lg:items-center lg:gap-x-6">

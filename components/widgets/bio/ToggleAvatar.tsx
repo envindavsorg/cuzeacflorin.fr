@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import type React from 'react';
 import { memo, type RefObject, useCallback, useState } from 'react';
 import { Button } from '@/components/ui/Button';
+import { PROFILE_CONFIG } from '@/resources/profile';
 
 type ToggleAvatarProps = {
 	animatePulse: (sequence: any[], options?: any) => any;
@@ -49,6 +50,7 @@ export const ToggleAvatar = memo(
 		setHasUserInteracted,
 	}: ToggleAvatarProps): React.JSX.Element => {
 		const [isRotated, setIsRotated] = useState(false);
+		const [hasAnimated, setHasAnimated] = useState(false);
 		const pulse = useCallback(async () => {
 			if (!(pulseScope.current && isUserInteractionRef.current)) {
 				return;
@@ -79,10 +81,12 @@ export const ToggleAvatar = memo(
 
 		const handleClick = useCallback(async () => {
 			isUserInteractionRef.current = true;
-			const newAvatar = 1 - avatar;
+			const totalAvatars = PROFILE_CONFIG.avatars.length;
+			const newAvatar = (avatar + 1) % totalAvatars;
 			setAvatar(newAvatar);
 			setIsRotated(!isRotated);
 			setHasUserInteracted(true);
+			setHasAnimated(true);
 			await pulse();
 		}, [
 			pulse,
@@ -105,16 +109,23 @@ export const ToggleAvatar = memo(
 				whileTap={{ scale: 0.95 }}
 			>
 				<motion.div
-					animate={{ rotate: isRotated ? ROTATION_ANGLE : -ROTATION_ANGLE }}
+					animate={{
+						rotate: isRotated ? ROTATION_ANGLE : -ROTATION_ANGLE,
+					}}
 					className="flex items-center justify-center p-2"
 					transition={{
-						duration: ANIMATION_CONFIG.rotate.duration,
+						duration: hasAnimated
+							? ANIMATION_CONFIG.rotate.duration
+							: 0,
 						ease: ANIMATION_CONFIG.rotate.ease,
 					}}
 				>
-					<ArrowsCounterClockwiseIcon className="size-4.5" weight="regular" />
+					<ArrowsCounterClockwiseIcon
+						className="size-4.5"
+						weight="regular"
+					/>
 				</motion.div>
 			</MotionButton>
 		);
-	}
+	},
 );
