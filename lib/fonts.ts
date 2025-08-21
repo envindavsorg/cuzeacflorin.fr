@@ -14,7 +14,7 @@ const mono: NextFont = Geist_Mono({
 	subsets: ['latin'],
 });
 
-export const pixelify = Pixelify_Sans({
+export const pixelify: NextFont = Pixelify_Sans({
 	weight: ['600'],
 	subsets: ['latin'],
 	variable: '--font-pixelify-sans',

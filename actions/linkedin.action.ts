@@ -1,6 +1,7 @@
 'use server';
 
 import { list } from '@vercel/blob';
+import { unstable_cache } from 'next/cache';
 import { logger } from '@/lib/logger';
 
 type LinkedInData = {
@@ -9,9 +10,27 @@ type LinkedInData = {
 };
 
 const BLOB_FILENAME = 'linkedin-followers.json';
+const FALLBACK_COUNT = 0;
+const CACHE_TAG = 'linkedin-followers';
+const CACHE_REVALIDATE = 3600;
 
-export const getLinkedInFollowers = async (): Promise<LinkedInData> => {
+let memoryCache: { data: LinkedInData | null; timestamp: number } = {
+	data: null,
+	timestamp: 0,
+};
+
+const MEMORY_CACHE_TTL = 60 * 1000;
+
+const fetchLinkedInData = async (): Promise<LinkedInData> => {
 	try {
+		const now = Date.now();
+		if (
+			memoryCache.data &&
+			now - memoryCache.timestamp < MEMORY_CACHE_TTL
+		) {
+			return memoryCache.data;
+		}
+
 		const { blobs } = await list({
 			prefix: BLOB_FILENAME,
 			limit: 1,
@@ -19,24 +38,54 @@ export const getLinkedInFollowers = async (): Promise<LinkedInData> => {
 
 		if (blobs.length === 0) {
 			return {
-				count: 0,
+				count: FALLBACK_COUNT,
 				updatedAt: new Date().toISOString(),
 			};
 		}
 
-		const response = await fetch(blobs[0].url);
+		const response = await fetch(blobs[0].url, {
+			next: {
+				revalidate: CACHE_REVALIDATE,
+				tags: [CACHE_TAG],
+			},
+			cache: 'force-cache',
+		});
 
 		if (!response.ok) {
-			throw new Error('Erreur récupération blob');
+			throw new Error(`HTTP error! status: ${response.status}`);
 		}
 
-		return (await response.json()) as LinkedInData;
+		const data = (await response.json()) as LinkedInData;
+
+		if (typeof data.count !== 'number' || !data.updatedAt) {
+			throw new Error('Invalid data structure');
+		}
+
+		memoryCache = {
+			data,
+			timestamp: now,
+		};
+
+		return data;
 	} catch (error) {
-		logger.error('Erreur lecture blob:', error);
+		logger.error('LinkedIn data fetch error:', error);
+
+		if (memoryCache.data) {
+			return memoryCache.data;
+		}
 
 		return {
-			count: 0,
+			count: FALLBACK_COUNT,
 			updatedAt: new Date().toISOString(),
 		};
 	}
 };
+
+export const getLinkedInFollowers = unstable_cache(
+	fetchLinkedInData,
+	[CACHE_TAG],
+	{
+		revalidate: CACHE_REVALIDATE,
+		tags: [CACHE_TAG],
+	},
+);

@@ -3,8 +3,10 @@ import type { ThemeProviderProps } from 'next-themes/dist/types';
 
 declare global {
 	// next-themes
-	type NextFont = NextFontWithVariable;
 	type ThemeProvider = ThemeProviderProps;
+
+	// fonts
+	type NextFont = NextFontWithVariable;
 
 	// bento filters
 	export type FilterType = 'all' | 'about' | 'projects' | 'media';

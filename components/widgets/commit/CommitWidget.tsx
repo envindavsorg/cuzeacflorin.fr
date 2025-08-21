@@ -1,7 +1,7 @@
 import { GitCommitIcon, GithubLogoIcon } from '@phosphor-icons/react/dist/ssr';
 import type React from 'react';
 import { memo } from 'react';
-import { getGitHubUserData } from '@/app/actions';
+import { getGitHubUserData } from '@/actions/github.action';
 import { Card } from '@/components/ui/Card';
 import { Counter } from '@/components/ui/Counter';
 import { Pattern } from '@/components/ui/Pattern';
@@ -15,7 +15,7 @@ export const CommitWidget = memo(async (): Promise<React.JSX.Element> => {
 			className={cn(
 				'relative justify-center gap-4 rounded-3xl p-8',
 				'size-full select-none overflow-hidden md:cursor-grab md:active:cursor-grabbing',
-				'shadow-xs transition-shadow duration-300 hover:shadow-sm'
+				'shadow-xs transition-shadow duration-300 hover:shadow-sm',
 			)}
 		>
 			<div className="flex h-full flex-col justify-between">
@@ -31,7 +31,9 @@ export const CommitWidget = memo(async (): Promise<React.JSX.Element> => {
 							interval={10}
 							value={contributions.totalContributions}
 						>
-							<span className="ms-1 text-lg md:text-xl">commits</span>
+							<span className="ms-1 text-lg md:text-xl">
+								commits
+							</span>
 						</Counter>
 					</div>
 					<p className="text-muted-foreground text-sm">
