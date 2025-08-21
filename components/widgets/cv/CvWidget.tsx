@@ -25,7 +25,9 @@ export const CvWidget = memo((): React.JSX.Element => {
 				className="flex flex-col items-center justify-center gap-y-4"
 				href={cv.filePath}
 			>
-				<ReadCvLogoIcon className="size-18 text-theme" />
+				<div className="flex items-center justify-center p-2">
+					<ReadCvLogoIcon className="size-18 text-theme" />
+				</div>
 				<div className="flex flex-col items-center justify-center gap-y-2">
 					<h3 className="font-bold font-pixelify-sans text-theme text-xl md:text-3xl">
 						Mon CV
