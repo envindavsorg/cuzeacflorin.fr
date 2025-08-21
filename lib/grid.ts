@@ -1,6 +1,6 @@
 import type React from 'react';
 import type { Layout } from 'react-grid-layout';
-import { Article } from '@/components/widgets/Article';
+import { ArticleWidget } from '@/components/widgets/article/ArticleWidget';
 import { BioWidget } from '@/components/widgets/bio/BioWidget';
 import { Contact } from '@/components/widgets/Contact';
 import { CommitWidget } from '@/components/widgets/commit/CommitWidget';
@@ -21,7 +21,7 @@ export const gridItems: GridItem[] = [
 	{ i: 'location', component: LocationWidget },
 	{ i: 'project', component: Project },
 	{ i: 'commit', component: CommitWidget },
-	{ i: 'article', component: Article },
+	{ i: 'article', component: ArticleWidget },
 	{ i: 'switcher', component: SwitcherWidget },
 	{ i: 'linkedin', component: LinkedInWidget },
 	{ i: 'contact', component: Contact },

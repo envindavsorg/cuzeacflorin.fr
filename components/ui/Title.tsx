@@ -37,6 +37,7 @@ export const Title = memo(
 					'flex flex-col gap-y-3 transition-element',
 					'font-bold font-pixelify-sans text-3xl md:text-4xl'
 				)}
+				title={title}
 			>
 				{title ? (
 					<span className="group relative block overflow-hidden">

@@ -49,10 +49,7 @@ export const ThemeButton = memo(
 								key="sun"
 								transition={iconTransition}
 							>
-								<SunIcon
-									className="size-18 text-theme"
-									weight="regular"
-								/>
+								<SunIcon className="size-18 text-theme" />
 							</motion.div>
 						) : (
 							<motion.div
@@ -66,17 +63,14 @@ export const ThemeButton = memo(
 								key="moon"
 								transition={iconTransition}
 							>
-								<MoonIcon
-									className="size-18 text-theme"
-									weight="regular"
-								/>
+								<MoonIcon className="size-18 text-theme"  />
 							</motion.div>
 						)}
 					</AnimatePresence>
 				</motion.button>
 			);
-		},
-	),
+		}
+	)
 );
 
 ThemeButton.displayName = 'ThemeButton';

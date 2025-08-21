@@ -6,17 +6,18 @@ import Link from 'next/link';
 import type React from 'react';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
-import { PROFILE_CONFIG } from '@/resources/profile';
 
-const { github } = PROFILE_CONFIG;
-
-type GitHubLinkProps = {
+type ArticleLinkProps = {
+	url: string;
+	label: string;
 	className?: string;
 };
 
-export const GitHubLink = ({
+export const ArticleLink = ({
+	url,
+	label,
 	className,
-}: GitHubLinkProps): React.JSX.Element => {
+}: ArticleLinkProps): React.JSX.Element => {
 	const MotionButton = motion.create(Button);
 
 	return (
@@ -27,14 +28,12 @@ export const GitHubLink = ({
 			whileHover={{ scale: 1.05 }}
 			whileTap={{ scale: 0.95 }}
 		>
-			<Link aria-label={github.label} href={github.url}>
-				<ArrowUpRightIcon
-					className="size-4.5 text-black transition-transform duration-300 group-hover:rotate-45"
-				/>
-				<span className="sr-only">{github.handle}</span>
+			<Link aria-label={label} href={url}>
+				<ArrowUpRightIcon className="size-4.5 text-black transition-transform duration-300 group-hover:rotate-45" />
+				<span className="sr-only">{label}</span>
 			</Link>
 		</MotionButton>
 	);
 };
 
-GitHubLink.displayName = 'GitHubLink';
+ArticleLink.displayName = 'ArticleLink';

@@ -28,10 +28,7 @@ export const LinkedinLink = ({
 			whileTap={{ scale: 0.95 }}
 		>
 			<Link aria-label={linkedin.label} href={linkedin.url}>
-				<ArrowUpRightIcon
-					className="size-4.5 text-black transition-transform duration-300 group-hover:rotate-45"
-					weight="regular"
-				/>
+				<ArrowUpRightIcon className="size-4.5 text-black transition-transform duration-300 group-hover:rotate-45" />
 				<span className="sr-only">{linkedin.handle}</span>
 			</Link>
 		</MotionButton>

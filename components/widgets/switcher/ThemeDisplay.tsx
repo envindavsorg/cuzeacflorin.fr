@@ -26,10 +26,10 @@ const THEME_CONFIG = {
 export const ThemeDisplay = memo(
 	({ isMounted, resolvedTheme }: ThemeDisplayProps): React.JSX.Element => {
 		const getThemeConfig = () => {
-			if (!isMounted) return THEME_CONFIG.fallback;
-			return resolvedTheme === 'dark'
-				? THEME_CONFIG.dark
-				: THEME_CONFIG.light;
+			if (!isMounted) {
+				return THEME_CONFIG.fallback;
+			}
+			return resolvedTheme === 'dark' ? THEME_CONFIG.dark : THEME_CONFIG.light;
 		};
 
 		const { mode, phrase } = getThemeConfig();
@@ -39,12 +39,10 @@ export const ThemeDisplay = memo(
 				<h3 className="font-bold font-pixelify-sans text-theme text-xl md:text-3xl">
 					{mode}
 				</h3>
-				<p className="text-center text-muted-foreground text-sm">
-					{phrase}
-				</p>
+				<p className="text-center text-muted-foreground text-sm">{phrase}</p>
 			</div>
 		);
-	},
+	}
 );
 
 ThemeDisplay.displayName = 'ThemeDisplay';

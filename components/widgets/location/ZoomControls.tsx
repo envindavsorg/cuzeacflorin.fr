@@ -32,7 +32,7 @@ export const ZoomControls = memo(
 					whileHover={{ scale: 1.05 }}
 					whileTap={{ scale: 0.95 }}
 				>
-					<MinusIcon className="size-4.5" weight="regular" />
+					<MinusIcon className="size-4.5" />
 				</MotionButton>
 				<MotionButton
 					disabled={!canZoomIn}
@@ -42,11 +42,11 @@ export const ZoomControls = memo(
 					whileHover={{ scale: 1.05 }}
 					whileTap={{ scale: 0.95 }}
 				>
-					<PlusIcon className="size-4.5" weight="regular" />
+					<PlusIcon className="size-4.5" />
 				</MotionButton>
 			</div>
 		);
-	},
+	}
 );
 
 ZoomControls.displayName = 'ZoomControls';

@@ -114,18 +114,13 @@ export const ToggleAvatar = memo(
 					}}
 					className="flex items-center justify-center p-2"
 					transition={{
-						duration: hasAnimated
-							? ANIMATION_CONFIG.rotate.duration
-							: 0,
+						duration: hasAnimated ? ANIMATION_CONFIG.rotate.duration : 0,
 						ease: ANIMATION_CONFIG.rotate.ease,
 					}}
 				>
-					<ArrowsCounterClockwiseIcon
-						className="size-4.5"
-						weight="regular"
-					/>
+					<ArrowsCounterClockwiseIcon className="size-4.5" />
 				</motion.div>
 			</MotionButton>
 		);
-	},
+	}
 );

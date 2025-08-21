@@ -4,10 +4,10 @@ import { useAnimate } from 'motion/react';
 import { useTheme } from 'next-themes';
 import type React from 'react';
 import { memo, useRef, useState } from 'react';
-import { Paragraph } from '@/components/text/Paragraph';
-import { Title } from '@/components/text/Title';
 import { Card } from '@/components/ui/Card';
+import { Paragraph } from '@/components/ui/Paragraph';
 import { Pattern } from '@/components/ui/Pattern';
+import { Title } from '@/components/ui/Title';
 import { ProfileImage } from '@/components/widgets/bio/ProfileImage';
 import { ToggleAvatar } from '@/components/widgets/bio/ToggleAvatar';
 import { cn } from '@/lib/utils';
@@ -29,7 +29,7 @@ export const BioWidget = memo((): React.JSX.Element => {
 			className={cn(
 				'relative justify-center gap-4 rounded-3xl px-8 lg:py-2',
 				'size-full select-none overflow-hidden md:cursor-grab md:active:cursor-grabbing',
-				'shadow-xs transition-shadow duration-300 hover:shadow-sm',
+				'shadow-xs transition-shadow duration-300 hover:shadow-sm'
 			)}
 		>
 			<div className="flex flex-col gap-y-4 lg:flex-row lg:items-center lg:gap-x-6">
@@ -51,10 +51,8 @@ export const BioWidget = memo((): React.JSX.Element => {
 					{lastName}
 				</span>
 				, développeur web avec{' '}
-				<span className="font-bold">
-					{experience.years} ans d'expérience
-				</span>
-				. Je crée des solutions web innovantes où technique et design se
+				<span className="font-bold">{experience.years} ans d'expérience</span>.
+				Je crée des solutions web innovantes où technique et design se
 				rencontrent.
 			</Paragraph>
 
