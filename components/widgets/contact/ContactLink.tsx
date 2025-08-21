@@ -12,17 +12,17 @@ import {
 } from '@/components/ui/Tooltip';
 import { cn } from '@/lib/utils';
 
-type ArticleLinkProps = {
+type ContactLinkProps = {
 	url: string;
 	label: string;
 	className?: string;
 };
 
-export const ArticleLink = ({
+export const ContactLink = ({
 	url,
 	label,
 	className,
-}: ArticleLinkProps): React.JSX.Element => {
+}: ContactLinkProps): React.JSX.Element => {
 	const MotionButton = motion.create(Button);
 
 	return (
@@ -42,10 +42,10 @@ export const ArticleLink = ({
 				</MotionButton>
 			</TooltipTrigger>
 			<TooltipContent align="center" side="left" sideOffset={5}>
-				<p>{label}</p>
+				<p>Lire l'article</p>
 			</TooltipContent>
 		</Tooltip>
 	);
 };
 
-ArticleLink.displayName = 'ArticleLink';
+ContactLink.displayName = 'ContactLink';

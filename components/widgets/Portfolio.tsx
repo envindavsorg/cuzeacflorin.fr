@@ -1,7 +1,7 @@
+import { ArrowUpRightIcon } from '@phosphor-icons/react/dist/ssr';
 import Image from 'next/image';
 import type React from 'react';
 import { memo } from 'react';
-import { FaArrowRight } from 'react-icons/fa6';
 import { Anchor } from '@/components/ui/Anchor';
 import { Card } from '@/components/ui/Card';
 import { cn, toKebabCase } from '@/lib/utils';
@@ -38,7 +38,7 @@ export const Portfolio = memo((): React.JSX.Element => {
 						{projectName}
 					</span>
 					<span>
-						<FaArrowRight className="-rotate-45 transition-transform duration-300 group-hover:rotate-0" />
+						<ArrowUpRightIcon className="-rotate-45 transition-transform duration-300 group-hover:rotate-0" />
 					</span>
 				</Anchor>
 			</div>

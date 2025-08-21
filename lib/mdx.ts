@@ -81,5 +81,17 @@ export const getAllPosts = (): MDXData<PostMetadata>[] =>
 
 export const getLatestPost = (): MDXData<PostMetadata> => getAllPosts()[0];
 
+export const getFirstPost = (): MDXData<PostMetadata> => {
+	const posts = getAllPosts();
+	return posts[posts.length - 1];
+};
+
+export const getPostByIndex = (
+	index: number
+): MDXData<PostMetadata> | undefined => {
+	const posts = getAllPosts();
+	return posts[index];
+};
+
 export const getAllProjects = (): MDXData<ProjectMetadata>[] =>
 	getMDXData<ProjectMetadata>(path.join(process.cwd(), 'content/projects'));

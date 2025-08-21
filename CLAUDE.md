@@ -66,7 +66,7 @@ pnpm add [package-name]
 
 #### Component Architecture
 - **Grid System**: Responsive grid layout using `react-grid-layout` with breakpoint-specific configurations
-- **Widget Components**: Modular widgets in `/components/grid/widgets/` (ArticleWidget, Contact, BioWidget, LinkedIn, LocationWidget, Project, CV, SwitcherWidget)
+- **Widget Components**: Modular widgets in `/components/grid/widgets/` (ArticleWidget, ContactWidget, BioWidget, LinkedIn, LocationWidget, Project, CV, SwitcherWidget)
 - **UI Components**: Reusable UI elements in `/components/ui/` with Radix UI integration
 - **Icon System**: Technology-specific icons in `/components/icons/content/`
 
@@ -81,7 +81,7 @@ pnpm add [package-name]
 - Site configuration centralized in `/config/site.ts` and `/config/socials.ts`
 - Profile and metadata in `/resources/`
 - Grid layouts defined in `/lib/grid.ts` with responsive breakpoints (lg, md, sm)
-- External data fetching (CV, GitHub) via SWR and Octokit
+- External data fetching (CV, WorkWidget) via SWR and Octokit
 
 ### Important Configuration
 
@@ -94,7 +94,7 @@ pnpm add [package-name]
 
 #### Next.js Configuration
 - MDX support enabled
-- Image optimization for GitHub avatars and cuzeacflorin.fr
+- Image optimization for WorkWidget avatars and cuzeacflorin.fr
 - Security headers configured (X-Frame-Options, CSP, etc.)
 - Console statements removed in production (except errors/warnings)
 - Package optimization for key libraries

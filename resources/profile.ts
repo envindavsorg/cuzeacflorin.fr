@@ -1,3 +1,9 @@
+import {
+	EnvelopeIcon,
+	GithubLogoIcon,
+	LinkedinLogoIcon,
+	PhoneIcon,
+} from '@phosphor-icons/react/dist/ssr';
 import me from '@/images/me.webp';
 import memoji1 from '@/images/memojis/memoji1.webp';
 import memoji2 from '@/images/memojis/memoji2.webp';
@@ -15,6 +21,34 @@ export const PROFILE_CONFIG = {
 	pronounce: 'ku-zé-ak flo-rin',
 	welcome: 'crée, code, innove',
 	genId: '@cuzeacflorin',
+
+	contact: {
+		email: 'mail@cueacflorin.fr',
+		phone: '06 58 05 86 65',
+	},
+
+	social: [
+		{
+			name: 'Github',
+			url: 'https://github.com/envindavsorg/',
+			icon: GithubLogoIcon,
+		},
+		{
+			name: 'LinkedIn',
+			url: 'https://linkedin.com/in/cuzeacflorin/',
+			icon: LinkedinLogoIcon,
+		},
+		{
+			name: 'Téléphone',
+			url: 'tel:+33658058665',
+			icon: PhoneIcon,
+		},
+		{
+			name: 'Adresse e-mail',
+			url: 'mailto:mail@cuzeacflorin.fr',
+			icon: EnvelopeIcon,
+		},
+	],
 
 	experience: {
 		years: CURRENT_YEAR - START_DEV_YEAR,

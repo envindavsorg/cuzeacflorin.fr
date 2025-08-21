@@ -17,7 +17,8 @@
       "recommended": true,
       "style": {
         "noMagicNumbers": "off",
-        "noNestedTernary": "off"
+        "noNestedTernary": "off",
+        "useAtIndex": "off"
       },
       "security": {
         "noDangerouslySetInnerHtml": "off"

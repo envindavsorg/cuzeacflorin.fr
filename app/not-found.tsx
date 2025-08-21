@@ -1,7 +1,7 @@
 'use client';
 
+import { ArrowUpRightIcon } from '@phosphor-icons/react';
 import type React from 'react';
-import { FaArrowRight } from 'react-icons/fa6';
 import { Anchor } from '@/components/ui/Anchor';
 import { Container } from '@/components/ui/Container';
 import useMounted from '@/hooks/useMounted';
@@ -28,7 +28,7 @@ const NotFound = (): React.JSX.Element => {
 				</h2>
 				<p>Sorry, we couldn&apos;t find what you were looking for.</p>
 				<Anchor className="px-4 py-2" href="/">
-					<FaArrowRight className="-rotate-45 group-hover:-rotate-180 transition-transform duration-300" />
+					<ArrowUpRightIcon className="-rotate-45 group-hover:-rotate-180 size-4.5 transition-transform duration-300" />
 					Back to Home
 				</Anchor>
 			</div>
