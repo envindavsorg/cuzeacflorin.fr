@@ -62,13 +62,13 @@ export const LocationWidget = memo((): React.JSX.Element => {
 						height={44}
 						priority
 						sizes="(max-width: 768px) 48px, 56px"
-						src={avatars[0]}
+						src={avatars[4]}
 						width={32}
 					/>
 				</motion.div>
 			</motion.div>
 		),
-		[mouseEntered]
+		[mouseEntered],
 	);
 
 	const mapRef = useRef<MapRef>(null);
@@ -76,8 +76,14 @@ export const LocationWidget = memo((): React.JSX.Element => {
 	const handleZoom = (direction: 'in' | 'out') => {
 		const newZoom =
 			direction === 'in'
-				? Math.min(viewState.zoom + location.zoom.step, location.zoom.max)
-				: Math.max(viewState.zoom - location.zoom.step, location.zoom.min);
+				? Math.min(
+						viewState.zoom + location.zoom.step,
+						location.zoom.max,
+					)
+				: Math.max(
+						viewState.zoom - location.zoom.step,
+						location.zoom.min,
+					);
 
 		if (mapRef.current) {
 			mapRef.current.getMap().easeTo({
@@ -97,7 +103,7 @@ export const LocationWidget = memo((): React.JSX.Element => {
 			className={cn(
 				'group relative justify-center rounded-3xl p-0',
 				'size-full select-none overflow-hidden md:cursor-grab md:active:cursor-grabbing',
-				'shadow-xs transition-shadow duration-300 hover:shadow-sm'
+				'shadow-xs transition-shadow duration-300 hover:shadow-sm',
 			)}
 			onMouseEnter={() => setMouseEntered(true)}
 			onMouseLeave={() => setMouseEntered(false)}
@@ -121,8 +127,12 @@ export const LocationWidget = memo((): React.JSX.Element => {
 					dragPan={false}
 					dragRotate={false}
 					initialViewState={viewState}
-					mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
-					mapStyle={MAP_STYLES[resolvedTheme === 'dark' ? 'dark' : 'light']}
+					mapboxAccessToken={
+						process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN
+					}
+					mapStyle={
+						MAP_STYLES[resolvedTheme === 'dark' ? 'dark' : 'light']
+					}
 					maxZoom={location.zoom.max}
 					minZoom={location.zoom.min}
 					onError={() => setHasError(true)}
@@ -153,7 +163,10 @@ export const LocationWidget = memo((): React.JSX.Element => {
 								whileHover={{ scale: 1.05 }}
 								whileTap={{ scale: 0.95 }}
 							>
-								<MinusIcon className="size-4.5" weight="regular" />
+								<MinusIcon
+									className="size-4.5"
+									weight="regular"
+								/>
 							</MotionButton>
 							<MotionButton
 								disabled={!canZoomIn}
@@ -163,7 +176,10 @@ export const LocationWidget = memo((): React.JSX.Element => {
 								whileHover={{ scale: 1.05 }}
 								whileTap={{ scale: 0.95 }}
 							>
-								<PlusIcon className="size-4.5" weight="regular" />
+								<PlusIcon
+									className="size-4.5"
+									weight="regular"
+								/>
 							</MotionButton>
 						</div>
 					)}
