@@ -14,14 +14,14 @@ export const LinkedInWidget = memo(
 			className={cn(
 				'relative justify-center gap-4 rounded-3xl p-8',
 				'size-full select-none overflow-hidden md:cursor-grab md:active:cursor-grabbing',
-				'shadow-xs transition-shadow duration-300 hover:shadow-sm',
+				'shadow-xs transition-shadow duration-300 hover:shadow-sm'
 			)}
 		>
 			<LinkedinLink className="absolute top-5 right-5" />
 
 			<div className="flex h-full flex-col justify-between">
 				<div className="inline-block">
-					<LinkedinLogoIcon className="size-18 text-blue-600 dark:text-blue-300" />
+					<LinkedinLogoIcon className="size-10 text-blue-600 lg:size-18 dark:text-blue-300" />
 				</div>
 
 				<div className="flex flex-col gap-y-1">
@@ -31,15 +31,13 @@ export const LinkedInWidget = memo(
 							<DataContent />
 						</Suspense>
 					</div>
-					<p className="text-muted-foreground text-sm">
-						- sur LinkedIn
-					</p>
+					<p className="text-muted-foreground text-sm">- sur LinkedIn</p>
 				</div>
 			</div>
 
 			<Pattern />
 		</Card>
-	),
+	)
 );
 
 LinkedInWidget.displayName = 'LinkedInWidget';

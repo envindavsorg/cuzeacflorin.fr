@@ -30,7 +30,7 @@ export const WorkWidget = memo((): React.JSX.Element => {
 				{post.metadata.description}
 			</Paragraph>
 
-			<div className="flex items-center gap-x-3 *:px-2 *:py-1.5">
+			<div className="flex flex-col gap-1.5 *:px-2 *:py-1.5 md:flex-row md:items-center md:gap-3">
 				<Badge variant="outline">
 					<CalendarDotsIcon />
 					{formatDate(post.metadata.date)}
