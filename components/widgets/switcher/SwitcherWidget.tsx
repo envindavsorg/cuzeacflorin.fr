@@ -24,12 +24,12 @@ export const SwitcherWidget = memo((): React.JSX.Element => {
 			className={cn(
 				'relative justify-center gap-4 rounded-3xl p-8',
 				'size-full select-none overflow-hidden md:cursor-grab md:active:cursor-grabbing',
-				'shadow-xs transition-shadow duration-300 hover:shadow-sm',
+				'shadow-xs transition-shadow duration-300 hover:shadow-sm'
 			)}
 		>
 			<ThemeButton
-				isDarkMode={isDarkMode}
 				hasUserInteracted={hasUserInteracted}
+				isDarkMode={isDarkMode}
 				onClick={changeTheme}
 				ref={buttonRef}
 			/>

@@ -3,6 +3,7 @@ import type React from 'react';
 import { memo } from 'react';
 import { Card } from '@/components/ui/Card';
 import { Paragraph } from '@/components/ui/Paragraph';
+import { Pattern } from '@/components/ui/Pattern';
 import { ArticleLink } from '@/components/widgets/article/ArticleLink';
 import { cn } from '@/lib/utils';
 import { PROFILE_CONFIG } from '@/resources/profile';
@@ -29,26 +30,28 @@ export const ContactWidget = memo(
 				quelque chose ou simplement envie de dire bonjour, alors contactez-moi.
 			</Paragraph>
 
-			<div className="mt-2 inline-flex flex-col items-center justify-center gap-6 sm:flex-row sm:justify-between">
-				<div className="inline-flex gap-6">
-					{social.map(({ name, url, icon: Icon }) => (
-						<Link
-							aria-label={name}
-							href={url}
-							key={name}
-							rel="noreferrer"
-							target="_blank"
-						>
-							<Icon className="size-7" />
-							<span className="sr-only">{name}</span>
-						</Link>
-					))}
-				</div>
-				<ArticleLink
-					label="N'hésitez pas à me contacter !"
-					url={`mailto:${contact.email}`}
-				/>
+			<div className="mt-3 inline-flex gap-6">
+				{social.map(({ name, url, icon: Icon }) => (
+					<Link
+						aria-label={name}
+						href={url}
+						key={name}
+						rel="noreferrer"
+						target="_blank"
+					>
+						<Icon className="size-7" />
+						<span className="sr-only">{name}</span>
+					</Link>
+				))}
 			</div>
+
+			<ArticleLink
+				className="absolute right-5 bottom-5"
+				label="N'hésitez pas à me contacter !"
+				url={`mailto:${contact.email}`}
+			/>
+
+			<Pattern />
 		</Card>
 	)
 );

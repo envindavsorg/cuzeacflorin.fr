@@ -1,6 +1,7 @@
-import { CalendarDotsIcon } from '@phosphor-icons/react/ssr';
+import { BookIcon, CalendarDotsIcon } from '@phosphor-icons/react/ssr';
 import type React from 'react';
 import { memo } from 'react';
+import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { Pattern } from '@/components/ui/Pattern';
@@ -29,15 +30,22 @@ export const WorkWidget = memo((): React.JSX.Element => {
 				{post.metadata.description}
 			</Paragraph>
 
-			<div className="mt-2 inline-flex flex-col items-center justify-center gap-6 sm:flex-row sm:justify-between">
-				<div className="flex items-center gap-x-2">
-					<CalendarDotsIcon className="size-4.5" />
-					<p className="text-sm md:text-base">
-						{formatDate(post.metadata.date)}
-					</p>
-				</div>
-				<ArticleLink label={post.metadata.title} url={`/posts/${post.slug}`} />
+			<div className="flex items-center gap-x-3 *:px-2 *:py-1.5">
+				<Badge variant="outline">
+					<CalendarDotsIcon />
+					{formatDate(post.metadata.date)}
+				</Badge>
+				<Badge variant="outline">
+					<BookIcon />
+					{post.reading?.readingTime}
+				</Badge>
 			</div>
+
+			<ArticleLink
+				className="absolute right-5 bottom-5"
+				label={post.metadata.title}
+				url={`/posts/${post.slug}`}
+			/>
 
 			<Pattern />
 		</Card>
