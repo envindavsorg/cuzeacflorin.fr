@@ -1,11 +1,11 @@
 import type { MetadataRoute } from 'next';
-import { siteConfig } from '@/resources/site';
+import { baseURL } from '@/resources/meta';
 
 const robots = (): MetadataRoute.Robots => ({
 	rules: {
 		userAgent: '*',
 	},
-	sitemap: `${siteConfig.url}/sitemap.xml`,
+	sitemap: `${baseURL}/sitemap.xml`,
 });
 
 export default robots;

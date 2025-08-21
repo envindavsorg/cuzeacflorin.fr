@@ -1,20 +1,20 @@
 import type { MetadataRoute } from 'next';
 import { getAllPosts, getAllProjects } from '@/lib/mdx';
-import { siteConfig } from '@/resources/site';
+import { baseURL } from '@/resources/meta';
 
 const sitemap = (): MetadataRoute.Sitemap => {
 	const routes = [''].map((route) => ({
-		url: `${siteConfig.url}${route}`,
+		url: `${baseURL}${route}`,
 		lastModified: new Date(),
 	}));
 
 	const posts = getAllPosts().map((post) => ({
-		url: `${siteConfig.url}/posts/${post.slug}`,
+		url: `${baseURL}/posts/${post.slug}`,
 		lastModified: post.metadata.date,
 	}));
 
 	const projects = getAllProjects().map((projects) => ({
-		url: `${siteConfig.url}/projects/${projects.slug}`,
+		url: `${baseURL}/projects/${projects.slug}`,
 		lastModified: new Date(),
 	}));
 
