@@ -17,7 +17,7 @@ const keywords = [
 	'portfolio',
 ] as const;
 
-interface MetadataOptions {
+type MetadataOptions = {
 	title?: string;
 	description?: string;
 	image?: string;
@@ -27,7 +27,7 @@ interface MetadataOptions {
 	publishedTime?: string;
 	modifiedTime?: string;
 	type?: 'website' | 'article';
-}
+};
 
 export const defaultDescription =
 	"Florin, développeur web avec 10 ans d'expérience, passionné par la création d'applications fiables, belles et fonctionnelles. Actuellement chez WeFix.";
@@ -37,7 +37,7 @@ export const generateMetadata = (options: MetadataOptions = {}): Metadata => {
 		title = `${PROFILE_CONFIG.firstName} ${PROFILE_CONFIG.lastName}`,
 		description = defaultDescription,
 		image = absoluteUrl(
-			`/api/og?heading=${PROFILE_CONFIG.firstName} ${PROFILE_CONFIG.lastName}&type=image&mode=dark`,
+			`/api/og?heading=${PROFILE_CONFIG.firstName} ${PROFILE_CONFIG.lastName}&type=image&mode=dark`
 		),
 		noIndex = false,
 		canonicalUrl,
@@ -64,9 +64,7 @@ export const generateMetadata = (options: MetadataOptions = {}): Metadata => {
 				article: {
 					publishedTime,
 					modifiedTime,
-					authors: [
-						`${PROFILE_CONFIG.firstName} ${PROFILE_CONFIG.lastName}`,
-					],
+					authors: [`${PROFILE_CONFIG.firstName} ${PROFILE_CONFIG.lastName}`],
 					tags,
 				},
 			}),

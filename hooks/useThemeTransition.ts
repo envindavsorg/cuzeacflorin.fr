@@ -40,10 +40,7 @@ const useThemeTransition = () => {
 			const x = left + width / 2;
 			const right = window.innerWidth - left;
 			const bottom = window.innerHeight - top;
-			const maxRad = Math.hypot(
-				Math.max(left, right),
-				Math.max(top, bottom),
-			);
+			const maxRad = Math.hypot(Math.max(left, right), Math.max(top, bottom));
 
 			const transition = document.startViewTransition(() => {
 				flushSync(() => {
@@ -64,7 +61,7 @@ const useThemeTransition = () => {
 						duration: 700,
 						easing: 'ease-in-out',
 						pseudoElement: '::view-transition-new(root)',
-					},
+					}
 				);
 			});
 		} else {

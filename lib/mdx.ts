@@ -1,10 +1,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-interface BaseMetadata {
+type BaseMetadata = {
 	title: string;
 	description: string;
-}
+};
 
 interface PostMetadata extends BaseMetadata {
 	date: string;
@@ -22,12 +22,15 @@ type MDXData<T extends BaseMetadata> = {
 };
 
 const FRONTMATTER_REGEX = /^---\s*([\s\S]*?)\s*---/;
+const RAW_REGEX = /^['"](.*)['"]$/;
 
 const parseFrontmatter = <T extends BaseMetadata>(
-	fileContent: string,
+	fileContent: string
 ): MDXData<T> => {
 	const match = FRONTMATTER_REGEX.exec(fileContent);
-	if (!match) throw new Error('Invalid frontmatter');
+	if (!match) {
+		throw new Error('Invalid frontmatter');
+	}
 
 	const [fullMatch, frontMatterBlock] = match;
 	const content = fileContent.slice(fullMatch.length).trim();
@@ -37,12 +40,9 @@ const parseFrontmatter = <T extends BaseMetadata>(
 			.split('\n')
 			.map((line) => {
 				const [key, ...valueParts] = line.split(':');
-				const value = valueParts
-					.join(':')
-					.trim()
-					.replace(/^['"](.*)['"]$/, '$1');
+				const value = valueParts.join(':').trim().replace(RAW_REGEX, '$1');
 				return [key.trim(), value];
-			}),
+			})
 	);
 
 	const metadata = rawMetadata as unknown as T;
@@ -53,9 +53,7 @@ const parseFrontmatter = <T extends BaseMetadata>(
 const getMDXData = <T extends BaseMetadata>(dir: string): MDXData<T>[] =>
 	fs
 		.readdirSync(dir, { withFileTypes: true })
-		.filter(
-			(dirent) => dirent.isFile() && path.extname(dirent.name) === '.mdx',
-		)
+		.filter((dirent) => dirent.isFile() && path.extname(dirent.name) === '.mdx')
 		.map((dirent) => {
 			const filePath = path.join(dir, dirent.name);
 			const fileContent = fs.readFileSync(filePath, 'utf-8');

@@ -9,6 +9,7 @@ import {
 } from 'react-grid-layout';
 import useBreakpoint from '@/hooks/useBreakpoint';
 import { breakpoints, cols, heights } from '@/lib/consts';
+import { logger } from '@/lib/logger';
 import { cn } from '@/lib/utils';
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
@@ -16,9 +17,9 @@ const ResponsiveGridLayout = WidthProvider(Responsive);
 const useIsomorphicLayoutEffect =
 	typeof window === 'undefined' ? useEffect : useLayoutEffect;
 
-interface BentoProps {
+type BentoProps = {
 	filter?: FilterType;
-}
+};
 
 export const Bento = ({
 	layouts,
@@ -31,7 +32,9 @@ export const Bento = ({
 	const { breakpoint, setBreakpoint } = useBreakpoint();
 
 	const [height, setHeight] = useState(() => {
-		if (typeof window === 'undefined') return 280;
+		if (typeof window === 'undefined') {
+			return 280;
+		}
 		const currentBreakpoint = breakpoint || 'lg';
 		return heights[currentBreakpoint] || 280;
 	});
@@ -52,7 +55,7 @@ export const Bento = ({
 
 	const opacityValue = (section: string) =>
 		filter === 'all' || section === filter ? 1 : 0.25;
-	console.log(opacityValue);
+	logger.info(opacityValue);
 
 	return (
 		<section
@@ -62,33 +65,31 @@ export const Bento = ({
 				'sm:max-w-[375px]',
 				'md:max-w-[800px]',
 				'lg:max-w-[1200px]',
-				isMounted
-					? 'translate-y-0 opacity-100'
-					: '-translate-y-6 opacity-0',
+				isMounted ? 'translate-y-0 opacity-100' : '-translate-y-6 opacity-0',
 				'transition-[opacity,_transform] duration-300',
-				className,
+				className
 			)}
 			suppressHydrationWarning
 		>
 			{isMounted && (
 				<ResponsiveGridLayout
-					useCSSTransforms
-					layouts={layouts}
 					breakpoints={breakpoints}
 					cols={cols}
+					draggableCancel=".cancel-drag"
 					isBounded
 					isDraggable={isDraggable}
 					isResizable={false}
-					rowHeight={height}
+					layouts={layouts}
+					margin={[16, 16]}
 					measureBeforeMount
-					draggableCancel=".cancel-drag"
 					onBreakpointChange={(newBreakpoint: string) => {
 						setBreakpoint(newBreakpoint);
 						if (heights[newBreakpoint]) {
 							setHeight(heights[newBreakpoint]);
 						}
 					}}
-					margin={[16, 16]}
+					rowHeight={height}
+					useCSSTransforms
 				>
 					{children}
 				</ResponsiveGridLayout>
@@ -98,8 +99,7 @@ export const Bento = ({
 				<div
 					className="grid gap-4 opacity-50"
 					style={{
-						gridTemplateColumns:
-							'repeat(auto-fit, minmax(280px, 1fr))',
+						gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
 						minHeight: height,
 					}}
 				>

@@ -1,7 +1,7 @@
 import { logger } from '@/lib/logger';
 
 export const fetcher = async (
-	url: string | URL | Request,
+	url: string | URL | Request
 ): Promise<Response> => {
 	const response: Response = await fetch(url);
 

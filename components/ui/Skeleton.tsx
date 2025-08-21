@@ -6,8 +6,8 @@ export const Skeleton = ({
 	...props
 }: React.ComponentProps<'div'>): React.JSX.Element => (
 	<div
-		data-slot="skeleton"
 		className={cn('animate-pulse rounded-md bg-accent', className)}
+		data-slot="skeleton"
 		{...props}
 	/>
 );

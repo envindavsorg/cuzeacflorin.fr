@@ -15,7 +15,7 @@ const Anchor = ({
 
 	if (href?.startsWith('/')) {
 		return (
-			<Link href={href} className={className} {...props}>
+			<Link className={className} href={href} {...props}>
 				{children}
 			</Link>
 		);
@@ -23,7 +23,7 @@ const Anchor = ({
 
 	if (href?.startsWith('#')) {
 		return (
-			<a href={href} className={className} {...props}>
+			<a className={className} href={href} {...props}>
 				{children}
 			</a>
 		);
@@ -31,10 +31,10 @@ const Anchor = ({
 
 	return (
 		<a
-			href={href}
-			target="_blank"
-			rel="noopener noreferrer"
 			className={className}
+			href={href}
+			rel="noopener noreferrer"
+			target="_blank"
 			{...props}
 		>
 			{children}
@@ -44,10 +44,10 @@ const Anchor = ({
 
 const RoundedImage = ({ ...props }): React.JSX.Element => (
 	<Image
-		src={props.src}
 		alt={props.alt}
 		className="rounded-lg"
 		draggable="false"
+		src={props.src}
 		{...props}
 	/>
 );
@@ -65,7 +65,7 @@ const createHeading = (level: number) => {
 					className: 'anchor',
 				}),
 			],
-			children,
+			children
 		);
 	};
 
@@ -88,7 +88,7 @@ const components = {
 export const CustomMDX = ({ ...props }): React.JSX.Element => (
 	<MDXRemote
 		{...props}
-		source={props.source}
 		components={{ ...components, ...(props.components || {}) }}
+		source={props.source}
 	/>
 );

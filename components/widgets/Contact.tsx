@@ -11,16 +11,15 @@ export const Contact = memo(
 			className={cn(
 				'relative justify-center gap-6 rounded-3xl px-8 py-2',
 				'size-full select-none overflow-hidden md:cursor-grab md:active:cursor-grabbing',
-				'shadow-xs transition-shadow duration-300 hover:shadow-sm',
+				'shadow-xs transition-shadow duration-300 hover:shadow-sm'
 			)}
 		>
 			<h2 className="font-pixelify-sans text-2xl max-md:text-center">
 				Have an interesting project in mind? 👋
 			</h2>
 			<p className="leading-relaxed max-md:hidden">
-				If you have a project that you want to get started, think you
-				need my help with something or just fancy saying hey, then get
-				in touch.
+				If you have a project that you want to get started, think you need my
+				help with something or just fancy saying hey, then get in touch.
 			</p>
 			<div className="inline-flex flex-col items-center gap-6 lg:flex-row">
 				<a
@@ -33,12 +32,12 @@ export const Contact = memo(
 				<div className="inline-flex gap-6">
 					{socials.map((social) => (
 						<a
-							key={social.name}
-							href={social.url}
-							className="cancel-drag"
 							aria-label={`My ${social.name}`}
-							target="_blank"
+							className="cancel-drag"
+							href={social.url}
+							key={social.name}
 							rel="noreferrer"
+							target="_blank"
 						>
 							{<social.icon size="1.3rem" />}
 						</a>
@@ -46,5 +45,5 @@ export const Contact = memo(
 				</div>
 			</div>
 		</Card>
-	),
+	)
 );

@@ -2,35 +2,36 @@ import type React from 'react';
 import type { SVGProps } from 'react';
 
 export const NextJSIcon = (
-	props: SVGProps<SVGSVGElement>,
+	props: SVGProps<SVGSVGElement>
 ): React.JSX.Element => (
 	<svg
-		width="1em"
+		fill="none"
 		height="1em"
 		viewBox="0 0 180 180"
-		fill="none"
+		width="1em"
 		xmlns="http://www.w3.org/2000/svg"
 		{...props}
 	>
+		<title>Next.js</title>
 		<mask
+			height={180}
 			id="mask0_408_139"
+			maskUnits="userSpaceOnUse"
 			style={{
 				maskType: 'alpha',
 			}}
-			maskUnits="userSpaceOnUse"
+			width={180}
 			x={0}
 			y={0}
-			width={180}
-			height={180}
 		>
-			<circle cx={90} cy={90} r={90} fill="black" />
+			<circle cx={90} cy={90} fill="black" r={90} />
 		</mask>
 		<g mask="url(#mask0_408_139)">
 			<circle
 				cx={90}
 				cy={90}
-				r={87}
 				fill="#000000"
+				r={87}
 				stroke="#FFFFFF"
 				strokeWidth={6}
 			/>
@@ -39,32 +40,32 @@ export const NextJSIcon = (
 				fill="url(#paint0_linear_408_139)"
 			/>
 			<rect
+				fill="url(#paint1_linear_408_139)"
+				height={72}
+				width={12}
 				x={115}
 				y={54}
-				width={12}
-				height={72}
-				fill="url(#paint1_linear_408_139)"
 			/>
 		</g>
 		<defs>
 			<linearGradient
+				gradientUnits="userSpaceOnUse"
 				id="paint0_linear_408_139"
 				x1={109}
-				y1={116.5}
 				x2={144.5}
+				y1={116.5}
 				y2={160.5}
-				gradientUnits="userSpaceOnUse"
 			>
 				<stop stopColor="#FFFFFF" />
 				<stop offset={1} stopColor="#FFFFFF" stopOpacity={0} />
 			</linearGradient>
 			<linearGradient
+				gradientUnits="userSpaceOnUse"
 				id="paint1_linear_408_139"
 				x1={121}
-				y1={54}
 				x2={120.799}
+				y1={54}
 				y2={106.875}
-				gradientUnits="userSpaceOnUse"
 			>
 				<stop stopColor="#FFFFFF" />
 				<stop offset={1} stopColor="#FFFFFF" stopOpacity={0} />

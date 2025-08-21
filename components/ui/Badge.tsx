@@ -23,7 +23,7 @@ const badgeVariants = cva(
 		defaultVariants: {
 			variant: 'default',
 		},
-	},
+	}
 );
 
 const Badge = ({
@@ -37,8 +37,8 @@ const Badge = ({
 
 	return (
 		<Comp
-			data-slot="badge"
 			className={cn(badgeVariants({ variant }), className)}
+			data-slot="badge"
 			{...props}
 		/>
 	);
@@ -83,7 +83,7 @@ const BadgeWithIcon = ({ type }: BadgeWithIconProps): React.JSX.Element => {
 			className="inline-flex items-center gap-1.5 py-1.5 align-middle"
 			variant="outline"
 		>
-			<DynamicIcon name={iconName} className="size-4 shrink-0" />
+			<DynamicIcon className="size-4 shrink-0" name={iconName} />
 			<span className="leading-none">{label}</span>
 		</Badge>
 	);

@@ -6,12 +6,12 @@ export type PageType =
 	| 'about'
 	| 'contact';
 
-export interface OgImageParams {
+export type OgImageParams = {
 	type?: PageType;
 	title: string;
 	subtitle?: string;
 	image?: string;
-}
+};
 
 export const getOgImageUrl = ({
 	type = 'homepage',
@@ -19,8 +19,7 @@ export const getOgImageUrl = ({
 	subtitle,
 	image,
 }: OgImageParams): string => {
-	const baseUrl =
-		process.env.NEXT_PUBLIC_BASE_URL || 'https://yourdomain.com';
+	const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://yourdomain.com';
 	const endpoint = `${baseUrl}/api/og`;
 
 	const params = new URLSearchParams({

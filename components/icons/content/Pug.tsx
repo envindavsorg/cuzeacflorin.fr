@@ -3,12 +3,13 @@ import type { SVGProps } from 'react';
 
 export const PugIcon = (props: SVGProps<SVGSVGElement>): React.JSX.Element => (
 	<svg
-		viewBox="0 0 32 32"
-		xmlns="http://www.w3.org/2000/svg"
-		width="1em"
 		height="1em"
+		viewBox="0 0 32 32"
+		width="1em"
+		xmlns="http://www.w3.org/2000/svg"
 		{...props}
 	>
+		<title>Pug</title>
 		<path
 			d="M25.514,12.846c-.052-.938.209-1.825-.209-2.554-1.043-1.825-3.649-2.867-8.863-2.867V7.372h0v.052c-5.735,0-8.185,1.043-9.227,2.867a5.6,5.6,0,0,0-.469,2.554,9.546,9.546,0,0,0-.261,2.45c.156,1.147.261,2.294.417,3.336.156.886,1.408,1.564,1.564,2.4.313,2.242,2.294,3.284,8.028,3.284v.261h-.1v-.261c5.213,0,7.4-1.043,7.716-3.284.1-.834,1.147-1.512,1.3-2.4.156-1.043.209-2.19.365-3.336A11.774,11.774,0,0,0,25.514,12.846Z"
 			fill="#efcca3"
@@ -22,7 +23,7 @@ export const PugIcon = (props: SVGProps<SVGSVGElement>): React.JSX.Element => (
 			fill="#ccac8d"
 		/>
 		<circle cx="22.178" cy="14.41" r="1.929" />
-		<circle cx="21.656" cy="13.524" r="0.521" fill="#fff" />
+		<circle cx="21.656" cy="13.524" fill="#fff" r="0.521" />
 		<path
 			d="M19.206,14.306a17.68,17.68,0,0,1,2.711,2.346c.938,1.2.938,1.408.938,1.408l-.678.313a7.1,7.1,0,0,0-2.137-2.5c-1.2-.678-1.355-1.251-1.355-1.251Z"
 			fill="#efcca3"
@@ -72,21 +73,21 @@ export const PugIcon = (props: SVGProps<SVGSVGElement>): React.JSX.Element => (
 		<ellipse
 			cx="16.546"
 			cy="15.138"
+			fill="#331712"
 			rx="0.156"
 			ry="0.313"
 			transform="translate(-3.256 4.611) rotate(-14.46)"
-			fill="#331712"
 		/>
 		<ellipse
 			cx="15.609"
 			cy="15.146"
+			fill="#331712"
 			rx="0.313"
 			ry="0.156"
 			transform="translate(-3.482 25.567) rotate(-72.765)"
-			fill="#331712"
 		/>
 		<circle cx="10.031" cy="14.41" r="1.929" />
-		<circle cx="10.552" cy="13.524" r="0.521" fill="#fff" />
+		<circle cx="10.552" cy="13.524" fill="#fff" r="0.521" />
 		<path
 			d="M16.7,14.41s-.521.209-.626.261a2.492,2.492,0,0,1-.626-.261H16.7Z"
 			fill="#7f4a41"
@@ -155,11 +156,11 @@ export const PugIcon = (props: SVGProps<SVGSVGElement>): React.JSX.Element => (
 			d="M25.41,18.007a4.118,4.118,0,0,1-.573,1.564c-.365.365-.1-.313-.1-.313s.365-.209.313-1.72C24.993,16.078,25.41,18.007,25.41,18.007Z"
 			fill="#ccac8d"
 		/>
-		<circle cx="13.889" cy="17.121" r="0.156" fill="#442823" />
-		<circle cx="12.846" cy="18.216" r="0.156" fill="#442823" />
-		<circle cx="12.533" cy="17.121" r="0.156" fill="#442823" />
-		<circle cx="18.164" cy="17.121" r="0.156" fill="#442823" />
-		<circle cx="19.154" cy="18.216" r="0.156" fill="#442823" />
-		<circle cx="19.467" cy="17.121" r="0.156" fill="#442823" />
+		<circle cx="13.889" cy="17.121" fill="#442823" r="0.156" />
+		<circle cx="12.846" cy="18.216" fill="#442823" r="0.156" />
+		<circle cx="12.533" cy="17.121" fill="#442823" r="0.156" />
+		<circle cx="18.164" cy="17.121" fill="#442823" r="0.156" />
+		<circle cx="19.154" cy="18.216" fill="#442823" r="0.156" />
+		<circle cx="19.467" cy="17.121" fill="#442823" r="0.156" />
 	</svg>
 );

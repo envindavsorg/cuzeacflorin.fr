@@ -1,6 +1,6 @@
 import { useLayoutEffect, useState } from 'react';
 
-const useMounted = (delay: number = 0) => {
+const useMounted = (delay = 0) => {
 	const [isMounted, setIsMounted] = useState(false);
 
 	useLayoutEffect(() => {

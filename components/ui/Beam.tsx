@@ -4,7 +4,7 @@ import { type MotionStyle, motion, type Transition } from 'motion/react';
 import type React from 'react';
 import { cn } from '@/lib/utils';
 
-interface BeamProps {
+type BeamProps = {
 	size?: number;
 	duration?: number;
 	delay?: number;
@@ -16,7 +16,7 @@ interface BeamProps {
 	reverse?: boolean;
 	initialOffset?: number;
 	borderWidth?: number;
-}
+};
 
 export const Beam = ({
 	className,
@@ -41,11 +41,17 @@ export const Beam = ({
 			}
 		>
 			<motion.div
+				animate={{
+					offsetDistance: reverse
+						? [`${100 - initialOffset}%`, `${-initialOffset}%`]
+						: [`${initialOffset}%`, `${100 + initialOffset}%`],
+				}}
 				className={cn(
 					'absolute aspect-square',
 					'bg-gradient-to-l from-[var(--color-from)] via-[var(--color-to)] to-transparent',
-					className,
+					className
 				)}
+				initial={{ offsetDistance: `${initialOffset}%` }}
 				style={
 					{
 						width: size,
@@ -55,14 +61,8 @@ export const Beam = ({
 						...style,
 					} as MotionStyle
 				}
-				initial={{ offsetDistance: `${initialOffset}%` }}
-				animate={{
-					offsetDistance: reverse
-						? [`${100 - initialOffset}%`, `${-initialOffset}%`]
-						: [`${initialOffset}%`, `${100 + initialOffset}%`],
-				}}
 				transition={{
-					repeat: Infinity,
+					repeat: Number.POSITIVE_INFINITY,
 					ease: 'linear',
 					duration,
 					delay: -delay,

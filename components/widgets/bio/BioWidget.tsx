@@ -7,7 +7,6 @@ import { memo, useRef, useState } from 'react';
 import { Paragraph } from '@/components/text/Paragraph';
 import { Title } from '@/components/text/Title';
 import { Card } from '@/components/ui/Card';
-import { Counter } from '@/components/ui/Counter';
 import { Pattern } from '@/components/ui/Pattern';
 import { ProfileImage } from '@/components/widgets/bio/ProfileImage';
 import { ToggleAvatar } from '@/components/widgets/bio/ToggleAvatar';
@@ -48,16 +47,13 @@ export const BioWidget = memo((): React.JSX.Element => {
 
 			<Paragraph className="relative leading-relaxed">
 				Je suis{' '}
-				<span className="font-bold font-pixelify-sans text-theme text-xl md:text-2xl">
+				<span className="font-extrabold text-lg text-theme md:text-2xl">
 					{lastName}
 				</span>
 				, développeur web avec{' '}
-				<Counter
-					className="font-bold font-pixelify-sans text-lg text-theme md:text-xl"
-					value={experience.years}
-				>
-					ans d'expérience
-				</Counter>
+				<span className="font-bold">
+					{experience.years} ans d'expérience
+				</span>
 				. Je crée des solutions web innovantes où technique et design se
 				rencontrent.
 			</Paragraph>

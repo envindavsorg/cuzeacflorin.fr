@@ -1,6 +1,6 @@
 import type { ISourceOptions } from '@tsparticles/engine';
 
-export interface SparkleConfig {
+export type SparkleConfig = {
 	density?: number;
 	minSize?: number;
 	maxSize?: number;
@@ -8,7 +8,7 @@ export interface SparkleConfig {
 	color?: string;
 	background?: string;
 	reducedMotion?: boolean;
-}
+};
 
 export const createSparkleOptions = (config: SparkleConfig): ISourceOptions => {
 	const {
@@ -53,7 +53,7 @@ export const createSparkleOptions = (config: SparkleConfig): ISourceOptions => {
 				value: { min: 0.1, max: 1 },
 				animation: {
 					enable: true,
-					speed: speed,
+					speed,
 					startValue: 'random',
 				},
 			},
@@ -70,10 +70,12 @@ export const createSparkleOptions = (config: SparkleConfig): ISourceOptions => {
 };
 
 export const checkPerformanceSupport = (): boolean => {
-	if (typeof window === 'undefined') return false;
+	if (typeof window === 'undefined') {
+		return false;
+	}
 
 	const reducedMotion = window.matchMedia(
-		'(prefers-reduced-motion: reduce)',
+		'(prefers-reduced-motion: reduce)'
 	).matches;
 	const hardwareConcurrency = navigator.hardwareConcurrency || 2;
 	const sufficientHardware = hardwareConcurrency > 2;

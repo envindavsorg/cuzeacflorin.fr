@@ -5,11 +5,11 @@ import { logger } from '@/lib/logger';
 
 const FILE_NAME = 'cv-cuzeac-florin.pdf';
 
-interface CvMetadata {
+type CvMetadata = {
 	sizeKB: number;
 	lastModified: string;
 	cached?: boolean;
-}
+};
 
 interface CvMetadataError extends CvMetadata {
 	error: string;
@@ -26,7 +26,7 @@ export const GET = async (): Promise<
 		const lastModified = mtime.toLocaleDateString('fr-FR');
 
 		const fileAge = Date.now() - mtime.getTime();
-		const maxAge = fileAge > 86400000 ? 3600 : 300;
+		const maxAge = fileAge > 86_400_000 ? 3600 : 300;
 
 		return NextResponse.json(
 			{
@@ -42,7 +42,7 @@ export const GET = async (): Promise<
 					ETag: `"${mtime.getTime()}-${size}"`,
 					Vary: 'Accept-Encoding',
 				},
-			},
+			}
 		);
 	} catch (error) {
 		logger.error('Route /cv/metadata: Failed to read CV metadata', error);
@@ -69,7 +69,7 @@ export const GET = async (): Promise<
 					'Cache-Control': 'public, max-age=60, s-maxage=60',
 					'X-Content-Type-Options': 'nosniff',
 				},
-			},
+			}
 		);
 	}
 };

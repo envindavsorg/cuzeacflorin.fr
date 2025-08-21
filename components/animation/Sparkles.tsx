@@ -6,10 +6,11 @@ import { loadSlim } from '@tsparticles/slim';
 import { useTheme } from 'next-themes';
 import type React from 'react';
 import { memo, useCallback, useEffect, useMemo, useState } from 'react';
+import { logger } from '@/lib/logger';
 import { checkPerformanceSupport, createSparkleOptions } from '@/lib/sparkles';
 import { cn } from '@/lib/utils';
 
-interface SparklesProps {
+type SparklesProps = {
 	id?: string;
 	className?: string;
 	density?: number;
@@ -19,7 +20,7 @@ interface SparklesProps {
 	background?: string;
 	particleColor?: string;
 	delayLoad?: number;
-}
+};
 
 export const Sparkles = memo(
 	({
@@ -39,7 +40,9 @@ export const Sparkles = memo(
 
 		useEffect(() => {
 			const canRender = checkPerformanceSupport();
-			if (!canRender) return;
+			if (!canRender) {
+				return;
+			}
 
 			const timer = setTimeout(() => {
 				setShouldRender(true);
@@ -49,7 +52,9 @@ export const Sparkles = memo(
 		}, [delayLoad]);
 
 		useEffect(() => {
-			if (!shouldRender) return;
+			if (!shouldRender) {
+				return;
+			}
 
 			let isMounted = true;
 
@@ -63,10 +68,7 @@ export const Sparkles = memo(
 						setIsInitialized(true);
 					}
 				} catch (error) {
-					console.warn(
-						'Failed to initialize particles engine:',
-						error,
-					);
+					logger.warn('Failed to initialize particles engine:', error);
 				}
 			};
 
@@ -78,7 +80,9 @@ export const Sparkles = memo(
 		}, [shouldRender]);
 
 		const color = useMemo(() => {
-			if (particleColor) return particleColor;
+			if (particleColor) {
+				return particleColor;
+			}
 			return resolvedTheme === 'dark' ? '#FFFFFF' : '#000000';
 		}, [particleColor, resolvedTheme]);
 
@@ -92,19 +96,19 @@ export const Sparkles = memo(
 					color,
 					background,
 				}),
-			[density, minSize, maxSize, speed, color, background],
+			[density, minSize, maxSize, speed, color, background]
 		);
 
 		const particlesLoaded = useCallback(
 			async (container?: Container): Promise<void> => {
 				if (container) {
-					console.debug('Particles loaded successfully');
+					logger.debug('Particles loaded successfully');
 				}
 			},
-			[],
+			[]
 		);
 
-		if (!shouldRender || !isInitialized) {
+		if (!(shouldRender && isInitialized)) {
 			return null;
 		}
 
@@ -112,18 +116,18 @@ export const Sparkles = memo(
 			<div
 				className={cn(
 					'-z-10 pointer-events-none fixed inset-0 size-full overflow-hidden',
-					className,
+					className
 				)}
 			>
 				<Particles
-					id={id}
 					className="size-full"
-					particlesLoaded={particlesLoaded}
+					id={id}
 					options={options}
+					particlesLoaded={particlesLoaded}
 				/>
 			</div>
 		);
-	},
+	}
 );
 
 Sparkles.displayName = 'Sparkles';

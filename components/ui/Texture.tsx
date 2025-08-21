@@ -2,9 +2,9 @@ import type React from 'react';
 import { forwardRef } from 'react';
 import { cn } from '@/lib/utils';
 
-interface TextureProps {
+type TextureProps = {
 	children?: React.ReactNode;
-}
+};
 
 export const Texture = forwardRef<
 	HTMLDivElement,
@@ -12,11 +12,11 @@ export const Texture = forwardRef<
 >(
 	({ className, children, ...props }, ref): React.JSX.Element => (
 		<div
-			ref={ref}
 			className={cn(
 				'rounded-md max-sm:border max-sm:border-white/60 dark:max-sm:border-border/30',
-				className,
+				className
 			)}
+			ref={ref}
 			{...props}
 		>
 			<div className="rounded-md max-sm:border max-sm:border-black/10 dark:max-sm:border-neutral-900/80">
@@ -29,5 +29,5 @@ export const Texture = forwardRef<
 				</div>
 			</div>
 		</div>
-	),
+	)
 );

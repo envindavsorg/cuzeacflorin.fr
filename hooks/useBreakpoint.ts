@@ -8,9 +8,8 @@ const useBreakpoint = () => {
 		const handleResize = () => {
 			const width = window.innerWidth;
 			const newBreakpoint =
-				Object.keys(breakpoints).find(
-					(key) => width > breakpoints[key],
-				) ?? 'xxs';
+				Object.keys(breakpoints).find((key) => width > breakpoints[key]) ??
+				'xxs';
 			setBreakpoint(newBreakpoint);
 		};
 

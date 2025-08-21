@@ -37,8 +37,7 @@ export const Pattern = ({
 	useEffect(() => {
 		const updateDimensions = () => {
 			if (containerRef.current) {
-				const { width, height } =
-					containerRef.current.getBoundingClientRect();
+				const { width, height } = containerRef.current.getBoundingClientRect();
 				setDimensions({ width, height });
 			}
 		};
@@ -63,42 +62,27 @@ export const Pattern = ({
 				delay: Math.random() * 5,
 				duration: Math.random() * 3 + 2,
 			};
-		},
+		}
 	);
 
 	return (
 		<svg
-			ref={containerRef}
 			aria-hidden="true"
 			className={cn(
 				'pointer-events-none absolute inset-0 z-0 h-full w-full opacity-25',
-				className,
+				className
 			)}
+			ref={containerRef}
 			{...props}
 		>
 			<defs>
 				<radialGradient id={`${id}-gradient`}>
-					<stop
-						offset="0%"
-						stopColor="currentColor"
-						stopOpacity="1"
-					/>
-					<stop
-						offset="100%"
-						stopColor="currentColor"
-						stopOpacity="0"
-					/>
+					<stop offset="0%" stopColor="currentColor" stopOpacity="1" />
+					<stop offset="100%" stopColor="currentColor" stopOpacity="0" />
 				</radialGradient>
 			</defs>
 			{dots.map((dot, index) => (
 				<motion.circle
-					key={`${dot.x}-${dot.y}-${index + 1}`}
-					cx={dot.x}
-					cy={dot.y}
-					r={cr}
-					fill={glow ? `url(#${id}-gradient)` : 'currentColor'}
-					className="text-neutral-400/80 dark:text-neutral-600"
-					initial={glow ? { opacity: 0.4, scale: 1 } : {}}
 					animate={
 						glow
 							? {
@@ -107,11 +91,18 @@ export const Pattern = ({
 								}
 							: {}
 					}
+					className="text-neutral-400/80 dark:text-neutral-600"
+					cx={dot.x}
+					cy={dot.y}
+					fill={glow ? `url(#${id}-gradient)` : 'currentColor'}
+					initial={glow ? { opacity: 0.4, scale: 1 } : {}}
+					key={`${dot.x}-${dot.y}-${index + 1}`}
+					r={cr}
 					transition={
 						glow
 							? {
 									duration: dot.duration,
-									repeat: Infinity,
+									repeat: Number.POSITIVE_INFINITY,
 									repeatType: 'reverse',
 									delay: dot.delay,
 									ease: 'easeInOut',

@@ -56,11 +56,10 @@ export const Counter = memo(
 
 		return (
 			<span className={cn('flex items-baseline gap-x-2', className)}>
-				<NumberFlow respectMotionPreference value={displayValue} />{' '}
-				{children}
+				<NumberFlow respectMotionPreference value={displayValue} /> {children}
 			</span>
 		);
-	},
+	}
 );
 
 Counter.displayName = 'Counter';

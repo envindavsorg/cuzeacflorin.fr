@@ -50,7 +50,7 @@ export const createUIDGenerator = (prefix = 'id') => {
  */
 export const withUIDs = <T extends Record<string, any>>(
 	items: T[],
-	uidKey = 'id',
+	uidKey = 'id'
 ): Array<T & { [key: string]: string }> =>
 	items.map((item) => ({
 		...item,
@@ -65,7 +65,7 @@ export const withUIDs = <T extends Record<string, any>>(
  */
 export const withSequentialUIDs = <T extends Record<string, any>>(
 	items: T[],
-	prefix = 'item',
+	prefix = 'item'
 ): Array<T & { uid: string }> => {
 	const generator = createUIDGenerator(prefix);
 	return items.map((item) => ({

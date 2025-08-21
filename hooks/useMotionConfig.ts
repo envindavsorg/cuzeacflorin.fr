@@ -13,7 +13,7 @@ const useMotionConfig = (): Transition => {
 	useEffect(() => {
 		const updateConfig = () => {
 			const prefersReducedMotion = window.matchMedia(
-				'(prefers-reduced-motion: reduce)',
+				'(prefers-reduced-motion: reduce)'
 			).matches;
 			const isMobile = window.innerWidth < 768;
 
@@ -38,9 +38,7 @@ const useMotionConfig = (): Transition => {
 
 		updateConfig();
 
-		const mediaQuery = window.matchMedia(
-			'(prefers-reduced-motion: reduce)',
-		);
+		const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 		const handleChange = () => updateConfig();
 
 		mediaQuery.addEventListener('change', handleChange);

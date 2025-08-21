@@ -1,5 +1,6 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.2.0/schema.json",
+  "extends": ["ultracite"],
   "formatter": {
     "enabled": true,
     "indentStyle": "tab",
@@ -32,11 +33,13 @@
             "functions": ["clsx", "cva", "tw", "cn"]
           },
           "level": "warn"
-        }
+        },
+        "noShadow": "off"
       },
       "suspicious": {
         "noExplicitAny": "off",
-        "noUnknownAtRules": "off"
+        "noUnknownAtRules": "off",
+        "useAwait": "off"
       }
     }
   },

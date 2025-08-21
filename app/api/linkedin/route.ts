@@ -2,6 +2,7 @@ import { del, list, put } from '@vercel/blob';
 import { revalidatePath, revalidateTag } from 'next/cache';
 import { headers } from 'next/headers';
 import type { NextRequest } from 'next/server';
+import { logger } from '@/lib/logger';
 
 const BLOB_FILENAME = 'linkedin-followers.json';
 const CACHE_TAG = 'linkedin-followers';
@@ -13,7 +14,7 @@ export const GET = async (_request: NextRequest) => {
 		const headers = new Headers();
 		headers.set(
 			'Cache-Control',
-			'public, s-maxage=3600, stale-while-revalidate=7200',
+			'public, s-maxage=3600, stale-while-revalidate=7200'
 		);
 		headers.set('CDN-Cache-Control', 'max-age=3600');
 		headers.set('Vercel-CDN-Cache-Control', 'max-age=3600');
@@ -29,7 +30,7 @@ export const GET = async (_request: NextRequest) => {
 					count: 0,
 					updatedAt: new Date().toISOString(),
 				},
-				{ headers },
+				{ headers }
 			);
 		}
 
@@ -49,14 +50,13 @@ export const GET = async (_request: NextRequest) => {
 
 		return Response.json(data, { headers });
 	} catch (error) {
-		console.error('GET /api/linkedin error:', error);
+		logger.error('GET /api/linkedin error:', error);
 		return Response.json(
 			{
 				error: 'Erreur lors de la récupération',
-				details:
-					error instanceof Error ? error.message : 'Unknown error',
+				details: error instanceof Error ? error.message : 'Unknown error',
 			},
-			{ status: 500 },
+			{ status: 500 }
 		);
 	}
 };
@@ -68,7 +68,7 @@ export const POST = async (request: Request) => {
 		if (!authHeader?.startsWith('Bearer ')) {
 			return Response.json(
 				{ error: 'Token manquant ou invalide' },
-				{ status: 401 },
+				{ status: 401 }
 			);
 		}
 
@@ -84,7 +84,7 @@ export const POST = async (request: Request) => {
 		} catch {
 			return Response.json(
 				{ error: 'Corps de requête invalide' },
-				{ status: 400 },
+				{ status: 400 }
 			);
 		}
 
@@ -93,14 +93,14 @@ export const POST = async (request: Request) => {
 		if (typeof count !== 'number' || !Number.isInteger(count)) {
 			return Response.json(
 				{ error: 'Count doit être un nombre entier' },
-				{ status: 400 },
+				{ status: 400 }
 			);
 		}
 
 		if (count < MIN_COUNT || count > MAX_COUNT) {
 			return Response.json(
 				{ error: `Count doit être entre ${MIN_COUNT} et ${MAX_COUNT}` },
-				{ status: 400 },
+				{ status: 400 }
 			);
 		}
 
@@ -136,27 +136,24 @@ export const POST = async (request: Request) => {
 			message: `Followers mis à jour: ${count.toLocaleString('fr-FR')}`,
 		});
 	} catch (error) {
-		console.error('POST /api/linkedin error:', error);
+		logger.error('POST /api/linkedin error:', error);
 
-		if (error instanceof Error) {
-			if (error.message.includes('BLOB_STORE')) {
-				return Response.json(
-					{
-						error: 'Erreur de stockage',
-						details: 'Impossible de mettre à jour les données',
-					},
-					{ status: 503 },
-				);
-			}
+		if (error instanceof Error && error.message.includes('BLOB_STORE')) {
+			return Response.json(
+				{
+					error: 'Erreur de stockage',
+					details: 'Impossible de mettre à jour les données',
+				},
+				{ status: 503 }
+			);
 		}
 
 		return Response.json(
 			{
 				error: 'Erreur serveur',
-				details:
-					error instanceof Error ? error.message : 'Erreur inconnue',
+				details: error instanceof Error ? error.message : 'Erreur inconnue',
 			},
-			{ status: 500 },
+			{ status: 500 }
 		);
 	}
 };

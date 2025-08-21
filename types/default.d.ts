@@ -2,12 +2,10 @@ import type { NextFontWithVariable } from 'next/dist/compiled/@next/font';
 import type { ThemeProviderProps } from 'next-themes/dist/types';
 
 declare global {
-	// next-themes
+	// theme
 	type ThemeProvider = ThemeProviderProps;
-
 	// fonts
 	type NextFont = NextFontWithVariable;
-
-	// bento filters
+	// filters
 	export type FilterType = 'all' | 'about' | 'projects' | 'media';
 }

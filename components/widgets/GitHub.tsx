@@ -15,14 +15,14 @@ export const GitHub = memo((): React.JSX.Element => {
 			className={cn(
 				'relative justify-center gap-6 rounded-3xl px-8 py-2',
 				'size-full select-none overflow-hidden md:cursor-grab md:active:cursor-grabbing',
-				'shadow-xs transition-shadow duration-300 hover:shadow-sm',
+				'shadow-xs transition-shadow duration-300 hover:shadow-sm'
 			)}
 		>
 			<h2
 				className="truncate font-pixelify-sans text-2xl"
 				title={post.metadata.title}
 			>
-				<Link href={`/posts/${post.slug}`} className="cancel-drag">
+				<Link className="cancel-drag" href={`/posts/${post.slug}`}>
 					{post.metadata.title}
 				</Link>
 			</h2>
@@ -30,10 +30,7 @@ export const GitHub = memo((): React.JSX.Element => {
 				{post.metadata.description}
 			</p>
 			<div className="inline-flex flex-col items-center justify-center gap-6 sm:flex-row sm:justify-between">
-				<Anchor
-					className="cancel-drag px-4 py-2"
-					href={`/posts/${post.slug}`}
-				>
+				<Anchor className="cancel-drag px-4 py-2" href={`/posts/${post.slug}`}>
 					<FaArrowRight className="-rotate-45 transition-transform duration-300 group-hover:rotate-0" />{' '}
 					Read More
 					<span className="sr-only">{post.metadata.title}</span>

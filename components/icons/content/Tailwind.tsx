@@ -2,26 +2,27 @@ import type React from 'react';
 import type { SVGProps } from 'react';
 
 export const TailwindIcon = (
-	props: SVGProps<SVGSVGElement>,
+	props: SVGProps<SVGSVGElement>
 ): React.JSX.Element => (
 	<svg
+		height="1em"
+		preserveAspectRatio="xMidYMid"
 		viewBox="0 0 256 154"
 		width="1em"
-		height="1em"
 		xmlns="http://www.w3.org/2000/svg"
-		preserveAspectRatio="xMidYMid"
 		{...props}
 	>
+		<title>Tailwind CSS</title>
 		<defs>
 			<linearGradient
-				x1="-2.778%"
-				y1="32%"
-				x2="100%"
-				y2="67.556%"
 				id="gradient"
+				x1="-2.778%"
+				x2="100%"
+				y1="32%"
+				y2="67.556%"
 			>
-				<stop stopColor="#2298BD" offset="0%" />
-				<stop stopColor="#0ED7B5" offset="100%" />
+				<stop offset="0%" stopColor="#2298BD" />
+				<stop offset="100%" stopColor="#0ED7B5" />
 			</linearGradient>
 		</defs>
 		<path

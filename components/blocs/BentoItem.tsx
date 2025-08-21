@@ -1,8 +1,8 @@
 import type React from 'react';
 
-interface BentoItemProps {
+type BentoItemProps = {
 	component: React.ComponentType;
-}
+};
 
 export const BentoItem = ({
 	component: Component,

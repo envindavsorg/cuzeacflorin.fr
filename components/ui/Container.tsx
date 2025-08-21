@@ -1,9 +1,9 @@
 import type React from 'react';
 import { cn } from '@/lib/utils';
 
-interface ContainerProps<T extends React.ElementType> {
+type ContainerProps<T extends React.ElementType> = {
 	as?: T;
-}
+};
 
 export const Container = <T extends React.ElementType = 'div'>({
 	as,
@@ -21,7 +21,7 @@ export const Container = <T extends React.ElementType = 'div'>({
 			className={cn(
 				'mx-auto px-4 py-6',
 				'max-w-[1200px] max-sm:max-w-[320px] max-md:max-w-[375px] max-lg:max-w-[800px]',
-				props.className,
+				props.className
 			)}
 		/>
 	);

@@ -15,24 +15,24 @@ export const Project = memo((): React.JSX.Element => {
 			className={cn(
 				'group relative justify-center gap-6 rounded-3xl bg-red-100 px-8 py-2',
 				'size-full select-none overflow-hidden md:cursor-grab md:active:cursor-grabbing',
-				'shadow-xs transition-shadow duration-300 hover:shadow-sm',
+				'shadow-xs transition-shadow duration-300 hover:shadow-sm'
 			)}
 		>
 			<Image
-				src={projectImage}
 				alt={toKebabCase(projectName)}
-				fill
-				sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 				className="object-cover"
+				draggable="false"
+				fill
 				placeholder="blur"
 				priority
-				draggable="false"
+				sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+				src={projectImage}
 			/>
 			<div className="absolute bottom-3 left-3">
 				<Anchor
+					aria-label={projectName}
 					className="cancel-drag size-10 justify-end transition-all ease-in-out group-hover:w-full"
 					href={`/projects/${toKebabCase(projectName)}`}
-					aria-label={projectName}
 				>
 					<span className="hidden whitespace-nowrap opacity-0 transition-all duration-300 ease-in group-hover:translate-x-0 group-hover:opacity-100 md:inline">
 						{projectName}

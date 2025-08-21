@@ -3,14 +3,15 @@ import type { SVGProps } from 'react';
 
 export const PNPMIcon = (props: SVGProps<SVGSVGElement>): React.JSX.Element => (
 	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		xmlnsXlink="http://www.w3.org/1999/xlink"
+		height="1em"
 		preserveAspectRatio="xMidYMid meet"
 		viewBox="76.58987244897958 44 164.00775510204068 164"
 		width="1em"
-		height="1em"
+		xmlns="http://www.w3.org/2000/svg"
+		xmlnsXlink="http://www.w3.org/1999/xlink"
 		{...props}
 	>
+		<title>PNPM</title>
 		<defs>
 			<path
 				d="M237.6 95L187.6 95L187.6 45L237.6 45L237.6 95Z"
@@ -48,66 +49,66 @@ export const PNPMIcon = (props: SVGProps<SVGSVGElement>): React.JSX.Element => (
 		<g>
 			<g>
 				<use
+					fill="#f9ad00"
+					fillOpacity={1}
+					opacity={1}
 					xlinkHref="#b45vdTD8hs"
-					opacity={1}
-					fill="#f9ad00"
-					fillOpacity={1}
 				/>
 			</g>
 			<g>
 				<use
+					fill="#f9ad00"
+					fillOpacity={1}
+					opacity={1}
 					xlinkHref="#a40WtxIl8d"
-					opacity={1}
-					fill="#f9ad00"
-					fillOpacity={1}
 				/>
 			</g>
 			<g>
 				<use
+					fill="#f9ad00"
+					fillOpacity={1}
+					opacity={1}
 					xlinkHref="#h2CN9AEEpe"
-					opacity={1}
-					fill="#f9ad00"
-					fillOpacity={1}
 				/>
 			</g>
 			<g>
 				<use
+					fill="#f9ad00"
+					fillOpacity={1}
+					opacity={1}
 					xlinkHref="#dqv5133G8"
-					opacity={1}
-					fill="#f9ad00"
-					fillOpacity={1}
 				/>
 			</g>
 			<g>
 				<use
+					className="fill-foreground"
+					fillOpacity={1}
+					opacity={1}
 					xlinkHref="#b1Lv79ypvm"
-					opacity={1}
-					fillOpacity={1}
-					className="fill-foreground"
 				/>
 			</g>
 			<g>
 				<use
+					className="fill-foreground"
+					fillOpacity={1}
+					opacity={1}
 					xlinkHref="#hy1IZWwLX"
-					opacity={1}
-					fillOpacity={1}
-					className="fill-foreground"
 				/>
 			</g>
 			<g>
 				<use
+					className="fill-foreground"
+					fillOpacity={1}
+					opacity={1}
 					xlinkHref="#akQfjxQes"
-					opacity={1}
-					fillOpacity={1}
-					className="fill-foreground"
 				/>
 			</g>
 			<g>
 				<use
-					xlinkHref="#bdSrwE5pk"
-					opacity={1}
-					fillOpacity={1}
 					className="fill-foreground"
+					fillOpacity={1}
+					opacity={1}
+					xlinkHref="#bdSrwE5pk"
 				/>
 			</g>
 		</g>

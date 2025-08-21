@@ -28,14 +28,8 @@ const useLocationMap = () => {
 	const handleZoom = (direction: 'in' | 'out') => {
 		const newZoom =
 			direction === 'in'
-				? Math.min(
-						viewState.zoom + location.zoom.step,
-						location.zoom.max,
-					)
-				: Math.max(
-						viewState.zoom - location.zoom.step,
-						location.zoom.min,
-					);
+				? Math.min(viewState.zoom + location.zoom.step, location.zoom.max)
+				: Math.max(viewState.zoom - location.zoom.step, location.zoom.min);
 
 		if (mapRef.current) {
 			mapRef.current.getMap().easeTo({

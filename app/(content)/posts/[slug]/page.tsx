@@ -77,20 +77,16 @@ const PostPage = async ({ params }: { params: Params }) => {
 	return (
 		<>
 			<header className="flex items-center justify-center pt-10">
-				<Anchor
-					className="inline-flex hover:mb-6 hover:scale-125"
-					href="/"
-				>
+				<Anchor className="inline-flex hover:mb-6 hover:scale-125" href="/">
 					<FaX />
 					<div className="sr-only">Close</div>
 				</Anchor>
 			</header>
 			<main className="mx-auto max-w-prose px-4 py-10">
-				{/** biome-ignore lint/correctness/useUniqueElementIds: remove later */}
 				<Script
+					dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
 					id="json-ld"
 					type="application/ld+json"
-					dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
 				/>
 				<section className="text-center">
 					<h1 className="font-pixelify-sans text-3xl leading-relaxed">

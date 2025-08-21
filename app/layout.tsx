@@ -11,19 +11,19 @@ import { generateMetadata } from '@/resources/meta';
 const Analytics = lazy(() =>
 	import('@vercel/analytics/react').then((module) => ({
 		default: module.Analytics,
-	})),
+	}))
 );
 
 const SpeedInsights = lazy(() =>
 	import('@vercel/speed-insights/react').then((module) => ({
 		default: module.SpeedInsights,
-	})),
+	}))
 );
 
 const Sparkles = lazy(() =>
 	import('@/components/animation/Sparkles').then((module) => ({
 		default: module.Sparkles,
-	})),
+	}))
 );
 
 export const metadata: Metadata = generateMetadata();
@@ -52,7 +52,7 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => (
 			'scrollbar-hide h-full antialiased',
 			fonts.sans.variable,
 			fonts.mono.variable,
-			fonts.pixelify.variable,
+			fonts.pixelify.variable
 		)}
 		dir="ltr"
 		lang="fr"

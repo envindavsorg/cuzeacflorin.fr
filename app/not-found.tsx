@@ -18,10 +18,8 @@ const NotFound = (): React.JSX.Element => {
 			<div
 				className={cn(
 					'space-y-4 text-center',
-					isMounted
-						? 'translate-y-0 opacity-100'
-						: '-translate-y-6 opacity-0',
-					'transition-[opacity,_transform] duration-700',
+					isMounted ? 'translate-y-0 opacity-100' : '-translate-y-6 opacity-0',
+					'transition-[opacity,_transform] duration-700'
 				)}
 			>
 				<h1 className="font-pixelify-sans text-7xl md:text-9xl">404</h1>
@@ -29,7 +27,7 @@ const NotFound = (): React.JSX.Element => {
 					Page Not Found
 				</h2>
 				<p>Sorry, we couldn&apos;t find what you were looking for.</p>
-				<Anchor href="/" className="px-4 py-2">
+				<Anchor className="px-4 py-2" href="/">
 					<FaArrowRight className="-rotate-45 group-hover:-rotate-180 transition-transform duration-300" />
 					Back to Home
 				</Anchor>

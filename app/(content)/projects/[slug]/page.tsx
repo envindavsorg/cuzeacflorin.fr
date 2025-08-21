@@ -60,7 +60,9 @@ const ProjectPage = async ({ params }: { params: Params }) => {
 
 	const project = getAllProjects().find((project) => project.slug === slug);
 
-	if (!project) notFound();
+	if (!project) {
+		notFound();
+	}
 
 	const jsonLd = {
 		'@context': 'https://schema.org',

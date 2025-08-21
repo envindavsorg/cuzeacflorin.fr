@@ -16,7 +16,7 @@ export const CV = memo((): React.JSX.Element => {
 		{
 			revalidateOnFocus: false,
 			revalidateOnReconnect: false,
-		},
+		}
 	);
 
 	return (
@@ -24,7 +24,7 @@ export const CV = memo((): React.JSX.Element => {
 			className={cn(
 				'relative justify-center gap-4 rounded-3xl px-8 py-2',
 				'size-full select-none overflow-hidden md:cursor-grab md:active:cursor-grabbing',
-				'shadow-xs transition-shadow duration-300 hover:shadow-sm',
+				'shadow-xs transition-shadow duration-300 hover:shadow-sm'
 			)}
 		>
 			test
