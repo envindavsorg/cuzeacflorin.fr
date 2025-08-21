@@ -36,6 +36,9 @@
         },
         "noShadow": "off"
       },
+      "performance": {
+        "noNamespaceImport": "off"
+      },
       "suspicious": {
         "noExplicitAny": "off",
         "noUnknownAtRules": "off",

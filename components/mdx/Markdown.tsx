@@ -1,6 +1,5 @@
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import type React from 'react';
-import { createElement } from 'react';
+import React, { createElement } from 'react';
 import {
 	CurrentDate,
 	Today,
@@ -10,8 +9,20 @@ import {
 import { toKebabCase } from '@/lib/utils';
 
 const createHeading = (level: number) => {
-	const Heading = ({ children }: { children: string }) => {
-		const slug = toKebabCase(children);
+	const Heading = ({ children }: { children: React.ReactNode }) => {
+		// Extract text content for slug generation
+		const getTextContent = (node: React.ReactNode): string => {
+			if (typeof node === 'string') return node;
+			if (typeof node === 'number') return String(node);
+			if (Array.isArray(node)) return node.map(getTextContent).join('');
+			if (React.isValidElement(node) && node.props.children) {
+				return getTextContent(node.props.children);
+			}
+			return '';
+		};
+
+		const textContent = getTextContent(children);
+		const slug = textContent ? toKebabCase(textContent) : '';
 
 		const headingStyles = {
 			1: 'text-4xl font-extrabold',

@@ -3,6 +3,11 @@ import { motion } from 'motion/react';
 import type React from 'react';
 import { memo, type RefObject, useCallback, useState } from 'react';
 import { Button } from '@/components/ui/Button';
+import {
+	Tooltip,
+	TooltipContent,
+	TooltipTrigger,
+} from '@/components/ui/Tooltip';
 import { PROFILE_CONFIG } from '@/resources/profile';
 
 type ToggleAvatarProps = {
@@ -100,27 +105,34 @@ export const ToggleAvatar = memo(
 		const MotionButton = motion.create(Button);
 
 		return (
-			<MotionButton
-				className="absolute top-5 right-5"
-				onClick={handleClick}
-				size="icon"
-				variant="icon"
-				whileHover={{ scale: 1.05 }}
-				whileTap={{ scale: 0.95 }}
-			>
-				<motion.div
-					animate={{
-						rotate: isRotated ? ROTATION_ANGLE : -ROTATION_ANGLE,
-					}}
-					className="flex items-center justify-center p-2"
-					transition={{
-						duration: hasAnimated ? ANIMATION_CONFIG.rotate.duration : 0,
-						ease: ANIMATION_CONFIG.rotate.ease,
-					}}
-				>
-					<ArrowsCounterClockwiseIcon className="size-4.5" />
-				</motion.div>
-			</MotionButton>
+			<Tooltip>
+				<TooltipTrigger asChild>
+					<MotionButton
+						className="absolute top-5 right-5"
+						onClick={handleClick}
+						size="icon"
+						variant="icon"
+						whileHover={{ scale: 1.05 }}
+						whileTap={{ scale: 0.95 }}
+					>
+						<motion.div
+							animate={{
+								rotate: isRotated ? ROTATION_ANGLE : -ROTATION_ANGLE,
+							}}
+							className="flex items-center justify-center p-2"
+							transition={{
+								duration: hasAnimated ? ANIMATION_CONFIG.rotate.duration : 0,
+								ease: ANIMATION_CONFIG.rotate.ease,
+							}}
+						>
+							<ArrowsCounterClockwiseIcon className="size-4.5" />
+						</motion.div>
+					</MotionButton>
+				</TooltipTrigger>
+				<TooltipContent align="center" side="left" sideOffset={5}>
+					<p>Mes humeurs !</p>
+				</TooltipContent>
+			</Tooltip>
 		);
 	}
 );
