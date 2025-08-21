@@ -2,11 +2,12 @@ import type React from 'react';
 import type { Layout } from 'react-grid-layout';
 import { ArticleWidget } from '@/components/widgets/article/ArticleWidget';
 import { BioWidget } from '@/components/widgets/bio/BioWidget';
+import { ClockWidget } from '@/components/widgets/clock/ClockWidget';
 import { CommitWidget } from '@/components/widgets/commit/CommitWidget';
 import { ContactWidget } from '@/components/widgets/contact/ContactWidget';
+import { CvWidget } from '@/components/widgets/cv/CvWidget';
 import { LinkedInWidget } from '@/components/widgets/linkedin/LinkedInWidget';
 import { LocationWidget } from '@/components/widgets/location/LocationWidget';
-import { Project } from '@/components/widgets/Project';
 import { PortfolioWidget } from '@/components/widgets/portfolio/PortfolioWidget';
 import { SwitcherWidget } from '@/components/widgets/switcher/SwitcherWidget';
 import { WorkWidget } from '@/components/widgets/work/WorkWidget';
@@ -19,7 +20,7 @@ type GridItem = {
 export const gridItems: GridItem[] = [
 	{ i: 'bio', component: BioWidget },
 	{ i: 'location', component: LocationWidget },
-	{ i: 'project', component: Project },
+	{ i: 'cv', component: CvWidget },
 	{ i: 'commit', component: CommitWidget },
 	{ i: 'article', component: ArticleWidget },
 	{ i: 'switcher', component: SwitcherWidget },
@@ -27,6 +28,7 @@ export const gridItems: GridItem[] = [
 	{ i: 'contact', component: ContactWidget },
 	{ i: 'portfolio', component: PortfolioWidget },
 	{ i: 'work', component: WorkWidget },
+	{ i: 'clock', component: ClockWidget },
 ];
 
 type Layouts = 'lg' | 'md' | 'sm';
@@ -35,7 +37,8 @@ export const layouts: { [key in Layouts]: Layout[] } = {
 	lg: [
 		{ i: 'bio', x: 0, y: 0, w: 2, h: 1, isResizable: false },
 		{ i: 'location', x: 2, y: 0, w: 1, h: 1, isResizable: false },
-		{ i: 'project', x: 3, y: 0, w: 1, h: 2, isResizable: false },
+		{ i: 'cv', x: 3, y: 1, w: 1, h: 1, isResizable: false },
+		{ i: 'clock', x: 3, y: 2, w: 1, h: 1, isResizable: false },
 		{ i: 'commit', x: 0, y: 1, w: 1, h: 1, isResizable: false },
 		{ i: 'article', x: 0, y: 2, w: 2, h: 1, isResizable: false },
 		{ i: 'linkedin', x: 1, y: 0, w: 1, h: 1, isResizable: false },
@@ -47,7 +50,8 @@ export const layouts: { [key in Layouts]: Layout[] } = {
 	md: [
 		{ i: 'bio', x: 0, y: 0, w: 2, h: 2, isResizable: false },
 		{ i: 'location', x: 2, y: 0, w: 1, h: 1, isResizable: false },
-		{ i: 'project', x: 3, y: 0, w: 1, h: 2, isResizable: false },
+		{ i: 'cv', x: 3, y: 0, w: 1, h: 2, isResizable: false },
+		{ i: 'clock', x: 3, y: 2, w: 1, h: 1, isResizable: false },
 		{ i: 'commit', x: 0, y: 2, w: 2, h: 1, isResizable: false },
 		{ i: 'switcher', x: 3, y: 2, w: 1, h: 1, isResizable: false },
 		{ i: 'linkedin', x: 1, y: 5, w: 1, h: 1, isResizable: false },
@@ -59,7 +63,8 @@ export const layouts: { [key in Layouts]: Layout[] } = {
 	sm: [
 		{ i: 'bio', x: 0, y: 0, w: 2, h: 2, isResizable: false },
 		{ i: 'location', x: 0, y: 2, w: 2, h: 1, isResizable: false },
-		{ i: 'project', x: 1, y: 3, w: 1, h: 2, isResizable: false },
+		{ i: 'cv', x: 1, y: 3, w: 1, h: 2, isResizable: false },
+		{ i: 'clock', x: 1, y: 5, w: 1, h: 1, isResizable: false },
 		{ i: 'commit', x: 0, y: 6, w: 2, h: 2, isResizable: false },
 		{ i: 'switcher', x: 1, y: 5, w: 1, h: 1, isResizable: false },
 		{ i: 'linkedin', x: 0, y: 3, w: 1, h: 1, isResizable: false },

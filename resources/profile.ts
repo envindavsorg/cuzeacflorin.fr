@@ -27,6 +27,13 @@ export const PROFILE_CONFIG = {
 		phone: '06 58 05 86 65',
 	},
 
+	cv: {
+		filePath: '/cv/cv-cuzeac-florin.pdf',
+		title: 'CV - Cuzeac Florin',
+		shareText:
+			"Découvrez le profil de Florin Cuzeac, développeur full-stack avec 10 ans d'expérience !",
+	},
+
 	social: [
 		{
 			name: 'Github',
