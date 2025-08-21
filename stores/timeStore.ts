@@ -1,6 +1,5 @@
 import { create } from 'zustand';
 import { devtools, persist, subscribeWithSelector } from 'zustand/middleware';
-import { logger } from '@/lib/logger';
 
 type TimeParts = {
 	hours: number;
@@ -139,14 +138,3 @@ export const timeActions = {
 	setActive: (active: boolean) => useTimeStore.getState().setActive(active),
 	reset: () => useTimeStore.getState().reset(),
 };
-
-if (process.env.NODE_ENV === 'development') {
-	useTimeStore.subscribe(
-		(state) => state.timeParts,
-		(timeParts, prevTimeParts) => {
-			if (timeParts !== prevTimeParts) {
-				logger.debug('⏰ Time updated:', timeParts);
-			}
-		}
-	);
-}

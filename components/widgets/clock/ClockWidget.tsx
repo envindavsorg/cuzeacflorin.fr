@@ -3,6 +3,7 @@
 import NumberFlow from '@number-flow/react';
 import type React from 'react';
 import { memo, useEffect } from 'react';
+import { CurrentDate } from '@/components/mdx/CurrentDate';
 import { Card } from '@/components/ui/Card';
 import { Pattern } from '@/components/ui/Pattern';
 import { cn } from '@/lib/utils';
@@ -49,7 +50,7 @@ export const ClockWidget = memo((): React.JSX.Element => {
 	return (
 		<Card
 			className={cn(
-				'relative justify-center gap-4 rounded-3xl p-8',
+				'-gap-3 relative items-center justify-center rounded-3xl p-8',
 				'size-full select-none overflow-hidden md:cursor-grab md:active:cursor-grabbing',
 				'shadow-xs transition-shadow duration-300 hover:shadow-sm'
 			)}
@@ -73,6 +74,11 @@ export const ClockWidget = memo((): React.JSX.Element => {
 					value={seconds}
 				/>
 			</div>
+			<CurrentDate
+				className="-mt-3 text-muted-foreground text-sm"
+				format="full"
+				locale="fr-FR"
+			/>
 
 			<Pattern />
 		</Card>

@@ -15,7 +15,7 @@ export const CvWidget = memo((): React.JSX.Element => {
 	return (
 		<Card
 			className={cn(
-				'relative items-center justify-center rounded-3xl p-8',
+				'relative items-center justify-center rounded-3xl md:p-4 lg:p-8',
 				'size-full select-none overflow-hidden md:cursor-grab md:active:cursor-grabbing',
 				'shadow-xs transition-shadow duration-300 hover:shadow-sm'
 			)}
@@ -26,13 +26,13 @@ export const CvWidget = memo((): React.JSX.Element => {
 				href={cv.filePath}
 			>
 				<div className="flex items-center justify-center p-2">
-					<ReadCvLogoIcon className="size-18 text-theme" />
+					<ReadCvLogoIcon className="size-10 text-theme lg:size-18" />
 				</div>
 				<div className="flex flex-col items-center justify-center gap-y-2">
-					<h3 className="font-bold font-pixelify-sans text-theme text-xl md:text-3xl">
+					<h3 className="font-bold font-pixelify-sans text-3xl text-theme">
 						Mon CV
 					</h3>
-					<p className="text-center text-muted-foreground text-sm">
+					<p className="text-center text-muted-foreground text-sm max-lg:hidden">
 						visualiser ou télécharger
 					</p>
 				</div>

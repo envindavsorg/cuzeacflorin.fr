@@ -10,11 +10,11 @@ type ThemeDisplayProps = {
 
 const THEME_CONFIG = {
 	light: {
-		mode: 'Mode clair',
+		mode: 'Clair',
 		phrase: 'lampe de bureau IKEA 💡',
 	},
 	dark: {
-		mode: 'Mode sombre',
+		mode: 'Sombre',
 		phrase: 'développeur à 3h du mat 🦉',
 	},
 	fallback: {
@@ -36,10 +36,12 @@ export const ThemeDisplay = memo(
 
 		return (
 			<div className="flex flex-col items-center justify-center gap-y-2">
-				<h3 className="font-bold font-pixelify-sans text-theme text-xl md:text-3xl">
+				<h3 className="text-center font-bold font-pixelify-sans text-3xl text-theme">
 					{mode}
 				</h3>
-				<p className="text-center text-muted-foreground text-sm">{phrase}</p>
+				<p className="text-center text-muted-foreground text-sm max-lg:hidden">
+					{phrase}
+				</p>
 			</div>
 		);
 	}
