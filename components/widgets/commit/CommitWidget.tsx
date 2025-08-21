@@ -1,16 +1,14 @@
-import { GitCommitIcon, GithubLogoIcon } from '@phosphor-icons/react/dist/ssr';
+import { GitCommitIcon, GithubLogoIcon } from '@phosphor-icons/react/ssr';
 import type React from 'react';
-import { memo } from 'react';
-import { getGitHubUserData } from '@/actions/github.action';
+import { memo, Suspense } from 'react';
 import { Card } from '@/components/ui/Card';
-import { Counter } from '@/components/ui/Counter';
 import { Pattern } from '@/components/ui/Pattern';
+import { CommitWidgetContent } from '@/components/widgets/commit/CommitWidgetContent';
+import { CommitWidgetSkeleton } from '@/components/widgets/commit/CommitWidgetSkeleton';
 import { cn } from '@/lib/utils';
 
-export const CommitWidget = memo(async (): Promise<React.JSX.Element> => {
-	const { contributions } = await getGitHubUserData();
-
-	return (
+export const CommitWidget = memo(
+	(): React.JSX.Element => (
 		<Card
 			className={cn(
 				'relative justify-center gap-4 rounded-3xl p-8',
@@ -22,19 +20,12 @@ export const CommitWidget = memo(async (): Promise<React.JSX.Element> => {
 				<div className="inline-block">
 					<GithubLogoIcon className="size-18" weight="regular" />
 				</div>
-
 				<div className="flex flex-col gap-y-2">
 					<div className="flex items-center gap-x-3">
 						<GitCommitIcon className="size-6" weight="regular" />
-						<Counter
-							className="font-bold font-pixelify-sans text-theme text-xl md:text-3xl"
-							interval={10}
-							value={contributions.totalContributions}
-						>
-							<span className="ms-1 text-lg md:text-xl">
-								commits
-							</span>
-						</Counter>
+						<Suspense fallback={<CommitWidgetSkeleton />}>
+							<CommitWidgetContent />
+						</Suspense>
 					</div>
 					<p className="text-muted-foreground text-sm">
 						- effectués en tout, sur GitHub cette année ...
@@ -44,5 +35,7 @@ export const CommitWidget = memo(async (): Promise<React.JSX.Element> => {
 
 			<Pattern />
 		</Card>
-	);
-});
+	),
+);
+
+CommitWidget.displayName = 'CommitWidget';

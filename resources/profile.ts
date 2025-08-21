@@ -1,6 +1,9 @@
 import me from '@/images/me.webp';
 import memoji1 from '@/images/memojis/memoji1.webp';
 import memoji2 from '@/images/memojis/memoji2.webp';
+import memoji3 from '@/images/memojis/memoji3.webp';
+import memoji4 from '@/images/memojis/memoji4.webp';
+import memoji5 from '@/images/memojis/memoji5.webp';
 
 const CURRENT_YEAR = new Date().getFullYear();
 const START_DEV_YEAR = 2017;
@@ -46,5 +49,5 @@ export const PROFILE_CONFIG = {
 		alt: 'Ma vraie photo de profil :)',
 	},
 
-	avatars: [memoji1, memoji2],
+	avatars: [memoji1, memoji2, memoji3, memoji4, memoji5],
 } as const;
