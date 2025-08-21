@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 import { getAllPosts, getAllProjects } from '@/lib/mdx';
 import { siteConfig } from '@/resources/site';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+const sitemap = (): MetadataRoute.Sitemap => {
 	const routes = [''].map((route) => ({
 		url: `${siteConfig.url}${route}`,
 		lastModified: new Date(),
@@ -19,4 +19,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 	}));
 
 	return [...routes, ...posts, ...projects];
-}
+};
+
+export default sitemap;

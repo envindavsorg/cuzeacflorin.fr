@@ -4,16 +4,15 @@ import type React from 'react';
 import useMounted from '@/hooks/useMounted';
 import { cn } from '@/lib/utils';
 
-export default function Template({
-	children,
-}: Readonly<{ children: React.ReactNode }>) {
-	return <Content>{children}</Content>;
-}
+type ContentProps = {
+	children: React.ReactNode;
+	className?: string;
+};
 
-function Content({
+const Content = ({
 	children,
 	className,
-}: Readonly<{ children: React.ReactNode; className?: string }>) {
+}: Readonly<ContentProps>): React.JSX.Element => {
 	const isMounted = useMounted();
 
 	return (
@@ -27,4 +26,14 @@ function Content({
 			{children}
 		</div>
 	);
-}
+};
+
+type TemplateProps = {
+	children: React.ReactNode;
+};
+
+const Template = ({ children }: Readonly<TemplateProps>) => (
+	<Content>{children}</Content>
+);
+
+export default Template;

@@ -1,78 +1,29 @@
-import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import Script from 'next/script';
+import type React from 'react';
 import { FaX } from 'react-icons/fa6';
 import { Anchor } from '@/components/ui/Anchor';
 import { CustomMDX } from '@/components/ui/Markdown';
 import { getAllPosts } from '@/lib/mdx';
 import { formatDate } from '@/lib/utils';
-import { siteConfig } from '@/resources/site';
 
 type Params = Promise<{ slug: string }>;
 
 export const generateStaticParams = async () =>
 	getAllPosts().map((post) => ({ slug: post.slug }));
 
-export const generateMetadata = async ({
-	params,
-}: {
+type PostPageProps = {
 	params: Params;
-}): Promise<Metadata | undefined> => {
-	const { slug } = await params;
-
-	const post = getAllPosts().find((post) => post.slug === slug);
-	if (!post) {
-		return;
-	}
-
-	const { title, description, date } = post.metadata;
-
-	return {
-		title,
-		description,
-		openGraph: {
-			title,
-			description,
-			type: 'article',
-			publishedTime: date,
-			url: `${siteConfig.url}/posts/${post.slug}`,
-			authors: 'Maulana',
-			images: siteConfig.ogImage,
-		},
-		twitter: {
-			title,
-			description,
-			images: siteConfig.ogImage,
-		},
-		alternates: {
-			canonical: `${siteConfig.url}/posts/${post.slug}`,
-		},
-	};
 };
 
-const PostPage = async ({ params }: { params: Params }) => {
+const PostPage = async ({
+	params,
+}: PostPageProps): Promise<React.JSX.Element> => {
 	const { slug } = await params;
 
 	const post = getAllPosts().find((post) => post.slug === slug);
-
 	if (!post) {
 		notFound();
 	}
-
-	const jsonLd = {
-		'@context': 'https://schema.org',
-		'@type': 'BlogPosting',
-		headline: post.metadata.title,
-		description: post.metadata.description,
-		datePublished: post.metadata.date,
-		author: [
-			{
-				'@type': 'Person',
-				name: siteConfig.author,
-				url: siteConfig.url,
-			},
-		],
-	};
 
 	return (
 		<>
@@ -83,11 +34,6 @@ const PostPage = async ({ params }: { params: Params }) => {
 				</Anchor>
 			</header>
 			<main className="mx-auto max-w-prose px-4 py-10">
-				<Script
-					dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-					id="json-ld"
-					type="application/ld+json"
-				/>
 				<section className="text-center">
 					<h1 className="font-pixelify-sans text-3xl leading-relaxed">
 						{post.metadata.title}

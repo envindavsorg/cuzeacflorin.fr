@@ -1,7 +1,6 @@
-import type { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import Script from 'next/script';
+import type React from 'react';
 import { FaArrowRight, FaX } from 'react-icons/fa6';
 import { Bento } from '@/components/blocs/Bento';
 import { Anchor } from '@/components/ui/Anchor';
@@ -10,81 +9,28 @@ import { Container } from '@/components/ui/Container';
 import { CustomMDX } from '@/components/ui/Markdown';
 import { projectLayouts } from '@/lib/grid';
 import { getAllProjects } from '@/lib/mdx';
-import { siteConfig } from '@/resources/site';
 
 type Params = Promise<{ slug: string }>;
 
 export const generateStaticParams = async () =>
 	getAllProjects().map((project) => ({ slug: project.slug }));
 
-export const generateMetadata = async ({
-	params,
-}: {
+type ProjectPageProps = {
 	params: Params;
-}): Promise<Metadata | undefined> => {
-	const { slug } = await params;
-
-	const project = getAllProjects().find(
-		(project: any) => project.slug === slug
-	);
-	if (!project) {
-		return;
-	}
-
-	const { title, description } = project.metadata;
-
-	return {
-		title: `${title} — Projects`,
-		description,
-		openGraph: {
-			title,
-			description,
-			type: 'article',
-			url: `${siteConfig.url}/projects/${project.slug}`,
-			authors: siteConfig.author,
-			images: siteConfig.ogImage,
-		},
-		twitter: {
-			title,
-			description,
-			images: siteConfig.ogImage,
-		},
-		alternates: {
-			canonical: `${siteConfig.url}/projects/${project.slug}`,
-		},
-	};
 };
 
-const ProjectPage = async ({ params }: { params: Params }) => {
+const ProjectPage = async ({
+	params,
+}: ProjectPageProps): Promise<React.JSX.Element> => {
 	const { slug } = await params;
 
 	const project = getAllProjects().find((project) => project.slug === slug);
-
 	if (!project) {
 		notFound();
 	}
 
-	const jsonLd = {
-		'@context': 'https://schema.org',
-		'@type': 'Article',
-		headline: project.metadata.title,
-		description: project.metadata.description,
-		author: [
-			{
-				'@type': 'Person',
-				name: siteConfig.author,
-				url: siteConfig.url,
-			},
-		],
-	};
-
 	return (
 		<>
-			<Script
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-				id="json-ld"
-				type="application/ld+json"
-			/>
 			<header className="flex items-center justify-center pt-10">
 				<Anchor className="inline-flex hover:mb-6 hover:scale-125" href="/">
 					<FaX />
