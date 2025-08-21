@@ -1,0 +1,239 @@
+---
+title: Mon portfolio - choix techniques et défis
+description: L'histoire complète de la création de mon portfolio moderne : pourquoi j'ai abandonné mon ancien site HTML/CSS/jQuery préhistorique pour passer à Next.js 15 avec App Router, comment j'ai intégré TypeScript partout (même dans mes cauchemars), pourquoi Tailwind CSS v4 a révolutionné ma façon de styliser, et tous les défis techniques que j'ai dû relever - du système de contenu MDX avec composants React intégrés au calcul optimisé du temps de lecture, en passant par l'architecture modulaire avec widgets responsive et les optimisations de performance qui font que mon Lighthouse score affiche du 100/100 partout (oui, je me la pète un peu).
+date: 2025-08-5
+links: [{"name": "Démo","url": "https://cuzeacflorin.fr/"}, {"name": "Voir sur GitHub", "url": "https://github.com/envindavsorg/bento"}]
+images: [{"i":"images-1","url":"/projects/next-blog-starter/image-1.png"},{"i":"images-2","url":"/projects/next-blog-starter/image-2.png"},{"i":"images-3","url":"/projects/next-blog-starter/images-3.png"},{"i":"images-4","url":"/projects/next-blog-starter/image-4.png"},{"i":"images-5","url":"/projects/next-blog-starter/images-5.png"}]
+---
+
+### Pourquoi refaire son portfolio ?
+#### Parce que, pourquoi pas ?
+
+Mon ancien portfolio me faisait mal aux yeux _(et pas que les miens apparemment)_.
+**HTML/CSS vanilla** avec du **jQuery** qui traînait depuis 2018...
+Autant dire que c'était l'époque des **dinosaures** du web.
+Il était temps de passer aux choses sérieuses et de montrer ce que je sais vraiment faire !
+
+### Le choix de la stack technique
+
+#### Next.js - Le framework qui fait tout !
+
+J'ai opté pour **Next.js 15** avec l'**App Router** _(parce que oui, je vis dangereusement)_.
+Pourquoi ? Simple :
+- **SSG (Static Site Generation)** pour des performances de **fou**
+- **App Router** pour une architecture moderne
+- **Turbopack** en mode dev _(c'est de la balle, croyez-moi)_
+- **Image optimization** automatique
+
+Fini l'époque où il fallait configurer **Webpack** pendant **3 heures** pour avoir un truc qui marche.
+
+#### TypeScript - Parce que j'aime pas les surprises
+
+**TypeScript** partout, même dans mes **rêves**.
+Plus jamais de `undefined is not a function` à **3h du matin** !
+
+```typescript
+// Ça c'est du propre 💪
+interface PostMetadata extends BaseMetadata {
+  date: string;
+}
+
+export type MDXData<T extends BaseMetadata> = {
+  metadata: T;
+  slug: string;
+  content: string;
+  reading?: {
+    readingTime: string;
+    words: number;
+  };
+};
+```
+
+#### Tailwind CSS - L'amour au premier regard
+
+**Tailwind CSS v4** _(oui, la dernière version, parce que ...)_.
+Mes collègues me disent encore : _**"C'est moche dans le HTML"**_.
+Mes collègues ont tort.
+
+```tsx
+<h1 className="text-4xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+  C'est beau ou c'est beau ?
+</h1>
+```
+
+### L'architecture du projet
+
+#### Système de contenu avec MDX
+
+Le plus **stylé** dans ce portfolio : tout le contenu est en **MDX**.
+**Markdown** + **JSX** = le mariage parfait.
+
+J'ai créé un système de **frontmatter** custom :
+```typescript
+const parseFrontmatter = <T extends BaseMetadata>(fileContent: string) => {
+  // Parsing magique du frontmatter
+  // Avec gestion d'erreurs qui claque
+};
+```
+
+Et le plus cool ? J'ai ajouté des composants **React** directement dans mes articles :
+- `<Today />` pour afficher la date du jour
+- `<CurrentDate />` avec format personnalisé
+- Système de **headings** avec anchors automatiques
+
+#### Système de grille responsive
+
+Une **grille modulaire** avec `react-grid-layout` :
+- **Widgets** déplaçables _(enfin, pas encore, mais c'est prévu)_
+- **Responsive** sur mobile/tablette/desktop
+- Configuration en **TypeScript** avec breakpoints
+
+```typescript
+export const GRID_LAYOUTS = {
+  lg: [
+    { i: 'bio', x: 0, y: 0, w: 4, h: 2 },
+    { i: 'article', x: 4, y: 0, w: 8, h: 2 },
+    // Et ainsi de suite...
+  ]
+};
+```
+
+#### Widgets modulaires
+
+Chaque **widget** est un composant réutilisable :
+- **BioWidget** : Présentation avec photo
+- **ArticleWidget** : Dernier article de blog
+- **LocationWidget** : Ma localisation _(avec un peu de mystère)_
+- **CVWidget** : Mon CV téléchargeable
+- **LinkedInWidget** : Stats LinkedIn en temps réel
+
+### Les défis techniques relevés
+
+#### Calcul du temps de lecture
+
+J'ai optimisé le calcul du **temps de lecture** avec caching **React** :
+
+```typescript
+export const readingTimeOnArticle = cache(
+  (content: string, lang: Language = 'fr'): ReadingTimeResult => {
+    // Early return pour contenu vide
+    if (!content?.trim()) return defaultResult;
+
+    // Calcul optimisé avec regex compilées
+    const minutes = parseInt(duration.match(MINUTES_REGEX)?.[0] || '0');
+    // ...
+  }
+);
+```
+
+**Résultat** : temps de build divisé par **3** !
+
+#### Gestion des headings avec composants
+
+Le **défi** : utiliser `<Today />` dans un titre MDX sans planter l'extraction de slug.
+
+**Solution** : fonction récursive pour extraire le texte des composants React :
+
+```typescript
+const getTextContent = (node: React.ReactNode): string => {
+  if (typeof node === 'string') return node;
+  if (Array.isArray(node)) return node.map(getTextContent).join('');
+  if (React.isValidElement(node) && node.props.children) {
+    return getTextContent(node.props.children);
+  }
+  return '';
+};
+```
+
+#### Optimisations des performances
+
+- **Images optimisées** avec `next/image`
+- **Fonts** préchargées avec `next/font`
+- **Bundle analysis** avec Turbopack
+- **Lazy loading** des composants non-critiques
+- **Caching** intelligent avec React `cache()`
+
+### Les features qui claquent
+
+#### Thème sombre/clair
+
+Avec `next-themes` pour une transition **smooth** :
+```typescript
+// Auto-détection système + persistance localStorage
+const { theme, setTheme } = useTheme();
+```
+
+#### Système d'icônes modulaire
+
+Tous mes **stack icons** sont des composants **SVG** optimisés :
+- **TypeScript**, **React**, **Next.js**, **Tailwind**...
+- Taille optimisée et **tree-shaking** friendly
+
+#### Animation subtiles
+
+Quelques animations avec **Motion** _(ex-Framer Motion)_ :
+- **Sparkles** sur hover _(parce que c'est joli)_
+- **Transitions** fluides entre les pages
+- **Hover effects** sur les widgets
+
+### Le workflow de développement
+
+#### Outils de qualité
+
+- **Biome** pour le linting et formatting _(adieu ESLint + Prettier)_
+- **TypeScript strict** mode
+- **pnpm** comme package manager _(plus rapide que npm)_
+- **Git hooks** pour la qualité
+
+```bash
+# Commands que j'utilise tous les jours
+pnpm dev          # Dev server avec Turbopack 🚀
+pnpm build        # Build optimisé
+pnpm biome check  # Linting + formatting
+```
+
+#### Déploiement
+
+**Vercel** évidemment _(ils font Next.js, logique non ?)_.
+- **Auto-deploy** sur push main
+- **Preview deployments** sur PR
+- **Analytics** intégrées
+- **Performance monitoring**
+
+### Les métriques qui font plaisir
+
+#### Lighthouse Score
+
+- **Performance** : 100/100 ✅
+- **Accessibility** : 100/100 ✅
+- **Best Practices** : 100/100 ✅
+- **SEO** : 100/100 ✅
+
+### Ce que j'ai appris
+
+#### Next.js c'est puissant
+
+L'**App Router** est vraiment bien pensé une fois qu'on comprend les concepts.
+Les **Server Components** changent la donne pour les performances.
+
+#### TypeScript partout
+
+Même pour un projet personnel, **TypeScript** me fait gagner un temps **fou**.
+Plus d'erreurs de typos, autocomplétion parfaite, refactoring sécurisé.
+
+#### L'optimisation, c'est important
+
+Un portfolio qui met **10 secondes** à charger, c'est **10 secondes** de trop.
+Chaque **milliseconde** compte pour l'expérience utilisateur.
+
+### Aujourd'hui, <Today />
+
+Le portfolio est **en ligne** et je suis **fier** du résultat !
+Code propre, performances au top, design moderne...
+
+Le plus drôle ? Maintenant j'ai envie de le **refactorer** encore _(maladie professionnelle)_.
+Peut-être ajouter **Three.js**, ou tester **Bun**, ou le refaire en **PHP** (non je rigole mdr)
+
+Un développeur qui n'a pas envie d'améliorer son code, c'est un développeur qui s'ennuie, non ? 😄
+
+**Fun fact** : aucune ligne de jQuery dans ce projet, c'est magique non ? ✨

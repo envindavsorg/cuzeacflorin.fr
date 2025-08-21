@@ -19,7 +19,7 @@ export const Container = <T extends React.ElementType = 'div'>({
 		<Component
 			{...props}
 			className={cn(
-				'mx-auto px-4 py-6',
+				'mx-auto',
 				'max-w-[1200px] max-sm:max-w-[320px] max-md:max-w-[375px] max-lg:max-w-[800px]',
 				props.className
 			)}

@@ -12,6 +12,7 @@ interface PostMetadata extends BaseMetadata {
 }
 
 interface ProjectMetadata extends BaseMetadata {
+	date: string;
 	links: string;
 	images?: string;
 }

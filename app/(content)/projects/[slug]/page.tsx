@@ -1,14 +1,18 @@
+import { BookIcon, CalendarDotsIcon } from '@phosphor-icons/react/ssr';
 import Image from 'next/image';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type React from 'react';
-import { FaArrowRight, FaX } from 'react-icons/fa6';
 import { Bento } from '@/components/blocs/Bento';
 import { CustomMDX } from '@/components/mdx/Markdown';
-import { Anchor } from '@/components/ui/Anchor';
+import { Header } from '@/components/navigation/Header';
+import { Badge } from '@/components/ui/Badge';
+import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Container } from '@/components/ui/Container';
 import { projectLayouts } from '@/lib/grid';
 import { getAllProjects } from '@/lib/mdx';
+import { cn, formatDate } from '@/lib/utils';
 
 type Params = Promise<{ slug: string }>;
 
@@ -30,51 +34,71 @@ const ProjectPage = async ({
 	}
 
 	return (
-		<>
-			<header className="flex items-center justify-center pt-10">
-				<Anchor className="inline-flex hover:mb-6 hover:scale-125" href="/">
-					<FaX />
-					<div className="sr-only">Close</div>
-				</Anchor>
-			</header>
-			<main>
-				<Container as="article" className="py-8">
-					<h1 className="font-pixelify-sans text-3xl leading-relaxed">
-						{project.metadata.title}
-					</h1>
+		<div className="py-15">
+			<Header />
+
+			<main className="relative">
+				<Container as="article" className="mt-10 flex flex-col gap-y-10">
+					<section className="flex flex-col items-center justify-center gap-y-3">
+						<h1
+							className="inline-block font-bold font-pixelify-sans text-3xl text-theme md:text-4xl"
+							title={project.metadata.title}
+						>
+							{project.metadata.title}
+						</h1>
+						<div className="flex items-center gap-x-3 *:px-2 *:py-1.5">
+							<Badge variant="outline">
+								<CalendarDotsIcon />
+								{formatDate(project.metadata.date)}
+							</Badge>
+							<Badge variant="outline">
+								<BookIcon />
+								{project.reading?.readingTime}
+							</Badge>
+						</div>
+					</section>
+
 					<div className="grid grid-cols-2 gap-10 pb-8 max-md:grid-cols-1">
-						<div>
-							<p className="font-medium text-xl leading-relaxed">
+						<div className="top-6 flex flex-col gap-y-6 self-start rounded-lg border bg-background/80 p-6 backdrop-blur-sm md:sticky">
+							<p className="font-medium leading-relaxed">
 								{project.metadata.description}
 							</p>
-							<div className="flex flex-wrap items-center gap-3 pt-4">
+							<div className="flex flex-wrap items-center gap-3">
 								{JSON.parse(project.metadata.links).map(
 									(link: { url: string; name: string }) => (
-										<Anchor
-											className="inline-flex px-5 py-3 text-sm"
+										<Link
 											href={link.url}
 											key={link.url}
 											rel="noreferrer nofollow noopener"
 											target="_blank"
 										>
-											{link.name}
-											<FaArrowRight className="-rotate-45 transition-transform duration-300 group-hover:rotate-0" />
-										</Anchor>
+											<Button size="lg" variant="outline">
+												{link.name}
+											</Button>
+										</Link>
 									)
 								)}
 							</div>
 						</div>
+
 						<div className="prose dark:prose-invert">
 							<CustomMDX source={project.content} />
 						</div>
 					</div>
 				</Container>
+
 				{project.metadata.images && (
-					<Bento className="-mt-8 pb-16" layouts={projectLayouts}>
+					<Bento layouts={projectLayouts}>
 						{JSON.parse(project.metadata.images).map(
 							(image: { i: string; url: string }) => (
 								<div key={image.i}>
-									<Card className="relative">
+									<Card
+										className={cn(
+											'relative rounded-3xl',
+											'size-full select-none overflow-hidden md:cursor-grab md:active:cursor-grabbing',
+											'shadow-xs transition-shadow duration-300 hover:shadow-sm'
+										)}
+									>
 										<Image
 											alt={project.metadata.title}
 											draggable="false"
@@ -90,7 +114,7 @@ const ProjectPage = async ({
 					</Bento>
 				)}
 			</main>
-		</>
+		</div>
 	);
 };
 

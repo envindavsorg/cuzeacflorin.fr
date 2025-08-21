@@ -2,12 +2,12 @@ import type React from 'react';
 import type { Layout } from 'react-grid-layout';
 import { ArticleWidget } from '@/components/widgets/article/ArticleWidget';
 import { BioWidget } from '@/components/widgets/bio/BioWidget';
-import { ContactWidget } from '@/components/widgets/contact/ContactWidget';
 import { CommitWidget } from '@/components/widgets/commit/CommitWidget';
+import { ContactWidget } from '@/components/widgets/contact/ContactWidget';
 import { LinkedInWidget } from '@/components/widgets/linkedin/LinkedInWidget';
 import { LocationWidget } from '@/components/widgets/location/LocationWidget';
-import { Portfolio } from '@/components/widgets/Portfolio';
 import { Project } from '@/components/widgets/Project';
+import { PortfolioWidget } from '@/components/widgets/portfolio/PortfolioWidget';
 import { SwitcherWidget } from '@/components/widgets/switcher/SwitcherWidget';
 import { WorkWidget } from '@/components/widgets/work/WorkWidget';
 
@@ -25,7 +25,7 @@ export const gridItems: GridItem[] = [
 	{ i: 'switcher', component: SwitcherWidget },
 	{ i: 'linkedin', component: LinkedInWidget },
 	{ i: 'contact', component: ContactWidget },
-	{ i: 'portfolio', component: Portfolio },
+	{ i: 'portfolio', component: PortfolioWidget },
 	{ i: 'work', component: WorkWidget },
 ];
 
