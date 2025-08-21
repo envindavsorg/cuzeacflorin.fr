@@ -1,8 +1,9 @@
+import { BookIcon, CalendarDotsIcon } from '@phosphor-icons/react/ssr';
 import { notFound } from 'next/navigation';
 import type React from 'react';
-import { FaX } from 'react-icons/fa6';
-import { Anchor } from '@/components/ui/Anchor';
-import { CustomMDX } from '@/components/ui/Markdown';
+import { CustomMDX } from '@/components/mdx/Markdown';
+import { Header } from '@/components/navigation/Header';
+import { Badge } from '@/components/ui/Badge';
 import { getAllPosts } from '@/lib/mdx';
 import { formatDate } from '@/lib/utils';
 
@@ -26,29 +27,34 @@ const PostPage = async ({
 	}
 
 	return (
-		<>
-			<header className="flex items-center justify-center pt-10">
-				<Anchor className="inline-flex hover:mb-6 hover:scale-125" href="/">
-					<FaX />
-					<div className="sr-only">Close</div>
-				</Anchor>
-			</header>
-			<main className="mx-auto max-w-prose px-4 py-10">
-				<section className="text-center">
-					<h1 className="font-pixelify-sans text-3xl leading-relaxed">
+		<div className="py-15">
+			<Header />
+
+			<main className="mx-auto mt-10 flex max-w-prose flex-col gap-y-10">
+				<section className="flex flex-col items-center justify-center gap-y-3">
+					<h1
+						className="inline-block font-bold font-pixelify-sans text-3xl text-theme md:text-4xl"
+						title={post.metadata.title}
+					>
 						{post.metadata.title}
 					</h1>
-					<small className="mt-2 text-gray-600 dark:text-gray-400">
-						<time dateTime={post.metadata.date}>
+					<div className="flex items-center gap-x-3 *:px-2 *:py-1.5">
+						<Badge variant="outline">
+							<CalendarDotsIcon />
 							{formatDate(post.metadata.date)}
-						</time>
-					</small>
+						</Badge>
+						<Badge variant="outline">
+							<BookIcon />
+							{post.reading?.readingTime}
+						</Badge>
+					</div>
 				</section>
-				<article className="prose dark:prose-invert px-4 py-8">
+
+				<article className="prose dark:prose-invert mt-3">
 					<CustomMDX source={post.content} />
 				</article>
 			</main>
-		</>
+		</div>
 	);
 };
 

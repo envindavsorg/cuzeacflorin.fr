@@ -3,10 +3,10 @@ import { notFound } from 'next/navigation';
 import type React from 'react';
 import { FaArrowRight, FaX } from 'react-icons/fa6';
 import { Bento } from '@/components/blocs/Bento';
+import { CustomMDX } from '@/components/mdx/Markdown';
 import { Anchor } from '@/components/ui/Anchor';
 import { Card } from '@/components/ui/Card';
 import { Container } from '@/components/ui/Container';
-import { CustomMDX } from '@/components/ui/Markdown';
 import { projectLayouts } from '@/lib/grid';
 import { getAllProjects } from '@/lib/mdx';
 

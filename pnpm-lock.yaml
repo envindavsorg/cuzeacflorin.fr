@@ -92,6 +92,9 @@ importers:
       react-map-gl:
         specifier: ^8.0.4
         version: 8.0.4(mapbox-gl@3.14.0)(maplibre-gl@5.6.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+      reading-duration:
+        specifier: ^1.1.2
+        version: 1.1.2
       swr:
         specifier: ^2.3.6
         version: 2.3.6(react@19.1.1)
@@ -2110,6 +2113,9 @@ packages:
   react@19.1.1:
     resolution: {integrity: sha512-w8nqGImo45dmMIfljjMwOGtbmC/mk4CMYhWIicdSflH91J9TyCyczcPFXJzrZ/ZXcgGRFeP6BU0BEJTw6tZdfQ==}
     engines: {node: '>=0.10.0'}
+
+  reading-duration@1.1.2:
+    resolution: {integrity: sha512-rm/bVuqGCZ6Ox1R9lIkgOa5+PG96MDD5n8w62k/6+woRTGT3Wss76c/LBo9hBgpUVQSYqw2uSyshBKOksrQ7xA==}
 
   recma-build-jsx@1.0.0:
     resolution: {integrity: sha512-8GtdyqaBcDfva+GUKDr3nev3VpKAhup1+RvkMvUxURHpW7QyIvk9F5wz7Vzo06CEMSilw6uArgRqhpiUcWp8ew==}
@@ -4644,6 +4650,8 @@ snapshots:
       - react-dom
 
   react@19.1.1: {}
+
+  reading-duration@1.1.2: {}
 
   recma-build-jsx@1.0.0:
     dependencies:
