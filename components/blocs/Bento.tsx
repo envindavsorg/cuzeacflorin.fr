@@ -4,8 +4,8 @@ import { motion, useAnimation } from 'motion/react';
 import Link from 'next/link';
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import {
+	type Layout,
 	Responsive,
-	type ResponsiveProps,
 	WidthProvider,
 } from 'react-grid-layout';
 import { Filter } from '@/components/navigation/Filters';
@@ -34,11 +34,17 @@ const useIsomorphicLayoutEffect =
 
 type FilterType = 'all' | 'about' | 'projects' | 'media';
 
+type BentoProps = {
+	layouts?: Record<string, Record<string, Layout[]>>;
+	className?: string;
+	children: React.ReactNode;
+};
+
 export const Bento = ({
 	layouts,
 	className,
 	children,
-}: Readonly<ResponsiveProps>): React.JSX.Element => {
+}: Readonly<BentoProps>): React.JSX.Element => {
 	const [isMounted, setMounted] = useState(false);
 	const [isDraggable, setDraggable] = useState(true);
 	const { breakpoint, setBreakpoint } = useBreakpoint();
@@ -151,7 +157,7 @@ export const Bento = ({
 						isBounded
 						isDraggable={isDraggable}
 						isResizable={false}
-						layouts={layouts[filter]}
+						layouts={layouts?.[filter] || {}}
 						margin={[16, 16]}
 						measureBeforeMount
 						onBreakpointChange={(newBreakpoint: string) => {
