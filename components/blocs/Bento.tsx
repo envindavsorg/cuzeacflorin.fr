@@ -84,7 +84,6 @@ export const Bento = ({
 		});
 	}, [controls]);
 
-	// Generate CSS for filtering without modifying DOM
 	const filterCSS = React.useMemo(() => {
 		if (filter === 'all') {
 			return '';
@@ -98,10 +97,8 @@ export const Bento = ({
 		return hiddenItems
 			? `
 			${hiddenItems} {
-				opacity: 0.15 !important;
-				pointer-events: none !important;
-				filter: grayscale(100%) blur(1px) !important;
-				transform: scale(0.98) !important;
+				opacity: 0.4 !important;
+				filter: grayscale(80%) !important;
 				transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
 			}
 		`
