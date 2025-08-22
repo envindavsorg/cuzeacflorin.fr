@@ -3,7 +3,6 @@
 import { motion } from 'motion/react';
 import type React from 'react';
 import { useLayoutEffect, useRef, useState } from 'react';
-import type { FilterType } from '@/components/blocs/Bento';
 import {cn} from "@/lib/utils";
 
 export const filters = ['Tout', 'Moi', 'Travail', 'Blog', 'Outils'];
