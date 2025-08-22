@@ -8,10 +8,7 @@ import useBreakpoint from '@/hooks/useBreakpoint';
 import { breakpoints, cols, heights } from '@/lib/consts';
 import { cn } from '@/lib/utils';
 
-const itemCategories: Record<
-	string,
-	('about' | 'projects' | 'blog' | 'misc' | 'all')[]
-> = {
+const itemCategories: Record<string, FilterType[]> = {
 	bio: ['about'],
 	location: ['about'],
 	cv: ['projects'],
