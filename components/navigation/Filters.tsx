@@ -3,7 +3,14 @@
 import { motion } from 'motion/react';
 import { useState } from 'react';
 
-export const filters = ['All', 'About', 'Projects', 'Blog'];
+export const filters = ['Tout', 'Moi', 'Travail', 'Blog'];
+
+const filterMapping: Record<string, 'all' | 'about' | 'projects' | 'blog'> = {
+	'Tout': 'all',
+	'Moi': 'about', 
+	'Travail': 'projects',
+	'Blog': 'blog'
+};
 
 export const Filter = ({
 	setFilter,
@@ -34,9 +41,7 @@ export const Filter = ({
 						return ((event, filter: string) => {
 							setLeft(event.currentTarget.offsetLeft);
 							setWidth(event.currentTarget.offsetWidth);
-							setFilter(
-								filter.toLowerCase() as 'all' | 'about' | 'projects' | 'blog'
-							);
+							setFilter(filterMapping[filter]);
 						})(event, filter);
 					}}
 				>

@@ -12,11 +12,11 @@ import { cn } from '@/lib/utils';
 const itemCategories: Record<string, 'about' | 'projects' | 'blog' | 'all'> = {
 	bio: 'about',
 	location: 'about',
-	cv: 'blog',
+	cv: 'projects',
 	commit: 'projects',
 	article: 'blog',
 	switcher: 'blog',
-	linkedin: 'blog',
+	linkedin: 'projects',
 	contact: 'blog',
 	portfolio: 'projects',
 	work: 'projects',
