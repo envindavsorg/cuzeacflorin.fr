@@ -65,7 +65,11 @@ const Home = (): React.JSX.Element => {
 			<main>
 				<Bento layouts={layouts}>
 					{gridItems.map((item) => (
-						<BentoItem component={item.component} id={item.i} key={item.i} />
+						<BentoItem 
+							component={item.component} 
+							id={item.i} 
+							key={item.i}
+						/>
 					))}
 				</Bento>
 			</main>

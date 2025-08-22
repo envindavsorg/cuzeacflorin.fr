@@ -2,8 +2,7 @@
 
 import { motion, useAnimation } from 'motion/react';
 import Link from 'next/link';
-import type React from 'react';
-import { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import {
 	Responsive,
 	type ResponsiveProps,
@@ -14,10 +13,26 @@ import useBreakpoint from '@/hooks/useBreakpoint';
 import { breakpoints, cols, heights } from '@/lib/consts';
 import { cn } from '@/lib/utils';
 
+const itemCategories: Record<string, 'about' | 'projects' | 'media' | 'all'> = {
+	bio: 'about',
+	location: 'about',
+	cv: 'about',
+	commit: 'projects',
+	article: 'media',
+	switcher: 'all',
+	linkedin: 'about',
+	contact: 'about',
+	portfolio: 'projects',
+	work: 'projects',
+	clock: 'all',
+};
+
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
 const useIsomorphicLayoutEffect =
 	typeof window === 'undefined' ? useEffect : useLayoutEffect;
+
+type FilterType = 'all' | 'about' | 'projects' | 'media';
 
 export const Bento = ({
 	layouts,
@@ -69,12 +84,33 @@ export const Bento = ({
 		});
 	}, [controls]);
 
-	const opacityValue = (section: string) =>
-		filter === 'all' || section === filter ? 1 : 0.25;
-	// style={{ opacity: opacityValue('all') }}
+	// Generate CSS for filtering without modifying DOM
+	const filterCSS = React.useMemo(() => {
+		if (filter === 'all') {
+			return '';
+		}
+
+		const hiddenItems = Object.entries(itemCategories)
+			.filter(([_, category]) => category !== 'all' && category !== filter)
+			.map(([itemId]) => `#${itemId}`)
+			.join(', ');
+
+		return hiddenItems
+			? `
+			${hiddenItems} {
+				opacity: 0.15 !important;
+				pointer-events: none !important;
+				filter: grayscale(100%) blur(1px) !important;
+				transform: scale(0.98) !important;
+				transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+			}
+		`
+			: '';
+	}, [filter]);
 
 	return (
 		<>
+			{filterCSS && <style>{filterCSS}</style>}
 			<motion.nav
 				animate={{ opacity: 1 }}
 				className="flex h-[136px] w-full items-center justify-between px-[3.5vw] max-sm:h-[180px] max-sm:flex-col max-sm:justify-center"
