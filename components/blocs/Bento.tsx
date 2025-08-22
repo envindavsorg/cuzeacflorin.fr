@@ -5,6 +5,7 @@ import Link from 'next/link';
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { type Layout, Responsive, WidthProvider } from 'react-grid-layout';
 import { Filter } from '@/components/navigation/Filters';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/Avatar';
 import useBreakpoint from '@/hooks/useBreakpoint';
 import { breakpoints, cols, heights } from '@/lib/consts';
 import { cn } from '@/lib/utils';
@@ -16,11 +17,11 @@ const itemCategories: Record<
 	bio: ['about'],
 	location: ['about'],
 	cv: ['projects'],
-	commit: ['blog'],
+	commit: ['about', 'projects'],
 	article: ['blog'],
 	switcher: ['misc'],
 	linkedin: ['projects'],
-	contact: ['blog'],
+	contact: ['about'],
 	portfolio: ['blog'],
 	work: ['projects', 'blog'],
 	clock: ['misc'],
@@ -121,13 +122,10 @@ export const Bento = ({
 				className="flex h-[136px] w-full items-center justify-between px-[3.5vw] max-sm:h-[180px] max-sm:flex-col max-sm:justify-center"
 				initial={{ opacity: 1 }}
 			>
-				<Link
-					className="font-normal text-[var(--text)] text-sm leading-6 tracking-[0.25px] transition-all duration-200 ease-in-out hover:cursor-pointer hover:opacity-60 max-sm:hidden"
-					href="mailto:houssaineamzil18@gmail.com"
-					style={{ lineHeight: 'normal' }}
-				>
-					Contact
-				</Link>
+				<Avatar className="size-12">
+					<AvatarImage src="/avatar.webp" />
+					<AvatarFallback>CF</AvatarFallback>
+				</Avatar>
 				<Filter setFilter={setFilter} />
 				<Link
 					className="font-normal text-[var(--text)] text-sm leading-6 tracking-[0.25px] transition-all duration-200 ease-in-out hover:cursor-pointer hover:opacity-60 max-sm:hidden"
