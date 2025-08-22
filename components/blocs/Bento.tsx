@@ -1,11 +1,9 @@
 'use client';
 
-import { motion, useAnimation } from 'motion/react';
-import Link from 'next/link';
+import { useAnimation } from 'motion/react';
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { type Layout, Responsive, WidthProvider } from 'react-grid-layout';
-import { Filter } from '@/components/navigation/Filters';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/Avatar';
+import { NavBar } from '@/components/navigation/NavBar';
 import useBreakpoint from '@/hooks/useBreakpoint';
 import { breakpoints, cols, heights } from '@/lib/consts';
 import { cn } from '@/lib/utils';
@@ -116,29 +114,11 @@ export const Bento = ({
 
 	return (
 		<>
-			{filterCSS && <style>{filterCSS}</style>}
-			<motion.nav
-				animate={{ opacity: 1 }}
-				className="flex h-[136px] w-full items-center justify-between px-[3.5vw] max-sm:h-[180px] max-sm:flex-col max-sm:justify-center"
-				initial={{ opacity: 1 }}
-			>
-				<Avatar className="size-12">
-					<AvatarImage src="/avatar.webp" />
-					<AvatarFallback>CF</AvatarFallback>
-				</Avatar>
-				<Filter setFilter={setFilter} />
-				<Link
-					className="font-normal text-[var(--text)] text-sm leading-6 tracking-[0.25px] transition-all duration-200 ease-in-out hover:cursor-pointer hover:opacity-60 max-sm:hidden"
-					href="mailto:houssaineamzil18@gmail.com"
-					style={{ lineHeight: 'normal' }}
-				>
-					Contact
-				</Link>
-			</motion.nav>
+			<NavBar setFilter={setFilter} />
 
 			<section
 				className={cn(
-					'relative mx-auto w-full',
+					'relative mx-auto w-full max-md:mt-4',
 					'max-w-[320px]',
 					'sm:max-w-[375px]',
 					'md:max-w-[800px]',
@@ -185,6 +165,8 @@ export const Bento = ({
 					</div>
 				)}
 			</section>
+
+			{filterCSS && <style>{filterCSS}</style>}
 		</>
 	);
 };

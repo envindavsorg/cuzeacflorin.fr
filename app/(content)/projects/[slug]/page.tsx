@@ -1,18 +1,14 @@
 import { BookIcon, CalendarDotsIcon } from '@phosphor-icons/react/ssr';
-import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type React from 'react';
-import { Bento } from '@/components/blocs/Bento';
 import { CustomMDX } from '@/components/mdx/Markdown';
 import { Header } from '@/components/navigation/Header';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
 import { Container } from '@/components/ui/Container';
-import { projectLayouts } from '@/lib/grid';
 import { getAllProjects } from '@/lib/mdx';
-import { cn, formatDate } from '@/lib/utils';
+import { formatDate } from '@/lib/utils';
 
 type Params = Promise<{ slug: string }>;
 
@@ -86,33 +82,6 @@ const ProjectPage = async ({
 						</div>
 					</div>
 				</Container>
-
-				{project.metadata.images && (
-					<Bento layouts={projectLayouts}>
-						{JSON.parse(project.metadata.images).map(
-							(image: { i: string; url: string }) => (
-								<div key={image.i}>
-									<Card
-										className={cn(
-											'relative rounded-3xl',
-											'size-full select-none overflow-hidden md:cursor-grab md:active:cursor-grabbing',
-											'shadow-xs transition-shadow duration-300 hover:shadow-sm'
-										)}
-									>
-										<Image
-											alt={project.metadata.title}
-											draggable="false"
-											fill
-											objectFit="cover"
-											sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-											src={image.url}
-										/>
-									</Card>
-								</div>
-							)
-						)}
-					</Bento>
-				)}
 			</main>
 		</div>
 	);

@@ -4,7 +4,7 @@ import { memo } from 'react';
 import { Card } from '@/components/ui/Card';
 import { PortfolioLink } from '@/components/widgets/portfolio/PortfolioLink';
 import portfolioBg from '@/images/portfolio/portfolio-bg.svg';
-import portfolioScreen from '@/images/portfolio/portfolio-screen.png';
+import portfolioScreen from '@/images/portfolio/portfolio-screen.webp';
 import { cn, toKebabCase } from '@/lib/utils';
 
 export const PortfolioWidget = memo((): React.JSX.Element => {

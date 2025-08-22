@@ -24,7 +24,9 @@
         "noDangerouslySetInnerHtml": "off"
       },
       "a11y": {
-        "noStaticElementInteractions": "off"
+        "noStaticElementInteractions": "off",
+        "noNoninteractiveElementInteractions": "off",
+        "useKeyWithClickEvents": "off"
       },
       "nursery": {
         "useSortedClasses": {
