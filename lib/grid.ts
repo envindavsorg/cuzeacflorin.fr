@@ -15,21 +15,20 @@ import { WorkWidget } from '@/components/widgets/work/WorkWidget';
 type GridItem = {
 	i: string;
 	component: React.ComponentType;
-	category: 'about' | 'projects' | 'media' | 'all';
 };
 
 export const gridItems: GridItem[] = [
-	{ i: 'bio', component: BioWidget, category: 'about' },
-	{ i: 'location', component: LocationWidget, category: 'about' },
-	{ i: 'cv', component: CvWidget, category: 'about' },
-	{ i: 'commit', component: CommitWidget, category: 'projects' },
-	{ i: 'article', component: ArticleWidget, category: 'media' },
-	{ i: 'switcher', component: SwitcherWidget, category: 'all' },
-	{ i: 'linkedin', component: LinkedInWidget, category: 'about' },
-	{ i: 'contact', component: ContactWidget, category: 'about' },
-	{ i: 'portfolio', component: PortfolioWidget, category: 'projects' },
-	{ i: 'work', component: WorkWidget, category: 'projects' },
-	{ i: 'clock', component: ClockWidget, category: 'all' },
+	{ i: 'bio', component: BioWidget },
+	{ i: 'location', component: LocationWidget },
+	{ i: 'cv', component: CvWidget },
+	{ i: 'commit', component: CommitWidget },
+	{ i: 'article', component: ArticleWidget },
+	{ i: 'switcher', component: SwitcherWidget },
+	{ i: 'linkedin', component: LinkedInWidget },
+	{ i: 'contact', component: ContactWidget },
+	{ i: 'portfolio', component: PortfolioWidget },
+	{ i: 'work', component: WorkWidget },
+	{ i: 'clock', component: ClockWidget },
 ];
 
 type Layouts = 'lg' | 'md' | 'sm';
@@ -158,7 +157,7 @@ export const layouts: any = {
 			{ i: 'work', x: 0, y: 10, w: 2, h: 2, isResizable: false },
 		],
 	},
-	media: {
+	blog: {
 		lg: [
 			{ i: 'bio', x: 0, y: 0, w: 2, h: 1, isResizable: false },
 			{ i: 'location', x: 2, y: 0, w: 1, h: 1, isResizable: false },

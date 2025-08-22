@@ -6,7 +6,7 @@ import type { Dispatch, SetStateAction } from 'react';
 import { Filter } from '@/components/navigation/Filters';
 
 type NavBarProps = {
-	setFilter: Dispatch<SetStateAction<'all' | 'about' | 'projects' | 'media'>>;
+	setFilter: Dispatch<SetStateAction<'all' | 'about' | 'projects' | 'blog'>>;
 };
 
 export const NavBar = ({ setFilter }: NavBarProps): React.JSX.Element => {

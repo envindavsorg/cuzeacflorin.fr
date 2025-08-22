@@ -3,9 +3,13 @@
 import { motion } from 'motion/react';
 import { useState } from 'react';
 
-export const filters = ['All', 'About', 'Projects', 'Media'];
+export const filters = ['All', 'About', 'Projects', 'Blog'];
 
-export const Filter = ({ setFilter }: { setFilter: (filter: 'all' | 'about' | 'projects' | 'media') => void }) => {
+export const Filter = ({
+	setFilter,
+}: {
+	setFilter: (filter: 'all' | 'about' | 'projects' | 'blog') => void;
+}) => {
 	const [left, setLeft] = useState(5);
 	const [width, setWidth] = useState(49);
 
@@ -30,7 +34,9 @@ export const Filter = ({ setFilter }: { setFilter: (filter: 'all' | 'about' | 'p
 						return ((event, filter: string) => {
 							setLeft(event.currentTarget.offsetLeft);
 							setWidth(event.currentTarget.offsetWidth);
-							setFilter(filter.toLowerCase() as 'all' | 'about' | 'projects' | 'media');
+							setFilter(
+								filter.toLowerCase() as 'all' | 'about' | 'projects' | 'blog'
+							);
 						})(event, filter);
 					}}
 				>

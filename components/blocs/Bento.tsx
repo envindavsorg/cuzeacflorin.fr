@@ -3,28 +3,24 @@
 import { motion, useAnimation } from 'motion/react';
 import Link from 'next/link';
 import React, { useEffect, useLayoutEffect, useState } from 'react';
-import {
-	type Layout,
-	Responsive,
-	WidthProvider,
-} from 'react-grid-layout';
+import { type Layout, Responsive, WidthProvider } from 'react-grid-layout';
 import { Filter } from '@/components/navigation/Filters';
 import useBreakpoint from '@/hooks/useBreakpoint';
 import { breakpoints, cols, heights } from '@/lib/consts';
 import { cn } from '@/lib/utils';
 
-const itemCategories: Record<string, 'about' | 'projects' | 'media' | 'all'> = {
+const itemCategories: Record<string, 'about' | 'projects' | 'blog' | 'all'> = {
 	bio: 'about',
 	location: 'about',
-	cv: 'about',
+	cv: 'blog',
 	commit: 'projects',
-	article: 'media',
-	switcher: 'all',
-	linkedin: 'about',
-	contact: 'about',
+	article: 'blog',
+	switcher: 'blog',
+	linkedin: 'blog',
+	contact: 'blog',
 	portfolio: 'projects',
 	work: 'projects',
-	clock: 'all',
+	clock: 'about',
 };
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
@@ -32,7 +28,7 @@ const ResponsiveGridLayout = WidthProvider(Responsive);
 const useIsomorphicLayoutEffect =
 	typeof window === 'undefined' ? useEffect : useLayoutEffect;
 
-type FilterType = 'all' | 'about' | 'projects' | 'media';
+type FilterType = 'all' | 'about' | 'projects' | 'blog';
 
 type BentoProps = {
 	layouts?: Record<string, Record<string, Layout[]>>;

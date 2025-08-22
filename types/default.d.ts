@@ -7,5 +7,5 @@ declare global {
 	// fonts
 	type NextFont = NextFontWithVariable;
 	// filters
-	export type FilterType = 'all' | 'about' | 'projects' | 'media';
+	export type FilterType = 'all' | 'about' | 'projects' | 'blog';
 }
