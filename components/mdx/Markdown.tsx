@@ -8,19 +8,27 @@ import {
 } from '@/components/mdx/CurrentDate';
 import { toKebabCase } from '@/lib/utils';
 
+const getTextContent = (node: React.ReactNode): string => {
+	if (typeof node === 'string') {
+		return node;
+	}
+	if (typeof node === 'number') {
+		return String(node);
+	}
+	if (Array.isArray(node)) {
+		return node.map(getTextContent).join('');
+	}
+	if (React.isValidElement(node)) {
+		const element = node as React.ReactElement<{ children?: React.ReactNode }>;
+		if (element.props.children) {
+			return getTextContent(element.props.children);
+		}
+	}
+	return '';
+};
+
 const createHeading = (level: number) => {
 	const Heading = ({ children }: { children: React.ReactNode }) => {
-		// Extract text content for slug generation
-		const getTextContent = (node: React.ReactNode): string => {
-			if (typeof node === 'string') return node;
-			if (typeof node === 'number') return String(node);
-			if (Array.isArray(node)) return node.map(getTextContent).join('');
-			if (React.isValidElement(node) && node.props.children) {
-				return getTextContent(node.props.children);
-			}
-			return '';
-		};
-
 		const textContent = getTextContent(children);
 		const slug = textContent ? toKebabCase(textContent) : '';
 
