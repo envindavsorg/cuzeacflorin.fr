@@ -11,19 +11,19 @@ import { cn } from '@/lib/utils';
 
 const itemCategories: Record<
 	string,
-	('about' | 'projects' | 'blog' | 'all')[]
+	('about' | 'projects' | 'blog' | 'misc' | 'all')[]
 > = {
 	bio: ['about'],
 	location: ['about'],
 	cv: ['projects'],
-	commit: ['projects'],
+	commit: ['blog'],
 	article: ['blog'],
-	switcher: ['blog'],
+	switcher: ['misc'],
 	linkedin: ['projects'],
 	contact: ['blog'],
-	portfolio: ['projects'],
+	portfolio: ['blog'],
 	work: ['projects', 'blog'],
-	clock: ['about'],
+	clock: ['misc'],
 };
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
@@ -31,7 +31,7 @@ const ResponsiveGridLayout = WidthProvider(Responsive);
 const useIsomorphicLayoutEffect =
 	typeof window === 'undefined' ? useEffect : useLayoutEffect;
 
-type FilterType = 'all' | 'about' | 'projects' | 'blog';
+type FilterType = 'all' | 'about' | 'projects' | 'blog' | 'misc';
 
 type BentoProps = {
 	layouts?: Record<string, Record<string, Layout[]>>;

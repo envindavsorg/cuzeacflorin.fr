@@ -3,19 +3,20 @@
 import { motion } from 'motion/react';
 import { useState } from 'react';
 
-export const filters = ['Tout', 'Moi', 'Travail', 'Blog'];
+export const filters = ['Tout', 'Moi', 'Travail', 'Blog', 'Outils'];
 
-const filterMapping: Record<string, 'all' | 'about' | 'projects' | 'blog'> = {
+const filterMapping: Record<string, 'all' | 'about' | 'projects' | 'blog' | 'misc'> = {
 	'Tout': 'all',
 	'Moi': 'about', 
 	'Travail': 'projects',
-	'Blog': 'blog'
+	'Blog': 'blog',
+	'Outils': 'misc'
 };
 
 export const Filter = ({
 	setFilter,
 }: {
-	setFilter: (filter: 'all' | 'about' | 'projects' | 'blog') => void;
+	setFilter: (filter: 'all' | 'about' | 'projects' | 'blog' | 'misc') => void;
 }) => {
 	const [left, setLeft] = useState(5);
 	const [width, setWidth] = useState(49);
