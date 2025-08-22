@@ -9,18 +9,21 @@ import useBreakpoint from '@/hooks/useBreakpoint';
 import { breakpoints, cols, heights } from '@/lib/consts';
 import { cn } from '@/lib/utils';
 
-const itemCategories: Record<string, 'about' | 'projects' | 'blog' | 'all'> = {
-	bio: 'about',
-	location: 'about',
-	cv: 'projects',
-	commit: 'projects',
-	article: 'blog',
-	switcher: 'blog',
-	linkedin: 'projects',
-	contact: 'blog',
-	portfolio: 'projects',
-	work: 'projects',
-	clock: 'about',
+const itemCategories: Record<
+	string,
+	('about' | 'projects' | 'blog' | 'all')[]
+> = {
+	bio: ['about'],
+	location: ['about'],
+	cv: ['projects'],
+	commit: ['projects'],
+	article: ['blog'],
+	switcher: ['blog'],
+	linkedin: ['projects'],
+	contact: ['blog'],
+	portfolio: ['projects'],
+	work: ['projects', 'blog'],
+	clock: ['about'],
 };
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
@@ -92,7 +95,10 @@ export const Bento = ({
 		}
 
 		const hiddenItems = Object.entries(itemCategories)
-			.filter(([_, category]) => category !== 'all' && category !== filter)
+			.filter(
+				([_, categories]) =>
+					!(categories.includes('all') || categories.includes(filter))
+			)
 			.map(([itemId]) => `#${itemId}`)
 			.join(', ');
 
