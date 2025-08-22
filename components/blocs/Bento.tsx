@@ -1,6 +1,7 @@
 'use client';
 
-import { useAnimation } from 'motion/react';
+import { motion, useAnimation } from 'motion/react';
+import Link from 'next/link';
 import type React from 'react';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import {
@@ -8,9 +9,9 @@ import {
 	type ResponsiveProps,
 	WidthProvider,
 } from 'react-grid-layout';
+import { Filter } from '@/components/navigation/Filters';
 import useBreakpoint from '@/hooks/useBreakpoint';
 import { breakpoints, cols, heights } from '@/lib/consts';
-import { logger } from '@/lib/logger';
 import { cn } from '@/lib/utils';
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
@@ -70,57 +71,81 @@ export const Bento = ({
 
 	const opacityValue = (section: string) =>
 		filter === 'all' || section === filter ? 1 : 0.25;
-	logger.info(opacityValue);
+	// style={{ opacity: opacityValue('all') }}
 
 	return (
-		<section
-			className={cn(
-				'relative mx-auto w-full',
-				'max-w-[320px]',
-				'sm:max-w-[375px]',
-				'md:max-w-[800px]',
-				'lg:max-w-[1200px]',
-				isMounted ? 'translate-y-0 opacity-100' : '-translate-y-6 opacity-0',
-				'transition-[opacity,_transform] duration-300',
-				className
-			)}
-			suppressHydrationWarning
-		>
-			{isMounted && (
-				<ResponsiveGridLayout
-					breakpoints={breakpoints}
-					cols={cols}
-					draggableCancel=".cancel-drag"
-					isBounded
-					isDraggable={isDraggable}
-					isResizable={false}
-					layouts={layouts}
-					margin={[16, 16]}
-					measureBeforeMount
-					onBreakpointChange={(newBreakpoint: string) => {
-						setBreakpoint(newBreakpoint);
-						if (heights[newBreakpoint]) {
-							setHeight(heights[newBreakpoint]);
-						}
-					}}
-					rowHeight={height}
-					useCSSTransforms
+		<>
+			<motion.nav
+				animate={{ opacity: 1 }}
+				className="flex h-[136px] w-full items-center justify-between px-[3.5vw] max-sm:h-[180px] max-sm:flex-col max-sm:justify-center"
+				initial={{ opacity: 1 }}
+			>
+				<Link
+					className="font-normal text-[var(--text)] text-sm leading-6 tracking-[0.25px] transition-all duration-200 ease-in-out hover:cursor-pointer hover:opacity-60 max-sm:hidden"
+					href="mailto:houssaineamzil18@gmail.com"
+					style={{ lineHeight: 'normal' }}
 				>
-					{children}
-				</ResponsiveGridLayout>
-			)}
+					Contact
+				</Link>
+				<Filter setFilter={setFilter} />
+				<Link
+					className="font-normal text-[var(--text)] text-sm leading-6 tracking-[0.25px] transition-all duration-200 ease-in-out hover:cursor-pointer hover:opacity-60 max-sm:hidden"
+					href="mailto:houssaineamzil18@gmail.com"
+					style={{ lineHeight: 'normal' }}
+				>
+					Contact
+				</Link>
+			</motion.nav>
 
-			{!isMounted && (
-				<div
-					className="grid gap-4 opacity-50"
-					style={{
-						gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-						minHeight: height,
-					}}
-				>
-					{children}
-				</div>
-			)}
-		</section>
+			<section
+				className={cn(
+					'relative mx-auto w-full',
+					'max-w-[320px]',
+					'sm:max-w-[375px]',
+					'md:max-w-[800px]',
+					'lg:max-w-[1200px]',
+					isMounted ? 'translate-y-0 opacity-100' : '-translate-y-6 opacity-0',
+					'transition-[opacity,_transform] duration-300',
+					className
+				)}
+				suppressHydrationWarning
+			>
+				{isMounted && (
+					<ResponsiveGridLayout
+						breakpoints={breakpoints}
+						cols={cols}
+						draggableCancel=".cancel-drag"
+						isBounded
+						isDraggable={isDraggable}
+						isResizable={false}
+						layouts={layouts[filter]}
+						margin={[16, 16]}
+						measureBeforeMount
+						onBreakpointChange={(newBreakpoint: string) => {
+							setBreakpoint(newBreakpoint);
+							if (heights[newBreakpoint]) {
+								setHeight(heights[newBreakpoint]);
+							}
+						}}
+						rowHeight={height}
+						useCSSTransforms
+					>
+						{children}
+					</ResponsiveGridLayout>
+				)}
+
+				{!isMounted && (
+					<div
+						className="grid gap-4 opacity-50"
+						style={{
+							gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+							minHeight: height,
+						}}
+					>
+						{children}
+					</div>
+				)}
+			</section>
+		</>
 	);
 };
