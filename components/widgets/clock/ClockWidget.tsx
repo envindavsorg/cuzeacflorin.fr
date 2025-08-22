@@ -12,10 +12,11 @@ import { cn } from '@/lib/utils';
 import { timeActions, useTimeSelectors } from '@/stores/timeStore';
 
 const FORMAT_OPTIONS = { minimumIntegerDigits: 2 };
-const NUMBER_STYLE = 'font-extrabold text-3xl md:text-5xl';
 
 const TimeSeparator = memo(() => (
-	<span className="select-none px-1 font-normal text-lg md:text-xl">:</span>
+	<span className="select-none px-1 font-normal text-theme text-xl md:text-2xl">
+		:
+	</span>
 ));
 
 TimeSeparator.displayName = 'TimeSeparator';
@@ -68,60 +69,58 @@ export const ClockWidget = memo((): React.JSX.Element => {
 	return (
 		<Card
 			className={cn(
-				'-gap-3 relative items-center justify-center rounded-3xl p-8',
+				'relative items-center justify-center rounded-3xl md:p-4 lg:p-8',
 				'size-full select-none overflow-hidden md:cursor-grab md:active:cursor-grabbing',
 				'shadow-xs transition-shadow duration-300 hover:shadow-sm'
 			)}
 		>
-			<div className="flex items-center justify-center p-2">
-				<AnimatePresence initial={false} mode="wait">
-					{isAfternoonIcon ? (
-						<motion.div
-							animate={{ scale: 1, rotate: 0, opacity: 1 }}
-							exit={{ scale: 0, rotate: 90, opacity: 0 }}
-							initial={{ scale: 0, rotate: -90, opacity: 0 }}
-							key="afternoon"
-							transition={iconTransition}
-						>
-							<ClockAfternoonIcon className="size-10 text-theme lg:size-18" />
-						</motion.div>
-					) : (
-						<motion.div
-							animate={{ scale: 1, rotate: 0, opacity: 1 }}
-							exit={{ scale: 0, rotate: -90, opacity: 0 }}
-							initial={{ scale: 0, rotate: 90, opacity: 0 }}
-							key="normal"
-							transition={iconTransition}
-						>
-							<ClockIcon className="size-10 text-theme lg:size-18" />
-						</motion.div>
-					)}
-				</AnimatePresence>
+			<div className="flex flex-col items-center justify-center gap-y-4">
+				<div className="flex items-center justify-center p-2">
+					<AnimatePresence initial={false} mode="wait">
+						{isAfternoonIcon ? (
+							<motion.div
+								animate={{ scale: 1, rotate: 0, opacity: 1 }}
+								exit={{ scale: 0, rotate: 90, opacity: 0 }}
+								initial={{ scale: 0, rotate: -90, opacity: 0 }}
+								key="afternoon"
+								transition={iconTransition}
+							>
+								<ClockAfternoonIcon className="size-10 text-theme lg:size-18" />
+							</motion.div>
+						) : (
+							<motion.div
+								animate={{ scale: 1, rotate: 0, opacity: 1 }}
+								exit={{ scale: 0, rotate: -90, opacity: 0 }}
+								initial={{ scale: 0, rotate: 90, opacity: 0 }}
+								key="normal"
+								transition={iconTransition}
+							>
+								<ClockIcon className="size-10 text-theme lg:size-18" />
+							</motion.div>
+						)}
+					</AnimatePresence>
+				</div>
+
+				<div className="flex flex-col items-center justify-center gap-y-2">
+					<div
+						className={cn(
+							'flex items-center justify-center overflow-hidden font-geist-mono tabular-nums',
+							'!p-0 *:font-bold *:font-pixelify-sans *:text-3xl *:text-theme'
+						)}
+					>
+						<NumberFlow format={FORMAT_OPTIONS} value={hours} />
+						<TimeSeparator />
+						<NumberFlow format={FORMAT_OPTIONS} value={minutes} />
+						<TimeSeparator />
+						<NumberFlow format={FORMAT_OPTIONS} value={seconds} />
+					</div>
+					<CurrentDate
+						className="text-muted-foreground text-sm"
+						format="full"
+						locale="fr-FR"
+					/>
+				</div>
 			</div>
-			<div className="flex items-center justify-center overflow-hidden p-4 font-geist-mono tabular-nums">
-				<NumberFlow
-					className={NUMBER_STYLE}
-					format={FORMAT_OPTIONS}
-					value={hours}
-				/>
-				<TimeSeparator />
-				<NumberFlow
-					className={NUMBER_STYLE}
-					format={FORMAT_OPTIONS}
-					value={minutes}
-				/>
-				<TimeSeparator />
-				<NumberFlow
-					className={NUMBER_STYLE}
-					format={FORMAT_OPTIONS}
-					value={seconds}
-				/>
-			</div>
-			<CurrentDate
-				className="-mt-3 text-muted-foreground text-sm"
-				format="full"
-				locale="fr-FR"
-			/>
 
 			<Pattern />
 		</Card>

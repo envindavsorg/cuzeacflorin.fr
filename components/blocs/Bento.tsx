@@ -1,5 +1,6 @@
 'use client';
 
+import { useAnimation } from 'motion/react';
 import type React from 'react';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import {
@@ -17,16 +18,11 @@ const ResponsiveGridLayout = WidthProvider(Responsive);
 const useIsomorphicLayoutEffect =
 	typeof window === 'undefined' ? useEffect : useLayoutEffect;
 
-type BentoProps = {
-	filter?: FilterType;
-};
-
 export const Bento = ({
 	layouts,
 	className,
 	children,
-	filter,
-}: Readonly<ResponsiveProps & BentoProps>): React.JSX.Element => {
+}: Readonly<ResponsiveProps>): React.JSX.Element => {
 	const [isMounted, setMounted] = useState(false);
 	const [isDraggable, setDraggable] = useState(true);
 	const { breakpoint, setBreakpoint } = useBreakpoint();
@@ -52,6 +48,25 @@ export const Bento = ({
 			setHeight(heights[breakpoint]);
 		}
 	}, [breakpoint]);
+
+	const controls = useAnimation();
+	const [filter, setFilter] = useState<FilterType>('all');
+
+	useEffect(() => {
+		controls.set({
+			y: 15,
+			opacity: 0,
+		});
+
+		controls.start({
+			y: 0,
+			opacity: 1,
+			transition: {
+				duration: 0.5,
+				ease: 'easeInOut',
+			},
+		});
+	}, [controls]);
 
 	const opacityValue = (section: string) =>
 		filter === 'all' || section === filter ? 1 : 0.25;

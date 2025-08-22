@@ -231,6 +231,69 @@ div[mapboxgl-children] {
 	@apply visible;
 }
 
+/* Shiki Code Highlighting */
+.prose pre {
+	@apply overflow-x-auto rounded-lg border border-border bg-muted/30 p-4;
+}
+
+.prose pre code {
+	@apply grid text-sm;
+	counter-reset: line;
+}
+
+.prose pre code > span {
+	@apply border-l-2 border-transparent;
+}
+
+.prose pre code > span::before {
+	counter-increment: line;
+	content: counter(line);
+	@apply mr-6 inline-block w-4 text-right text-muted-foreground/50;
+}
+
+/* Shiki theme variables */
+html:not(.dark) .prose pre {
+	background-color: var(--shiki-light-bg, var(--muted));
+}
+
+html:not(.dark) .prose pre code {
+	color: var(--shiki-light, var(--foreground));
+}
+
+html:not(.dark) .prose pre code span {
+	color: var(--shiki-light, inherit);
+}
+
+.dark .prose pre {
+	background-color: var(--shiki-dark-bg, var(--muted));
+}
+
+.dark .prose pre code {
+	color: var(--shiki-dark, var(--foreground));
+}
+
+.dark .prose pre code span {
+	color: var(--shiki-dark, inherit);
+}
+
+/* Inline code styles */
+.prose code:not(pre code) {
+	@apply rounded-md bg-muted px-1.5 py-0.5 text-sm font-medium;
+}
+
+/* Code copy button styles */
+.prose pre {
+	@apply relative;
+}
+
+.prose pre .copy-button {
+	@apply absolute right-2 top-2 rounded-md bg-background/80 p-2 opacity-0 transition-opacity hover:bg-background;
+}
+
+.prose pre:hover .copy-button {
+	@apply opacity-100;
+}
+
 /* View Transition API for smooth theme changes */
 ::view-transition-old(root),
 ::view-transition-new(root) {

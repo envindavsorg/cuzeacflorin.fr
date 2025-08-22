@@ -1,11 +1,15 @@
+import rehypeShiki from '@shikijs/rehype';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import React, { createElement } from 'react';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeSlug from 'rehype-slug';
 import {
 	CurrentDate,
 	Today,
 	TodayEnglish,
 	TodayShort,
 } from '@/components/mdx/CurrentDate';
+import { shikiOptions } from '@/lib/shiki';
 import { toKebabCase } from '@/lib/utils';
 
 const getTextContent = (node: React.ReactNode): string => {
@@ -69,10 +73,29 @@ const components = {
 	TodayEnglish,
 };
 
-export const CustomMDX = ({ ...props }): React.JSX.Element => (
-	<MDXRemote
-		{...props}
-		components={{ ...components, ...(props.components || {}) }}
-		source={props.source}
-	/>
-);
+export const CustomMDX = async ({ ...props }): Promise<React.JSX.Element> => {
+	return (
+		<MDXRemote
+			{...props}
+			components={{ ...components, ...(props.components || {}) }}
+			options={{
+				mdxOptions: {
+					rehypePlugins: [
+						rehypeSlug,
+						[rehypeShiki, shikiOptions],
+						[
+							rehypeAutolinkHeadings,
+							{
+								behavior: 'wrap',
+								properties: {
+									className: ['anchor'],
+								},
+							},
+						],
+					],
+				},
+			}}
+			source={props.source}
+		/>
+	);
+};

@@ -44,25 +44,6 @@ const structuredData = {
 };
 
 const Home = (): React.JSX.Element => {
-	// const controls = useAnimation();
-	// //const [filter, setFilter] = useState<FilterType>('all');
-	//
-	// useEffect(() => {
-	// 	controls.set({
-	// 		y: 15,
-	// 		opacity: 0,
-	// 	});
-	//
-	// 	controls.start({
-	// 		y: 0,
-	// 		opacity: 1,
-	// 		transition: {
-	// 			duration: 0.5,
-	// 			ease: 'easeInOut',
-	// 		},
-	// 	});
-	// }, [controls]);
-
 	const structuredDataId: string = useId();
 
 	return (
