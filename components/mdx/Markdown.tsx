@@ -9,8 +9,15 @@ import {
 	TodayEnglish,
 	TodayShort,
 } from '@/components/mdx/CurrentDate';
+import {
+	Marquee,
+	MarqueeContent,
+	MarqueeFade,
+	MarqueeItem,
+} from '@/components/ui/Marquee';
 import { shikiOptions } from '@/lib/shiki';
-import { toKebabCase } from '@/lib/utils';
+import { cn, toKebabCase } from '@/lib/utils';
+import { stack } from '@/resources/stack';
 
 const getTextContent = (node: React.ReactNode): string => {
 	if (typeof node === 'string') {
@@ -36,29 +43,24 @@ const createHeading = (level: number) => {
 		const textContent = getTextContent(children);
 		const slug = textContent ? toKebabCase(textContent) : '';
 
-		const headingStyles = {
-			1: 'text-4xl font-extrabold',
-			2: 'text-3xl font-bold',
-			3: 'text-2xl font-bold',
-			4: 'text-xl font-semibold text-theme font-pixelify-sans',
-			5: 'text-lg font-medium',
-			6: 'text-base font-normal',
-		};
-
-		return createElement(
-			`h${level}`,
-			{
-				id: slug,
-				className: headingStyles[level as keyof typeof headingStyles],
-			},
-			children
-		);
+		return createElement(`h${level}`, { id: slug }, children);
 	};
 
 	Heading.displayName = `Heading${level}`;
 
 	return Heading;
 };
+
+const stackIcons: React.JSX.Element[] = stack.map(
+	({ icon: Icon, title }: Stack, index) => (
+		<MarqueeItem key={`${title}-${index + 1}`}>
+			<div className="flex aspect-square items-center justify-center rounded-md border border-neutral-200 bg-neutral-50 p-3 dark:border-neutral-700 dark:bg-neutral-800">
+				<Icon className="size-7 shrink-0 md:size-8" />
+				<p className="sr-only">{title}</p>
+			</div>
+		</MarqueeItem>
+	)
+);
 
 const components = {
 	h1: createHeading(1),
@@ -71,6 +73,20 @@ const components = {
 	Today,
 	TodayShort,
 	TodayEnglish,
+	Stack: ({ className }: StackProps) => (
+		<div className={cn('flex flex-col gap-y-4', className)}>
+			<Marquee>
+				<MarqueeFade side="left" />
+				<MarqueeFade side="right" />
+				<MarqueeContent direction="left">{stackIcons}</MarqueeContent>
+			</Marquee>
+			<Marquee>
+				<MarqueeFade side="left" />
+				<MarqueeFade side="right" />
+				<MarqueeContent direction="right">{stackIcons}</MarqueeContent>
+			</Marquee>
+		</div>
+	),
 };
 
 export const CustomMDX = async ({ ...props }): Promise<React.JSX.Element> => {

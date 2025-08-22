@@ -42,7 +42,7 @@ export const WorkLink = ({
 				</MotionButton>
 			</TooltipTrigger>
 			<TooltipContent align="center" side="left" sideOffset={5}>
-				<p>Lire l'article</p>
+				Lire l'article !
 			</TooltipContent>
 		</Tooltip>
 	);

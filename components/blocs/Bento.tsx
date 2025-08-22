@@ -27,8 +27,6 @@ const ResponsiveGridLayout = WidthProvider(Responsive);
 const useIsomorphicLayoutEffect =
 	typeof window === 'undefined' ? useEffect : useLayoutEffect;
 
-export type FilterType = 'all' | 'about' | 'projects' | 'blog' | 'misc';
-
 type BentoProps = {
 	layouts?: Record<string, Record<string, Layout[]>>;
 	className?: string;

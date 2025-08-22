@@ -4,7 +4,7 @@ import { memo } from 'react';
 import { Card } from '@/components/ui/Card';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { Pattern } from '@/components/ui/Pattern';
-import { ArticleLink } from '@/components/widgets/article/ArticleLink';
+import { ContactLink } from '@/components/widgets/contact/ContactLink';
 import { cn } from '@/lib/utils';
 import { PROFILE_CONFIG } from '@/resources/profile';
 
@@ -45,7 +45,7 @@ export const ContactWidget = memo(
 				))}
 			</div>
 
-			<ArticleLink
+			<ContactLink
 				className="absolute right-5 bottom-5"
 				label="N'hésitez pas à me contacter !"
 				url={`mailto:${contact.email}`}

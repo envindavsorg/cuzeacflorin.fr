@@ -42,7 +42,7 @@ export const ContactLink = ({
 				</MotionButton>
 			</TooltipTrigger>
 			<TooltipContent align="center" side="left" sideOffset={5}>
-				<p>Lire l'article</p>
+				N'hésitez pas à me contacter !
 			</TooltipContent>
 		</Tooltip>
 	);

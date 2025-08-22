@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { Pattern } from '@/components/ui/Pattern';
-import { ArticleLink } from '@/components/widgets/article/ArticleLink';
+import { WorkLink } from '@/components/widgets/work/WorkLink';
 import { getFirstPost } from '@/lib/mdx';
 import { cn, formatDate } from '@/lib/utils';
 
@@ -41,7 +41,7 @@ export const WorkWidget = memo((): React.JSX.Element => {
 				</Badge>
 			</div>
 
-			<ArticleLink
+			<WorkLink
 				className="absolute right-5 bottom-5"
 				label={post.metadata.title}
 				url={`/posts/${post.slug}`}

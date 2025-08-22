@@ -5,7 +5,7 @@ import { CustomMDX } from '@/components/mdx/Markdown';
 import { Header } from '@/components/navigation/Header';
 import { Badge } from '@/components/ui/Badge';
 import { getAllPosts } from '@/lib/mdx';
-import { formatDate } from '@/lib/utils';
+import { cn, formatDate } from '@/lib/utils';
 
 type Params = Promise<{ slug: string }>;
 
@@ -27,13 +27,18 @@ const PostPage = async ({
 	}
 
 	return (
-		<div className="py-15">
+		<div
+			className={cn(
+				'relative mx-auto w-full py-15',
+				'max-w-[320px] sm:max-w-[375px] md:max-w-[800px] lg:max-w-[1200px]'
+			)}
+		>
 			<Header />
 
 			<main className="mx-auto mt-10 flex max-w-prose flex-col gap-y-10">
 				<section className="flex flex-col items-center justify-center gap-y-3">
 					<h1
-						className="inline-block font-bold font-pixelify-sans text-3xl text-theme md:text-4xl"
+						className="inline-block text-center font-bold font-pixelify-sans text-3xl text-theme md:text-4xl"
 						title={post.metadata.title}
 					>
 						{post.metadata.title}

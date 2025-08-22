@@ -42,7 +42,7 @@ export const PortfolioLink = ({
 				</MotionButton>
 			</TooltipTrigger>
 			<TooltipContent align="center" side="left" sideOffset={5}>
-				<p>Voir le projet</p>
+				Voir le projet !
 			</TooltipContent>
 		</Tooltip>
 	);

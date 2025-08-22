@@ -42,7 +42,7 @@ export const ArticleLink = ({
 				</MotionButton>
 			</TooltipTrigger>
 			<TooltipContent align="center" side="left" sideOffset={5}>
-				<p>{label}</p>
+				Lire l'article !
 			</TooltipContent>
 		</Tooltip>
 	);

@@ -215,20 +215,28 @@ div[mapboxgl-children] {
 }
 
 /* MDX */
-.prose .anchor {
-	@apply invisible absolute -ml-6 pr-2 no-underline;
-
-	&:after {
-		@apply text-neutral-300 content-['#'] dark:text-neutral-700;
-	}
+.prose h1 .anchor {
+	@apply no-underline text-4xl font-extrabold;
 }
 
-.anchor:hover {
-	@apply visible;
+.prose h2 .anchor {
+	@apply no-underline text-3xl font-bold;
 }
 
-.prose *:hover > .anchor {
-	@apply visible;
+.prose h3 .anchor {
+	@apply no-underline text-2xl font-bold;
+}
+
+.prose h4 .anchor {
+	@apply no-underline text-xl font-semibold text-theme font-pixelify-sans;
+}
+
+.prose h5 .anchor {
+	@apply no-underline text-lg font-medium;
+}
+
+.prose h6 .anchor {
+	@apply no-underline text-base font-normal;
 }
 
 /* Shiki Code Highlighting */
@@ -308,4 +316,3 @@ html:not(.dark) .prose pre code span {
 ::view-transition-new(root) {
 	z-index: 999;
 }
-

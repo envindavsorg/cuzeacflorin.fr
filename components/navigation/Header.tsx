@@ -20,24 +20,24 @@ export const Header = ({ className }: HeaderProps): React.JSX.Element => {
 	const MotionButton = motion.create(Button);
 
 	return (
-		<header className="flex items-center justify-center">
+		<header className="flex items-center justify-center transition-all duration-300 has-[button:hover]:pb-4">
 			<Tooltip>
 				<TooltipTrigger asChild>
 					<MotionButton
-						className={cn('group bg-white', className)}
+						className={cn('group bg-foreground', className)}
 						size="icon"
 						variant="icon"
 						whileHover={{ scale: 1.05 }}
 						whileTap={{ scale: 0.95 }}
 					>
 						<Link aria-label="Retour en arrière" href="/">
-							<XIcon className="size-4.5 text-black transition-transform duration-300 group-hover:rotate-90" />
+							<XIcon className="size-4.5 text-background transition-transform duration-300 group-hover:rotate-90" />
 							<span className="sr-only">Retour en arrière</span>
 						</Link>
 					</MotionButton>
 				</TooltipTrigger>
-				<TooltipContent align="center" side="right" sideOffset={5}>
-					<p>Retour en arrière</p>
+				<TooltipContent align="center" side="left" sideOffset={5}>
+					Fermer
 				</TooltipContent>
 			</Tooltip>
 		</header>

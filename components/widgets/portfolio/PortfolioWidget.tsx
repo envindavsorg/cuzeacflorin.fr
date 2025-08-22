@@ -38,6 +38,12 @@ export const PortfolioWidget = memo((): React.JSX.Element => {
 				src={portfolioScreen}
 			/>
 
+			<h3 className="absolute top-5 left-5 font-bold font-pixelify-sans text-3xl text-white">
+				Mon
+				<br />
+				portfolio
+			</h3>
+
 			<PortfolioLink
 				className="absolute top-5 right-5"
 				label={projectName}
