@@ -9,4 +9,15 @@ export const BentoItem = ({
 	...props
 }: Readonly<
 	BentoItemProps & React.HTMLAttributes<HTMLDivElement>
->): React.JSX.Element => <div {...props}>{<Component />}</div>;
+>): React.JSX.Element => (
+	<div
+		{...props}
+		style={
+			{
+				transition: '0.25s ease',
+			} as React.CSSProperties
+		}
+	>
+		{<Component />}
+	</div>
+);
