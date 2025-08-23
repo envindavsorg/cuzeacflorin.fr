@@ -3,16 +3,15 @@
 import { motion } from 'motion/react';
 import type React from 'react';
 import { useLayoutEffect, useRef, useState } from 'react';
-import {cn} from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
-export const filters = ['Tout', 'Moi', 'Travail', 'Blog', 'Outils'];
+export const filters = ['Tout', 'Moi', 'Travail', 'Blog'];
 
 const filterMapping: Record<string, FilterType> = {
 	Tout: 'all',
 	Moi: 'about',
 	Travail: 'projects',
 	Blog: 'blog',
-	Outils: 'misc',
 };
 
 type FiltersProps = {
@@ -36,10 +35,12 @@ export const Filter = ({
 	}, []);
 
 	return (
-		<div className={cn(
-			"relative flex translate-x-0 transform-gpu p-2 text-xs md:text-sm font-bold md:font-medium font-mono",
-			'dark:border border-input rounded-full bg-input dark:bg-transparent'
-		)}>
+		<div
+			className={cn(
+				'relative flex translate-x-0 transform-gpu p-2 font-bold font-mono text-sm md:font-medium md:text-sm',
+				'rounded-full border-input bg-input dark:border dark:bg-transparent'
+			)}
+		>
 			<motion.div
 				animate={{ left, width, opacity: isInitialized ? 1 : 0 }}
 				className="-z-10 absolute h-8 rounded-2xl border border-input bg-white dark:bg-transparent"

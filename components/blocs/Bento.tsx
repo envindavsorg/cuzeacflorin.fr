@@ -14,12 +14,12 @@ const itemCategories: Record<string, FilterType[]> = {
 	cv: ['projects'],
 	commit: ['about', 'projects'],
 	article: ['blog'],
-	switcher: ['misc'],
+	switcher: ['about'],
 	linkedin: ['projects'],
 	contact: ['about'],
 	portfolio: ['blog'],
 	work: ['projects', 'blog'],
-	clock: ['misc'],
+	clock: ['about'],
 };
 
 const ResponsiveGridLayout = WidthProvider(Responsive);

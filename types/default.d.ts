@@ -8,7 +8,7 @@ declare global {
 	// fonts
 	type NextFont = NextFontWithVariable;
 	// filters
-	export type FilterType = 'all' | 'about' | 'projects' | 'blog' | 'misc';
+	export type FilterType = 'all' | 'about' | 'projects' | 'blog';
 	// stack
 	export type Stack = {
 		icon: ComponentType<SVGProps<SVGSVGElement>>;

@@ -20,7 +20,7 @@ export const NavBar = ({ setFilter }: NavBarProps): React.JSX.Element => (
 			faster
 		>
 			<Fade asChild>
-				<Avatar className="size-14 md:size-12">
+				<Avatar className="size-18 md:size-12">
 					<AvatarImage src="/avatar.webp" />
 					<AvatarFallback>CF</AvatarFallback>
 				</Avatar>
