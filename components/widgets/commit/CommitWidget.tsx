@@ -1,4 +1,4 @@
-import { GitCommitIcon, GithubLogoIcon } from '@phosphor-icons/react/ssr';
+import { GithubLogoIcon } from '@phosphor-icons/react/ssr';
 import type React from 'react';
 import { memo, Suspense } from 'react';
 import { Card } from '@/components/ui/Card';
@@ -21,18 +21,13 @@ export const CommitWidget = memo(
 
 			<div className="flex h-full flex-col justify-between">
 				<div className="inline-block">
-					<GithubLogoIcon className="size-10 text-violet-600 lg:size-18 dark:text-violet-300" />
+					<GithubLogoIcon className="size-10 lg:size-16" />
 				</div>
-				<div className="flex flex-col gap-y-1">
-					<div className="flex items-center gap-x-3">
-						<GitCommitIcon className="size-7" />
-						<Suspense fallback={<DataSkeleton />}>
-							<DataContent />
-						</Suspense>
-					</div>
-					<p className="text-muted-foreground text-sm">
-						- effectués cette année
-					</p>
+				<div className="flex flex-col gap-y-0.5">
+					<Suspense fallback={<DataSkeleton />}>
+						<DataContent />
+					</Suspense>
+					<p className="text-muted-foreground text-sm">- commits cette année</p>
 				</div>
 			</div>
 

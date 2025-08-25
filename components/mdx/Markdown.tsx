@@ -3,12 +3,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import React, { createElement } from 'react';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
-import {
-	CurrentDate,
-	Today,
-	TodayEnglish,
-	TodayShort,
-} from '@/components/elements/CurrentDate';
+import { CurrentDate } from '@/components/elements/CurrentDate';
 import {
 	Marquee,
 	MarqueeContent,
@@ -70,9 +65,6 @@ const components = {
 	h5: createHeading(5),
 	h6: createHeading(6),
 	CurrentDate,
-	Today,
-	TodayShort,
-	TodayEnglish,
 	Stack: ({ className }: StackProps) => (
 		<div className={cn('flex flex-col gap-y-4', className)}>
 			<Marquee>

@@ -24,6 +24,7 @@ const nextConfig: NextConfig = {
 	eslint: {
 		ignoreDuringBuilds: true,
 	},
+	devIndicators: false,
 	experimental: {
 		mdxRs: true,
 		optimizePackageImports: [

@@ -6,6 +6,7 @@ import ThemeProvider from '@/providers/theme/Provider';
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
 import { Noise } from '@/components/animation/Noise';
+import { Toaster } from '@/components/ui/Sonner';
 import { cn } from '@/lib/utils';
 import { generateMetadata } from '@/resources/meta';
 
@@ -65,6 +66,7 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => (
 				{children}
 				<Noise />
 				<Suspense fallback={null}>
+					<Toaster position="bottom-right" richColors />
 					<Sparkles density={150} />
 				</Suspense>
 			</AppProviders>

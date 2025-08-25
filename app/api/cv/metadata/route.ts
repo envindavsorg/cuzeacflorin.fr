@@ -3,7 +3,7 @@ import { join } from 'node:path';
 import { NextResponse } from 'next/server';
 import { logger } from '@/lib/logger';
 
-const FILE_NAME = 'cv-cuzeac-florin.pdf';
+const FILE_NAME = '/cv/cv-cuzeac-florin.pdf';
 
 type CvMetadata = {
 	sizeKB: number;

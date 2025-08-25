@@ -8,12 +8,10 @@ export const DataContent = memo(async (): Promise<React.JSX.Element> => {
 
 	return (
 		<Counter
-			className="font-extrabold text-xl md:text-3xl"
+			className="p-0 font-archivo-black font-bold text-4xl tabular-nums tracking-wide lg:text-5xl"
 			interval={10}
 			value={contributions.totalContributions}
-		>
-			<span className="font-bold text-base md:text-lg">commits</span>
-		</Counter>
+		/>
 	);
 });
 

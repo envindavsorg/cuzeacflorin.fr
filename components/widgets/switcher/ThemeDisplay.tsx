@@ -10,15 +10,15 @@ type ThemeDisplayProps = {
 
 const THEME_CONFIG = {
 	light: {
-		mode: 'Clair',
-		phrase: 'lampe de bureau IKEA 💡',
+		mode: 'Sombre',
+		phrase: 'il va faire nuit !',
 	},
 	dark: {
-		mode: 'Sombre',
-		phrase: 'développeur à 3h du mat 🦉',
+		mode: 'Clair',
+		phrase: 'il va faire jour !',
 	},
 	fallback: {
-		mode: 'Quel mode ?',
+		mode: 'Mode ?',
 		phrase: 'lumière ou obscurité ?',
 	},
 } as const;
@@ -35,13 +35,11 @@ export const ThemeDisplay = memo(
 		const { mode, phrase } = getThemeConfig();
 
 		return (
-			<div className="flex flex-col items-center justify-center gap-y-2">
-				<h3 className="text-center font-bold font-pixelify-sans text-3xl text-theme">
+			<div className="flex flex-col items-center justify-center gap-y-3">
+				<h3 className="font-archivo-black font-bold text-4xl tracking-wide lg:text-5xl">
 					{mode}
 				</h3>
-				<p className="text-center text-muted-foreground text-sm max-lg:hidden">
-					{phrase}
-				</p>
+				<p className="text-base text-theme uppercase lg:text-lg">{phrase}</p>
 			</div>
 		);
 	}

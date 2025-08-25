@@ -1,7 +1,8 @@
 'use client';
 
 import { useAnimation } from 'motion/react';
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import type React from 'react';
+import { useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import { type Layout, Responsive, WidthProvider } from 'react-grid-layout';
 import { NavBar } from '@/components/navigation/NavBar';
 import useBreakpoint from '@/hooks/useBreakpoint';
@@ -39,7 +40,6 @@ export const Bento = ({
 	children,
 }: Readonly<BentoProps>): React.JSX.Element => {
 	const [isMounted, setMounted] = useState(false);
-	const [isDraggable, setDraggable] = useState(true);
 	const { breakpoint, setBreakpoint } = useBreakpoint();
 
 	const [height, setHeight] = useState(() => {
@@ -51,10 +51,6 @@ export const Bento = ({
 	});
 
 	useIsomorphicLayoutEffect(() => {
-		if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-			setDraggable(false);
-		}
-
 		setMounted(true);
 	}, []);
 
@@ -83,7 +79,7 @@ export const Bento = ({
 		});
 	}, [controls]);
 
-	const filterCSS = React.useMemo(() => {
+	const filterCSS = useMemo(() => {
 		if (filter === 'all') {
 			return '';
 		}
@@ -130,7 +126,7 @@ export const Bento = ({
 						cols={cols}
 						draggableCancel=".cancel-drag"
 						isBounded
-						isDraggable={isDraggable}
+						isDraggable={false}
 						isResizable={false}
 						layouts={layouts?.[filter] || {}}
 						margin={[16, 16]}

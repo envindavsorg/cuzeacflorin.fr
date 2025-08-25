@@ -1,4 +1,4 @@
-import { LinkedinLogoIcon, UsersIcon } from '@phosphor-icons/react/dist/ssr';
+import { LinkedinLogoIcon } from '@phosphor-icons/react/dist/ssr';
 import type React from 'react';
 import { memo, Suspense } from 'react';
 import { Card } from '@/components/ui/Card';
@@ -21,17 +21,16 @@ export const LinkedInWidget = memo(
 
 			<div className="flex h-full flex-col justify-between">
 				<div className="inline-block">
-					<LinkedinLogoIcon className="size-10 text-blue-600 lg:size-18 dark:text-blue-300" />
+					<LinkedinLogoIcon className="size-10 lg:size-16" />
 				</div>
 
-				<div className="flex flex-col gap-y-1">
-					<div className="flex items-center gap-x-3">
-						<UsersIcon className="size-7" />
-						<Suspense fallback={<DataSkeleton />}>
-							<DataContent />
-						</Suspense>
-					</div>
-					<p className="text-muted-foreground text-sm">- sur LinkedIn</p>
+				<div className="flex flex-col gap-y-0.5">
+					<Suspense fallback={<DataSkeleton />}>
+						<DataContent />
+					</Suspense>
+					<p className="text-muted-foreground text-sm">
+						- abonnés sur LinkedIn
+					</p>
 				</div>
 			</div>
 
