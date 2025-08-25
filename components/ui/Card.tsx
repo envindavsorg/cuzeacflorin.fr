@@ -1,18 +1,28 @@
 import type React from 'react';
+import { Pattern } from '@/components/ui/Pattern';
 import { cn } from '@/lib/utils';
+
+type CardProps = {
+	pattern?: boolean;
+};
 
 const Card = ({
 	className,
+	children,
+	pattern = false,
 	...props
-}: React.ComponentProps<'div'>): React.JSX.Element => (
+}: React.ComponentProps<'div'> & CardProps): React.JSX.Element => (
 	<div
 		className={cn(
-			'flex flex-col gap-6 rounded-md border bg-card py-3 text-card-foreground',
+			'relative flex flex-col gap-6 rounded-md border bg-card py-3 text-card-foreground',
 			className
 		)}
 		data-slot="card"
 		{...props}
-	/>
+	>
+		{children}
+		{pattern && <Pattern />}
+	</div>
 );
 
 const CardHeader = ({

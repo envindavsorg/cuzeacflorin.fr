@@ -1,11 +1,11 @@
 import type React from 'react';
 import { lazy, Suspense } from 'react';
-import { fonts } from '@/lib/fonts';
+import { fonts } from '@/fonts/fonts';
 import { ComposeProviders, type Provider } from '@/providers/compose';
 import ThemeProvider from '@/providers/theme/Provider';
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
-import Noise from '@/components/animation/Noise';
+import { Noise } from '@/components/animation/Noise';
 import { cn } from '@/lib/utils';
 import { generateMetadata } from '@/resources/meta';
 
@@ -53,7 +53,8 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => (
 			'scrollbar-hide h-full antialiased',
 			fonts.sans.variable,
 			fonts.mono.variable,
-			fonts.pixelify.variable
+			fonts.pixelify.variable,
+			fonts.archivo.variable
 		)}
 		dir="ltr"
 		lang="fr"

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const PLATFORM_REGEX =
+const PLATFORM_REGEX: RegExp =
 	/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
 
 export const useReducedMotion = (): boolean => {
@@ -14,8 +14,8 @@ export const useReducedMotion = (): boolean => {
 
 		setPrefersReducedMotion(mediaQuery.matches || isMobile);
 
-		const handleChange = (e: MediaQueryListEvent) => {
-			setPrefersReducedMotion(e.matches || isMobile);
+		const handleChange = (event: MediaQueryListEvent) => {
+			setPrefersReducedMotion(event.matches || isMobile);
 		};
 
 		mediaQuery.addEventListener('change', handleChange);

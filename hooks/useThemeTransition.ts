@@ -4,7 +4,7 @@ import { useTheme } from 'next-themes';
 import { useEffect, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
 
-const useThemeTransition = () => {
+const useThemeTransition = (): ThemeTransition => {
 	const { theme, setTheme, resolvedTheme } = useTheme();
 	const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 	const [isMounted, setIsMounted] = useState<boolean>(false);

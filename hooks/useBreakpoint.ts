@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { breakpoints } from '@/lib/consts';
 
-const useBreakpoint = () => {
+const useBreakpoint = (): Breakpoints => {
 	const [breakpoint, setBreakpoint] = useState<string>('');
 
 	useEffect(() => {
 		const handleResize = () => {
-			const width = window.innerWidth;
-			const newBreakpoint =
+			const width: number = window.innerWidth;
+			const newBreakpoint: string =
 				Object.keys(breakpoints).find((key) => width > breakpoints[key]) ??
 				'xxs';
 			setBreakpoint(newBreakpoint);
@@ -18,7 +18,10 @@ const useBreakpoint = () => {
 		return () => window.removeEventListener('resize', handleResize);
 	}, []);
 
-	return { breakpoint, setBreakpoint };
+	return {
+		breakpoint,
+		setBreakpoint,
+	};
 };
 
 export default useBreakpoint;

@@ -2,9 +2,10 @@
 
 import type React from 'react';
 import { useEffect, useState } from 'react';
+import { cn } from '@/lib/utils';
 
 type CurrentDateProps = {
-	format?: 'full' | 'short' | 'numeric' | 'custom';
+	format?: 'full' | 'short' | 'numeric' | 'custom' | 'weekday';
 	locale?: string;
 	customFormat?: Intl.DateTimeFormatOptions;
 	className?: string;
@@ -51,8 +52,17 @@ export const CurrentDate = ({
 						year: 'numeric',
 					};
 					break;
+				case 'weekday':
+					options = {
+						weekday: 'short',
+					};
+					break;
 				default:
-					options = { day: 'numeric', month: 'long', year: 'numeric' };
+					options = {
+						day: 'numeric',
+						month: 'long',
+						year: 'numeric',
+					};
 					break;
 			}
 		}
@@ -62,12 +72,8 @@ export const CurrentDate = ({
 	}, [format, locale, customFormat]);
 
 	if (!isClient) {
-		return <span className={className}>...</span>;
+		return <span className={cn('font-sans', className)}>...</span>;
 	}
 
-	return <span className={className}>{currentDate}</span>;
+	return <span className={cn('font-sans', className)}>{currentDate}</span>;
 };
-
-export const Today = () => <CurrentDate format="full" locale="fr-FR" />;
-export const TodayShort = () => <CurrentDate format="short" locale="fr-FR" />;
-export const TodayEnglish = () => <CurrentDate format="full" locale="en-US" />;

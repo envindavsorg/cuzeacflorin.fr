@@ -8,7 +8,7 @@ import {
 	Today,
 	TodayEnglish,
 	TodayShort,
-} from '@/components/mdx/CurrentDate';
+} from '@/components/elements/CurrentDate';
 import {
 	Marquee,
 	MarqueeContent,

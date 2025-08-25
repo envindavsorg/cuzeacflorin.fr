@@ -85,6 +85,7 @@
 	--font-geist-sans: var(--font-geist-sans);
 	--font-geist-mono: var(--font-geist-mono);
 	--font-pixelify-sans: var(--font-pixelify-sans);
+	--font-archivo-black: var(--font-archivo-black);
 	/* custom variables */
 	--ease-slow: cubic-bezier(0.405, 0, 0.025, 1);
 	--ease-minor-spring: cubic-bezier(0.18, 0.89, 0.82, 1.04);

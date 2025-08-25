@@ -13,7 +13,7 @@ type ViewState = {
 	zoom: number;
 };
 
-const useLocationMap = () => {
+const useLocationMap = (): LocationMap => {
 	const [mouseEntered, setMouseEntered] = useState(false);
 	const [viewState, setViewState] = useState<ViewState>({
 		latitude: location.latitude,

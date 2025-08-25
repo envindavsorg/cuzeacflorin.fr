@@ -8,7 +8,7 @@ type NoiseProps = {
 	patternAlpha?: number;
 };
 
-const Noise: React.FC<NoiseProps> = ({
+export const Noise: React.FC<NoiseProps> = ({
 	patternRefreshInterval = 2,
 	patternAlpha = 15,
 }): React.JSX.Element => {
@@ -36,8 +36,27 @@ const Noise: React.FC<NoiseProps> = ({
 			canvas.width = canvasSize;
 			canvas.height = canvasSize;
 
-			canvas.style.width = '100%';
-			canvas.style.height = '100%';
+			const body = document.body;
+			const html = document.documentElement;
+
+			const fullHeight = Math.max(
+				body.scrollHeight,
+				body.offsetHeight,
+				html.clientHeight,
+				html.scrollHeight,
+				html.offsetHeight
+			);
+
+			const fullWidth = Math.max(
+				body.scrollWidth,
+				body.offsetWidth,
+				html.clientWidth,
+				html.scrollWidth,
+				html.offsetWidth
+			);
+
+			canvas.style.width = `${fullWidth}px`;
+			canvas.style.height = `${fullHeight}px`;
 		};
 
 		const drawGrain = () => {
@@ -63,23 +82,32 @@ const Noise: React.FC<NoiseProps> = ({
 			animationId = window.requestAnimationFrame(loop);
 		};
 
+		const resizeObserver = new ResizeObserver(() => {
+			resize();
+		});
+
+		resizeObserver.observe(document.body);
+
 		window.addEventListener('resize', resize);
 		resize();
 		loop();
 
 		return () => {
 			window.removeEventListener('resize', resize);
+			resizeObserver.disconnect();
 			window.cancelAnimationFrame(animationId);
 		};
 	}, [patternRefreshInterval, patternAlpha]);
 
 	return (
 		<canvas
-			className="pointer-events-none fixed inset-0 h-full w-full"
+			className="pointer-events-none fixed inset-0"
 			ref={grainRef}
-			style={{ imageRendering: 'pixelated' }}
+			style={{
+				imageRendering: 'pixelated',
+				minHeight: '100vh',
+				minWidth: '100vw',
+			}}
 		/>
 	);
 };
-
-export default Noise;

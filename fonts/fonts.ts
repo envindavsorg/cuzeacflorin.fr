@@ -1,4 +1,5 @@
 import {
+	Archivo_Black,
 	Geist_Mono,
 	Geist as Geist_Sans,
 	Pixelify_Sans,
@@ -20,8 +21,15 @@ export const pixelify: NextFont = Pixelify_Sans({
 	variable: '--font-pixelify-sans',
 });
 
+export const archivo: NextFont = Archivo_Black({
+	weight: ['400'],
+	subsets: ['latin'],
+	variable: '--font-archivo-black',
+});
+
 export const fonts = {
 	sans,
 	mono,
 	pixelify,
+	archivo,
 };
