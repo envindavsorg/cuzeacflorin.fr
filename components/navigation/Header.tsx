@@ -20,7 +20,7 @@ export const Header = ({ className }: HeaderProps): React.JSX.Element => {
 	const MotionButton = motion.create(Button);
 
 	return (
-		<header className="flex items-center justify-center transition-all duration-300 has-[button:hover]:pb-4">
+		<header className="flex items-center justify-center transition-all duration-500 ease-out has-[button:hover]:pb-4">
 			<Tooltip>
 				<TooltipTrigger asChild>
 					<MotionButton
