@@ -31,7 +31,7 @@ export const ArticleWidget = memo((): React.JSX.Element => {
 				{post.metadata.description}
 			</Paragraph>
 
-			<div className="flex flex-col gap-1.5 *:px-2 *:py-1.5 md:flex-row md:items-center md:gap-3">
+			<div className="flex flex-col gap-1.5 *:px-2 *:py-1.5 md:gap-3 lg:flex-row lg:items-center">
 				<Badge variant="outline">
 					<CalendarDotsIcon />
 					{formatDate(post.metadata.date)}

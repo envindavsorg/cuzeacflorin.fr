@@ -21,7 +21,7 @@ export const SwitcherWidget = memo((): React.JSX.Element => {
 	return (
 		<Card
 			className={cn(
-				'!gap-3 flex-col items-center justify-center rounded-3xl md:p-4 lg:p-8',
+				'lg:!gap-3 justify-center gap-3 rounded-3xl md:flex-row md:justify-start md:gap-x-6 md:p-4 lg:flex-col lg:items-center lg:justify-center lg:p-8',
 				'size-full select-none overflow-hidden md:cursor-grab md:active:cursor-grabbing',
 				'shadow-xs transition-shadow duration-300 hover:shadow-sm'
 			)}

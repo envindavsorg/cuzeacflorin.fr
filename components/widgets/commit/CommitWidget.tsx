@@ -19,11 +19,11 @@ export const CommitWidget = memo(
 		>
 			<GitHubLink className="absolute top-5 right-5" />
 
-			<div className="flex h-full flex-col justify-between">
+			<div className="flex h-full flex-col justify-between gap-x-6 md:flex-row md:items-center md:justify-start lg:flex-col lg:items-start lg:justify-between">
 				<div className="inline-block">
 					<GithubLogoIcon className="size-10 lg:size-16" />
 				</div>
-				<div className="flex flex-col gap-y-0.5">
+				<div className="flex flex-col lg:gap-y-0.5">
 					<Suspense fallback={<DataSkeleton />}>
 						<DataContent />
 					</Suspense>

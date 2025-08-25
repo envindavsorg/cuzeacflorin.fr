@@ -45,7 +45,7 @@ export const PortfolioWidget = memo((): React.JSX.Element => {
 			/>
 
 			<Safari
-				className="-rotate-25 absolute top-5 left-15 h-full w-120"
+				className="-rotate-10 md:-rotate-20 lg:-rotate-25 absolute top-25 left-15 h-full w-120 md:top-20 md:left-20 lg:top-5 lg:left-15"
 				imageSrc={
 					!mounted || resolvedTheme === 'light'
 						? '/images/portfolio/screen/light.webp'

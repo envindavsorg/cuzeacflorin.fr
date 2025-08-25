@@ -35,11 +35,13 @@ export const ThemeDisplay = memo(
 		const { mode, phrase } = getThemeConfig();
 
 		return (
-			<div className="flex flex-col items-center justify-center gap-y-3">
+			<div className="flex flex-col items-center justify-center gap-y-3 md:items-start md:gap-y-0.5 lg:items-center lg:gap-y-3">
 				<h3 className="font-archivo-black font-bold text-4xl tracking-wide lg:text-5xl">
 					{mode}
 				</h3>
-				<p className="text-base text-theme uppercase lg:text-lg">{phrase}</p>
+				<p className="text-base text-theme uppercase max-md:hidden lg:text-lg">
+					{phrase}
+				</p>
 			</div>
 		);
 	}
