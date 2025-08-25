@@ -62,10 +62,7 @@ const fetchGitHubData = async (): Promise<GitHubUserData> => {
 	try {
 		// Check in-memory cache first (for edge runtime)
 		const now = Date.now();
-		if (
-			memoryCache.data &&
-			now - memoryCache.timestamp < MEMORY_CACHE_TTL
-		) {
+		if (memoryCache.data && now - memoryCache.timestamp < MEMORY_CACHE_TTL) {
 			return memoryCache.data;
 		}
 
@@ -147,7 +144,7 @@ const fetchGitHubData = async (): Promise<GitHubUserData> => {
 					}
 				}
 			`,
-			{ username: GITHUB_USERNAME },
+			{ username: GITHUB_USERNAME }
 		);
 
 		// Process contribution data
@@ -158,9 +155,7 @@ const fetchGitHubData = async (): Promise<GitHubUserData> => {
 
 		for (const week of weeklyContributions) {
 			for (const day of week.contributionDays) {
-				if (
-					day.contributionCount > maxContributionDay.contributionCount
-				) {
+				if (day.contributionCount > maxContributionDay.contributionCount) {
 					maxContributionDay = day;
 				}
 			}
@@ -168,8 +163,7 @@ const fetchGitHubData = async (): Promise<GitHubUserData> => {
 
 		const latestContributions = weeklyContributions.slice(-16);
 		const totalContributions =
-			user.contributionsCollection.contributionCalendar
-				.totalContributions;
+			user.contributionsCollection.contributionCalendar.totalContributions;
 
 		const colors = ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'];
 
@@ -181,7 +175,7 @@ const fetchGitHubData = async (): Promise<GitHubUserData> => {
 			following: user.following.totalCount,
 			stars: user.repositories.nodes.reduce(
 				(totalStars, repo) => totalStars + repo.stargazers.totalCount,
-				0,
+				0
 			),
 			contributions: {
 				totalContributions,
@@ -225,7 +219,7 @@ export const getGitHubUserData = unstable_cache(
 	{
 		revalidate: CACHE_REVALIDATE,
 		tags: [CACHE_TAG],
-	},
+	}
 );
 
 // Optional: Function to manually revalidate GitHub data

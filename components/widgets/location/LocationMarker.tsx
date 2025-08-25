@@ -42,8 +42,8 @@ export const LocationMarker = memo(
 					</motion.div>
 				</motion.div>
 			),
-			[mouseEntered],
-		),
+			[mouseEntered]
+		)
 );
 
 LocationMarker.displayName = 'LocationMarker';

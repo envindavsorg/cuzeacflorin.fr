@@ -30,7 +30,7 @@ export const LocationWidget = memo((): React.JSX.Element => {
 			className={cn(
 				'group relative justify-center rounded-3xl p-0',
 				'size-full select-none overflow-hidden md:cursor-grab md:active:cursor-grabbing',
-				'shadow-xs transition-shadow duration-300 hover:shadow-sm',
+				'shadow-xs transition-shadow duration-300 hover:shadow-sm'
 			)}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
@@ -39,17 +39,17 @@ export const LocationWidget = memo((): React.JSX.Element => {
 				<FallbackImage />
 			) : (
 				<MapView
-					ref={mapRef}
-					viewState={viewState}
-					mouseEntered={mouseEntered}
-					isLoaded={isLoaded}
 					canZoomIn={canZoomIn}
 					canZoomOut={canZoomOut}
-					onMove={handleMove}
-					onLoad={handleLoad}
+					isLoaded={isLoaded}
+					mouseEntered={mouseEntered}
 					onError={handleError}
+					onLoad={handleLoad}
+					onMove={handleMove}
 					onZoomIn={() => handleZoom('in')}
 					onZoomOut={() => handleZoom('out')}
+					ref={mapRef}
+					viewState={viewState}
 				/>
 			)}
 		</Card>

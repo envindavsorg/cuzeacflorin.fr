@@ -65,6 +65,7 @@ const components = {
 	h5: createHeading(5),
 	h6: createHeading(6),
 	CurrentDate,
+	Today: CurrentDate,
 	Stack: ({ className }: StackProps) => (
 		<div className={cn('flex flex-col gap-y-4', className)}>
 			<Marquee>

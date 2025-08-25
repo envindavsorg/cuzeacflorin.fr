@@ -56,7 +56,7 @@ export const Sparkles = memo(
 				return;
 			}
 
-			let isMounted = true;
+			let _isMounted = true;
 
 			const initEngine = async () => {
 				try {
@@ -64,9 +64,7 @@ export const Sparkles = memo(
 						await loadSlim(engine);
 					});
 
-					if (isMounted) {
-						setIsInitialized(true);
-					}
+					setIsInitialized(true);
 				} catch (error) {
 					logger.warn('Failed to initialize particles engine:', error);
 				}
@@ -75,7 +73,7 @@ export const Sparkles = memo(
 			initEngine();
 
 			return () => {
-				isMounted = false;
+				_isMounted = false;
 			};
 		}, [shouldRender]);
 
@@ -100,10 +98,8 @@ export const Sparkles = memo(
 		);
 
 		const particlesLoaded = useCallback(
-			async (container?: Container): Promise<void> => {
-				if (container) {
-					logger.debug('Particles loaded successfully');
-				}
+			async (_container?: Container): Promise<void> => {
+				logger.debug('Particles loaded successfully');
 			},
 			[]
 		);

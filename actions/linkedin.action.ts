@@ -24,10 +24,7 @@ const MEMORY_CACHE_TTL = 60 * 1000;
 const fetchLinkedInData = async (): Promise<LinkedInData> => {
 	try {
 		const now = Date.now();
-		if (
-			memoryCache.data &&
-			now - memoryCache.timestamp < MEMORY_CACHE_TTL
-		) {
+		if (memoryCache.data && now - memoryCache.timestamp < MEMORY_CACHE_TTL) {
 			return memoryCache.data;
 		}
 
@@ -87,5 +84,5 @@ export const getLinkedInFollowers = unstable_cache(
 	{
 		revalidate: CACHE_REVALIDATE,
 		tags: [CACHE_TAG],
-	},
+	}
 );

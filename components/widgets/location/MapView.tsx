@@ -50,7 +50,7 @@ export const MapView = memo(
 				onZoomIn,
 				onZoomOut,
 			},
-			ref,
+			ref
 		) => {
 			const { resolvedTheme } = useTheme();
 
@@ -63,12 +63,8 @@ export const MapView = memo(
 					dragPan={false}
 					dragRotate={false}
 					initialViewState={viewState}
-					mapboxAccessToken={
-						process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN
-					}
-					mapStyle={
-						MAP_STYLES[resolvedTheme === 'dark' ? 'dark' : 'light']
-					}
+					mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
+					mapStyle={MAP_STYLES[resolvedTheme === 'dark' ? 'dark' : 'light']}
 					maxZoom={location.zoom.max}
 					minZoom={location.zoom.min}
 					onError={onError}
@@ -97,8 +93,8 @@ export const MapView = memo(
 					)}
 				</MapGL>
 			);
-		},
-	),
+		}
+	)
 );
 
 MapView.displayName = 'MapView';
