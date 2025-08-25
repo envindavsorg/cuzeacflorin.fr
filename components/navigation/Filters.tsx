@@ -24,6 +24,7 @@ export const Filter = ({
 	const [left, setLeft] = useState(5);
 	const [width, setWidth] = useState(49);
 	const [isInitialized, setIsInitialized] = useState(false);
+	const [selectedFilter, setSelectedFilter] = useState('Tout');
 	const firstFilterRef = useRef<HTMLDivElement>(null);
 
 	useLayoutEffect(() => {
@@ -43,7 +44,7 @@ export const Filter = ({
 		>
 			<motion.div
 				animate={{ left, width, opacity: isInitialized ? 1 : 0 }}
-				className="-z-10 absolute h-8 rounded-2xl border border-input bg-white dark:bg-transparent"
+				className="-z-10 absolute h-8 rounded-2xl border border-input bg-white"
 				initial={{ left, width, opacity: 0 }}
 				style={{ left, width }}
 				transition={{
@@ -54,12 +55,16 @@ export const Filter = ({
 			/>
 			{filters.map((filter, index) => (
 				<div
-					className="flex h-8 items-center rounded-[50px] px-4 transition-opacity duration-300 ease-in-out hover:cursor-pointer"
+					className={cn(
+						'flex h-8 items-center rounded-[50px] px-4 transition-colors duration-300 ease-in-out hover:cursor-pointer',
+						selectedFilter === filter ? 'text-black' : 'dark:text-white'
+					)}
 					key={filter}
 					onClick={(event) => {
 						return ((event, filter: string) => {
 							setLeft(event.currentTarget.offsetLeft);
 							setWidth(event.currentTarget.offsetWidth);
+							setSelectedFilter(filter);
 							setFilterAction(filterMapping[filter]);
 						})(event, filter);
 					}}
