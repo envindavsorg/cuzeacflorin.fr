@@ -56,8 +56,6 @@ export const Sparkles = memo(
 				return;
 			}
 
-			let _isMounted = true;
-
 			const initEngine = async () => {
 				try {
 					await initParticlesEngine(async (engine) => {
@@ -66,15 +64,13 @@ export const Sparkles = memo(
 
 					setIsInitialized(true);
 				} catch (error) {
-					logger.warn('Failed to initialize particles engine:', error);
+					if (process.env.NODE_ENV !== 'production') {
+						logger.warn('Failed to initialize particles engine:', error);
+					}
 				}
 			};
 
 			initEngine();
-
-			return () => {
-				_isMounted = false;
-			};
 		}, [shouldRender]);
 
 		const color = useMemo(() => {
