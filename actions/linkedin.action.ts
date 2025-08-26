@@ -4,7 +4,7 @@ import { list } from '@vercel/blob';
 import { unstable_cache } from 'next/cache';
 import { logger } from '@/lib/logger';
 
-type LinkedInData = {
+export type LinkedInData = {
 	count: number;
 	updatedAt: string;
 };

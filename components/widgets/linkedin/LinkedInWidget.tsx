@@ -1,42 +1,72 @@
 import { LinkedinLogoIcon } from '@phosphor-icons/react/dist/ssr';
-import type React from 'react';
 import { memo, Suspense } from 'react';
-import { Card } from '@/components/ui/Card';
-import { Pattern } from '@/components/ui/Pattern';
-import { DataContent } from '@/components/widgets/linkedin/DataContent';
-import { DataSkeleton } from '@/components/widgets/linkedin/DataSkeleton';
-import { LinkedinLink } from '@/components/widgets/linkedin/LinkedInLink';
+import {
+	getLinkedInFollowers,
+	type LinkedInData,
+} from '@/actions/linkedin.action';
+import { Card, CardLink } from '@/components/ui/Card';
+import { Counter } from '@/components/ui/Counter';
+import { SkeletonData } from '@/components/ui/Skeleton';
 import { cn } from '@/lib/utils';
+import { PROFILE_CONFIG } from '@/resources/profile';
 
-export const LinkedInWidget = memo(
-	(): React.JSX.Element => (
+const {
+	linkedin: { handle, label, url },
+} = PROFILE_CONFIG;
+
+export const LinkedInWidget = memo(async () => {
+	const { count } = (await getLinkedInFollowers()) as LinkedInData;
+
+	return (
 		<Card
 			className={cn(
-				'relative justify-center gap-4 rounded-3xl p-8',
-				'size-full select-none overflow-hidden md:cursor-grab md:active:cursor-grabbing',
-				'shadow-xs transition-shadow duration-300 hover:shadow-sm'
+				'h-full p-6 lg:p-8',
+				'lg:flex lg:flex-col lg:items-start lg:justify-between lg:gap-x-6',
+				'grid grid-cols-2 content-between md:grid-cols-4'
 			)}
+			pattern
 		>
-			<LinkedinLink className="absolute top-5 right-5" />
+			<LinkedinLogoIcon
+				className={cn(
+					'inline-block size-12 lg:size-16',
+					'justify-self-start md:col-span-2'
+				)}
+			/>
 
-			<div className="flex h-full flex-col justify-between gap-x-6 md:flex-row md:items-center md:justify-start lg:flex-col lg:items-start lg:justify-between">
-				<div className="inline-block">
-					<LinkedinLogoIcon className="size-10 lg:size-16" />
-				</div>
+			<CardLink
+				className={cn(
+					'lg:absolute lg:top-5 lg:right-5',
+					'justify-self-end md:col-span-2'
+				)}
+				handle={handle}
+				label={label}
+				url={url}
+			/>
 
-				<div className="flex flex-col lg:gap-y-0.5">
-					<Suspense fallback={<DataSkeleton />}>
-						<DataContent />
-					</Suspense>
-					<p className="text-muted-foreground text-sm">
-						- abonnés sur LinkedIn
-					</p>
-				</div>
+			<div
+				className={cn(
+					'lg:flex lg:flex-col lg:gap-y-0.5',
+					'col-span-full md:col-span-4'
+				)}
+			>
+				<Suspense fallback={<SkeletonData />}>
+					<Counter
+						className="p-0 font-archivo-black font-bold text-3xl tabular-nums tracking-wide md:text-4xl lg:text-5xl"
+						interval={10}
+						step={10}
+						value={count}
+					>
+						<span className="inline-block text-2xl md:text-3xl lg:text-4xl min-lg:hidden">
+							abonnés
+						</span>
+					</Counter>
+				</Suspense>
+				<p className="hidden text-muted-foreground text-sm lg:inline-block">
+					- abonnés sur LinkedIn
+				</p>
 			</div>
-
-			<Pattern />
 		</Card>
-	)
-);
+	);
+});
 
 LinkedInWidget.displayName = 'LinkedInWidget';

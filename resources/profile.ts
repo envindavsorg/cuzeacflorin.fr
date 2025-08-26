@@ -64,7 +64,7 @@ export const PROFILE_CONFIG = {
 	linkedin: {
 		url: 'https://www.linkedin.com/in/cuzeacflorin/',
 		handle: '@cuzeacflorin',
-		label: 'Découvrez mon profil LinkedIn !',
+		label: 'Visiter !',
 	},
 
 	github: {

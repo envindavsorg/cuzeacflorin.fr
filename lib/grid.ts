@@ -67,7 +67,7 @@ export const layouts: any = {
 			{ i: 'clock', x: 1, y: 5, w: 2, h: 1 },
 			{ i: 'commit', x: 0, y: 6, w: 2, h: 1.25 },
 			{ i: 'switcher', x: 0, y: 3, w: 1, h: 1 },
-			{ i: 'linkedin', x: 0, y: 3, w: 2, h: 1.25 },
+			{ i: 'linkedin', x: 0, y: 3, w: 2, h: 1 },
 			{ i: 'article', x: 0, y: 8, w: 2, h: 2 },
 			{ i: 'contact', x: 0, y: 9, w: 2, h: 2 },
 			{ i: 'portfolio', x: 0, y: 4, w: 2, h: 2 },

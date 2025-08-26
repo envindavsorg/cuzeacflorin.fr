@@ -1,5 +1,16 @@
+'use client';
+
+import { ArrowUpRightIcon } from '@phosphor-icons/react';
+import { motion } from 'motion/react';
+import Link from 'next/link';
 import type React from 'react';
+import { Button } from '@/components/ui/Button';
 import { Pattern } from '@/components/ui/Pattern';
+import {
+	Tooltip,
+	TooltipContent,
+	TooltipTrigger,
+} from '@/components/ui/Tooltip';
 import { cn } from '@/lib/utils';
 
 type CardProps = {
@@ -14,7 +25,8 @@ const Card = ({
 }: React.ComponentProps<'div'> & CardProps): React.JSX.Element => (
 	<div
 		className={cn(
-			'relative flex flex-col gap-6 rounded-md border bg-card py-3 text-card-foreground',
+			'relative rounded-3xl border bg-card text-card-foreground',
+			'size-full select-none overflow-hidden shadow-xs transition-shadow duration-300 hover:shadow-sm',
 			className
 		)}
 		data-slot="card"
@@ -97,6 +109,44 @@ const CardFooter = ({
 	/>
 );
 
+type LinkedinLinkProps = {
+	className?: string;
+	url: string;
+	handle: string;
+	label: string;
+};
+
+const CardLink = ({
+	className,
+	url,
+	handle,
+	label,
+}: LinkedinLinkProps): React.JSX.Element => {
+	const MotionButton = motion.create(Button);
+
+	return (
+		<Tooltip>
+			<TooltipTrigger asChild>
+				<MotionButton
+					className={cn('group', className)}
+					size="icon"
+					variant="icon"
+					whileHover={{ scale: 1.05 }}
+					whileTap={{ scale: 0.95 }}
+				>
+					<Link aria-label={label} href={url}>
+						<ArrowUpRightIcon className="size-4.5 transition-transform duration-300 group-hover:rotate-45" />
+						<span className="sr-only">{handle}</span>
+					</Link>
+				</MotionButton>
+			</TooltipTrigger>
+			<TooltipContent align="center" side="left" sideOffset={5}>
+				{label}
+			</TooltipContent>
+		</Tooltip>
+	);
+};
+
 export {
 	Card,
 	CardHeader,
@@ -105,4 +155,5 @@ export {
 	CardAction,
 	CardDescription,
 	CardContent,
+	CardLink,
 };
