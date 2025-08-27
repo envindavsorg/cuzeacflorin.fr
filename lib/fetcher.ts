@@ -1,8 +1,8 @@
 import { logger } from '@/lib/logger';
 
-export const fetcher = async (
+export const fetcher = async <T = any>(
 	url: string | URL | Request
-): Promise<Response> => {
+): Promise<T> => {
 	const response: Response = await fetch(url);
 
 	if (!response.ok) {
@@ -10,5 +10,5 @@ export const fetcher = async (
 		throw new Error('Failed to fetch requested url ...');
 	}
 
-	return response.json();
+	return response.json() as Promise<T>;
 };

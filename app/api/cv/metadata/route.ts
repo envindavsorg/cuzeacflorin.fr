@@ -5,7 +5,7 @@ import { logger } from '@/lib/logger';
 
 const FILE_NAME = '/cv/cv-cuzeac-florin.pdf';
 
-type CvMetadata = {
+export type CvMetadata = {
 	sizeKB: number;
 	lastModified: string;
 	cached?: boolean;

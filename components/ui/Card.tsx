@@ -1,6 +1,6 @@
 'use client';
 
-import { ArrowUpRightIcon } from '@phosphor-icons/react';
+import { ArrowUpRightIcon, type IconProps } from '@phosphor-icons/react';
 import { motion } from 'motion/react';
 import Link from 'next/link';
 import type React from 'react';
@@ -109,11 +109,12 @@ const CardFooter = ({
 	/>
 );
 
-type LinkedinLinkProps = {
+type CardLinkProps = {
 	className?: string;
 	url: string;
 	handle: string;
 	label: string;
+	icon?: React.ComponentType<IconProps>;
 };
 
 const CardLink = ({
@@ -121,7 +122,8 @@ const CardLink = ({
 	url,
 	handle,
 	label,
-}: LinkedinLinkProps): React.JSX.Element => {
+	icon: Icon = ArrowUpRightIcon,
+}: CardLinkProps): React.JSX.Element => {
 	const MotionButton = motion.create(Button);
 
 	return (
@@ -135,7 +137,7 @@ const CardLink = ({
 					whileTap={{ scale: 0.95 }}
 				>
 					<Link aria-label={label} href={url}>
-						<ArrowUpRightIcon className="size-4.5 text-black transition-transform duration-300 group-hover:rotate-45" />
+						<Icon className="size-4.5 text-black transition-transform duration-300 group-hover:rotate-45" />
 						<span className="sr-only">{handle}</span>
 					</Link>
 				</MotionButton>

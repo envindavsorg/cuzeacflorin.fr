@@ -2,13 +2,12 @@
 
 import type React from 'react';
 import { memo } from 'react';
+import { FallbackImage } from '@/components/map/FallbackImage';
+import { MapView } from '@/components/map/MapView';
 import { Card } from '@/components/ui/Card';
-import { FallbackImage } from '@/components/widgets/location/FallbackImage';
-import { MapView } from '@/components/widgets/location/MapView';
 import useLocationMap from '@/hooks/useLocationMap';
-import { cn } from '@/lib/utils';
 
-export const LocationWidget = memo((): React.JSX.Element => {
+export const MapLocation = memo((): React.JSX.Element => {
 	const {
 		mouseEntered,
 		viewState,
@@ -27,11 +26,7 @@ export const LocationWidget = memo((): React.JSX.Element => {
 
 	return (
 		<Card
-			className={cn(
-				'group relative justify-center rounded-3xl p-0',
-				'size-full select-none overflow-hidden md:cursor-grab md:active:cursor-grabbing',
-				'shadow-xs transition-shadow duration-300 hover:shadow-sm'
-			)}
+			className="h-full p-0"
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
 		>
@@ -56,4 +51,4 @@ export const LocationWidget = memo((): React.JSX.Element => {
 	);
 });
 
-LocationWidget.displayName = 'LocationWidget';
+MapLocation.displayName = 'MapLocation';

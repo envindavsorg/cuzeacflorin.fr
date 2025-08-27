@@ -10,17 +10,17 @@ const SCALE_SMALL = 0.4;
 const EASE_CURVE = [0.85, 0, 0.3, 1] as const;
 const ANIMATION_DURATION = 0.5;
 
-type ProfileImageProps = {
+type MemojiToggleProps = {
 	avatar: number;
 	isUserInteraction: boolean;
 	pulseRef: React.RefObject<HTMLDivElement>;
 };
 
-export const ProfileImage = ({
+export const MemojiToggle = ({
 	avatar,
 	isUserInteraction,
 	pulseRef,
-}: ProfileImageProps): React.JSX.Element => {
+}: MemojiToggleProps): React.JSX.Element => {
 	const MotionImage = motion.create(Image);
 
 	const animate = isUserInteraction
@@ -68,4 +68,4 @@ export const ProfileImage = ({
 	);
 };
 
-ProfileImage.displayName = 'ProfileImage';
+MemojiToggle.displayName = 'MemojiToggle';

@@ -1,5 +1,9 @@
 import { ArrowsCounterClockwiseIcon } from '@phosphor-icons/react';
-import { motion } from 'motion/react';
+import {
+	type AnimationSequence,
+	motion,
+	type SequenceOptions,
+} from 'motion/react';
 import type React from 'react';
 import { memo, type RefObject, useCallback, useState } from 'react';
 import { Button } from '@/components/ui/Button';
@@ -11,7 +15,10 @@ import {
 import { PROFILE_CONFIG } from '@/resources/profile';
 
 type ToggleAvatarProps = {
-	animatePulse: (sequence: any[], options?: any) => any;
+	animatePulse: (
+		sequence: AnimationSequence,
+		options?: SequenceOptions | undefined
+	) => any;
 	pulseScope: RefObject<HTMLDivElement>;
 	color: string;
 	avatar: number;
@@ -56,7 +63,8 @@ export const ToggleAvatar = memo(
 	}: ToggleAvatarProps): React.JSX.Element => {
 		const [isRotated, setIsRotated] = useState(false);
 		const [hasAnimated, setHasAnimated] = useState(false);
-		const pulse = useCallback(async () => {
+
+		const pulse = useCallback(async (): Promise<void> => {
 			if (!(pulseScope.current && isUserInteractionRef.current)) {
 				return;
 			}
@@ -84,7 +92,7 @@ export const ToggleAvatar = memo(
 			pulseScope.current.style.transform = 'scale(1)';
 		}, [animatePulse, pulseScope, color, isUserInteractionRef.current]);
 
-		const handleClick = useCallback(async () => {
+		const handleClick = useCallback(async (): Promise<void> => {
 			isUserInteractionRef.current = true;
 			const totalAvatars = PROFILE_CONFIG.avatars.length;
 			const newAvatar = (avatar + 1) % totalAvatars;
@@ -108,7 +116,7 @@ export const ToggleAvatar = memo(
 			<Tooltip>
 				<TooltipTrigger asChild>
 					<MotionButton
-						className="absolute top-5 right-5"
+						className="group absolute top-5 right-5"
 						onClick={handleClick}
 						size="icon"
 						variant="icon"
@@ -125,7 +133,7 @@ export const ToggleAvatar = memo(
 								ease: ANIMATION_CONFIG.rotate.ease,
 							}}
 						>
-							<ArrowsCounterClockwiseIcon className="size-4.5" />
+							<ArrowsCounterClockwiseIcon className="size-4.5 text-black" />
 						</motion.div>
 					</MotionButton>
 				</TooltipTrigger>
