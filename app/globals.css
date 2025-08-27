@@ -95,6 +95,8 @@
 	--breakpoint-lg: 1199px;
 	--breakpoint-xl: initial;
 	--breakpoint-2xl: initial;
+	/* animation */
+	--animate-shine: shine 5s linear infinite;
 }
 
 .dark {
@@ -315,4 +317,17 @@ html:not(.dark) .prose pre code span {
 
 ::view-transition-new(root) {
 	z-index: 999;
+}
+
+@keyframes shine {
+	from {
+		background-position: 100%;
+	}
+	to {
+		background-position: -100%;
+	}
+}
+
+@utility animate-shine {
+	animation: var(--animate-shine);
 }

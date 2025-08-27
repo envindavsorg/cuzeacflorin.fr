@@ -2,6 +2,7 @@ import { GitCommitIcon, GithubLogoIcon } from '@phosphor-icons/react/ssr';
 import type React from 'react';
 import { memo, Suspense } from 'react';
 import { getGitHubUserData } from '@/actions/github.action';
+import { ShinyText } from '@/components/animation/ShinyText';
 import { Card, CardLink } from '@/components/ui/Card';
 import { Counter } from '@/components/ui/Counter';
 import { SkeletonData } from '@/components/ui/Skeleton';
@@ -9,7 +10,7 @@ import { cn } from '@/lib/utils';
 import { PROFILE_CONFIG } from '@/resources/profile';
 
 const {
-	github: { handle, label, url },
+	github: { name, handle, label, url },
 } = PROFILE_CONFIG;
 
 export const GitHubCommits = memo(async (): Promise<React.JSX.Element> => {
@@ -26,12 +27,16 @@ export const GitHubCommits = memo(async (): Promise<React.JSX.Element> => {
 			)}
 			pattern
 		>
-			<GithubLogoIcon
-				className={cn(
-					'inline-block size-12 lg:size-16',
-					'justify-self-start md:col-span-2'
-				)}
-			/>
+			<div className="justify-self-start max-lg:flex max-lg:items-center max-lg:gap-x-3 md:col-span-2">
+				<GithubLogoIcon className="inline-block size-10 max-lg:shrink-0 md:size-12 lg:size-16" />
+
+				<ShinyText
+					className="min-lg:hidden"
+					disabled={false}
+					speed={1}
+					text={name}
+				/>
+			</div>
 
 			<CardLink
 				className={cn(

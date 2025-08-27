@@ -1,10 +1,7 @@
-import {
-	LinkedinLogoIcon,
-	UsersThreeIcon,
-} from '@phosphor-icons/react/dist/ssr';
+import { GithubLogoIcon, StarIcon } from '@phosphor-icons/react/ssr';
 import type React from 'react';
 import { memo, Suspense } from 'react';
-import { getLinkedInFollowers } from '@/actions/linkedin.action';
+import { getGitHubUserData } from '@/actions/github.action';
 import { ShinyText } from '@/components/animation/ShinyText';
 import { Card, CardLink } from '@/components/ui/Card';
 import { Counter } from '@/components/ui/Counter';
@@ -13,11 +10,11 @@ import { cn } from '@/lib/utils';
 import { PROFILE_CONFIG } from '@/resources/profile';
 
 const {
-	linkedin: { name, handle, label, url },
+	github: { name, handle, label, url },
 } = PROFILE_CONFIG;
 
-export const LinkedInFollowers = memo(async (): Promise<React.JSX.Element> => {
-	const { count } = await getLinkedInFollowers();
+export const GitHubStars = memo(async (): Promise<React.JSX.Element> => {
+	const { stars } = await getGitHubUserData();
 
 	return (
 		<Card
@@ -29,7 +26,8 @@ export const LinkedInFollowers = memo(async (): Promise<React.JSX.Element> => {
 			pattern
 		>
 			<div className="justify-self-start max-lg:flex max-lg:items-center max-lg:gap-x-3 md:col-span-2">
-				<LinkedinLogoIcon className="inline-block size-10 max-lg:shrink-0 md:size-12 lg:size-16" />
+				<GithubLogoIcon className="size-10 max-lg:shrink-0 md:hidden md:size-12 lg:size-16" />
+				<StarIcon className="hidden size-10 max-lg:shrink-0 md:inline-block md:size-12 lg:size-16" />
 
 				<ShinyText
 					className="min-lg:hidden"
@@ -56,7 +54,7 @@ export const LinkedInFollowers = memo(async (): Promise<React.JSX.Element> => {
 					'max-md:flex max-md:items-center max-md:gap-x-4'
 				)}
 			>
-				<UsersThreeIcon
+				<StarIcon
 					className="inline-block size-8 text-theme md:hidden dark:text-white"
 					weight="light"
 				/>
@@ -65,19 +63,19 @@ export const LinkedInFollowers = memo(async (): Promise<React.JSX.Element> => {
 						className="p-0 font-archivo-black font-bold text-3xl text-black tabular-nums tracking-wide md:text-4xl lg:text-5xl dark:text-[#FCE24A]"
 						interval={10}
 						step={10}
-						value={count}
+						value={stars}
 					>
 						<span className="inline-block text-2xl md:text-3xl lg:text-4xl min-lg:hidden">
-							abonnés
+							étoiles
 						</span>
 					</Counter>
 				</Suspense>
 				<p className="hidden text-muted-foreground text-sm lg:inline-block">
-					- abonnés sur LinkedIn
+					- étoiles sur {name}
 				</p>
 			</div>
 		</Card>
 	);
 });
 
-LinkedInFollowers.displayName = 'LinkedInFollowers';
+GitHubStars.displayName = 'GitHubStars';
