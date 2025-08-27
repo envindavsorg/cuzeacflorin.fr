@@ -2,10 +2,10 @@ import type React from 'react';
 import { ArticleWidget } from '@/components/widgets/article/ArticleWidget';
 import { BioWidget } from '@/components/widgets/bio/BioWidget';
 import { ClockWidget } from '@/components/widgets/clock/ClockWidget';
-import { CommitWidget } from '@/components/widgets/commit/CommitWidget';
 import { ContactWidget } from '@/components/widgets/contact/ContactWidget';
 import { CvWidget } from '@/components/widgets/cv/CvWidget';
-import { LinkedInWidget } from '@/components/widgets/linkedin/LinkedInWidget';
+import { GitHubCommits } from '@/components/widgets/GitHubCommits';
+import { LinkedInFollowers } from '@/components/widgets/LinkedInFollowers';
 import { LocationWidget } from '@/components/widgets/location/LocationWidget';
 import { PortfolioWidget } from '@/components/widgets/portfolio/PortfolioWidget';
 import { SwitcherWidget } from '@/components/widgets/switcher/SwitcherWidget';
@@ -20,10 +20,10 @@ export const gridItems: GridItem[] = [
 	{ i: 'bio', component: BioWidget },
 	{ i: 'location', component: LocationWidget },
 	{ i: 'cv', component: CvWidget },
-	{ i: 'commit', component: CommitWidget },
+	{ i: 'commit', component: GitHubCommits },
 	{ i: 'article', component: ArticleWidget },
 	{ i: 'switcher', component: SwitcherWidget },
-	{ i: 'linkedin', component: LinkedInWidget },
+	{ i: 'linkedin', component: LinkedInFollowers },
 	{ i: 'contact', component: ContactWidget },
 	{ i: 'portfolio', component: PortfolioWidget },
 	{ i: 'work', component: WorkWidget },
@@ -65,7 +65,7 @@ export const layouts: any = {
 			{ i: 'location', x: 0, y: 2, w: 2, h: 1.5 },
 			{ i: 'cv', x: 1, y: 3, w: 1, h: 1 },
 			{ i: 'clock', x: 1, y: 5, w: 2, h: 1 },
-			{ i: 'commit', x: 0, y: 6, w: 2, h: 1.25 },
+			{ i: 'commit', x: 0, y: 6, w: 2, h: 1 },
 			{ i: 'switcher', x: 0, y: 3, w: 1, h: 1 },
 			{ i: 'linkedin', x: 0, y: 3, w: 2, h: 1 },
 			{ i: 'article', x: 0, y: 8, w: 2, h: 2 },

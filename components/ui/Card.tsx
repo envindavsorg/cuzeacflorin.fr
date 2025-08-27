@@ -25,7 +25,7 @@ const Card = ({
 }: React.ComponentProps<'div'> & CardProps): React.JSX.Element => (
 	<div
 		className={cn(
-			'relative rounded-3xl border bg-card text-card-foreground',
+			'relative rounded-xl border bg-card text-card-foreground md:rounded-3xl',
 			'size-full select-none overflow-hidden shadow-xs transition-shadow duration-300 hover:shadow-sm',
 			className
 		)}
@@ -135,7 +135,7 @@ const CardLink = ({
 					whileTap={{ scale: 0.95 }}
 				>
 					<Link aria-label={label} href={url}>
-						<ArrowUpRightIcon className="size-4.5 transition-transform duration-300 group-hover:rotate-45" />
+						<ArrowUpRightIcon className="size-4.5 text-black transition-transform duration-300 group-hover:rotate-45" />
 						<span className="sr-only">{handle}</span>
 					</Link>
 				</MotionButton>

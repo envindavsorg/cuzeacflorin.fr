@@ -1,9 +1,10 @@
-import { LinkedinLogoIcon } from '@phosphor-icons/react/dist/ssr';
-import { memo, Suspense } from 'react';
 import {
-	getLinkedInFollowers,
-	type LinkedInData,
-} from '@/actions/linkedin.action';
+	LinkedinLogoIcon,
+	UsersThreeIcon,
+} from '@phosphor-icons/react/dist/ssr';
+import type React from 'react';
+import { memo, Suspense } from 'react';
+import { getLinkedInFollowers } from '@/actions/linkedin.action';
 import { Card, CardLink } from '@/components/ui/Card';
 import { Counter } from '@/components/ui/Counter';
 import { SkeletonData } from '@/components/ui/Skeleton';
@@ -14,13 +15,13 @@ const {
 	linkedin: { handle, label, url },
 } = PROFILE_CONFIG;
 
-export const LinkedInWidget = memo(async () => {
-	const { count } = (await getLinkedInFollowers()) as LinkedInData;
+export const LinkedInFollowers = memo(async (): Promise<React.JSX.Element> => {
+	const { count } = await getLinkedInFollowers();
 
 	return (
 		<Card
 			className={cn(
-				'h-full p-6 lg:p-8',
+				'h-full px-6 py-5 md:py-6 lg:px-8 lg:py-8',
 				'lg:flex lg:flex-col lg:items-start lg:justify-between lg:gap-x-6',
 				'grid grid-cols-2 content-between md:grid-cols-4'
 			)}
@@ -46,12 +47,17 @@ export const LinkedInWidget = memo(async () => {
 			<div
 				className={cn(
 					'lg:flex lg:flex-col lg:gap-y-0.5',
-					'col-span-full md:col-span-4'
+					'col-span-full md:col-span-4',
+					'max-md:flex max-md:items-center max-md:gap-x-4'
 				)}
 			>
+				<UsersThreeIcon
+					className="inline-block size-8 text-theme md:hidden dark:text-white"
+					weight="light"
+				/>
 				<Suspense fallback={<SkeletonData />}>
 					<Counter
-						className="p-0 font-archivo-black font-bold text-3xl tabular-nums tracking-wide md:text-4xl lg:text-5xl"
+						className="p-0 font-archivo-black font-bold text-3xl text-black tabular-nums tracking-wide md:text-4xl lg:text-5xl dark:text-[#FCE24A]"
 						interval={10}
 						step={10}
 						value={count}
@@ -69,4 +75,4 @@ export const LinkedInWidget = memo(async () => {
 	);
 });
 
-LinkedInWidget.displayName = 'LinkedInWidget';
+LinkedInFollowers.displayName = 'LinkedInFollowers';

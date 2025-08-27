@@ -27,7 +27,7 @@ export const buttonVariants = cva(
 					'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',
 				link: 'text-primary underline-offset-4 hover:underline',
 				icon: cn(
-					'border bg-background dark:border-input',
+					'border bg-white dark:border-input',
 					'outline-hidden hover:outline-hidden',
 					'ring-gray-200/45 hover:ring-2 dark:ring-gray-200/30',
 					'transition-all duration-300 ease-out'
