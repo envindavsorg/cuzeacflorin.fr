@@ -2,7 +2,43 @@
 
 import { MoonIcon, SunIcon } from '@phosphor-icons/react';
 import { AnimatePresence, motion } from 'motion/react';
+import type React from 'react';
 import { forwardRef, memo } from 'react';
+import { Card } from '@/components/ui/Card';
+import useThemeTransition from '@/hooks/useThemeTransition';
+import { cn } from '@/lib/utils';
+
+const THEME_CONFIG = {
+	light: { mode: 'Sombre' },
+	dark: { mode: 'Clair' },
+	fallback: { mode: 'Mode ?' },
+} as const;
+
+type ThemeDisplayProps = {
+	isMounted: boolean;
+	resolvedTheme: string | undefined;
+};
+
+export const ThemeDisplay = memo(
+	({ isMounted, resolvedTheme }: ThemeDisplayProps): React.JSX.Element => {
+		const getThemeConfig = () => {
+			if (!isMounted) {
+				return THEME_CONFIG.fallback;
+			}
+			return resolvedTheme === 'dark' ? THEME_CONFIG.dark : THEME_CONFIG.light;
+		};
+
+		const { mode } = getThemeConfig();
+
+		return (
+			<h3 className="font-archivo-black font-bold text-4xl tracking-wide lg:text-5xl">
+				{mode}
+			</h3>
+		);
+	}
+);
+
+ThemeDisplay.displayName = 'ThemeDisplay';
 
 type ThemeButtonProps = {
 	isDarkMode: boolean;
@@ -74,3 +110,34 @@ export const ThemeButton = memo(
 );
 
 ThemeButton.displayName = 'ThemeButton';
+
+export const ThemeSwitcher = memo((): React.JSX.Element => {
+	const {
+		isDarkMode,
+		isMounted,
+		hasUserInteracted,
+		buttonRef,
+		resolvedTheme,
+		changeTheme,
+	} = useThemeTransition();
+
+	return (
+		<Card
+			className={cn(
+				'h-full md:p-4 lg:p-8',
+				'flex flex-col items-center justify-center gap-y-6'
+			)}
+			pattern
+		>
+			<ThemeButton
+				hasUserInteracted={hasUserInteracted}
+				isDarkMode={isDarkMode}
+				onClick={changeTheme}
+				ref={buttonRef}
+			/>
+			<ThemeDisplay isMounted={isMounted} resolvedTheme={resolvedTheme} />
+		</Card>
+	);
+});
+
+ThemeSwitcher.displayName = 'ThemeSwitcher';

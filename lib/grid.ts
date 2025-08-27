@@ -7,7 +7,7 @@ import { GitHubStars } from '@/components/widgets/GitHubStars';
 import { LinkedInFollowers } from '@/components/widgets/LinkedInFollowers';
 import { MapLocation } from '@/components/widgets/MapLocation';
 import { PortfolioWidget } from '@/components/widgets/portfolio/PortfolioWidget';
-import { SwitcherWidget } from '@/components/widgets/switcher/SwitcherWidget';
+import { ThemeSwitcher } from '@/components/widgets/ThemeSwitcher';
 import { TimeClock } from '@/components/widgets/TimeClock';
 import { WorkWidget } from '@/components/widgets/work/WorkWidget';
 
@@ -22,7 +22,7 @@ export const gridItems: GridItem[] = [
 	{ i: 'commit', component: GitHubCommits },
 	{ i: 'stars', component: GitHubStars },
 	{ i: 'article', component: ArticleWidget },
-	{ i: 'switcher', component: SwitcherWidget },
+	{ i: 'switcher', component: ThemeSwitcher },
 	{ i: 'linkedin', component: LinkedInFollowers },
 	{ i: 'contact', component: ContactWidget },
 	{ i: 'portfolio', component: PortfolioWidget },
