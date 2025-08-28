@@ -30,7 +30,7 @@ export const middleware = (request: NextRequest): NextResponse => {
 		);
 	}
 
-	const startTime: number = Date.now();
+	const startTime = Date.now();
 	response.headers.set('Server-Timing', `middleware;dur=${startTime}`);
 
 	return response;
