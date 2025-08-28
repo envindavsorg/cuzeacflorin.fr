@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
-import { getAllPosts, getAllProjects } from '@/lib/mdx';
+import { getAllPosts } from '@/lib/posts';
+import { getAllProjects } from '@/lib/projects';
 import { baseURL } from '@/resources/meta';
 
 const sitemap = (): MetadataRoute.Sitemap => {

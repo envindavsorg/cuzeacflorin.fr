@@ -1,8 +1,8 @@
 ---
 title: Mon portfolio - choix techniques et défis
-description: L'histoire complète de la création de mon portfolio moderne : pourquoi j'ai abandonné mon ancien site HTML/CSS/jQuery préhistorique pour passer à Next.js 15 avec App Router, comment j'ai intégré TypeScript partout (même dans mes cauchemars), pourquoi Tailwind CSS v4 a révolutionné ma façon de styliser, et tous les défis techniques que j'ai dû relever - du système de contenu MDX avec composants React intégrés au calcul optimisé du temps de lecture, en passant par l'architecture modulaire avec widgets responsive et les optimisations de performance qui font que mon Lighthouse score affiche du 100/100 partout (oui, je me la pète un peu).
-date: 2025-08-5
-links: [{"name": "Démo","url": "https://cuzeacflorin.fr/"}, {"name": "Voir sur GitHub", "url": "https://github.com/envindavsorg/bento"}]
+description: L'histoire complète de la création de mon portfolio moderne : de Next.js 15 avec App Router aux widgets animés avec Zustand, en passant par l'intégration de Mapbox GL, les animations Motion, et un système de grille responsive multi-layout. Découvrez comment j'ai créé une expérience interactive avec horloge temps réel, intégrations API GitHub/LinkedIn, et un scoring Lighthouse perfect 100/100.
+date: 2025-08-28
+links: [{"name": "Voir le site","url": "https://cuzeacflorin.fr/","type": "demo"}, {"name": "Voir sur GitHub", "url": "https://github.com/envindavsorg/bento","type": "github"}]
 ---
 
 ### Pourquoi refaire son portfolio ?
@@ -13,16 +13,25 @@ Mon ancien portfolio me faisait mal aux yeux _(et pas que les miens apparemment)
 Autant dire que c'était l'époque des **dinosaures** du web.
 Il était temps de passer aux choses sérieuses et de montrer ce que je sais vraiment faire !
 
+Cette fois-ci, j'ai voulu créer quelque chose de **vraiment interactif** avec des widgets qui bougent, une horloge temps réel, et même une carte interactive. Le tout avec une architecture moderne et des performances de ouf.
+
 ### Le choix de la stack technique
 
-#### Next.js - Le framework qui fait tout !
+#### Next.js 15 - La mise à jour qui change tout !
 
-J'ai opté pour **Next.js 15** avec l'**App Router** _(parce que oui, je vis dangereusement)_.
+J'ai opté pour **Next.js 15.5** avec l'**App Router** _(parce que oui, je vis dangereusement)_.
 Pourquoi ? Simple :
 - **SSG (Static Site Generation)** pour des performances de **fou**
 - **App Router** pour une architecture moderne
 - **Turbopack** en mode dev _(c'est de la balle, croyez-moi)_
-- **Image optimization** automatique
+- **React 19** support intégral
+- **Image optimization** automatique avec WebP/AVIF
+- **Metadata API** pour le SEO
+
+```bash
+# Le bonheur du dev moderne
+pnpm dev --turbo  # Et c'est parti ! 🚀
+```
 
 Fini l'époque où il fallait configurer **Webpack** pendant **3 heures** pour avoir un truc qui marche.
 
@@ -48,9 +57,9 @@ export type MDXData<T extends BaseMetadata> = {
 };
 ```
 
-#### Tailwind CSS - L'amour au premier regard
+#### Tailwind CSS v4 - La révolution des styles
 
-**Tailwind CSS v4** _(oui, la dernière version, parce que ...)_.
+**Tailwind CSS v4** avec **PostCSS** intégration native _(oui, la dernière version, parce que...)_.
 Mes collègues me disent encore : _**"C'est moche dans le HTML"**_.
 Mes collègues ont tort.
 
@@ -58,6 +67,33 @@ Mes collègues ont tort.
 <h1 className="text-4xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
   C'est beau ou c'est beau ?
 </h1>
+```
+
+Le plus cool ? **CSS Custom Properties** natif et **container queries** out-of-the-box !
+
+#### Les nouvelles additions qui claquent
+
+**Motion** _(ex-Framer Motion)_ pour les animations fluides :
+```tsx
+import { motion } from 'motion';
+
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6 }}
+>
+  Salut les animations smooth ! ✨
+</motion.div>
+```
+
+**Zustand** pour la gestion d'état légère et efficace :
+```tsx
+import { create } from 'zustand';
+
+const useTimeStore = create((set) => ({
+  time: new Date(),
+  updateTime: () => set({ time: new Date() }),
+}));
 ```
 
 ### L'architecture du projet
@@ -80,35 +116,143 @@ Et le plus cool ? J'ai ajouté des composants **React** directement dans mes art
 - `<CurrentDate />` avec format personnalisé
 - Système de **headings** avec anchors automatiques
 
-#### Système de grille responsive
+#### Système de grille responsive multi-layout
 
-Une **grille modulaire** avec `react-grid-layout` :
-- **Widgets** déplaçables _(enfin, pas encore, mais c'est prévu)_
-- **Responsive** sur mobile/tablette/desktop
-- Configuration en **TypeScript** avec breakpoints
+Une **grille modulaire** avancée avec `react-grid-layout` et **layouts dynamiques** :
+- **4 layouts différents** : all, about, projects, blog
+- **Responsive** sur 3 breakpoints (lg, md, sm)
+- **Widgets interactifs** avec état persisté
+- **Configuration TypeScript** avec validation d'overlaps
 
 ```typescript
-export const GRID_LAYOUTS = {
-  lg: [
-    { i: 'bio', x: 0, y: 0, w: 4, h: 2 },
-    { i: 'article', x: 4, y: 0, w: 8, h: 2 },
-    // Et ainsi de suite...
-  ]
+export const layouts = {
+  all: {
+    lg: [
+      { i: 'bio', x: 0, y: 0, w: 2, h: 1 },
+      { i: 'location', x: 2, y: 0, w: 1, h: 1 },
+      { i: 'clock', x: 3, y: 0, w: 1, h: 1 },
+      // ...11 widgets au total
+    ],
+    md: [/* layout tablette */],
+    sm: [/* layout mobile */]
+  },
+  about: {/* layout page à propos */},
+  projects: {/* layout projets */},
+  blog: {/* layout blog */}
+};
+
+// Fonction de validation automatique des overlaps
+export const checkOverlaps = (layouts) => {
+  // Détection automatique des collisions de widgets
+  const overlaps = [];
+  // ... logique de validation
+  return overlaps;
 };
 ```
 
-#### Widgets modulaires
+#### Widgets modulaires - L'écosystème interactif
 
-Chaque **widget** est un composant réutilisable :
-- **AboutMe** : Présentation avec photo
-- **MyJourney** : Dernier article de blog
-- **MapLocation** : Ma localisation _(avec un peu de mystère)_
-- **CVWidget** : Mon CV téléchargeable
-- **LinkedInFollowers** : Stats LinkedIn en temps réel
+**11 widgets** interactifs avec des fonctionnalités avancées :
+
+**Widgets d'information personnelle** :
+- **AboutMe** : Présentation avec photo et memojis animés
+- **ContactMe** : Formulaire de contact avec validation
+- **MapLocation** : Carte interactive Mapbox GL avec contrôles zoom
+
+**Widgets de données temps réel** :
+- **TimeClock** : Horloge animée avec séparateur clignotant
+- **LinkedInFollowers** : Stats LinkedIn via API
+- **GitHubStars** : Nombre de stars GitHub via Octokit
+- **GitHubCommits** : Commits récents avec SWR caching
+
+**Widgets de contenu** :
+- **MyJourney** : Dernier article de blog avec temps de lecture
+- **WorkJourney** : Affichage dynamique des posts
+- **PortfolioCreation** : Showcase du processus de création
+- **ThemeSwitcher** : Switcher dark/light mode avec next-themes
+
+Exemple du widget **TimeClock** avec animation fluide :
+
+```tsx
+export const TimeClock = memo(() => {
+  const { hours, minutes } = useTimeParts();
+  const showSeparator = useShowSeparator();
+
+  useClockSync(); // Hook personnalisé pour sync temps réel
+
+  return (
+    <Card pattern>
+      <div className="flex items-center justify-center overflow-hidden">
+        <AnimatedNumber value={hours} />
+        <ClockSeparator show={showSeparator} />
+        <AnimatedNumber value={minutes} />
+      </div>
+      <CurrentDate className="text-xl uppercase" format="weekday" />
+    </Card>
+  );
+});
+
+// Composant d'animation des nombres avec @number-flow/react
+export const AnimatedNumber = ({ value }) => (
+  <NumberFlow
+    className="font-archivo-black font-bold text-4xl tabular-nums"
+    format={{ minimumIntegerDigits: 2 }}
+    value={value}
+  />
+);
+```
 
 ### Les défis techniques relevés
 
-#### Calcul du temps de lecture
+#### Gestion d'état temps réel avec Zustand
+
+Le **défi** : synchroniser l'horloge en temps réel avec état persisté et optimisations.
+
+**Solution** : Store Zustand avec hooks personnalisés et devtools intégrés :
+
+```typescript
+const useTimeStore = create()(
+  devtools(
+    persist(
+      subscribeWithSelector((set, get) => ({
+        time: new Date(),
+        showSeparator: true,
+        blinkInterval: null,
+        updateTime: () => set({ time: new Date() }),
+        toggleSeparator: () => set(state => ({
+          showSeparator: !state.showSeparator
+        })),
+        startBlinking: () => {
+          const interval = setInterval(() => {
+            get().toggleSeparator();
+          }, 500);
+          set({ blinkInterval: interval });
+        },
+        // Hook d'optimisation temps réel
+        getTimeParts: () => {
+          const { time } = get();
+          return {
+            hours: time.getHours(),
+            minutes: time.getMinutes(),
+            seconds: time.getSeconds(),
+          };
+        }
+      }))
+    )
+  )
+);
+
+// Hooks dérivés pour optimiser les re-renders
+export const useTimeParts = () => {
+  const hours = useTimeStore(state => state.time.getHours());
+  const minutes = useTimeStore(state => state.time.getMinutes());
+  return { hours, minutes };
+};
+```
+
+**Résultat** : horloge fluide avec **0 re-renders** inutiles !
+
+#### Calcul du temps de lecture optimisé
 
 J'ai optimisé le calcul du **temps de lecture** avec caching **React** :
 
@@ -144,51 +288,221 @@ const getTextContent = (node: React.ReactNode): string => {
 };
 ```
 
+#### Intégrations API temps réel
+
+Le **défi** : récupérer des données GitHub/LinkedIn sans impacter les performances.
+
+**Solution** : SWR avec Octokit et mise en cache intelligente :
+
+```typescript
+// Hook GitHub avec SWR et Octokit
+export const useGitHubStats = () => {
+  const { data: stars } = useSWR('/api/github/stars', fetcher, {
+    refreshInterval: 300000, // 5 minutes
+    revalidateOnFocus: false,
+  });
+
+  const { data: commits } = useSWR('/api/github/commits', async () => {
+    const octokit = new Octokit({
+      auth: process.env.GITHUB_TOKEN,
+    });
+
+    const { data } = await octokit.rest.repos.listCommits({
+      owner: 'username',
+      repo: 'portfolio',
+      per_page: 5,
+    });
+
+    return data;
+  });
+
+  return { stars, commits };
+};
+```
+
+#### Intégration Mapbox GL pour la géolocalisation
+
+**Carte interactive** avec contrôles personnalisés :
+
+```tsx
+import MapGL, { Marker } from 'react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
+
+export const MapView = () => {
+  const [viewState, setViewState] = useState({
+    longitude: 2.3522,
+    latitude: 48.8566,
+    zoom: 10
+  });
+
+  return (
+    <MapGL
+      {...viewState}
+      mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
+      onMove={evt => setViewState(evt.viewState)}
+      mapStyle="mapbox://styles/mapbox/dark-v11"
+    >
+      <Marker longitude={2.3522} latitude={48.8566}>
+        <LocationMarker />
+      </Marker>
+    </MapGL>
+  );
+};
+```
+
 #### Optimisations des performances
 
-- **Images optimisées** avec `next/image`
-- **Fonts** préchargés avec `next/font`
-- **Bundle analysis** avec Turbopack
-- **Lazy loading** des composants non-critiques
-- **Caching** intelligent avec React `cache()`
+- **Images optimisées** avec `next/image` et formats WebP/AVIF
+- **Fonts** préchargés avec `next/font` (Geist Sans, Geist Mono, Pixelify Sans)
+- **Bundle analysis** avec Turbopack et webpack optimizations
+- **Lazy loading** des composants non-critiques avec dynamic imports
+- **Caching** intelligent avec React `cache()` et SWR
+- **Code splitting** automatique par route et composant
+- **Compression** Gzip/Brotli côté Vercel
 
 ### Les features qui claquent
 
-#### Thème sombre/clair
+#### Système d'animations avancé
 
-Avec `next-themes` pour une transition **smooth** :
-```typescript
-// Auto-détection système + persistance localStorage
-const { theme, setTheme } = useTheme();
+**Motion** _(ex-Framer Motion)_ avec animations custom :
+- **Sparkles** particules avec `tsparticles` sur hover
+- **Number Flow** pour les animations de nombres
+- **Transitions** fluides entre les pages avec `motion/stagger`
+- **Hover effects** avec CSS variables et transformations
+
+```tsx
+// Composant Sparkles avec tsparticles
+import { Particles } from '@tsparticles/react';
+import { loadSlim } from '@tsparticles/slim';
+
+export const Sparkles = () => {
+  return (
+    <Particles
+      init={loadSlim}
+      options={{
+        particles: {
+          color: { value: '#FFD700' },
+          move: {
+            enable: true,
+            speed: 2,
+            direction: 'none',
+            outModes: { default: 'destroy' }
+          },
+          opacity: {
+            value: { min: 0.3, max: 1 }
+          }
+        }
+      }}
+    />
+  );
+};
 ```
 
-#### Système d'icônes modulaire
+#### Thème sombre/clair avec persistance
 
-Tous mes **stack icons** sont des composants **SVG** optimisés :
-- **TypeScript**, **React**, **Next.js**, **Tailwind**...
-- Taille optimisée et **tree-shaking** friendly
+Avec `next-themes` et système de couleurs CSS custom :
+```typescript
+// Provider global avec persistance système
+export const ThemeProvider = ({ children }) => {
+  return (
+    <NextThemesProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange={false}
+    >
+      {children}
+    </NextThemesProvider>
+  );
+};
 
-#### Animation subtiles
+// Hook d'utilisation avec transition smooth
+const { theme, setTheme, systemTheme } = useTheme();
+```
 
-Quelques animations avec **Motion** _(ex-Framer Motion)_ :
-- **Sparkles** sur hover _(parce que c'est joli)_
-- **Transitions** fluides entre les pages
-- **Hover effects** sur les widgets
+#### Système d'icônes modulaire complet
+
+**25+ composants SVG** optimisés avec **tree-shaking** :
+- **Technos** : React, Next.js, TypeScript, Tailwind, Python, Node.js...
+- **Outils** : Git, GitHub, Figma, Storybook, Docker...
+- **Optimisation** : SVG minifiés, pas d'icon font, loading lazy
+
+```tsx
+// Exemple d'icône optimisée
+export const ReactIcon = ({ size = 24 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    className="fill-current text-[#61DAFB]"
+  >
+    <path d="M12 10.11c1.03 0 1.87.84 1.87 1.89s-.84 1.89-1.87 1.89-1.87-.84-1.87-1.89.84-1.89 1.87-1.89z"/>
+  </svg>
+);
+```
+
+#### Analytics et monitoring avancés
+
+**Vercel Analytics** + **Speed Insights** intégrés :
+```tsx
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+
+// Dans layout.tsx
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <body>
+        {children}
+        <Analytics />
+        <SpeedInsights />
+      </body>
+    </html>
+  );
+}
+```
 
 ### Le workflow de développement
 
-#### Outils de qualité
+#### Stack d'outils moderne
 
-- **Biome** pour le linting et formatting _(adieu ESLint + Prettier)_
-- **TypeScript strict** mode
-- **pnpm** comme package manager _(plus rapide que npm)_
-- **Git hooks** pour la qualité
+- **Biome** v2.2.0 pour le linting et formatting _(adieu ESLint + Prettier)_
+- **TypeScript 5.9** strict mode avec path mapping
+- **pnpm 10.14** comme package manager avec workspace
+- **taze** pour les updates de dépendances
+- **ultracite** pour l'analyse de bundle
+
+Configuration **Biome** optimisée :
+```json
+{
+  "formatter": {
+    "indentStyle": "tab",
+    "lineWidth": 100
+  },
+  "linter": {
+    "rules": {
+      "style": {
+        "useImportType": "error",
+        "useExportType": "error"
+      },
+      "nursery": {
+        "useSortedClasses": "error"
+      }
+    }
+  },
+  "organizeImports": {
+    "enabled": true
+  }
+}
+```
 
 ```bash
 # Commands que j'utilise tous les jours
-pnpm dev          # Dev server avec Turbopack 🚀
-pnpm build        # Build optimisé
-pnpm biome check  # Linting + formatting
+pnpm dev --turbo     # Dev server avec Turbopack 🚀
+pnpm build           # Build optimisé
+pnpm biome check .   # Linting + formatting
+pnpm biome check --write .  # Auto-fix
+pnpm taze            # Update dependencies
 ```
 
 #### Déploiement
@@ -225,14 +539,69 @@ Plus d'erreurs de typos, autocomplétion parfaite, refactoring sécurisé.
 Un portfolio qui met **10 secondes** à charger, c'est **10 secondes** de trop.
 Chaque **milliseconde** compte pour l'expérience utilisateur.
 
+### Ce qui vient ensuite
+
+#### Fonctionnalités prévues
+
+**Widgets interactifs** :
+- Drag & drop des widgets _(react-grid-layout le permet déjà)_
+- Widget Spotify avec lecture en temps réel
+- Widget météo avec géolocalisation
+- Widget GitHub activity timeline
+
+**Améliorations techniques** :
+- Migration vers **Bun** comme runtime _(2x plus rapide)_
+- Integration **Three.js** pour des effets 3D subtils
+- **PWA** avec service worker et offline mode
+- **Micro-interactions** avec `@use-gesture/react`
+
+**Optimisations avancées** :
+```typescript
+// Préchargement intelligent des routes
+const PreloadLink = ({ href, children }) => {
+  return (
+    <Link
+      href={href}
+      onMouseEnter={() => router.prefetch(href)}
+    >
+      {children}
+    </Link>
+  );
+};
+
+// Lazy loading conditionnel
+const LazyWidget = dynamic(
+  () => import('../widgets/HeavyWidget'),
+  {
+    loading: () => <Skeleton />,
+    ssr: false // Only load client-side if needed
+  }
+);
+```
+
 ### Aujourd'hui, <CurrentDate format="full" />
 
 Le portfolio est **en ligne** et je suis **fier** du résultat !
-Code propre, performances au top, design moderne...
+- **11 widgets** interactifs avec données temps réel
+- **Architecture moderne** avec React 19 + Next.js 15
+- **Performances parfaites** : Lighthouse 100/100 sur tous les critères
+- **DX exceptionnelle** avec Biome, TypeScript strict, et hot reload
+- **UX fluide** avec animations Motion et transitions optimisées
+
+**Stack technique finale** :
+- Frontend : React 19, Next.js 15.5, TypeScript 5.9
+- Styling : Tailwind CSS v4, CSS Custom Properties
+- State : Zustand avec devtools et persistance
+- Animation : Motion, Number Flow, tsParticles
+- Data fetching : SWR, Octokit pour GitHub API
+- Maps : Mapbox GL, react-map-gl
+- Tooling : Biome, pnpm, taze, Turbopack
+- Deploy : Vercel avec Analytics et Speed Insights
+- Monitoring : Vercel Analytics, Core Web Vitals
 
 Le plus drôle ? Maintenant, j'ai envie de le **refactorer** encore _(maladie professionnelle)_.
-Peut-être ajouter **Three.js**, ou tester **Bun**, ou le refaire en **PHP** (non, je rigole mdr)
+Peut-être migrer vers **Bun**, ou tester **Tauri**, ou ajouter **WASM** (pourquoi pas ?)
 
 Un développeur qui n'a pas envie d'améliorer son code, c'est un développeur qui s'ennuie, non ? 😄
 
-**Fun fact** : aucune ligne de jQuery dans ce projet, c'est magique non ? ✨
+**Fun fact** : aucune ligne de jQuery dans ce projet, et même pas de `useEffect` dans l'horloge grâce à Zustand ! ✨

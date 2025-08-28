@@ -5,7 +5,6 @@ import { ComposeProviders, type Provider } from '@/providers/compose';
 import ThemeProvider from '@/providers/theme/Provider';
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
-import { Noise } from '@/components/animation/Noise';
 import { Toaster } from '@/components/ui/Sonner';
 import { cn } from '@/lib/utils';
 import { generateMetadata } from '@/resources/meta';
@@ -64,7 +63,6 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => (
 		<body className="relative select-none bg-theme-background font-geist-mono tracking-tight antialiased">
 			<AppProviders>
 				{children}
-				<Noise />
 				<Suspense fallback={null}>
 					<Toaster position="bottom-right" richColors />
 					<Sparkles density={150} />

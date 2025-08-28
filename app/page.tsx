@@ -4,6 +4,7 @@ import type React from 'react';
 import { useId } from 'react';
 import { Bento } from '@/components/blocs/Bento';
 import { BentoItem } from '@/components/blocs/BentoItem';
+import { Noise } from '@/components/animation/Noise';
 import { Container } from '@/components/ui/Container';
 import { gridItems, layouts } from '@/lib/grid';
 import { generateOgMetadata } from '@/lib/image';
@@ -55,6 +56,8 @@ const Home = (): React.JSX.Element => {
 				id={structuredDataId}
 				type="application/ld+json"
 			/>
+
+			<Noise />
 
 			<Container as="header" className="flex items-center justify-between py-0">
 				<h1 className="hidden">
