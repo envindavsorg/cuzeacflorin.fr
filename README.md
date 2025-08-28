@@ -1,61 +1,61 @@
 # 🚀 Portfolio - Cuzeac Florin
 
-> Un portfolio moderne et interactif construit avec Next.js 15, TypeScript, et une architecture widget-based innovante.
+> A modern and interactive portfolio built with Next.js 15, TypeScript, and an innovative widget-based architecture.
 
 ![Portfolio Preview](./public/og.png)
 
 **🌍 Live Demo**: [cuzeacflorin.fr](https://cuzeacflorin.fr/)
-**📊 Performance**: Lighthouse 100/100 sur tous les critères
+**📊 Performance**: Perfect Lighthouse 100/100 across all metrics
 
 ---
 
-## ✨ Fonctionnalités
+## ✨ Features
 
-### 🎯 **Widgets Interactifs**
-- **TimeClock** : Horloge temps réel avec animations fluides
-- **GitHub Stats** : Stars et commits en temps réel via API
-- **LinkedIn Followers** : Statistiques professionnelles
-- **Carte Interactive** : Géolocalisation avec Mapbox GL
-- **Theme Switcher** : Mode sombre/clair avec persistance
+### 🎯 **Interactive Widgets**
+- **TimeClock** : Real-time clock with smooth animations
+- **GitHub Stats** : Live stars and commits via API
+- **LinkedIn Followers** : Professional statistics
+- **Interactive Map** : Geolocation with Mapbox GL
+- **Theme Switcher** : Dark/light mode with persistence
 
-### 🏗️ **Architecture Moderne**
-- **Next.js 15.5** avec App Router et React 19
-- **Système de grille responsive** avec 4 layouts adaptatifs
-- **Gestion d'état Zustand** avec devtools et persistance
-- **TypeScript strict** avec path mapping optimisé
-- **MDX dynamique** avec syntax highlighting Shiki
+### 🏗️ **Modern Architecture**
+- **Next.js 15.5** with App Router and React 19
+- **Responsive grid system** with 4 adaptive layouts
+- **Zustand state management** with devtools and persistence
+- **Strict TypeScript** with optimized path mapping
+- **Dynamic MDX** with Shiki syntax highlighting
 
 ### 🎨 **Design & Animation**
-- **Tailwind CSS v4** avec CSS Custom Properties
-- **Motion** (ex-Framer Motion) pour les animations
-- **Number Flow** pour les transitions numériques
-- **Noise Canvas** effet grain personnalisé
-- **Design responsive** sur mobile/tablette/desktop
+- **Tailwind CSS v4** with CSS Custom Properties
+- **Motion** (ex-Framer Motion) for animations
+- **Number Flow** for numeric transitions
+- **Noise Canvas** custom grain effect
+- **Responsive design** across mobile/tablet/desktop
 
 ---
 
-## 🛠 Stack Technique
+## 🛠 Tech Stack
 
 ### Frontend
 - **Framework** : Next.js 15.5 + React 19
 - **Language** : TypeScript 5.9
 - **Styling** : Tailwind CSS v4 + PostCSS
-- **State Management** : Zustand avec devtools
+- **State Management** : Zustand with devtools
 - **Animations** : Motion, @number-flow/react, tsparticles
 
 ### Tooling & Performance
 - **Package Manager** : pnpm 10.14
-- **Linting** : Biome 2.2.0 (remplace ESLint + Prettier)
-- **Build Tool** : Turbopack pour le dev
-- **Bundler Analysis** : ultracite
+- **Linting** : Biome 2.2.0 (replaces ESLint + Prettier)
+- **Build Tool** : Turbopack for development
+- **Bundle Analysis** : ultracite
 - **Dependency Updates** : taze
 
-### Intégrations
+### Integrations
 - **Maps** : Mapbox GL + react-map-gl
-- **Data Fetching** : SWR + Octokit pour GitHub
-- **Content** : MDX avec rehype plugins
+- **Data Fetching** : SWR + Octokit for GitHub
+- **Content** : MDX with rehype plugins
 - **Analytics** : Vercel Analytics + Speed Insights
-- **Deployment** : Vercel avec optimisations automatiques
+- **Deployment** : Vercel with automatic optimizations
 
 ---
 
@@ -69,24 +69,24 @@ Best Practices: 💯 100/100
 SEO: 💯 100/100
 ```
 
-### Optimisations Implémentées
-- **Images** : Next.js Image avec WebP/AVIF
-- **Fonts** : Preload avec next/font (Geist Sans, Geist Mono, Pixelify Sans)
-- **Bundle** : Code splitting automatique + tree shaking
-- **Caching** : React cache() + SWR pour les API calls
-- **Compression** : Gzip/Brotli côté Vercel
+### Implemented Optimizations
+- **Images** : Next.js Image with WebP/AVIF formats
+- **Fonts** : Preloading with next/font (Geist Sans, Geist Mono, Pixelify Sans)
+- **Bundle** : Automatic code splitting + tree shaking
+- **Caching** : React cache() + SWR for API calls
+- **Compression** : Gzip/Brotli via Vercel
 
 ---
 
 ## 🏃‍♂️ Installation & Usage
 
-### Prérequis
+### Prerequisites
 - Node.js 18+ 
-- pnpm (recommandé)
+- pnpm (recommended)
 
 ### Installation
 ```bash
-# Clone le repository
+# Clone the repository
 git clone https://github.com/envindavsorg/portfolio.git
 cd portfolio
 
@@ -97,59 +97,59 @@ pnpm install
 pnpm dev --turbo
 ```
 
-### Scripts Disponibles
+### Available Scripts
 ```bash
-pnpm dev          # Dev server avec Turbopack 🚀
-pnpm build        # Build optimisé pour production
+pnpm dev          # Dev server with Turbopack 🚀
+pnpm build        # Optimized production build
 pnpm start        # Start production server
-pnpm lint         # Linting et formatting avec Biome
-pnpm biome check --write .  # Auto-fix du code
-pnpm taze         # Update des dépendances
+pnpm lint         # Linting and formatting with Biome
+pnpm biome check --write .  # Auto-fix code
+pnpm taze         # Update dependencies
 ```
 
 ---
 
-## 🏗 Architecture du Projet
+## 🏗 Project Architecture
 
 ```
 portfolio/
 ├── app/                          # Next.js 15 App Router
-│   ├── (content)/               # Pages de contenu (posts, projets)
+│   ├── (content)/               # Content pages (posts, projects)
 │   ├── api/                     # API routes (GitHub, LinkedIn)
-│   ├── globals.css              # Styles globaux
-│   ├── layout.tsx               # Layout principal
-│   └── page.tsx                 # Page d'accueil
+│   ├── globals.css              # Global styles
+│   ├── layout.tsx               # Main layout
+│   └── page.tsx                 # Homepage
 ├── components/
-│   ├── animation/               # Composants d'animation
-│   │   ├── Noise.tsx           # Effet grain canvas
-│   │   ├── Sparkles.tsx        # Particules tsparticles
-│   │   └── Motion/             # Animations Motion
-│   ├── widgets/                 # Widgets interactifs
-│   │   ├── TimeClock.tsx       # Horloge temps réel
-│   │   ├── GitHubStats.tsx     # Stats GitHub API
-│   │   ├── MapLocation.tsx     # Carte Mapbox
+│   ├── animation/               # Animation components
+│   │   ├── Noise.tsx           # Canvas grain effect
+│   │   ├── Sparkles.tsx        # tsParticles particles
+│   │   └── Motion/             # Motion animations
+│   ├── widgets/                 # Interactive widgets
+│   │   ├── TimeClock.tsx       # Real-time clock
+│   │   ├── GitHubStats.tsx     # GitHub API stats
+│   │   ├── MapLocation.tsx     # Mapbox map
 │   │   └── ...
-│   ├── ui/                      # Composants UI réutilisables
-│   └── mdx/                     # Composants MDX
-├── content/                     # Contenu MDX
-│   ├── posts/                   # Articles de blog
-│   └── projects/                # Projets showcase
-├── lib/                         # Utilitaires et configurations
-│   ├── grid.ts                 # Configuration grille responsive
-│   ├── mdx.ts                  # Parser MDX + frontmatter
-│   └── utils.ts                # Utilitaires TypeScript
-├── stores/                      # Stores Zustand
-│   └── time.store.ts           # Gestion état temps réel
-└── hooks/                       # Hooks personnalisés
-    ├── useClockSync.ts         # Synchronisation horloge
-    └── useBreakpoint.ts        # Breakpoints responsive
+│   ├── ui/                      # Reusable UI components
+│   └── mdx/                     # MDX components
+├── content/                     # MDX content
+│   ├── posts/                   # Blog articles
+│   └── projects/                # Project showcases
+├── lib/                         # Utilities and configurations
+│   ├── grid.ts                 # Responsive grid configuration
+│   ├── mdx.ts                  # MDX parser + frontmatter
+│   └── utils.ts                # TypeScript utilities
+├── stores/                      # Zustand stores
+│   └── time.store.ts           # Real-time state management
+└── hooks/                       # Custom hooks
+    ├── useClockSync.ts         # Clock synchronization
+    └── useBreakpoint.ts        # Responsive breakpoints
 ```
 
 ---
 
 ## 🔧 Configuration
 
-### Variables d'Environnement
+### Environment Variables
 ```bash
 # .env.local
 NEXT_PUBLIC_MAPBOX_TOKEN=your_mapbox_token
@@ -180,16 +180,16 @@ LINKEDIN_API_TOKEN=your_linkedin_token
 
 ---
 
-## 💡 Fonctionnalités Techniques Avancées
+## 💡 Advanced Technical Features
 
-### Système de Widgets Modulaire
+### Modular Widget System
 ```tsx
-// Chaque widget est un composant autonome
+// Each widget is a self-contained component
 export const TimeClock = memo(() => {
   const { hours, minutes } = useTimeParts();
   const showSeparator = useShowSeparator();
   
-  useClockSync(); // Hook temps réel
+  useClockSync(); // Real-time hook
   
   return (
     <Card pattern>
@@ -201,22 +201,22 @@ export const TimeClock = memo(() => {
 });
 ```
 
-### Grille Responsive Adaptive
+### Adaptive Responsive Grid
 ```tsx
-// 4 layouts différents selon le contexte
+// 4 different layouts based on context
 export const layouts = {
-  all: {    // Layout par défaut
+  all: {    // Default layout
     lg: [{ i: 'clock', x: 3, y: 0, w: 1, h: 1 }],
     md: [{ i: 'clock', x: 0, y: 2, w: 1, h: 1 }],
     sm: [{ i: 'clock', x: 1, y: 2, w: 1, h: 1 }]
   },
-  about: {  // Layout page à propos
-    // Configuration spécifique...
+  about: {  // About page layout
+    // Specific configuration...
   }
 };
 ```
 
-### Store Zustand Optimisé
+### Optimized Zustand Store
 ```tsx
 const useTimeStore = create()(
   devtools(
@@ -224,7 +224,7 @@ const useTimeStore = create()(
       subscribeWithSelector((set, get) => ({
         time: new Date(),
         updateTime: () => set({ time: new Date() }),
-        // Hooks dérivés pour éviter les re-renders
+        // Derived hooks to avoid re-renders
         getTimeParts: () => {
           const { time } = get();
           return {
@@ -242,46 +242,46 @@ const useTimeStore = create()(
 
 ## 📱 Responsive Design
 
-| Breakpoint | Largeur | Description |
-|------------|---------|-------------|
+| Breakpoint | Width | Description |
+|------------|-------|-------------|
 | `sm` | < 768px | Mobile portrait |
-| `md` | 768px - 1024px | Tablette |
+| `md` | 768px - 1024px | Tablet |
 | `lg` | > 1024px | Desktop |
 
-Chaque widget s'adapte automatiquement avec des layouts spécifiques pour optimiser l'expérience utilisateur.
+Each widget automatically adapts with specific layouts to optimize user experience.
 
 ---
 
-## 🤝 Contribution
+## 🤝 Contributing
 
-### Développement Local
-1. Fork le repository
-2. Crée une branche feature : `git checkout -b feature/amazing-feature`
-3. Commit tes changements : `git commit -m 'Add amazing feature'`
-4. Push vers la branche : `git push origin feature/amazing-feature`
-5. Ouvre une Pull Request
+### Local Development
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
 
 ### Code Style
-- Utilise **Biome** pour le formatting automatique
-- Respecte les conventions **TypeScript strict**
-- Suis les patterns existants pour les composants
-- Teste tes modifications sur les 3 breakpoints
+- Use **Biome** for automatic formatting
+- Follow **strict TypeScript** conventions
+- Follow existing component patterns
+- Test your changes across all 3 breakpoints
 
 ---
 
 ## 📄 License
 
-Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 🙏 Remerciements
+## 🙏 Acknowledgments
 
-- **Next.js** pour le framework incredible
-- **Vercel** pour l'hébergement et les outils de performance
-- **Tailwind CSS** pour le système de design
-- **Mapbox** pour les cartes interactives
-- **GitHub API** pour les statistiques de repository
+- **Next.js** for the incredible framework
+- **Vercel** for hosting and performance tools
+- **Tailwind CSS** for the design system
+- **Mapbox** for interactive maps
+- **GitHub API** for repository statistics
 
 ---
 
