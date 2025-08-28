@@ -3,7 +3,7 @@ import type { SVGProps } from 'react';
 
 type SafariMode = 'default' | 'simple';
 
-export interface SafariProps extends SVGProps<SVGSVGElement> {
+export interface MockSafariProps extends SVGProps<SVGSVGElement> {
 	url?: string;
 	imageSrc?: string;
 	videoSrc?: string;
@@ -12,7 +12,7 @@ export interface SafariProps extends SVGProps<SVGSVGElement> {
 	mode?: SafariMode;
 }
 
-export const Safari = ({
+export const MockSafari = ({
 	imageSrc,
 	videoSrc,
 	url,
@@ -20,7 +20,7 @@ export const Safari = ({
 	height = 753,
 	mode = 'default',
 	...props
-}: SafariProps): React.JSX.Element => (
+}: MockSafariProps): React.JSX.Element => (
 	<svg
 		fill="none"
 		height={height}

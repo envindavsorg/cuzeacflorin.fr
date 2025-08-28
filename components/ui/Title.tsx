@@ -35,7 +35,7 @@ export const Title = memo(
 			<h2
 				className={cn(
 					'flex flex-col gap-y-3 transition-element',
-					'font-bold font-pixelify-sans text-3xl md:text-4xl lg:text-5xl'
+					'font-bold font-pixelify-sans text-3xl lg:text-4xl'
 				)}
 				title={title}
 			>

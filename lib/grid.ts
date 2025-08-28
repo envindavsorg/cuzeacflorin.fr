@@ -1,15 +1,15 @@
 import type React from 'react';
 import { AboutMe } from '@/components/widgets/AboutMe';
-import { ArticleWidget } from '@/components/widgets/article/ArticleWidget';
-import { ContactWidget } from '@/components/widgets/contact/ContactWidget';
+import { ContactMe } from '@/components/widgets/ContactMe';
 import { GitHubCommits } from '@/components/widgets/GitHubCommits';
 import { GitHubStars } from '@/components/widgets/GitHubStars';
 import { LinkedInFollowers } from '@/components/widgets/LinkedInFollowers';
 import { MapLocation } from '@/components/widgets/MapLocation';
-import { PortfolioWidget } from '@/components/widgets/portfolio/PortfolioWidget';
+import { MyJourney } from '@/components/widgets/MyJourney';
+import { PortfolioCreation } from '@/components/widgets/PortfolioCreation';
 import { ThemeSwitcher } from '@/components/widgets/ThemeSwitcher';
 import { TimeClock } from '@/components/widgets/TimeClock';
-import { WorkWidget } from '@/components/widgets/work/WorkWidget';
+import { WorkJourney } from '@/components/widgets/WorkJourney';
 
 type GridItem = {
 	i: string;
@@ -21,12 +21,12 @@ export const gridItems: GridItem[] = [
 	{ i: 'location', component: MapLocation },
 	{ i: 'commit', component: GitHubCommits },
 	{ i: 'stars', component: GitHubStars },
-	{ i: 'article', component: ArticleWidget },
+	{ i: 'article', component: MyJourney },
 	{ i: 'switcher', component: ThemeSwitcher },
 	{ i: 'linkedin', component: LinkedInFollowers },
-	{ i: 'contact', component: ContactWidget },
-	{ i: 'portfolio', component: PortfolioWidget },
-	{ i: 'work', component: WorkWidget },
+	{ i: 'contact', component: ContactMe },
+	{ i: 'portfolio', component: PortfolioCreation },
+	{ i: 'work', component: WorkJourney },
 	{ i: 'clock', component: TimeClock },
 ];
 

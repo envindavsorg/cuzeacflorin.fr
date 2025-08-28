@@ -109,7 +109,7 @@ export const Bento = ({
 
 			<section
 				className={cn(
-					'relative mx-auto w-full max-md:mt-4',
+					'relative mx-auto w-full pt-8',
 					'max-w-[320px]',
 					'sm:max-w-[375px]',
 					'md:max-w-[800px]',

@@ -112,7 +112,7 @@ const CardFooter = ({
 type CardLinkProps = {
 	className?: string;
 	url: string;
-	handle: string;
+	handle?: string;
 	label: string;
 	icon?: React.ComponentType<IconProps>;
 };
@@ -138,7 +138,7 @@ const CardLink = ({
 				>
 					<Link aria-label={label} href={url}>
 						<Icon className="size-4.5 text-black transition-transform duration-300 group-hover:rotate-45" />
-						<span className="sr-only">{handle}</span>
+						{handle && <span className="sr-only">{handle}</span>}
 					</Link>
 				</MotionButton>
 			</TooltipTrigger>

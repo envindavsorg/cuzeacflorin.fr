@@ -4,7 +4,7 @@ import type React from 'react';
 import { CustomMDX } from '@/components/mdx/Markdown';
 import { Header } from '@/components/navigation/Header';
 import { Badge } from '@/components/ui/Badge';
-import { getAllPosts } from '@/lib/mdx';
+import { getAllPosts } from '@/lib/posts';
 import { cn, formatDate } from '@/lib/utils';
 
 type Params = Promise<{ slug: string }>;

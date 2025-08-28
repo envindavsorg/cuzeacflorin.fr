@@ -7,11 +7,11 @@ type BaseMetadata = {
 	description: string;
 };
 
-interface PostMetadata extends BaseMetadata {
+export interface PostMetadata extends BaseMetadata {
 	date: string;
 }
 
-interface ProjectMetadata extends BaseMetadata {
+export interface ProjectMetadata extends BaseMetadata {
 	date: string;
 	links: string;
 	images?: string;
@@ -56,7 +56,7 @@ const parseFrontmatter = <T extends BaseMetadata>(
 	return { metadata, content, slug: '' };
 };
 
-const getMDXData = <T extends BaseMetadata>(dir: string): MDXData<T>[] =>
+export const getMDXData = <T extends BaseMetadata>(dir: string): MDXData<T>[] =>
 	fs
 		.readdirSync(dir, { withFileTypes: true })
 		.filter((dirent) => dirent.isFile() && path.extname(dirent.name) === '.mdx')
@@ -76,23 +76,3 @@ const getMDXData = <T extends BaseMetadata>(dir: string): MDXData<T>[] =>
 				},
 			};
 		});
-
-export const getAllPosts = (): MDXData<PostMetadata>[] =>
-	getMDXData<PostMetadata>(path.join(process.cwd(), 'content/posts'));
-
-export const getLatestPost = (): MDXData<PostMetadata> => getAllPosts()[0];
-
-export const getFirstPost = (): MDXData<PostMetadata> => {
-	const posts = getAllPosts();
-	return posts[posts.length - 1];
-};
-
-export const getPostByIndex = (
-	index: number
-): MDXData<PostMetadata> | undefined => {
-	const posts = getAllPosts();
-	return posts[index];
-};
-
-export const getAllProjects = (): MDXData<ProjectMetadata>[] =>
-	getMDXData<ProjectMetadata>(path.join(process.cwd(), 'content/projects'));

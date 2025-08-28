@@ -7,7 +7,7 @@ import { Header } from '@/components/navigation/Header';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Container';
-import { getAllProjects } from '@/lib/mdx';
+import { getAllProjects } from '@/lib/projects';
 import { formatDate } from '@/lib/utils';
 
 type Params = Promise<{ slug: string }>;

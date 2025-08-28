@@ -8,8 +8,8 @@ const CONFIG = {
 
 const TRANSLATIONS = {
 	fr: {
-		full: 'minutes de lecture',
-		short: 'minutes',
+		full: 'minutes',
+		short: 'min',
 	},
 	en: {
 		full: 'min read',

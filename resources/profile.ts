@@ -23,8 +23,33 @@ export const PROFILE_CONFIG = {
 	genId: '@cuzeacflorin',
 
 	contact: {
+		title: 'Envie de dire bonjour ?',
+		description:
+			'Si vous avez un projet à lancer, besoin de mon aide pour quelque chose ou simplement envie de dire bonjour, alors contactez-moi. (je réponds vite !)',
 		email: 'mail@cueacflorin.fr',
 		phone: '06 58 05 86 65',
+		social: [
+			{
+				name: 'Github',
+				url: 'https://github.com/envindavsorg/',
+				icon: GithubLogoIcon,
+			},
+			{
+				name: 'LinkedIn',
+				url: 'https://linkedin.com/in/cuzeacflorin/',
+				icon: LinkedinLogoIcon,
+			},
+			{
+				name: 'Téléphone',
+				url: 'tel:+33658058665',
+				icon: PhoneIcon,
+			},
+			{
+				name: 'Adresse e-mail',
+				url: 'mailto:mail@cuzeacflorin.fr',
+				icon: EnvelopeIcon,
+			},
+		],
 	},
 
 	cv: {
@@ -33,29 +58,6 @@ export const PROFILE_CONFIG = {
 		shareText:
 			"Découvrez le profil de Florin Cuzeac, développeur full-stack avec 10 ans d'expérience !",
 	},
-
-	social: [
-		{
-			name: 'Github',
-			url: 'https://github.com/envindavsorg/',
-			icon: GithubLogoIcon,
-		},
-		{
-			name: 'LinkedIn',
-			url: 'https://linkedin.com/in/cuzeacflorin/',
-			icon: LinkedinLogoIcon,
-		},
-		{
-			name: 'Téléphone',
-			url: 'tel:+33658058665',
-			icon: PhoneIcon,
-		},
-		{
-			name: 'Adresse e-mail',
-			url: 'mailto:mail@cuzeacflorin.fr',
-			icon: EnvelopeIcon,
-		},
-	],
 
 	experience: {
 		years: CURRENT_YEAR - START_DEV_YEAR,

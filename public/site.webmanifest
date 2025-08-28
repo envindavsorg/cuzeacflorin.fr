@@ -1,6 +1,6 @@
 {
-  "name": "Cuzeac Florin - PortfolioWidget",
-  "short_name": "PortfolioWidget",
+  "name": "Cuzeac Florin - PortfolioCreation",
+  "short_name": "PortfolioCreation",
   "description": "Mon nouveau site web personnel, construit avec Next.js, Tailwind CSS, et MDX.",
   "start_url": "/",
   "display": "standalone",
