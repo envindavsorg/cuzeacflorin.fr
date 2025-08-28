@@ -2,6 +2,11 @@
 
 # dependencies
 /node_modules
+
+# pnpm
+/pnpm-lock.yaml
+/pnpm-workspace.yaml
+
 /.pnp
 .pnp.js
 .yarn/install-state.gz
@@ -34,3 +39,4 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
