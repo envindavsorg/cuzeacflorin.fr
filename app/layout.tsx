@@ -1,14 +1,14 @@
+import type { Metadata, Viewport } from 'next';
 import type React from 'react';
 import { lazy, Suspense } from 'react';
+import { Toaster } from '@/components/ui/Sonner';
 import { fonts } from '@/fonts/fonts';
+import { cn } from '@/lib/utils';
 import { ComposeProviders, type Provider } from '@/providers/compose';
 import ThemeProvider from '@/providers/theme/Provider';
-import './globals.css';
-import type { Metadata, Viewport } from 'next';
-import { Toaster } from '@/components/ui/Sonner';
-import { cn } from '@/lib/utils';
 import { defaultDescription, generateMetadata } from '@/resources/meta';
 import { PROFILE_CONFIG } from '@/resources/profile';
+import './globals.css';
 
 const Analytics = lazy(() =>
 	import('@vercel/analytics/react').then((module) => ({
@@ -75,9 +75,12 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => (
 				rel="apple-touch-icon"
 				sizes="180x180"
 			/>
-			<title>
-				{PROFILE_CONFIG.firstName} {PROFILE_CONFIG.lastName}
-			</title>
+			<link href="https://fonts.googleapis.com" rel="preconnect" />
+			<link crossOrigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+			<link href="https://avatars.githubusercontent.com" rel="dns-prefetch" />
+			<link href="https://api.mapbox.com" rel="dns-prefetch" />
+			<link href="https://vitals.vercel-insights.com" rel="dns-prefetch" />
+			<title>{`${PROFILE_CONFIG.firstName} ${PROFILE_CONFIG.lastName}`}</title>
 		</head>
 		<body className="relative select-none bg-theme-background font-geist-mono tracking-tight antialiased">
 			<AppProviders>

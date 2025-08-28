@@ -5,26 +5,38 @@ import {
 	Pixelify_Sans,
 } from 'next/font/google';
 
-const sans: NextFont = Geist_Sans({
+const sans = Geist_Sans({
 	variable: '--font-geist-sans',
 	subsets: ['latin'],
+	display: 'swap',
+	preload: true,
+	fallback: ['system-ui', '-apple-system', 'sans-serif'],
 });
 
-const mono: NextFont = Geist_Mono({
+const mono = Geist_Mono({
 	variable: '--font-geist-mono',
 	subsets: ['latin'],
+	display: 'swap',
+	preload: true,
+	fallback: ['Consolas', 'Monaco', 'monospace'],
 });
 
-export const pixelify: NextFont = Pixelify_Sans({
+export const pixelify = Pixelify_Sans({
 	weight: ['600'],
 	subsets: ['latin'],
 	variable: '--font-pixelify-sans',
+	display: 'swap',
+	preload: false,
+	fallback: ['monospace'],
 });
 
-export const archivo: NextFont = Archivo_Black({
+export const archivo = Archivo_Black({
 	weight: ['400'],
 	subsets: ['latin'],
 	variable: '--font-archivo-black',
+	display: 'swap',
+	preload: false,
+	fallback: ['system-ui', 'sans-serif'],
 });
 
 export const fonts = {

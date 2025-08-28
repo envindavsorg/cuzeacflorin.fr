@@ -6,7 +6,7 @@ import { useTheme } from 'next-themes';
 import type React from 'react';
 import { memo, useEffect, useRef, useState } from 'react';
 import useSWR from 'swr';
-import type { CvMetadata } from '@/app/api/cv/metadata/route';
+import type { CvMetadata } from '@/app/api/cv/route';
 import { MemojiToggle } from '@/components/elements/MemojiToggle';
 import { ToggleAvatar } from '@/components/elements/ToggleAvatar';
 import { Button } from '@/components/ui/Button';
@@ -42,14 +42,10 @@ export const AboutMe = memo((): React.JSX.Element => {
 		};
 	}, []);
 
-	const { data } = useSWR<CvMetadata>(
-		shouldFetch ? '/api/cv/metadata' : null,
-		fetcher,
-		{
-			revalidateOnFocus: false,
-			revalidateOnReconnect: false,
-		}
-	);
+	const { data } = useSWR<CvMetadata>(shouldFetch ? '/api/cv' : null, fetcher, {
+		revalidateOnFocus: false,
+		revalidateOnReconnect: false,
+	});
 
 	return (
 		<Card

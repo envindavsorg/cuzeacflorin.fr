@@ -1,38 +1,41 @@
 'use client';
 
-import { ArrowUpRightIcon } from '@phosphor-icons/react';
+import { XIcon } from '@phosphor-icons/react';
 import type React from 'react';
-import { Anchor } from '@/components/ui/Anchor';
-import { Container } from '@/components/ui/Container';
-import useMounted from '@/hooks/useMounted';
-import { cn } from '@/lib/utils';
+import LetterGlitch from '@/components/animation/LetterGlitch';
+import { CardLink } from '@/components/ui/Card';
 
 const NotFound = (): React.JSX.Element => {
-	const isMounted = useMounted();
-
 	return (
-		<Container
-			as="main"
-			className="flex min-h-screen items-center justify-center"
-		>
-			<div
-				className={cn(
-					'space-y-4 text-center',
-					isMounted ? 'translate-y-0 opacity-100' : '-translate-y-6 opacity-0',
-					'transition-[opacity,_transform] duration-700'
-				)}
-			>
-				<h1 className="font-pixelify-sans text-7xl md:text-9xl">404</h1>
-				<h2 className="font-pixelify-sans text-xl md:text-3xl">
-					Page Not Found
-				</h2>
-				<p>Sorry, we couldn&apos;t find what you were looking for.</p>
-				<Anchor className="px-4 py-2" href="/">
-					<ArrowUpRightIcon className="-rotate-45 group-hover:-rotate-180 size-4.5 transition-transform duration-300" />
-					Back to Home
-				</Anchor>
+		<>
+			<div className="-z-10 fixed inset-0">
+				<LetterGlitch
+					centerVignette={true}
+					glitchColors={['#2b4539', '#61dca3', '#61b3dc']}
+					glitchSpeed={50}
+					outerVignette={true}
+					smooth={true}
+				/>
 			</div>
-		</Container>
+
+			<main className="relative flex min-h-screen flex-col items-center justify-center gap-y-6 px-6 text-center">
+				<h1 className="font-pixelify-sans text-8xl md:text-[180px]">404</h1>
+				<div className="flex w-full max-w-xl flex-col gap-y-3">
+					<h2 className="font-bold text-3xl md:text-4xl">Page introuvable</h2>
+					<p className="text-sm text-white leading-relaxed md:text-base">
+						Oups ! Cette page n’existe pas, peut-être avez-vous cliqué sur un
+						ancien lien ou avez-vous fait une faute de frappe.
+					</p>
+				</div>
+				<CardLink
+					className="mt-3"
+					icon={XIcon}
+					label="Retour à l'accueil"
+					rotate={false}
+					url="/"
+				/>
+			</main>
+		</>
 	);
 };
 

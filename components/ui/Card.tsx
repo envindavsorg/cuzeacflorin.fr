@@ -115,6 +115,7 @@ type CardLinkProps = {
 	handle?: string;
 	label: string;
 	icon?: React.ComponentType<IconProps>;
+	rotate?: boolean;
 };
 
 const CardLink = ({
@@ -123,6 +124,7 @@ const CardLink = ({
 	handle,
 	label,
 	icon: Icon = ArrowUpRightIcon,
+	rotate = true,
 }: CardLinkProps): React.JSX.Element => {
 	const MotionButton = motion.create(Button);
 
@@ -146,7 +148,13 @@ const CardLink = ({
 						whileTap={{ scale: 0.95 }}
 					>
 						<span>
-							<Icon className="size-5 text-black transition-transform duration-300 group-hover:rotate-45" />
+							<Icon
+								className={cn(
+									'size-5 text-black',
+									rotate &&
+										'transition-transform duration-300 group-hover:rotate-45'
+								)}
+							/>
 							{handle && <span className="sr-only">{handle}</span>}
 						</span>
 					</MotionButton>

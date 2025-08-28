@@ -4,7 +4,6 @@ import type React from 'react';
 import { lazy, Suspense, useId } from 'react';
 import { Bento } from '@/components/blocs/Bento';
 import { BentoItem } from '@/components/blocs/BentoItem';
-import { Container } from '@/components/ui/Container';
 import { gridItems, layouts } from '@/lib/grid';
 import { generateOgMetadata } from '@/lib/image';
 import { defaultDescription } from '@/resources/meta';
@@ -59,6 +58,7 @@ const Home = (): React.JSX.Element => {
 					__html: JSON.stringify(structuredData),
 				}}
 				id={structuredDataId}
+				strategy="afterInteractive"
 				type="application/ld+json"
 			/>
 
@@ -66,11 +66,9 @@ const Home = (): React.JSX.Element => {
 				<Noise />
 			</Suspense>
 
-			<Container as="header" className="flex items-center justify-between py-0">
-				<h1 className="hidden">
-					{firstName} {lastName}
-				</h1>
-			</Container>
+			<h1 className="hidden">
+				{firstName} {lastName}
+			</h1>
 
 			<main className="pb-15">
 				<Bento layouts={layouts}>
