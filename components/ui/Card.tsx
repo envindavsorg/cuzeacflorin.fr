@@ -129,18 +129,28 @@ const CardLink = ({
 	return (
 		<Tooltip>
 			<TooltipTrigger asChild>
-				<MotionButton
-					className={cn('group', className)}
-					size="icon"
-					variant="icon"
-					whileHover={{ scale: 1.05 }}
-					whileTap={{ scale: 0.95 }}
+				<Link
+					aria-label={label}
+					className={className}
+					href={url}
+					rel="noopener noreferrer"
+					target="_blank"
 				>
-					<Link aria-label={label} href={url}>
-						<Icon className="size-4.5 text-black transition-transform duration-300 group-hover:rotate-45" />
-						{handle && <span className="sr-only">{handle}</span>}
-					</Link>
-				</MotionButton>
+					<MotionButton
+						aria-label={label}
+						asChild
+						className="group"
+						size="icon"
+						variant="icon"
+						whileHover={{ scale: 1.05 }}
+						whileTap={{ scale: 0.95 }}
+					>
+						<span>
+							<Icon className="size-5 text-black transition-transform duration-300 group-hover:rotate-45" />
+							{handle && <span className="sr-only">{handle}</span>}
+						</span>
+					</MotionButton>
+				</Link>
 			</TooltipTrigger>
 			<TooltipContent align="center" side="left" sideOffset={5}>
 				{label}

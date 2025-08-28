@@ -60,6 +60,7 @@ export const ThemeButton = memo(
 
 			return (
 				<motion.button
+					aria-label={isDarkMode ? 'Mode sombre' : 'Mode clair'}
 					className="relative flex cursor-pointer items-center justify-center p-2"
 					onClick={onClick}
 					ref={ref}

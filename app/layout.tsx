@@ -7,7 +7,8 @@ import './globals.css';
 import type { Metadata, Viewport } from 'next';
 import { Toaster } from '@/components/ui/Sonner';
 import { cn } from '@/lib/utils';
-import { generateMetadata } from '@/resources/meta';
+import { defaultDescription, generateMetadata } from '@/resources/meta';
+import { PROFILE_CONFIG } from '@/resources/profile';
 
 const Analytics = lazy(() =>
 	import('@vercel/analytics/react').then((module) => ({
@@ -60,6 +61,24 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => (
 		lang="fr"
 		suppressHydrationWarning
 	>
+		<head>
+			<meta content={defaultDescription} name="description" />
+			<meta content="yes" name="mobile-web-app-capable" />
+			<meta content="default" name="apple-mobile-web-app-status-bar-style" />
+			<meta
+				content={`${PROFILE_CONFIG.firstName} ${PROFILE_CONFIG.lastName}`}
+				name="apple-mobile-web-app-title"
+			/>
+			<link href="/apple-touch-icon.png" rel="apple-touch-icon" />
+			<link
+				href="/apple-touch-icon.png"
+				rel="apple-touch-icon"
+				sizes="180x180"
+			/>
+			<title>
+				{PROFILE_CONFIG.firstName} {PROFILE_CONFIG.lastName}
+			</title>
+		</head>
 		<body className="relative select-none bg-theme-background font-geist-mono tracking-tight antialiased">
 			<AppProviders>
 				{children}

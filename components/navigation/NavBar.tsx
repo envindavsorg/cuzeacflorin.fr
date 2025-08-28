@@ -4,6 +4,9 @@ import type { Dispatch, SetStateAction } from 'react';
 import { Fade, FadeStagger } from '@/components/animation/Fade';
 import { Filter } from '@/components/navigation/Filters';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/Avatar';
+import { PROFILE_CONFIG } from '@/resources/profile';
+
+const { firstName, lastName } = PROFILE_CONFIG;
 
 type NavBarProps = {
 	setFilter: Dispatch<SetStateAction<FilterType>>;
@@ -17,7 +20,7 @@ export const NavBar = ({ setFilter }: NavBarProps): React.JSX.Element => (
 		>
 			<Fade asChild>
 				<Avatar className="size-18 md:size-14">
-					<AvatarImage src="/avatar.webp" />
+					<AvatarImage alt={`${firstName} ${lastName}`} src="/avatar.webp" />
 					<AvatarFallback>CF</AvatarFallback>
 				</Avatar>
 			</Fade>

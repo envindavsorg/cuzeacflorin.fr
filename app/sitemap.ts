@@ -5,18 +5,24 @@ import { baseURL } from '@/resources/meta';
 
 const sitemap = (): MetadataRoute.Sitemap => {
 	const routes = [''].map((route) => ({
-		url: `${baseURL}${route}`,
+		url: `https://${baseURL}${route}`,
 		lastModified: new Date(),
+		changeFrequency: 'monthly' as const,
+		priority: 1,
 	}));
 
 	const posts = getAllPosts().map((post) => ({
-		url: `${baseURL}/posts/${post.slug}`,
+		url: `https://${baseURL}/posts/${post.slug}`,
 		lastModified: post.metadata.date,
+		changeFrequency: 'monthly' as const,
+		priority: 1,
 	}));
 
 	const projects = getAllProjects().map((projects) => ({
-		url: `${baseURL}/projects/${projects.slug}`,
+		url: `https://${baseURL}/projects/${projects.slug}`,
 		lastModified: new Date(),
+		changeFrequency: 'monthly' as const,
+		priority: 1,
 	}));
 
 	return [...routes, ...posts, ...projects];

@@ -4,8 +4,11 @@ import { baseURL } from '@/resources/meta';
 const robots = (): MetadataRoute.Robots => ({
 	rules: {
 		userAgent: '*',
+		allow: '/',
+		disallow: ['/api/', '/_next/'],
 	},
-	sitemap: `${baseURL}/sitemap.xml`,
+	sitemap: `https://${baseURL}/sitemap.xml`,
+	host: `https://${baseURL}`,
 });
 
 export default robots;

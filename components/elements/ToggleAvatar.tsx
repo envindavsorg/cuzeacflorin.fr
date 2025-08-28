@@ -14,19 +14,6 @@ import {
 } from '@/components/ui/Tooltip';
 import { PROFILE_CONFIG } from '@/resources/profile';
 
-type ToggleAvatarProps = {
-	animatePulse: (
-		sequence: AnimationSequence,
-		options?: SequenceOptions | undefined
-	) => any;
-	pulseScope: RefObject<HTMLDivElement>;
-	color: string;
-	avatar: number;
-	setAvatar: React.Dispatch<React.SetStateAction<number>>;
-	isUserInteractionRef: React.RefObject<boolean>;
-	setHasUserInteracted: React.Dispatch<React.SetStateAction<boolean>>;
-};
-
 const GENTLE_EASE = [0.4, 0, 0.2, 1] as const;
 const PULSE_DURATION = 1.2;
 const PULSE_MAX_SCALE = 6;
@@ -50,6 +37,19 @@ const ANIMATION_CONFIG = {
 		ease: GENTLE_EASE,
 	},
 } as const;
+
+type ToggleAvatarProps = {
+	animatePulse: (
+		sequence: AnimationSequence,
+		options?: SequenceOptions | undefined
+	) => any;
+	pulseScope: RefObject<HTMLDivElement>;
+	color: string;
+	avatar: number;
+	setAvatar: React.Dispatch<React.SetStateAction<number>>;
+	isUserInteractionRef: React.RefObject<boolean>;
+	setHasUserInteracted: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 export const ToggleAvatar = memo(
 	({
@@ -116,7 +116,8 @@ export const ToggleAvatar = memo(
 			<Tooltip>
 				<TooltipTrigger asChild>
 					<MotionButton
-						className="group absolute top-5 right-5"
+						aria-label="Mes humeurs !"
+						className="group absolute top-5 right-5 z-10"
 						onClick={handleClick}
 						size="icon"
 						variant="icon"

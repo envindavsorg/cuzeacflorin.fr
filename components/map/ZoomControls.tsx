@@ -32,6 +32,7 @@ export const ZoomControls = memo(
 				<Tooltip>
 					<TooltipTrigger asChild>
 						<MotionButton
+							aria-label="Réduire"
 							className="group"
 							disabled={!canZoomOut}
 							onClick={onZoomOut}
@@ -50,6 +51,7 @@ export const ZoomControls = memo(
 				<Tooltip>
 					<TooltipTrigger asChild>
 						<MotionButton
+							aria-label="Agrandir"
 							className="group"
 							disabled={!canZoomIn}
 							onClick={onZoomIn}
