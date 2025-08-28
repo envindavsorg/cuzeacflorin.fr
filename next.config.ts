@@ -49,7 +49,6 @@ const nextConfig: NextConfig = {
 			'web-vitals',
 		],
 		webpackBuildWorker: true,
-		webVitalsAttribution: ['CLS', 'LCP', 'FCP', 'FID', 'TTFB'],
 		cssChunking: 'strict',
 		serverComponentsHmrCache: false,
 		staleTimes: {
