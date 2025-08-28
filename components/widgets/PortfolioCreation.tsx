@@ -23,7 +23,7 @@ export const PortfolioCreation = memo((): React.JSX.Element => {
 
 			<div className="flex flex-col items-start justify-between gap-y-3">
 				<h2
-					className="inline-block font-bold font-pixelify-sans text-2xl text-theme md:text-3xl"
+					className="inline-block font-bold font-pixelify-sans text-3xl text-theme"
 					title={metadata.title}
 				>
 					{firstWordTitle}
@@ -33,7 +33,7 @@ export const PortfolioCreation = memo((): React.JSX.Element => {
 				<Paragraph className="relative line-clamp-3 leading-relaxed max-sm:line-clamp-2 max-md:line-clamp-4">
 					{extractSentence(metadata.description)}.
 				</Paragraph>
-				<span className="text-muted-foreground text-sm">
+				<span className="text-muted-foreground text-sm max-md:hidden">
 					{formatDate(metadata.date)}
 				</span>
 			</div>

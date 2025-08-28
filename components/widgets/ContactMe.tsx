@@ -30,14 +30,14 @@ export const ContactMe = memo((): React.JSX.Element => {
 				url={`mailto:${email}`}
 			/>
 
-			<div className="flex flex-col items-start justify-between gap-y-3">
+			<div className="flex flex-col items-start justify-between gap-y-6 md:gap-y-3">
 				<h2
-					className="inline-block font-bold font-pixelify-sans text-2xl text-theme md:text-3xl"
+					className="inline-block font-bold font-pixelify-sans text-3xl text-theme"
 					title={title}
 				>
 					{title}
 				</h2>
-				<Paragraph className="relative line-clamp-3 leading-relaxed max-sm:line-clamp-2 max-md:line-clamp-4">
+				<Paragraph className="relative line-clamp-3 leading-relaxed max-sm:line-clamp-2 md:line-clamp-6 lg:line-clamp-4">
 					{description}
 				</Paragraph>
 				<div className="mt-3 inline-flex gap-x-6">
@@ -52,7 +52,7 @@ export const ContactMe = memo((): React.JSX.Element => {
 							whileHover={{ scale: 1.15 }}
 							whileTap={{ scale: 0.95 }}
 						>
-							<Icon className="size-8 transition-all duration-300 group-hover:text-theme" />
+							<Icon className="size-10 transition-all duration-300 group-hover:text-theme lg:size-8" />
 							<span className="sr-only">{name}</span>
 						</MotionLink>
 					))}

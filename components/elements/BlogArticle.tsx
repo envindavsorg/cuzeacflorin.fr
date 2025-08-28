@@ -28,14 +28,14 @@ export const BlogArticle = ({
 				url={`/posts/${slug}`}
 			/>
 
-			<div className="flex flex-col items-start justify-between gap-y-3">
+			<div className="flex flex-col items-start justify-between gap-y-6 md:gap-y-3">
 				<h2
-					className="inline-block font-bold font-pixelify-sans text-2xl text-theme md:text-3xl"
+					className="inline-block font-bold font-pixelify-sans text-3xl text-theme"
 					title={metadata.title}
 				>
 					{metadata.title}
 				</h2>
-				<Paragraph className="relative line-clamp-3 leading-relaxed max-sm:line-clamp-2 max-md:line-clamp-4">
+				<Paragraph className="relative line-clamp-3 leading-relaxed max-sm:line-clamp-2 md:line-clamp-6 lg:line-clamp-4">
 					{metadata.description}
 				</Paragraph>
 				<div className="mt-3 flex gap-x-2">
@@ -46,8 +46,8 @@ export const BlogArticle = ({
 					<span className="text-muted-foreground text-sm">
 						{reading?.readingTime}
 					</span>
-					<span className="text-muted-foreground text-sm">•</span>
-					<span className="text-muted-foreground text-sm">
+					<span className="text-muted-foreground text-sm max-lg:hidden">•</span>
+					<span className="text-muted-foreground text-sm max-lg:hidden">
 						{reading?.words} mots
 					</span>
 				</div>

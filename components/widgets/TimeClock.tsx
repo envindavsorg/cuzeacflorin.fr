@@ -51,7 +51,7 @@ export const TimeClock = memo((): React.JSX.Element => {
 		<Card
 			className={cn(
 				'h-full md:p-4 lg:p-8',
-				'flex flex-col items-center justify-center gap-y-3'
+				'flex flex-col items-center justify-center lg:gap-y-3'
 			)}
 			pattern
 		>

@@ -56,7 +56,7 @@ export const AboutMe = memo((): React.JSX.Element => {
 			className={cn(
 				'h-full px-6 py-5 md:py-6 lg:px-8 lg:py-8',
 				'lg:flex lg:flex-col lg:items-start lg:justify-between lg:gap-x-6',
-				'grid grid-cols-2 content-between md:grid-cols-4'
+				'grid grid-cols-1 content-between lg:grid-cols-4'
 			)}
 			pattern
 		>
@@ -85,21 +85,24 @@ export const AboutMe = memo((): React.JSX.Element => {
 				Je crée des solutions web où technique et design se rencontrent.
 			</Paragraph>
 
-			<div className="flex items-center gap-x-6">
+			<div className="flex items-center gap-x-6 md:gap-x-3 lg:gap-x-6">
 				<Button asChild className="px-4" size="sm" variant="outline">
 					<Link aria-label={cv.shareText} href={cv.filePath}>
-						Découvrez <span className="font-bold">mon CV</span>
+						<span className="max-md:hidden">Découvrez</span>{' '}
+						<span className="font-bold max-md:uppercase">mon CV</span>
 					</Link>
 				</Button>
 				{showSpinner ? (
 					<Spinner className="size-4 text-muted-foreground" variant="default" />
 				) : data ? (
 					<div className="flex gap-x-2">
-						<span className="text-muted-foreground text-sm">
+						<span className="text-muted-foreground text-sm md:text-xs lg:text-sm">
 							{data.sizeKB} KB
 						</span>
-						<span className="text-muted-foreground text-sm">•</span>
-						<span className="text-muted-foreground text-sm">
+						<span className="text-muted-foreground text-sm md:text-xs lg:text-sm">
+							•
+						</span>
+						<span className="text-muted-foreground text-sm md:text-xs lg:text-sm">
 							{data.lastModified}
 						</span>
 					</div>

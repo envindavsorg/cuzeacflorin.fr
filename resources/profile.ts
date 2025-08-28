@@ -23,7 +23,7 @@ export const PROFILE_CONFIG = {
 	genId: '@cuzeacflorin',
 
 	contact: {
-		title: 'Envie de dire bonjour ?',
+		title: 'Envie de me dire bonjour ?',
 		description:
 			'Si vous avez un projet à lancer, besoin de mon aide pour quelque chose ou simplement envie de dire bonjour, alors contactez-moi. (je réponds vite !)',
 		email: 'mail@cueacflorin.fr',

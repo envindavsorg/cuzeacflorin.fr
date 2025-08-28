@@ -31,7 +31,7 @@ export const ThemeDisplay = memo(
 		const { mode } = getThemeConfig();
 
 		return (
-			<h3 className="font-archivo-black font-bold text-4xl tracking-wide lg:text-5xl">
+			<h3 className="font-archivo-black font-bold text-5xl tracking-wide max-lg:hidden">
 				{mode}
 			</h3>
 		);
@@ -85,7 +85,7 @@ export const ThemeButton = memo(
 								key="sun"
 								transition={iconTransition}
 							>
-								<SunIcon className="size-10 text-[#FCE24A] lg:size-16" />
+								<SunIcon className="size-16 text-[#FCE24A]" />
 							</motion.div>
 						) : (
 							<motion.div
@@ -99,7 +99,7 @@ export const ThemeButton = memo(
 								key="moon"
 								transition={iconTransition}
 							>
-								<MoonIcon className="size-10 lg:size-16" />
+								<MoonIcon className="size-16" />
 							</motion.div>
 						)}
 					</AnimatePresence>
@@ -125,7 +125,7 @@ export const ThemeSwitcher = memo((): React.JSX.Element => {
 		<Card
 			className={cn(
 				'h-full md:p-4 lg:p-8',
-				'flex flex-col items-center justify-center gap-y-6'
+				'flex flex-col items-center justify-center lg:gap-y-6'
 			)}
 			pattern
 		>
