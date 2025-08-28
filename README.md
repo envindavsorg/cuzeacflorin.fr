@@ -81,7 +81,7 @@ SEO: 💯 100/100
 ## 🏃‍♂️ Installation & Usage
 
 ### Prerequisites
-- Node.js 18+ 
+- Node.js 18+
 - pnpm (recommended)
 
 ### Installation
@@ -188,9 +188,9 @@ LINKEDIN_API_TOKEN=your_linkedin_token
 export const TimeClock = memo(() => {
   const { hours, minutes } = useTimeParts();
   const showSeparator = useShowSeparator();
-  
+
   useClockSync(); // Real-time hook
-  
+
   return (
     <Card pattern>
       <AnimatedNumber value={hours} />
@@ -287,7 +287,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 <div align="center">
 
-**Construit avec ❤️ par [Florin Cuzeac](https://cuzeacflorin.fr)**
+**Built with ❤️ by [Florin Cuzeac](https://cuzeacflorin.fr)**
 
 [🌍 Website](https://cuzeacflorin.fr) • [💼 LinkedIn](https://linkedin.com/in/florin-cuzeac) • [🐙 GitHub](https://github.com/envindavsorg)
 
