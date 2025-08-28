@@ -1,15 +1,20 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import type React from 'react';
-import { useId } from 'react';
+import { lazy, Suspense, useId } from 'react';
 import { Bento } from '@/components/blocs/Bento';
 import { BentoItem } from '@/components/blocs/BentoItem';
-import { Noise } from '@/components/animation/Noise';
 import { Container } from '@/components/ui/Container';
 import { gridItems, layouts } from '@/lib/grid';
 import { generateOgMetadata } from '@/lib/image';
 import { defaultDescription } from '@/resources/meta';
 import { PROFILE_CONFIG } from '@/resources/profile';
+
+const Noise = lazy(() =>
+	import('@/components/animation/Noise').then((module) => ({
+		default: module.Noise,
+	}))
+);
 
 const { firstName, lastName, welcome } = PROFILE_CONFIG;
 
@@ -57,7 +62,9 @@ const Home = (): React.JSX.Element => {
 				type="application/ld+json"
 			/>
 
-			<Noise />
+			<Suspense fallback={null}>
+				<Noise />
+			</Suspense>
 
 			<Container as="header" className="flex items-center justify-between py-0">
 				<h1 className="hidden">
