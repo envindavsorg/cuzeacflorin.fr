@@ -2,8 +2,6 @@
 
 > A modern and interactive portfolio built with Next.js 15, TypeScript, and an innovative widget-based architecture.
 
-![Portfolio Preview](./public/og.png)
-
 **🌍 Live Demo**: [cuzeacflorin.fr](https://cuzeacflorin.fr/)
 **📊 Performance**: Perfect Lighthouse 100/100 across all metrics
 
