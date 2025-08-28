@@ -10,17 +10,17 @@ import { breakpoints, cols, heights } from '@/lib/consts';
 import { cn } from '@/lib/utils';
 
 const itemCategories: Record<string, FilterType[]> = {
-	bio: ['about'],
+	bio: ['about', 'projects'],
 	location: ['about'],
-	cv: ['projects'],
-	commit: ['about', 'projects'],
+	commit: ['projects'],
 	article: ['blog'],
-	switcher: ['about'],
+	switcher: [],
 	linkedin: ['projects'],
 	contact: ['about'],
 	portfolio: ['blog'],
 	work: ['projects', 'blog'],
-	clock: ['about'],
+	clock: [],
+	stars: ['projects'],
 };
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
@@ -95,6 +95,8 @@ export const Bento = ({
 		return hiddenItems
 			? `
 			${hiddenItems} {
+				pointer-events: none;
+				user-select: none;
 				opacity: 0.4 !important;
 				filter: grayscale(80%) !important;
 				transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
