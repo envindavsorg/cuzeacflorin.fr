@@ -49,14 +49,6 @@
       }
     }
   },
-  "overrides": [
-    {
-      "includes": ["app/globals.css"],
-      "linter": {
-        "enabled": false
-      }
-    }
-  ],
   "javascript": {
     "formatter": {
       "quoteStyle": "single",
@@ -65,5 +57,13 @@
     "parser": {
       "unsafeParameterDecoratorsEnabled": true
     }
-  }
+  },
+  "overrides": [
+    {
+      "includes": ["app/globals.css"],
+      "linter": {
+        "enabled": false
+      }
+    }
+  ]
 }
