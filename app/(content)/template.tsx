@@ -28,12 +28,14 @@ const Content = ({
 	);
 };
 
-type TemplateProps = {
+type TemplatePageProps = {
 	children: React.ReactNode;
 };
 
-const Template = ({ children }: Readonly<TemplateProps>) => (
+const TemplatePage = ({
+	children,
+}: Readonly<TemplatePageProps>): React.JSX.Element => (
 	<Content>{children}</Content>
 );
 
-export default Template;
+export default TemplatePage;

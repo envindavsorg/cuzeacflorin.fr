@@ -1,39 +1,42 @@
-import { BookIcon, CalendarDotsIcon } from '@phosphor-icons/react/ssr';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type React from 'react';
 import { CustomMDX } from '@/components/mdx/Markdown';
 import { Header } from '@/components/navigation/Header';
-import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Container';
+import type { MDXData, ProjectMetadata } from '@/lib/mdx';
 import { getAllProjects } from '@/lib/projects';
 import { formatDate } from '@/lib/utils';
 
-type Params = Promise<{ slug: string }>;
+type Params = {
+	slug: string;
+};
 
-export const generateStaticParams = async () =>
-	getAllProjects().map((project) => ({ slug: project.slug }));
+export const generateStaticParams = async (): Promise<Params[]> =>
+	getAllProjects().map(({ slug }) => ({ slug }));
 
 type ProjectPageProps = {
-	params: Params;
+	params: Promise<Params>;
 };
 
 const ProjectPage = async ({
 	params,
-}: ProjectPageProps): Promise<React.JSX.Element> => {
+}: Readonly<ProjectPageProps>): Promise<React.JSX.Element> => {
 	const { slug } = await params;
+	const project = getAllProjects().find(
+		(project: MDXData<ProjectMetadata>) => project.slug === slug
+	);
 
-	const project = getAllProjects().find((project) => project.slug === slug);
 	if (!project) {
 		notFound();
 	}
 
 	return (
-		<div className="py-15">
+		<div className="py-15 has-[button:hover]:*:last:translate-y-4">
 			<Header />
 
-			<main className="relative">
+			<main className="relative transition-transform duration-700 ease-in-out">
 				<Container as="article" className="mt-10 flex flex-col gap-y-10">
 					<section className="flex flex-col items-center justify-center gap-y-3">
 						<h1
@@ -42,15 +45,18 @@ const ProjectPage = async ({
 						>
 							{project.metadata.title}
 						</h1>
-						<div className="flex items-center gap-x-3 *:px-2 *:py-1.5">
-							<Badge variant="outline">
-								<CalendarDotsIcon />
+						<div className="flex gap-x-2">
+							<span className="text-muted-foreground text-sm">
 								{formatDate(project.metadata.date)}
-							</Badge>
-							<Badge variant="outline">
-								<BookIcon />
+							</span>
+							<span className="text-muted-foreground text-sm">•</span>
+							<span className="text-muted-foreground text-sm">
 								{project.reading?.readingTime}
-							</Badge>
+							</span>
+							<span className="text-muted-foreground text-sm">•</span>
+							<span className="text-muted-foreground text-sm">
+								{project.reading?.words} mots
+							</span>
 						</div>
 					</section>
 
