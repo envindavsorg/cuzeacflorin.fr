@@ -94,7 +94,7 @@
     "tailwindcss": "^4.1.12",
     "taze": "^19.3.0",
     "typescript": "^5.9.2",
-    "ultracite": "^5.2.5"
+    "ultracite": "^5.2.10"
   },
   "optionalDependencies": {
     "@types/mdx": "^2.0.13",
