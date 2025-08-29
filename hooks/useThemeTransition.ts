@@ -42,6 +42,9 @@ const useThemeTransition = (): ThemeTransition => {
 			const bottom = window.innerHeight - top;
 			const maxRad = Math.hypot(Math.max(left, right), Math.max(top, bottom));
 
+			// Set theme transition name to separate from page transitions
+			document.documentElement.style.setProperty('view-transition-name', 'theme-change');
+
 			const transition = document.startViewTransition(() => {
 				flushSync(() => {
 					setTheme(newTheme);
@@ -60,9 +63,14 @@ const useThemeTransition = (): ThemeTransition => {
 					{
 						duration: 700,
 						easing: 'ease-in-out',
-						pseudoElement: '::view-transition-new(root)',
+						pseudoElement: '::view-transition-new(theme-change)',
 					}
 				);
+			});
+
+			// Clean up after transition
+			transition.finished.finally(() => {
+				document.documentElement.style.removeProperty('view-transition-name');
 			});
 		} else {
 			setTheme(newTheme);

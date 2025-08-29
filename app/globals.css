@@ -299,17 +299,17 @@ html:not(.dark) .prose pre code span {
 }
 
 /* View Transition API for smooth theme changes */
-::view-transition-old(root),
-::view-transition-new(root) {
+::view-transition-old(theme-change),
+::view-transition-new(theme-change) {
 	animation: none;
 	mix-blend-mode: normal;
 }
 
-::view-transition-old(root) {
+::view-transition-old(theme-change) {
 	z-index: 1;
 }
 
-::view-transition-new(root) {
+::view-transition-new(theme-change) {
 	z-index: 999;
 }
 
