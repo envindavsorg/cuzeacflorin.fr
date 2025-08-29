@@ -1,15 +1,12 @@
 <p align="center">
 	<a href="https://www.cuzeacflorin.fr/">
-		<svg width="96" height="96">
-			<defs>
-        		<clipPath id="circle">
-          			<circle cx="48" cy="48" r="48"/>
-        		</clipPath>
-      		</defs>
-    		<img src="https://www.cuzeacflorin.fr/avatar.webp" alt="Cuzeac Florin" height="96">
-		</svg>
+		<img src="https://www.cuzeacflorin.fr/avatar.webp" alt="Cuzeac Florin" height="96">
     	<h3 align="center">Portfolio - Cuzeac Florin</h3>
   	</a>
+</p>
+
+<p align="center">
+  Crée. Code. Innove.
 </p>
 
 
