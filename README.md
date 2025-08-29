@@ -1,3 +1,11 @@
+<p align="center">
+  <a href="https://www.cuzeacflorin.fr/">
+    <img src="https://www.cuzeacflorin.fr/avatar.webp" alt="Cuzeac Florin" height="96" style="border-radius: 50%;">
+    <h3 align="center">Portfolio - Cuzeac Florin</h3>
+  </a>
+</p>
+
+
 # 🚀 Portfolio - Cuzeac Florin
 
 > A modern and interactive portfolio built with Next.js 15, TypeScript, and an innovative widget-based architecture.
