@@ -23,7 +23,6 @@ export const GitHubStars = memo(async (): Promise<React.JSX.Element> => {
 				'lg:flex lg:flex-col lg:items-start lg:justify-between lg:gap-x-6',
 				'grid grid-cols-2 content-between md:grid-cols-4'
 			)}
-			pattern
 		>
 			<div className="justify-self-start max-lg:flex max-lg:items-center max-lg:gap-x-3 md:col-span-2">
 				<GithubLogoIcon className="size-10 max-lg:shrink-0 md:hidden md:size-12 lg:size-16" />

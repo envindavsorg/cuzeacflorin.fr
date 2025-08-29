@@ -53,7 +53,6 @@ export const TimeClock = memo((): React.JSX.Element => {
 				'h-full md:p-4 lg:p-8',
 				'flex flex-col items-center justify-center lg:gap-y-3'
 			)}
-			pattern
 		>
 			<div className="flex items-center justify-center overflow-hidden">
 				<AnimatedNumber value={hours} />

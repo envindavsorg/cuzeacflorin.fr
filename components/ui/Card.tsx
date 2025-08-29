@@ -5,7 +5,6 @@ import { motion } from 'motion/react';
 import Link from 'next/link';
 import type React from 'react';
 import { Button } from '@/components/ui/Button';
-import { Pattern } from '@/components/ui/Pattern';
 import {
 	Tooltip,
 	TooltipContent,
@@ -13,19 +12,14 @@ import {
 } from '@/components/ui/Tooltip';
 import { cn } from '@/lib/utils';
 
-type CardProps = {
-	pattern?: boolean;
-};
-
 const Card = ({
 	className,
 	children,
-	pattern = false,
 	...props
-}: React.ComponentProps<'div'> & CardProps): React.JSX.Element => (
+}: React.ComponentProps<'div'>): React.JSX.Element => (
 	<div
 		className={cn(
-			'relative rounded-xl border bg-card text-card-foreground md:rounded-3xl',
+			'relative rounded-xl border bg-background/50 text-card-foreground backdrop-blur-md md:rounded-3xl',
 			'size-full select-none overflow-hidden shadow-xs transition-shadow duration-300 hover:shadow-sm',
 			className
 		)}
@@ -33,7 +27,6 @@ const Card = ({
 		{...props}
 	>
 		{children}
-		{pattern && <Pattern />}
 	</div>
 );
 

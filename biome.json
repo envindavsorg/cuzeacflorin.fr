@@ -46,6 +46,9 @@
         "noExplicitAny": "off",
         "noUnknownAtRules": "off",
         "useAwait": "off"
+      },
+      "correctness": {
+        "useUniqueElementIds": "off"
       }
     }
   },

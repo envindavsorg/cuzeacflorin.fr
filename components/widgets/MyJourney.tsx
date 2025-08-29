@@ -14,7 +14,6 @@ export const MyJourney = memo((): React.JSX.Element => {
 				'h-full px-6 py-5 md:py-6 lg:px-8 lg:py-8',
 				'flex items-center justify-center'
 			)}
-			pattern
 		>
 			<BlogArticle metadata={metadata} reading={reading} slug={slug} />
 		</Card>

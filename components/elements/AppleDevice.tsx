@@ -1,27 +1,21 @@
 import type React from 'react';
-import type { SVGProps } from 'react';
 
-interface MockiPhoneProps extends SVGProps<SVGSVGElement> {
-	width?: number;
-	height?: number;
-	src?: string;
-	videoSrc?: string;
-}
+type AppleDeviceProps = {
+	src: string;
+	className?: string;
+};
 
-export const MockiPhone = ({
-	width = 433,
-	height = 882,
+export const AppleDevice = ({
 	src,
-	videoSrc,
-	...props
-}: MockiPhoneProps): React.JSX.Element => (
+	className,
+}: AppleDeviceProps): React.JSX.Element => (
 	<svg
+		className={className}
 		fill="none"
-		height={height}
-		viewBox={`0 0 ${width} ${height}`}
-		width={width}
+		height="882"
+		viewBox="0 0 433 882"
+		width="433"
 		xmlns="http://www.w3.org/2000/svg"
-		{...props}
 	>
 		<title>Mon portfolio</title>
 		<path
@@ -68,18 +62,6 @@ export const MockiPhone = ({
 				x="21.25"
 				y="19.25"
 			/>
-		)}
-		{videoSrc && (
-			<foreignObject height="843.5" width="389.5" x="21.25" y="19.25">
-				<video
-					autoPlay
-					className="size-full overflow-hidden rounded-[55.75px] object-cover"
-					loop
-					muted
-					playsInline
-					src={videoSrc}
-				/>
-			</foreignObject>
 		)}
 		<path
 			className="fill-[#F5F5F5] dark:fill-[#262626]"

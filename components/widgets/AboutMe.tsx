@@ -54,7 +54,6 @@ export const AboutMe = memo((): React.JSX.Element => {
 				'lg:flex lg:flex-col lg:items-start lg:justify-between lg:gap-x-6',
 				'grid grid-cols-1 content-between lg:grid-cols-4'
 			)}
-			pattern
 		>
 			<ToggleAvatar
 				animatePulse={animatePulse}

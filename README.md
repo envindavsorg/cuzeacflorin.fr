@@ -190,7 +190,7 @@ export const TimeClock = memo(() => {
   useClockSync(); // Real-time hook
 
   return (
-    <Card pattern>
+    <Card>
       <AnimatedNumber value={hours} />
       <ClockSeparator show={showSeparator} />
       <AnimatedNumber value={minutes} />

@@ -9,6 +9,7 @@ import ThemeProvider from '@/providers/theme/Provider';
 import { defaultDescription, generateMetadata } from '@/resources/meta';
 import { PROFILE_CONFIG } from '@/resources/profile';
 import './globals.css';
+import { Sparkles } from '@/components/animation/Sparkles';
 
 const Analytics = lazy(() =>
 	import('@vercel/analytics/react').then((module) => ({
@@ -19,12 +20,6 @@ const Analytics = lazy(() =>
 const SpeedInsights = lazy(() =>
 	import('@vercel/speed-insights/react').then((module) => ({
 		default: module.SpeedInsights,
-	}))
-);
-
-const Sparkles = lazy(() =>
-	import('@/components/animation/Sparkles').then((module) => ({
-		default: module.Sparkles,
 	}))
 );
 
@@ -82,13 +77,11 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => (
 			<link href="https://vitals.vercel-insights.com" rel="dns-prefetch" />
 			<title>{`${PROFILE_CONFIG.firstName} ${PROFILE_CONFIG.lastName}`}</title>
 		</head>
-		<body className="relative select-none bg-theme-background font-geist-mono tracking-tight antialiased">
+		<body className="relative select-none bg-background py-15 font-geist-mono tracking-tight antialiased">
 			<AppProviders>
 				{children}
-				<Suspense fallback={null}>
-					<Toaster position="bottom-right" richColors />
-					<Sparkles density={150} />
-				</Suspense>
+				<Sparkles density={150} />
+				<Toaster position="bottom-right" richColors />
 			</AppProviders>
 
 			<Suspense fallback={null}>

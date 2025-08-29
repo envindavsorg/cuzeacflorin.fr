@@ -1,19 +1,14 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import type React from 'react';
-import { lazy, Suspense, useId } from 'react';
+import { useId } from 'react';
+import { Noise } from '@/components/animation/Noise';
 import { Bento } from '@/components/blocs/Bento';
 import { BentoItem } from '@/components/blocs/BentoItem';
 import { gridItems, layouts } from '@/lib/grid';
 import { generateOgMetadata } from '@/lib/image';
 import { defaultDescription } from '@/resources/meta';
 import { PROFILE_CONFIG } from '@/resources/profile';
-
-const Noise = lazy(() =>
-	import('@/components/animation/Noise').then((module) => ({
-		default: module.Noise,
-	}))
-);
 
 const { firstName, lastName, welcome } = PROFILE_CONFIG;
 
@@ -62,21 +57,20 @@ const Home = (): React.JSX.Element => {
 				type="application/ld+json"
 			/>
 
-			<Suspense fallback={null}>
-				<Noise />
-			</Suspense>
+			<Noise />
 
-			<h1 className="hidden">
+			<h1 className="sr-only">
 				{firstName} {lastName}
 			</h1>
 
-			<main className="pb-15">
-				<Bento layouts={layouts}>
-					{gridItems.map((item) => (
-						<BentoItem component={item.component} id={item.i} key={item.i} />
-					))}
-				</Bento>
-			</main>
+			<Bento
+				className="flex flex-col items-center justify-center gap-y-8"
+				layouts={layouts}
+			>
+				{gridItems.map((item) => (
+					<BentoItem component={item.component} id={item.i} key={item.i} />
+				))}
+			</Bento>
 		</>
 	);
 };

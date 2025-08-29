@@ -22,7 +22,6 @@ export const ContactMe = memo((): React.JSX.Element => {
 				'h-full px-6 py-5 md:py-6 lg:px-8 lg:py-8',
 				'flex items-center justify-center'
 			)}
-			pattern
 		>
 			<CardLink
 				className="absolute top-5 right-5"

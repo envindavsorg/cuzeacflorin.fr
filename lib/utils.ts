@@ -1,5 +1,9 @@
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import {
+	WHITESPACE_AND_HYPHEN_SEPARATOR,
+	WHITESPACE_SEPARATOR,
+} from '@/lib/regex';
 import { baseURL } from '@/resources/meta';
 
 export const cn = (...inputClasses: ClassValue[]): string =>
@@ -23,11 +27,36 @@ export const formatDate = (date: string): string =>
 		day: 'numeric',
 	});
 
-export const WORDS_REGEX: RegExp = /\s+/;
-export const extractSentence = (text: string): string => {
-	const beforeColon = text.split(':')[0];
-	const words = beforeColon.trim().split(WORDS_REGEX);
-	return words
-		.filter((_, index) => index !== 1 && index !== words.length - 1)
-		.join(' ');
+type GetInitialsOptions = {
+	maxInitials?: number;
+	fallback?: string;
+	handleHyphens?: boolean;
+};
+
+export const getInitials = (
+	fullName: string,
+	{
+		maxInitials = 2,
+		fallback = '?',
+		handleHyphens = false,
+	}: GetInitialsOptions = {}
+): string => {
+	if (!fullName?.trim()) {
+		return fallback;
+	}
+
+	const separator = handleHyphens
+		? WHITESPACE_AND_HYPHEN_SEPARATOR
+		: WHITESPACE_SEPARATOR;
+
+	const initials = fullName
+		.trim()
+		.split(separator)
+		.filter(Boolean)
+		.slice(0, maxInitials)
+		.map((word) => word[0]?.toUpperCase())
+		.filter(Boolean)
+		.join('');
+
+	return initials || fallback;
 };

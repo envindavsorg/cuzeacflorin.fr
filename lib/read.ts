@@ -1,5 +1,6 @@
 import { cache } from 'react';
 import readingDuration from 'reading-duration';
+import { CONSECUTIVE_DIGITS_PATTERN, WHITESPACE_SEPARATOR } from '@/lib/regex';
 
 const CONFIG = {
 	wordsPerMinute: 100,
@@ -26,9 +27,6 @@ type ReadingTimeResult = {
 	words: number;
 };
 
-const MINUTES_REGEX = /\d+/;
-const WORDS_REGEX = /\s+/;
-
 export const readingTimeOnArticle = cache(
 	(content: string, lang: Language = 'fr'): ReadingTimeResult => {
 		if (!content?.trim()) {
@@ -43,10 +41,10 @@ export const readingTimeOnArticle = cache(
 		const duration = readingDuration(content, CONFIG);
 
 		const minutes = Number.parseInt(
-			duration.match(MINUTES_REGEX)?.[0] || '0',
+			duration.match(CONSECUTIVE_DIGITS_PATTERN)?.[0] || '0',
 			10
 		);
-		const words = content.trim().split(WORDS_REGEX).length;
+		const words = content.trim().split(WHITESPACE_SEPARATOR).length;
 
 		const translation = TRANSLATIONS[lang];
 		const readingTime = duration.replace('min read', translation.full);
@@ -65,7 +63,7 @@ export const getWordCount = (content: string): number => {
 	if (!content?.trim()) {
 		return 0;
 	}
-	return content.trim().split(WORDS_REGEX).length;
+	return content.trim().split(WHITESPACE_SEPARATOR).length;
 };
 
 export const formatReadingTime = (

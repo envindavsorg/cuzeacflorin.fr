@@ -1,6 +1,6 @@
 ---
 title: Mon portfolio - choix techniques et défis
-description: L'histoire complète de la création de mon portfolio moderne : de Next.js 15 avec App Router aux widgets animés avec Zustand, en passant par l'intégration de Mapbox GL, les animations Motion, et un système de grille responsive multi-layout. Découvrez comment j'ai créé une expérience interactive avec horloge temps réel, intégrations API GitHub/LinkedIn, et un scoring Lighthouse perfect 100/100.
+description: L'histoire de la création de mon portfolio.
 date: 2025-08-28
 links: [{"name": "Voir le site","url": "https://cuzeacflorin.fr/","type": "demo"}, {"name": "Voir sur GitHub", "url": "https://github.com/envindavsorg/bento","type": "github"}]
 ---
@@ -181,7 +181,7 @@ export const TimeClock = memo(() => {
   useClockSync(); // Hook personnalisé pour sync temps réel
 
   return (
-    <Card pattern>
+    <Card>
       <div className="flex items-center justify-center overflow-hidden">
         <AnimatedNumber value={hours} />
         <ClockSeparator show={showSeparator} />

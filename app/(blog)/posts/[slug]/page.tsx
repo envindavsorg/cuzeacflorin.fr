@@ -32,7 +32,7 @@ const PostPage = async ({
 	return (
 		<div
 			className={cn(
-				'relative mx-auto w-full py-15 has-[button:hover]:*:last:translate-y-4',
+				'relative mx-auto w-full has-[button:hover]:*:last:translate-y-4',
 				'max-w-[320px] sm:max-w-[375px] md:max-w-[800px] lg:max-w-[1200px]'
 			)}
 		>

@@ -4,24 +4,11 @@ import { useAnimation } from 'motion/react';
 import type React from 'react';
 import { useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import { type Layout, Responsive, WidthProvider } from 'react-grid-layout';
+import { itemCategories } from '@/components/blocs/categories';
 import { NavBar } from '@/components/navigation/NavBar';
 import useBreakpoint from '@/hooks/useBreakpoint';
 import { breakpoints, cols, heights } from '@/lib/consts';
 import { cn } from '@/lib/utils';
-
-const itemCategories: Record<string, FilterType[]> = {
-	bio: ['about', 'projects'],
-	location: ['about'],
-	commit: ['projects'],
-	article: ['blog'],
-	switcher: [],
-	linkedin: ['projects'],
-	contact: ['about'],
-	portfolio: ['blog'],
-	work: ['projects', 'blog'],
-	clock: [],
-	stars: ['projects'],
-};
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
@@ -106,19 +93,18 @@ export const Bento = ({
 	}, [filter]);
 
 	return (
-		<>
-			<NavBar setFilter={setFilter} />
+		<div className={className}>
+			<NavBar className={className} setFilter={setFilter} />
 
 			<section
 				className={cn(
-					'relative mx-auto w-full pt-8',
+					'relative mx-auto w-full',
 					'max-w-[320px]',
 					'sm:max-w-[375px]',
 					'md:max-w-[800px]',
 					'lg:max-w-[1200px]',
 					isMounted ? 'translate-y-0 opacity-100' : '-translate-y-6 opacity-0',
-					'transition-[opacity,_transform] duration-300',
-					className
+					'transition-[opacity,_transform] duration-300'
 				)}
 				suppressHydrationWarning
 			>
@@ -160,6 +146,6 @@ export const Bento = ({
 			</section>
 
 			{filterCSS && <style>{filterCSS}</style>}
-		</>
+		</div>
 	);
 };

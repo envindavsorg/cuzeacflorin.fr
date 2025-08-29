@@ -1,20 +1,21 @@
 import type React from 'react';
 import { memo } from 'react';
-import { PortfolioMockup } from '@/components/assets/PortfolioMockup';
+import { PortfolioMockup } from '@/components/elements/PortfolioMockup';
 import { Card, CardLink } from '@/components/ui/Card';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { getFirstProject } from '@/lib/projects';
-import { extractSentence, formatDate, WORDS_REGEX } from '@/lib/utils';
+import { WHITESPACE_SEPARATOR } from '@/lib/regex';
+import { formatDate } from '@/lib/utils';
 
 export const PortfolioCreation = memo((): React.JSX.Element => {
 	const { metadata, slug } = getFirstProject();
 	const [firstWordTitle, secondWordTitle] = metadata.title
 		.trim()
-		.split(WORDS_REGEX)
+		.split(WHITESPACE_SEPARATOR)
 		.slice(0, 2);
 
 	return (
-		<Card className="h-full px-6 py-5 md:py-6" pattern>
+		<Card className="h-full px-6 py-5 md:py-6">
 			<CardLink
 				className="absolute top-5 right-5"
 				label="Lire l'article !"
@@ -31,7 +32,7 @@ export const PortfolioCreation = memo((): React.JSX.Element => {
 					{secondWordTitle}
 				</h2>
 				<Paragraph className="relative line-clamp-3 leading-relaxed max-sm:line-clamp-2 max-md:line-clamp-4">
-					{extractSentence(metadata.description)}.
+					{metadata.description}
 				</Paragraph>
 				<span className="text-muted-foreground text-sm max-md:hidden">
 					{formatDate(metadata.date)}

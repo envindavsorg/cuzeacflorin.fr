@@ -128,7 +128,6 @@ export const ThemeSwitcher = memo((): React.JSX.Element => {
 				'h-full md:p-4 lg:p-8',
 				'flex flex-col items-center justify-center lg:gap-y-6'
 			)}
-			pattern
 		>
 			<ThemeButton
 				hasUserInteracted={hasUserInteracted}

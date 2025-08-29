@@ -17,21 +17,20 @@ const nextConfig: NextConfig = {
 		formats: ['image/webp', 'image/avif'],
 		minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
 		dangerouslyAllowSVG: true,
-		contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-		deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-		imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+		contentSecurityPolicy:
+			"default-src 'self'; script-src 'none'; sandbox;",
 	},
 	compress: true,
 	poweredByHeader: false,
 	eslint: {
 		ignoreDuringBuilds: true,
 	},
+	devIndicators: false,
 	experimental: {
 		mdxRs: true,
 		optimizePackageImports: [
 			'motion',
-			'@radix-ui/react-avatar',
-			'@radix-ui/react-tooltip',
+			'@phosphor-icons/react',
 			'@radix-ui/react-hover-card',
 			'@radix-ui/react-separator',
 			'@radix-ui/react-slot',
@@ -40,21 +39,9 @@ const nextConfig: NextConfig = {
 			'@tsparticles/react',
 			'@tsparticles/slim',
 			'@tsparticles/engine',
-			'react-grid-layout',
-			'react-map-gl',
-			'mapbox-gl',
-			'octokit',
-			'sonner',
-			'swr',
 			'web-vitals',
 		],
 		webpackBuildWorker: true,
-		cssChunking: 'strict',
-		serverComponentsHmrCache: false,
-		staleTimes: {
-			dynamic: 30,
-			static: 180,
-		},
 	},
 	productionBrowserSourceMaps: false,
 	compiler: {
@@ -64,10 +51,6 @@ const nextConfig: NextConfig = {
 						exclude: ['error', 'warn'],
 					}
 				: false,
-	},
-	onDemandEntries: {
-		maxInactiveAge: 25 * 1000,
-		pagesBufferLength: 2,
 	},
 	async headers() {
 		return [
@@ -83,52 +66,12 @@ const nextConfig: NextConfig = {
 						value: 'nosniff',
 					},
 					{
-						key: 'X-DNS-Prefetch-Control',
-						value: 'on',
-					},
-					{
 						key: 'Referrer-Policy',
 						value: 'strict-origin-when-cross-origin',
 					},
 					{
 						key: 'Permissions-Policy',
 						value: 'camera=(), microphone=(), geolocation=()',
-					},
-				],
-			},
-			{
-				source: '/:path*.{js,css,woff2}',
-				headers: [
-					{
-						key: 'Cache-Control',
-						value: 'public, max-age=31536000, immutable',
-					},
-				],
-			},
-			{
-				source: '/images/:path*',
-				headers: [
-					{
-						key: 'Cache-Control',
-						value: 'public, max-age=31536000, immutable',
-					},
-				],
-			},
-			{
-				source: '/_next/static/:path*',
-				headers: [
-					{
-						key: 'Cache-Control',
-						value: 'public, max-age=31536000, immutable',
-					},
-				],
-			},
-			{
-				source: '/',
-				headers: [
-					{
-						key: 'Cache-Control',
-						value: 'public, s-maxage=10, stale-while-revalidate=59',
 					},
 				],
 			},

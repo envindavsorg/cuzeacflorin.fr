@@ -13,11 +13,14 @@ declare global {
 		resolvedTheme: string | undefined;
 		changeTheme: () => void;
 	};
+	type ThemeValue = 'light' | 'dark';
 
 	// media queries
 	type Breakpoints = {
 		breakpoint: string;
-		setBreakpoint: (value: ((prevState: string) => string) | string) => void;
+		setBreakpoint: (
+			value: ((prevState: string) => string) | string,
+		) => void;
 	};
 
 	// location
