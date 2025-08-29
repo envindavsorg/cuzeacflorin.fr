@@ -107,5 +107,11 @@
   "packageManager": "pnpm@10.15.0",
   "trustedDependencies": [
     "@tailwindcss/oxide"
-  ]
+  ],
+  "overrides": {
+    "next-view-transitions": {
+      "react": "$react",
+      "react-dom": "$react-dom"
+    }
+  }
 }
