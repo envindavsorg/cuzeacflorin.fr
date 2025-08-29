@@ -78,7 +78,7 @@ const components = {
 	),
 };
 
-export const CustomMDX = ({ ...props }): React.JSX.Element => (
+export const CustomMDX = async ({ ...props }): Promise<React.JSX.Element> => (
 	<MDXRemote
 		{...props}
 		components={{ ...components, ...(props.components || {}) }}

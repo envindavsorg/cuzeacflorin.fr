@@ -1,4 +1,4 @@
-import path from 'node:path';
+import path from 'path';
 import { getMDXData, type MDXData, type ProjectMetadata } from '@/lib/mdx';
 
 export const getAllProjects = (): MDXData<ProjectMetadata>[] =>

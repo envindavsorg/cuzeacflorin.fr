@@ -7,7 +7,7 @@ import { type Layout, Responsive, WidthProvider } from 'react-grid-layout';
 import { itemCategories } from '@/components/blocs/categories';
 import { NavBar } from '@/components/navigation/NavBar';
 import useBreakpoint from '@/hooks/useBreakpoint';
-import { breakpoints, cols, heights } from '@/lib/grid';
+import { breakpoints, cols, heights } from '@/lib/consts';
 import { cn } from '@/lib/utils';
 
 const ResponsiveGridLayout = WidthProvider(Responsive);

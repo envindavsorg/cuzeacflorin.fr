@@ -1,5 +1,5 @@
-import { statSync } from 'node:fs';
-import { join } from 'node:path';
+import { statSync } from 'fs';
+import { join } from 'path';
 import { NextResponse } from 'next/server';
 import { logger } from '@/lib/logger';
 
