@@ -1,8 +1,15 @@
 <p align="center">
-  <a href="https://www.cuzeacflorin.fr/">
-    <img src="https://www.cuzeacflorin.fr/avatar.webp" alt="Cuzeac Florin" height="96" style="border-radius: 50%;">
-    <h3 align="center">Portfolio - Cuzeac Florin</h3>
-  </a>
+	<a href="https://www.cuzeacflorin.fr/">
+		<svg width="96" height="96">
+			<defs>
+        		<clipPath id="circle">
+          			<circle cx="48" cy="48" r="48"/>
+        		</clipPath>
+      		</defs>
+    		<img src="https://www.cuzeacflorin.fr/avatar.webp" alt="Cuzeac Florin" height="96">
+		</svg>
+    	<h3 align="center">Portfolio - Cuzeac Florin</h3>
+  	</a>
 </p>
 
 
