@@ -2,7 +2,7 @@
 
 import { useTheme } from 'next-themes';
 import type React from 'react';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { AppleDevice } from '@/components/elements/AppleDevice';
 import { AppleSafari } from '@/components/elements/AppleSafari';
 import { baseURL } from '@/resources/meta';
@@ -21,9 +21,15 @@ const IMAGE_PATHS = {
 
 export const PortfolioMockup = (): React.JSX.Element => {
 	const { resolvedTheme } = useTheme();
+	const [isMounted, setIsMounted] = useState(false);
+
+	useEffect(() => {
+		setIsMounted(true);
+	}, []);
 
 	const { desktop, mobile } = IMAGE_PATHS;
-	const theme: ThemeValue = resolvedTheme === 'light' ? 'light' : 'dark';
+	// Use light theme as default for SSR to avoid hydration mismatch
+	const theme: ThemeValue = isMounted && resolvedTheme === 'dark' ? 'dark' : 'light';
 	const images = useMemo(
 		() => ({ desktop: desktop[theme], mobile: mobile[theme] }),
 		[theme, desktop, mobile]

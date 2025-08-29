@@ -10,5 +10,5 @@ export const fetcher = async <T = any>(
 		throw new Error('Failed to fetch requested url ...');
 	}
 
-	return response.json() as Promise<T>;
+	return (await response.json()) as Promise<T>;
 };
