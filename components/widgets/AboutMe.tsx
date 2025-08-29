@@ -80,7 +80,7 @@ export const AboutMe = memo((): React.JSX.Element => {
 				Je crée des solutions web où technique et design se rencontrent.
 			</Paragraph>
 
-			<div className="flex items-center gap-x-6 md:gap-x-3 lg:gap-x-6">
+			<div className="flex items-center gap-x-3 md:gap-x-6">
 				<Button asChild className="px-4" size="sm" variant="outline">
 					<Link aria-label={cv.shareText} href={cv.filePath}>
 						<span className="max-md:hidden">Découvrez</span>{' '}
@@ -91,16 +91,10 @@ export const AboutMe = memo((): React.JSX.Element => {
 					<Spinner className="size-4 text-muted-foreground" variant="default" />
 				)}
 				{!showSpinner && data && (
-					<div className="flex gap-x-2">
-						<span className="text-muted-foreground text-sm md:text-xs lg:text-sm">
-							{data.sizeKB} KB
-						</span>
-						<span className="text-muted-foreground text-sm md:text-xs lg:text-sm">
-							•
-						</span>
-						<span className="text-muted-foreground text-sm md:text-xs lg:text-sm">
-							{data.lastModified}
-						</span>
+					<div className="flex gap-x-2 *:text-muted-foreground *:text-xs *:lg:text-sm">
+						<span>{data.sizeKB} KB</span>
+						<span>•</span>
+						<span>{data.lastModified}</span>
 					</div>
 				)}
 			</div>

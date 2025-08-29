@@ -5,7 +5,6 @@ import {
 import type React from 'react';
 import { memo, Suspense } from 'react';
 import { getLinkedInFollowers } from '@/actions/linkedin.action';
-import { ShinyText } from '@/components/animation/ShinyText';
 import { Card, CardLink } from '@/components/ui/Card';
 import { Counter } from '@/components/ui/Counter';
 import { SkeletonData } from '@/components/ui/Skeleton';
@@ -13,7 +12,7 @@ import { cn } from '@/lib/utils';
 import { PROFILE_CONFIG } from '@/resources/profile';
 
 const {
-	linkedin: { name, handle, label, url },
+	linkedin: { handle, label, url },
 } = PROFILE_CONFIG;
 
 export const LinkedInFollowers = memo(async (): Promise<React.JSX.Element> => {
@@ -29,13 +28,6 @@ export const LinkedInFollowers = memo(async (): Promise<React.JSX.Element> => {
 		>
 			<div className="justify-self-start max-lg:flex max-lg:items-center max-lg:gap-x-3 md:col-span-2">
 				<LinkedinLogoIcon className="inline-block size-10 max-lg:shrink-0 md:size-12 lg:size-16" />
-
-				<ShinyText
-					className="min-lg:hidden"
-					disabled={false}
-					speed={1}
-					text={name}
-				/>
 			</div>
 
 			<CardLink

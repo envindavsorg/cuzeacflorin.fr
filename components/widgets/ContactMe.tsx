@@ -51,7 +51,7 @@ export const ContactMe = memo((): React.JSX.Element => {
 							whileHover={{ scale: 1.15 }}
 							whileTap={{ scale: 0.95 }}
 						>
-							<Icon className="size-10 transition-all duration-300 group-hover:text-theme lg:size-8" />
+							<Icon className="size-8 transition-all duration-300 group-hover:text-theme" />
 							<span className="sr-only">{name}</span>
 						</MotionLink>
 					))}

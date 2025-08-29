@@ -83,7 +83,7 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => (
 				<link href="https://vitals.vercel-insights.com" rel="dns-prefetch" />
 				<title>{`${PROFILE_CONFIG.firstName} ${PROFILE_CONFIG.lastName}`}</title>
 			</head>
-			<body className="relative select-none bg-background py-15 font-geist-mono tracking-tight antialiased">
+			<body className="relative select-none bg-background py-10 font-geist-mono tracking-tight antialiased md:py-15">
 				<AppProviders>
 					{children}
 					<Sparkles density={150} />

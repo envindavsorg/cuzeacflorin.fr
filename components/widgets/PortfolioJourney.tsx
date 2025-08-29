@@ -24,7 +24,7 @@ export const PortfolioJourney = memo((): React.JSX.Element => {
 
 			<div className="flex flex-col items-start justify-between gap-y-3">
 				<h2
-					className="inline-block font-bold font-pixelify-sans text-3xl text-theme"
+					className="inline-block font-bold font-pixelify-sans text-3xl text-theme md:text-4xl"
 					title={metadata.title}
 				>
 					{firstWordTitle}

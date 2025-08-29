@@ -84,7 +84,7 @@ export const ThemeButton = memo(
 								key="sun"
 								transition={iconTransition}
 							>
-								<SunIcon className="size-16 text-[#FCE24A]" />
+								<SunIcon className="size-14 text-[#FCE24A] md:size-16" />
 							</motion.div>
 						) : (
 							<motion.div
@@ -98,7 +98,7 @@ export const ThemeButton = memo(
 								key="moon"
 								transition={iconTransition}
 							>
-								<MoonIcon className="size-16" />
+								<MoonIcon className="size-14 md:size-16" />
 							</motion.div>
 						)}
 					</AnimatePresence>

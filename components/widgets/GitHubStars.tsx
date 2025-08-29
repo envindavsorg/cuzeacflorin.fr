@@ -2,7 +2,6 @@ import { GithubLogoIcon, StarIcon } from '@phosphor-icons/react/ssr';
 import type React from 'react';
 import { memo, Suspense } from 'react';
 import { getGitHubUserData } from '@/actions/github.action';
-import { ShinyText } from '@/components/animation/ShinyText';
 import { Card, CardLink } from '@/components/ui/Card';
 import { Counter } from '@/components/ui/Counter';
 import { SkeletonData } from '@/components/ui/Skeleton';
@@ -27,13 +26,6 @@ export const GitHubStars = memo(async (): Promise<React.JSX.Element> => {
 			<div className="justify-self-start max-lg:flex max-lg:items-center max-lg:gap-x-3 md:col-span-2">
 				<GithubLogoIcon className="size-10 max-lg:shrink-0 md:hidden md:size-12 lg:size-16" />
 				<StarIcon className="hidden size-10 max-lg:shrink-0 md:inline-block md:size-12 lg:size-16" />
-
-				<ShinyText
-					className="min-lg:hidden"
-					disabled={false}
-					speed={1}
-					text={name}
-				/>
 			</div>
 
 			<CardLink

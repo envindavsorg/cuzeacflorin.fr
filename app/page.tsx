@@ -64,7 +64,7 @@ const Home = (): React.JSX.Element => {
 			</h1>
 
 			<Bento
-				className="flex flex-col items-center justify-center gap-y-8"
+				className="flex flex-col items-center justify-center gap-y-6 md:gap-y-8"
 				layouts={layouts}
 			>
 				{gridItems.map((item) => (

@@ -17,7 +17,7 @@ export const AnimatedNumber = ({
 	value,
 }: AnimatedNumberProps): React.JSX.Element => (
 	<NumberFlow
-		className="p-0 font-archivo-black font-bold text-4xl tabular-nums tracking-wide lg:text-5xl"
+		className="p-0 font-archivo-black font-bold text-3xl tabular-nums tracking-wide md:text-4xl lg:text-5xl"
 		format={{ minimumIntegerDigits: 2 }}
 		value={value}
 	/>
@@ -59,7 +59,10 @@ export const TimeClock = memo((): React.JSX.Element => {
 				<ClockSeparator show={showSeparator} />
 				<AnimatedNumber value={minutes} />
 			</div>
-			<CurrentDate className="text-xl uppercase lg:text-2xl" format="weekday" />
+			<CurrentDate
+				className="text-base uppercase md:text-xl lg:text-2xl"
+				format="weekday"
+			/>
 		</Card>
 	);
 });

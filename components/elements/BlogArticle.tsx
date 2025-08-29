@@ -30,7 +30,7 @@ export const BlogArticle = ({
 
 			<div className="flex flex-col items-start justify-between gap-y-6 md:gap-y-3">
 				<h2
-					className="inline-block font-bold font-pixelify-sans text-3xl text-theme"
+					className="inline-block font-bold font-pixelify-sans text-3xl text-theme md:text-4xl"
 					title={metadata.title}
 				>
 					{metadata.title}
@@ -38,7 +38,7 @@ export const BlogArticle = ({
 				<Paragraph className="relative line-clamp-3 leading-relaxed max-sm:line-clamp-2 md:line-clamp-6 lg:line-clamp-4">
 					{metadata.description}
 				</Paragraph>
-				<div className="mt-3 flex gap-x-2">
+				<div className="flex gap-x-2 md:mt-3">
 					<span className="text-muted-foreground text-sm">
 						{formatDate(metadata.date)}
 					</span>
