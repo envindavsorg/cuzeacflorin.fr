@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  Crée. Code. Innove.
+  Create. Develop. Imagine.
 </p>
 
 
