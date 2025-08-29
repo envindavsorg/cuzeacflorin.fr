@@ -296,6 +296,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 **Built with ❤️ by [Florin Cuzeac](https://cuzeacflorin.fr)**
 
-[Website](https://cuzeacflorin.fr) • [LinkedIn](https://linkedin.com/in/cuzeac-florin) • [GitHub](https://github.com/envindavsorg)
+[Website](https://cuzeacflorin.fr) • [LinkedIn](https://linkedin.com/in/florin-cuzeac) • [GitHub](https://github.com/envindavsorg)
 
 </div>
