@@ -6,9 +6,9 @@ export const getAllPosts = (): MDXData<PostMetadata>[] =>
 
 export const getLatestPost = (): MDXData<PostMetadata> => getAllPosts()[0];
 
-export const getFirstPost = (): MDXData<PostMetadata> => {
+export const getFirstPost = (): MDXData<PostMetadata> | undefined => {
 	const posts = getAllPosts();
-	return posts[posts.length - 1];
+	return posts.at(-1);
 };
 
 export const getPostByIndex = (

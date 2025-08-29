@@ -5,21 +5,23 @@ type CacheEntry<T> = {
 	timestamp: number;
 };
 
-const cache = new Map<string, CacheEntry<any>>();
+const cache = new Map<string, CacheEntry<unknown>>();
 
-export const getCachedData = <T>(key: string): T | null => {
+export const getCachedData = <T>(
+	key: string,
+	duration = CACHE_DURATION
+): T | null => {
 	const entry = cache.get(key);
 	if (!entry) {
 		return null;
 	}
 
-	const now = Date.now();
-	if (now - entry.timestamp > CACHE_DURATION) {
+	if (Date.now() - entry.timestamp > duration) {
 		cache.delete(key);
 		return null;
 	}
 
-	return entry.data;
+	return entry.data as T;
 };
 
 export const setCachedData = <T>(key: string, data: T): void => {
@@ -29,24 +31,6 @@ export const setCachedData = <T>(key: string, data: T): void => {
 	});
 };
 
-export const getCachedDataWithCustomDuration = <T>(
-	key: string,
-	duration: number
-): T | null => {
-	const entry = cache.get(key);
-	if (!entry) {
-		return null;
-	}
-
-	const now = Date.now();
-	if (now - entry.timestamp > duration) {
-		cache.delete(key);
-		return null;
-	}
-
-	return entry.data;
-};
-
-export const clearCache = (): void => {
-	cache.clear();
-};
+export const clearCache = (): void => cache.clear();
+export const deleteCacheEntry = (key: string): boolean => cache.delete(key);
+export const getCacheSize = (): number => cache.size;

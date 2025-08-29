@@ -15,9 +15,7 @@ interface CvMetadataError extends CvMetadata {
 	error: string;
 }
 
-export const GET = async (): Promise<
-	NextResponse<CvMetadata | CvMetadataError>
-> => {
+export const GET = (): NextResponse<CvMetadata | CvMetadataError> => {
 	try {
 		const pdfPath = join(process.cwd(), 'public', FILE_NAME);
 

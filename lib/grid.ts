@@ -197,28 +197,35 @@ export const layouts = {
 	},
 };
 
-export const checkOverlaps = (
-	layouts: Array<{ i: string; x: number; y: number; w: number; h: number }>
-) => {
-	const overlaps: string[] = [];
+type Breakpoints = {
+	[key: string]: number;
+};
 
-	for (let i = 0; i < layouts.length; i++) {
-		for (let j = i + 1; j < layouts.length; j++) {
-			const a = layouts[i];
-			const b = layouts[j];
+export const breakpoints: Breakpoints = {
+	lg: 1199,
+	md: 799,
+	sm: 374,
+	xs: 319,
+};
 
-			const aRight = a.x + a.w;
-			const aBottom = a.y + a.h;
-			const bRight = b.x + b.w;
-			const bBottom = b.y + b.h;
+type Heights = {
+	[key: string]: number;
+};
 
-			if (
-				!(aRight <= b.x || bRight <= a.x || aBottom <= b.y || bBottom <= a.y)
-			) {
-				overlaps.push(`${a.i} ↔ ${b.i}`);
-			}
-		}
-	}
+export const heights: Heights = {
+	lg: 280,
+	md: 180,
+	sm: 164,
+	xs: 136,
+};
 
-	return overlaps;
+type Cols = {
+	[key: string]: number;
+};
+
+export const cols: Cols = {
+	lg: 4,
+	md: 4,
+	sm: 2,
+	xs: 2,
 };

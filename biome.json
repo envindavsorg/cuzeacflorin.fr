@@ -17,8 +17,7 @@
       "recommended": true,
       "style": {
         "noMagicNumbers": "off",
-        "noNestedTernary": "off",
-        "useAtIndex": "off"
+        "useFilenamingConvention": "off"
       },
       "security": {
         "noDangerouslySetInnerHtml": "off"
@@ -38,17 +37,6 @@
           "level": "warn"
         },
         "noShadow": "off"
-      },
-      "performance": {
-        "noNamespaceImport": "off"
-      },
-      "suspicious": {
-        "noExplicitAny": "off",
-        "noUnknownAtRules": "off",
-        "useAwait": "off"
-      },
-      "correctness": {
-        "useUniqueElementIds": "off"
       }
     }
   },
@@ -66,6 +54,30 @@
       "includes": ["app/globals.css"],
       "linter": {
         "enabled": false
+      }
+    },
+    {
+      "includes": ["components/animation/LetterGlitch.tsx"],
+      "linter": {
+        "rules": {
+          "performance": {
+            "useTopLevelRegex": "off"
+          },
+          "complexity": {
+            "noExcessiveCognitiveComplexity": "off"
+          },
+          "style": {
+            "noNonNullAssertion": "off",
+            "noParameterAssign": "off"
+          },
+          "nursery": {
+            "noUnnecessaryConditions": "off"
+          },
+          "correctness": {
+            "useExhaustiveDependencies": "off",
+            "noUnsafeOptionalChaining": "off"
+          }
+        }
       }
     }
   ]

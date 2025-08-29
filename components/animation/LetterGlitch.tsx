@@ -182,7 +182,11 @@ const LetterGlitch = ({
 			return;
 		}
 		const ctx = context.current;
-		const { width, height } = canvasRef.current!.getBoundingClientRect();
+		const rect = canvasRef.current?.getBoundingClientRect();
+		if (!rect) {
+			return;
+		}
+		const { width, height } = rect;
 		ctx.clearRect(0, 0, width, height);
 		ctx.font = `${fontSize}px monospace`;
 		ctx.textBaseline = 'top';
@@ -289,7 +293,7 @@ const LetterGlitch = ({
 			cancelAnimationFrame(animationRef.current!);
 			window.removeEventListener('resize', handleResize);
 		};
-	}, [glitchSpeed, smooth]);
+	}, [animate, resizeCanvas]);
 
 	const containerStyle = {
 		position: 'relative',

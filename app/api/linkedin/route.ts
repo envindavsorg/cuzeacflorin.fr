@@ -78,7 +78,7 @@ export const POST = async (request: Request) => {
 			return Response.json({ error: 'Token invalide' }, { status: 401 });
 		}
 
-		let body: any;
+		let body: { count: number };
 		try {
 			body = await request.json();
 		} catch {

@@ -332,11 +332,15 @@ html:not(.dark) .prose pre code span {
 }
 
 ::view-transition-old(root) {
-	animation: fade-out 0.3s ease-out, scale-down 0.3s ease-out;
+	animation:
+		fade-out 0.3s ease-out,
+		scale-down 0.3s ease-out;
 }
 
 ::view-transition-new(root) {
-	animation: fade-in 0.3s ease-out, scale-up 0.3s ease-out;
+	animation:
+		fade-in 0.3s ease-out,
+		scale-up 0.3s ease-out;
 }
 
 @keyframes fade-in {

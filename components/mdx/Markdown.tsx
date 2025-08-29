@@ -78,29 +78,27 @@ const components = {
 	),
 };
 
-export const CustomMDX = async ({ ...props }): Promise<React.JSX.Element> => {
-	return (
-		<MDXRemote
-			{...props}
-			components={{ ...components, ...(props.components || {}) }}
-			options={{
-				mdxOptions: {
-					rehypePlugins: [
-						rehypeSlug,
-						[rehypeShiki, shikiOptions],
-						[
-							rehypeAutolinkHeadings,
-							{
-								behavior: 'wrap',
-								properties: {
-									className: ['anchor'],
-								},
+export const CustomMDX = ({ ...props }): React.JSX.Element => (
+	<MDXRemote
+		{...props}
+		components={{ ...components, ...(props.components || {}) }}
+		options={{
+			mdxOptions: {
+				rehypePlugins: [
+					rehypeSlug,
+					[rehypeShiki, shikiOptions],
+					[
+						rehypeAutolinkHeadings,
+						{
+							behavior: 'wrap',
+							properties: {
+								className: ['anchor'],
 							},
-						],
+						},
 					],
-				},
-			}}
-			source={props.source}
-		/>
-	);
-};
+				],
+			},
+		}}
+		source={props.source}
+	/>
+);

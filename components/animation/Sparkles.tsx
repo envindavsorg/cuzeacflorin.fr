@@ -1,12 +1,11 @@
 'use client';
 
-import type { Container, ISourceOptions } from '@tsparticles/engine';
+import type { ISourceOptions } from '@tsparticles/engine';
 import Particles, { initParticlesEngine } from '@tsparticles/react';
 import { loadSlim } from '@tsparticles/slim';
 import { useTheme } from 'next-themes';
 import type React from 'react';
-import { memo, useCallback, useEffect, useMemo, useState } from 'react';
-import { logger } from '@/lib/logger';
+import { memo, useEffect, useMemo, useState } from 'react';
 import { checkPerformanceSupport, createSparkleOptions } from '@/lib/sparkles';
 import { cn } from '@/lib/utils';
 
@@ -57,17 +56,11 @@ export const Sparkles = memo(
 			}
 
 			const initEngine = async () => {
-				try {
-					await initParticlesEngine(async (engine) => {
-						await loadSlim(engine);
-					});
+				await initParticlesEngine(async (engine) => {
+					await loadSlim(engine);
+				});
 
-					setIsInitialized(true);
-				} catch (error) {
-					if (process.env.NODE_ENV !== 'production') {
-						logger.warn('Failed to initialize particles engine:', error);
-					}
-				}
+				setIsInitialized(true);
 			};
 
 			initEngine();
@@ -93,13 +86,6 @@ export const Sparkles = memo(
 			[density, minSize, maxSize, speed, color, background]
 		);
 
-		const particlesLoaded = useCallback(
-			async (_container?: Container): Promise<void> => {
-				logger.debug('Particles loaded successfully');
-			},
-			[]
-		);
-
 		if (!(shouldRender && isInitialized)) {
 			return null;
 		}
@@ -111,12 +97,7 @@ export const Sparkles = memo(
 					className
 				)}
 			>
-				<Particles
-					className="size-full"
-					id={id}
-					options={options}
-					particlesLoaded={particlesLoaded}
-				/>
+				<Particles className="size-full" id={id} options={options} />
 			</div>
 		);
 	}

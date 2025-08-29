@@ -1,5 +1,6 @@
 import { ArrowsCounterClockwiseIcon } from '@phosphor-icons/react';
 import {
+	type AnimationPlaybackControlsWithThen,
 	type AnimationSequence,
 	motion,
 	type SequenceOptions,
@@ -42,7 +43,7 @@ type ToggleAvatarProps = {
 	animatePulse: (
 		sequence: AnimationSequence,
 		options?: SequenceOptions | undefined
-	) => any;
+	) => AnimationPlaybackControlsWithThen;
 	pulseScope: RefObject<HTMLDivElement>;
 	color: string;
 	avatar: number;

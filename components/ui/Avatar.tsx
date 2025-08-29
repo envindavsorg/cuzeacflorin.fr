@@ -1,14 +1,14 @@
 'use client';
 
-import * as AvatarPrimitive from '@radix-ui/react-avatar';
+import { Fallback, Image, Root } from '@radix-ui/react-avatar';
 import type React from 'react';
 import { cn } from '@/lib/utils';
 
 export const Avatar = ({
 	className,
 	...props
-}: React.ComponentProps<typeof AvatarPrimitive.Root>): React.JSX.Element => (
-	<AvatarPrimitive.Root
+}: React.ComponentProps<typeof Root>): React.JSX.Element => (
+	<Root
 		className={cn(
 			'relative flex size-8 shrink-0 overflow-hidden rounded-full',
 			className
@@ -21,8 +21,8 @@ export const Avatar = ({
 export const AvatarImage = ({
 	className,
 	...props
-}: React.ComponentProps<typeof AvatarPrimitive.Image>): React.JSX.Element => (
-	<AvatarPrimitive.Image
+}: React.ComponentProps<typeof Image>): React.JSX.Element => (
+	<Image
 		className={cn('aspect-square size-full', className)}
 		data-slot="avatar-image"
 		{...props}
@@ -32,10 +32,8 @@ export const AvatarImage = ({
 export const AvatarFallback = ({
 	className,
 	...props
-}: React.ComponentProps<
-	typeof AvatarPrimitive.Fallback
->): React.JSX.Element => (
-	<AvatarPrimitive.Fallback
+}: React.ComponentProps<typeof Fallback>): React.JSX.Element => (
+	<Fallback
 		className={cn(
 			'flex size-full items-center justify-center rounded-full bg-muted',
 			className

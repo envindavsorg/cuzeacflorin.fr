@@ -87,9 +87,10 @@ export const AboutMe = memo((): React.JSX.Element => {
 						<span className="font-bold max-md:uppercase">mon CV</span>
 					</Link>
 				</Button>
-				{showSpinner ? (
+				{showSpinner && (
 					<Spinner className="size-4 text-muted-foreground" variant="default" />
-				) : data ? (
+				)}
+				{!showSpinner && data && (
 					<div className="flex gap-x-2">
 						<span className="text-muted-foreground text-sm md:text-xs lg:text-sm">
 							{data.sizeKB} KB
@@ -101,7 +102,7 @@ export const AboutMe = memo((): React.JSX.Element => {
 							{data.lastModified}
 						</span>
 					</div>
-				) : null}
+				)}
 			</div>
 		</Card>
 	);

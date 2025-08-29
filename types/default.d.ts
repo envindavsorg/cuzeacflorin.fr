@@ -18,9 +18,7 @@ declare global {
 	// media queries
 	type Breakpoints = {
 		breakpoint: string;
-		setBreakpoint: (
-			value: ((prevState: string) => string) | string,
-		) => void;
+		setBreakpoint: (value: ((prevState: string) => string) | string) => void;
 	};
 
 	// location

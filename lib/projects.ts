@@ -7,14 +7,14 @@ export const getAllProjects = (): MDXData<ProjectMetadata>[] =>
 export const getLatestProject = (): MDXData<ProjectMetadata> =>
 	getAllProjects()[0];
 
-export const getFirstProject = (): MDXData<ProjectMetadata> => {
-	const posts = getAllProjects();
-	return posts[posts.length - 1];
+export const getFirstProject = (): MDXData<ProjectMetadata> | undefined => {
+	const projects = getAllProjects();
+	return projects.at(-1);
 };
 
 export const getProjectByIndex = (
 	index: number
 ): MDXData<ProjectMetadata> | undefined => {
-	const posts = getAllProjects();
-	return posts[index];
+	const projects = getAllProjects();
+	return projects[index];
 };
