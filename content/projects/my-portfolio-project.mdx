@@ -5,19 +5,27 @@ date: 2025-08-28
 links: [{"name": "Voir le site","url": "https://cuzeacflorin.fr/","type": "demo"}, {"name": "Voir sur GitHub", "url": "https://github.com/envindavsorg/portfolio","type": "github"}]
 ---
 
+<Stack className="pb-6" />
+
 ### Pourquoi refaire son portfolio ?
 #### Parce que, pourquoi pas ?
+
+<div className="mt-3" />
 
 Mon ancien portfolio me faisait mal aux yeux _(et pas que les miens apparemment)_.
 **HTML/CSS vanilla** avec du **jQuery** qui traînait depuis 2018...
 Autant dire que c'était l'époque des **dinosaures** du web.
 Il était temps de passer aux choses sérieuses et de montrer ce que je sais vraiment faire !
 
-Cette fois-ci, j'ai voulu créer quelque chose de **vraiment interactif** avec des widgets qui bougent, une horloge temps réel, et même une carte interactive. Le tout avec une architecture moderne et des performances de ouf.
+Cette fois-ci, j'ai voulu créer quelque chose de **vraiment interactif** avec des widgets qui bougent, une horloge temps réel, et même une carte interactive.
+Le tout avec une architecture moderne et des performances de ouf.
+
+<Separator className="mt-8" />
 
 ### Le choix de la stack technique
-
 #### Next.js 15 - La mise à jour qui change tout !
+
+<div className="mt-3" />
 
 J'ai opté pour **Next.js 15.5** avec l'**App Router** _(parce que oui, je vis dangereusement)_.
 Pourquoi ? Simple :
@@ -36,6 +44,8 @@ pnpm dev --turbo  # Et c'est parti ! 🚀
 Fini l'époque où il fallait configurer **Webpack** pendant **3 heures** pour avoir un truc qui marche.
 
 #### TypeScript - Parce que je n'aime pas les surprises
+
+<div className="mt-3" />
 
 **TypeScript** partout, même dans mes **rêves**.
 Plus jamais de `undefined is not a function` à **3h du matin** !
@@ -59,6 +69,8 @@ export type MDXData<T extends BaseMetadata> = {
 
 #### Tailwind CSS v4 - La révolution des styles
 
+<div className="mt-3" />
+
 **Tailwind CSS v4** avec **PostCSS** intégration native _(oui, la dernière version, parce que...)_.
 Mes collègues me disent encore : _**"C'est moche dans le HTML"**_.
 Mes collègues ont tort.
@@ -72,6 +84,8 @@ Mes collègues ont tort.
 Le plus cool ? **CSS Custom Properties** natif et **container queries** out-of-the-box !
 
 #### Les nouvelles additions qui claquent
+
+<div className="mt-3" />
 
 **Motion** _(ex-Framer Motion)_ pour les animations fluides :
 ```tsx
@@ -96,9 +110,12 @@ const useTimeStore = create((set) => ({
 }));
 ```
 
-### L'architecture du projet
+<Separator className="mt-8" />
 
+### L'architecture du projet
 #### Système de contenu avec MDX
+
+<div className="mt-3" />
 
 Le plus **stylé** dans ce portfolio : tout le contenu est en **MDX**.
 **Markdown** + **JSX** = le mariage parfait.
@@ -117,6 +134,8 @@ Et le plus cool ? J'ai ajouté des composants **React** directement dans mes art
 - Système de **headings** avec anchors automatiques
 
 #### Système de grille responsive multi-layout
+
+<div className="mt-3" />
 
 Une **grille modulaire** avancée avec `react-grid-layout` et **layouts dynamiques** :
 - **4 layouts différents** : all, about, projects, blog
@@ -151,6 +170,8 @@ export const checkOverlaps = (layouts) => {
 ```
 
 #### Widgets modulaires - L'écosystème interactif
+
+<div className="mt-3" />
 
 **11 widgets** interactifs avec des fonctionnalités avancées :
 
@@ -202,9 +223,12 @@ export const AnimatedNumber = ({ value }) => (
 );
 ```
 
-### Les défis techniques relevés
+<Separator className="mt-8" />
 
+### Les défis techniques relevés
 #### Gestion d'état temps réel avec Zustand
+
+<div className="mt-3" />
 
 Le **défi** : synchroniser l'horloge en temps réel avec état persisté et optimisations.
 
@@ -254,6 +278,8 @@ export const useTimeParts = () => {
 
 #### Calcul du temps de lecture optimisé
 
+<div className="mt-3" />
+
 J'ai optimisé le calcul du **temps de lecture** avec caching **React** :
 
 ```typescript
@@ -273,6 +299,8 @@ export const readingTimeOnArticle = cache(
 
 #### Gestion des headings avec composants
 
+<div className="mt-3" />
+
 Le **défi** : utiliser `<Today />` dans un titre MDX sans planter l'extraction de slug.
 
 **Solution** : fonction récursive pour extraire le texte des composants React :
@@ -289,6 +317,8 @@ const getTextContent = (node: React.ReactNode): string => {
 ```
 
 #### Intégrations API temps réel
+
+<div className="mt-3" />
 
 Le **défi** : récupérer des données GitHub/LinkedIn sans impacter les performances.
 
@@ -322,6 +352,8 @@ export const useGitHubStats = () => {
 
 #### Intégration Mapbox GL pour la géolocalisation
 
+<div className="mt-3" />
+
 **Carte interactive** avec contrôles personnalisés :
 
 ```tsx
@@ -352,6 +384,8 @@ export const MapView = () => {
 
 #### Optimisations des performances
 
+<div className="mt-3" />
+
 - **Images optimisées** avec `next/image` et formats WebP/AVIF
 - **Fonts** préchargés avec `next/font` (Geist Sans, Geist Mono, Pixelify Sans)
 - **Bundle analysis** avec Turbopack et webpack optimizations
@@ -360,9 +394,12 @@ export const MapView = () => {
 - **Code splitting** automatique par route et composant
 - **Compression** Gzip/Brotli côté Vercel
 
-### Les features qui claquent
+<Separator className="mt-8" />
 
+### Les features qui claquent
 #### Système d'animations avancé
+
+<div className="mt-3" />
 
 **Motion** _(ex-Framer Motion)_ avec animations custom :
 - **Sparkles** particules avec `tsparticles` sur hover
@@ -400,6 +437,8 @@ export const Sparkles = () => {
 
 #### Thème sombre/clair avec persistance
 
+<div className="mt-3" />
+
 Avec `next-themes` et système de couleurs CSS custom :
 ```typescript
 // Provider global avec persistance système
@@ -422,6 +461,8 @@ const { theme, setTheme, systemTheme } = useTheme();
 
 #### Système d'icônes modulaire complet
 
+<div className="mt-3" />
+
 **25+ composants SVG** optimisés avec **tree-shaking** :
 - **Technos** : React, Next.js, TypeScript, Tailwind, Python, Node.js...
 - **Outils** : Git, GitHub, Figma, Storybook, Docker...
@@ -443,6 +484,8 @@ export const ReactIcon = ({ size = 24 }) => (
 
 #### Analytics et monitoring avancés
 
+<div className="mt-3" />
+
 **Vercel Analytics** + **Speed Insights** intégrés :
 ```tsx
 import { Analytics } from '@vercel/analytics/react';
@@ -462,9 +505,12 @@ export default function RootLayout({ children }) {
 }
 ```
 
-### Le workflow de développement
+<Separator className="mt-8" />
 
+### Le workflow de développement
 #### Stack d'outils moderne
+
+<div className="mt-3" />
 
 - **Biome** v2.2.0 pour le linting et formatting _(adieu ESLint + Prettier)_
 - **TypeScript 5.9** strict mode avec path mapping
@@ -507,41 +553,56 @@ pnpm taze            # Update dependencies
 
 #### Déploiement
 
+<div className="mt-3" />
+
 **Vercel** évidemment _(ils font Next.js, logique non ?)_.
 - **Auto-deploy** sur push main
 - **Preview deployments** sur PR
 - **Analytics** intégrées
 - **Performance monitoring**
 
-### Les métriques qui font plaisir
+<Separator className="mt-8" />
 
+### Les métriques qui font plaisir
 #### Lighthouse Score
+
+<div className="mt-3" />
 
 - **Performance** : 100/100 ✅
 - **Accessibility** : 100/100 ✅
 - **Best Practices** : 100/100 ✅
 - **SEO** : 100/100 ✅
 
-### Ce que j'ai appris
+<Separator className="mt-8" />
 
+### Ce que j'ai appris
 #### Next.js c'est puissant
+
+<div className="mt-3" />
 
 L'**App Router** est vraiment bien pensé une fois qu'on comprend les concepts.
 Les **Server Components** changent la donne pour les performances.
 
 #### TypeScript partout
 
+<div className="mt-3" />
+
 Même pour un projet personnel, **TypeScript** me fait gagner un temps **fou**.
 Plus d'erreurs de typos, autocomplétion parfaite, refactoring sécurisé.
 
 #### L'optimisation, c'est important
 
+<div className="mt-3" />
+
 Un portfolio qui met **10 secondes** à charger, c'est **10 secondes** de trop.
 Chaque **milliseconde** compte pour l'expérience utilisateur.
 
-### Ce qui vient ensuite
+<Separator className="mt-8" />
 
+### Ce qui vient ensuite
 #### Fonctionnalités prévues
+
+<div className="mt-3" />
 
 **Widgets interactifs** :
 - Drag & drop des widgets _(react-grid-layout le permet déjà)_
@@ -579,7 +640,11 @@ const LazyWidget = dynamic(
 );
 ```
 
+<Separator className="mt-8" />
+
 ### Aujourd'hui, <CurrentDate format="full" />
+
+<div className="mt-3" />
 
 Le portfolio est **en ligne** et je suis **fier** du résultat !
 - **11 widgets** interactifs avec données temps réel
@@ -604,4 +669,8 @@ Peut-être migrer vers **Bun**, ou tester **Tauri**, ou ajouter **WASM** (pourqu
 
 Un développeur qui n'a pas envie d'améliorer son code, c'est un développeur qui s'ennuie, non ? 😄
 
+<Separator className="mt-8" />
+
 **Fun fact** : aucune ligne de jQuery dans ce projet, et même pas de `useEffect` dans l'horloge grâce à Zustand ! ✨
+
+<div className="mb-10" />
