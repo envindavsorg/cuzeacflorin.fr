@@ -1,4 +1,4 @@
-import path from 'path';
+import path from 'node:path';
 import { getMDXData, type MDXData, type ProjectMetadata } from '@/lib/mdx';
 
 export const getAllProjects = (): MDXData<ProjectMetadata>[] =>
@@ -7,9 +7,9 @@ export const getAllProjects = (): MDXData<ProjectMetadata>[] =>
 export const getLatestProject = (): MDXData<ProjectMetadata> =>
 	getAllProjects()[0];
 
-export const getFirstProject = (): MDXData<ProjectMetadata> | undefined => {
+export const getFirstProject = (): MDXData<ProjectMetadata> => {
 	const projects = getAllProjects();
-	return projects.at(-1);
+	return projects.at(-1) ?? projects[0];
 };
 
 export const getProjectByIndex = (
