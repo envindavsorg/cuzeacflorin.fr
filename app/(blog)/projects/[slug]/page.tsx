@@ -1,6 +1,6 @@
 import { EyeIcon, GithubLogoIcon } from '@phosphor-icons/react/dist/ssr';
-import { Link } from 'next-view-transitions';
 import { notFound } from 'next/navigation';
+import { Link } from 'next-view-transitions';
 import type React from 'react';
 import { CustomMDX } from '@/components/mdx/Markdown';
 import { Header } from '@/components/navigation/Header';
@@ -62,13 +62,7 @@ const ProjectPage = async ({
 							{project.reading?.words} mots
 						</span>
 					</div>
-				</section>
-
-				<div className="flex flex-col gap-y-6">
-					<p className="font-medium leading-relaxed">
-						{project.metadata.description}
-					</p>
-					<div className="flex flex-wrap items-center gap-3">
+					<div className="mt-6 flex flex-wrap items-center gap-3">
 						{JSON.parse(project.metadata.links).map(
 							(link: { url: string; name: string; type: string }) => (
 								<Link
@@ -86,7 +80,7 @@ const ProjectPage = async ({
 							)
 						)}
 					</div>
-				</div>
+				</section>
 
 				<article className="prose dark:prose-invert mt-3">
 					<CustomMDX source={project.content} />
