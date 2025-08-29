@@ -11,6 +11,9 @@ import ThemeProvider from '@/providers/theme/Provider';
 import { defaultDescription, generateMetadata } from '@/resources/meta';
 import { PROFILE_CONFIG } from '@/resources/profile';
 import './globals.css';
+import { Footer } from '@/components/navigation/Footer';
+
+const { firstName, lastName } = PROFILE_CONFIG;
 
 const Analytics = lazy(() =>
 	import('@vercel/analytics/react').then((module) => ({
@@ -86,6 +89,7 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => (
 			<body className="relative select-none bg-background py-10 font-geist-mono tracking-tight antialiased md:py-15">
 				<AppProviders>
 					{children}
+					<Footer firstName={firstName} lastName={lastName} />
 					<Sparkles density={150} />
 					<Toaster position="bottom-right" richColors />
 				</AppProviders>

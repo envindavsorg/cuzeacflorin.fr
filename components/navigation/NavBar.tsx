@@ -5,17 +5,18 @@ import { Fade, FadeStagger } from '@/components/animation/Fade';
 import { Filter } from '@/components/filters/Filters';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/Avatar';
 import { cn, getInitials } from '@/lib/utils';
-import { PROFILE_CONFIG } from '@/resources/profile';
-
-const { firstName, lastName } = PROFILE_CONFIG;
 
 type NavBarProps = {
 	setFilter: Dispatch<SetStateAction<FilterType>>;
+	firstName: string;
+	lastName: string;
 	className?: string;
 };
 
 export const NavBar = ({
 	setFilter,
+	firstName,
+	lastName,
 	className,
 }: NavBarProps): React.JSX.Element => (
 	<motion.nav animate={{ opacity: 1 }} initial={{ opacity: 1 }}>

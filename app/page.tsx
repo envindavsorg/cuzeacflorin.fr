@@ -67,8 +67,8 @@ const Home = (): React.JSX.Element => {
 				className="flex flex-col items-center justify-center gap-y-6 md:gap-y-8"
 				layouts={layouts}
 			>
-				{gridItems.map((item) => (
-					<BentoItem component={item.component} id={item.i} key={item.i} />
+				{gridItems.map(({ component, i }) => (
+					<BentoItem component={component} id={i} key={i} />
 				))}
 			</Bento>
 		</>

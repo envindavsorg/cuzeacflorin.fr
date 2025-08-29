@@ -30,7 +30,7 @@ export const BlogArticle = ({
 
 			<div className="flex flex-col items-start justify-between gap-y-6 md:gap-y-3">
 				<h2
-					className="inline-block font-bold font-pixelify-sans text-3xl text-theme md:text-4xl"
+					className="inline-block font-bold font-pixelify-sans text-3xl text-theme"
 					title={metadata.title}
 				>
 					{metadata.title}

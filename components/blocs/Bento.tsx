@@ -9,7 +9,9 @@ import { NavBar } from '@/components/navigation/NavBar';
 import useBreakpoint from '@/hooks/useBreakpoint';
 import { breakpoints, cols, heights } from '@/lib/consts';
 import { cn } from '@/lib/utils';
+import { PROFILE_CONFIG } from '@/resources/profile';
 
+const { firstName, lastName } = PROFILE_CONFIG;
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
 const useIsomorphicLayoutEffect =
@@ -94,7 +96,12 @@ export const Bento = ({
 
 	return (
 		<div className={className}>
-			<NavBar className={className} setFilter={setFilter} />
+			<NavBar
+				className={className}
+				firstName={firstName}
+				lastName={lastName}
+				setFilter={setFilter}
+			/>
 
 			<section
 				className={cn(

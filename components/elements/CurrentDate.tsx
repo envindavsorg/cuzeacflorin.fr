@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 
 type CurrentDateProps = {
-	format?: 'full' | 'short' | 'numeric' | 'custom' | 'weekday';
+	format?: 'full' | 'short' | 'numeric' | 'custom' | 'weekday' | 'yearly';
 	locale?: string;
 	customFormat?: Intl.DateTimeFormatOptions;
 	className?: string;
@@ -55,6 +55,11 @@ export const CurrentDate = ({
 				case 'weekday':
 					options = {
 						weekday: 'short',
+					};
+					break;
+				case 'yearly':
+					options = {
+						year: 'numeric',
 					};
 					break;
 				default:
