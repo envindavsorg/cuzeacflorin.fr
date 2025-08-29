@@ -19,5 +19,3 @@ export const Paragraph = memo(
 		</p>
 	)
 );
-
-Paragraph.displayName = 'Paragraph';

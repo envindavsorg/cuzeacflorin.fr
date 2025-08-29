@@ -42,8 +42,10 @@ const useThemeTransition = (): ThemeTransition => {
 			const bottom = window.innerHeight - top;
 			const maxRad = Math.hypot(Math.max(left, right), Math.max(top, bottom));
 
-			// Set theme transition name to separate from page transitions
-			document.documentElement.style.setProperty('view-transition-name', 'theme-change');
+			document.documentElement.style.setProperty(
+				'view-transition-name',
+				'theme-change'
+			);
 
 			const transition = document.startViewTransition(() => {
 				flushSync(() => {
@@ -68,7 +70,6 @@ const useThemeTransition = (): ThemeTransition => {
 				);
 			});
 
-			// Clean up after transition
 			transition.finished.finally(() => {
 				document.documentElement.style.removeProperty('view-transition-name');
 			});

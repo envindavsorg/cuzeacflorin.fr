@@ -1,8 +1,8 @@
 'use client';
 
 import { useAnimate } from 'motion/react';
-import { Link } from 'next-view-transitions';
 import { useTheme } from 'next-themes';
+import { Link } from 'next-view-transitions';
 import type React from 'react';
 import { memo, useEffect, useRef, useState } from 'react';
 import useSWR from 'swr';
@@ -106,5 +106,3 @@ export const AboutMe = memo((): React.JSX.Element => {
 		</Card>
 	);
 });
-
-AboutMe.displayName = 'AboutMe';

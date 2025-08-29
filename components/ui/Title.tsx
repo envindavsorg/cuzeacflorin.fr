@@ -69,5 +69,3 @@ export const Title = memo(
 		</div>
 	)
 );
-
-Title.displayName = 'Title';

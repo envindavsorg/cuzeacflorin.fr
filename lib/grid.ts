@@ -31,7 +31,6 @@ export const gridItems: GridItem[] = [
 ];
 
 export const layouts = {
-	// is good
 	all: {
 		lg: [
 			{ i: 'bio', x: 0, y: 0, w: 2, h: 1 },
@@ -73,7 +72,6 @@ export const layouts = {
 			{ i: 'contact', x: 0, y: 14, w: 2, h: 2 },
 		],
 	},
-	// is good
 	about: {
 		lg: [
 			{ i: 'bio', x: 0, y: 0, w: 2, h: 1 },
@@ -115,7 +113,6 @@ export const layouts = {
 			{ i: 'contact', x: 0, y: 3, w: 2, h: 2 },
 		],
 	},
-	// is good
 	projects: {
 		lg: [
 			{ i: 'bio', x: 0, y: 0, w: 2, h: 1 },

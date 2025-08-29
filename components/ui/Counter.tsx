@@ -61,5 +61,3 @@ export const Counter = memo(
 		);
 	}
 );
-
-Counter.displayName = 'Counter';

@@ -38,8 +38,6 @@ export const ThemeDisplay = memo(
 	}
 );
 
-ThemeDisplay.displayName = 'ThemeDisplay';
-
 type ThemeButtonProps = {
 	isDarkMode: boolean;
 	hasUserInteracted: boolean;
@@ -110,8 +108,6 @@ export const ThemeButton = memo(
 	)
 );
 
-ThemeButton.displayName = 'ThemeButton';
-
 export const ThemeSwitcher = memo((): React.JSX.Element => {
 	const {
 		isDarkMode,
@@ -139,5 +135,3 @@ export const ThemeSwitcher = memo((): React.JSX.Element => {
 		</Card>
 	);
 });
-
-ThemeSwitcher.displayName = 'ThemeSwitcher';

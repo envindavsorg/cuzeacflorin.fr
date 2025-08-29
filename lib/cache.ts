@@ -1,4 +1,4 @@
-const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+const CACHE_DURATION = 5 * 60 * 1000;
 
 type CacheEntry<T> = {
 	data: T;

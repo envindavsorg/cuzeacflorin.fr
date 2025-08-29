@@ -76,5 +76,3 @@ export const GitHubStars = memo(async (): Promise<React.JSX.Element> => {
 		</Card>
 	);
 });
-
-GitHubStars.displayName = 'GitHubStars';

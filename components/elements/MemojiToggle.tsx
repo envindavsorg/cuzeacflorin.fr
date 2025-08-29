@@ -3,7 +3,7 @@ import Image from 'next/image';
 import type React from 'react';
 import { PROFILE_CONFIG } from '@/resources/profile';
 
-const { image, avatars } = PROFILE_CONFIG;
+const { firstName, lastName, avatars } = PROFILE_CONFIG;
 
 const ROTATION_ANGLE = 30;
 const SCALE_SMALL = 0.4;
@@ -46,7 +46,7 @@ export const MemojiToggle = ({
 			<div className="relative">
 				<div className="relative h-18 w-12 overflow-hidden md:h-20 md:w-14">
 					<MotionImage
-						alt={image.alt}
+						alt={`${firstName} ${lastName}`}
 						animate={animate}
 						className="relative z-10 h-full object-cover"
 						exit={exit}
@@ -67,5 +67,3 @@ export const MemojiToggle = ({
 		</LayoutGroup>
 	);
 };
-
-MemojiToggle.displayName = 'MemojiToggle';

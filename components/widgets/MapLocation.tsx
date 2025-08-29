@@ -50,5 +50,3 @@ export const MapLocation = memo((): React.JSX.Element => {
 		</Card>
 	);
 });
-
-MapLocation.displayName = 'MapLocation';

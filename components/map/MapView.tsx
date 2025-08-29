@@ -96,5 +96,3 @@ export const MapView = memo(
 		}
 	)
 );
-
-MapView.displayName = 'MapView';

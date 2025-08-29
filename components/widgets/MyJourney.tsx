@@ -19,5 +19,3 @@ export const MyJourney = memo((): React.JSX.Element => {
 		</Card>
 	);
 });
-
-MyJourney.displayName = 'MyJourney';

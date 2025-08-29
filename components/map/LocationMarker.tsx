@@ -45,5 +45,3 @@ export const LocationMarker = memo(
 			[mouseEntered]
 		)
 );
-
-LocationMarker.displayName = 'LocationMarker';

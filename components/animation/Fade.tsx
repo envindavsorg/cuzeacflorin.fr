@@ -59,8 +59,6 @@ export const Fade = forwardRef<
 	);
 });
 
-Fade.displayName = 'Fade';
-
 type FadeStaggerProps = {
 	children: React.ReactNode;
 	faster?: boolean;
@@ -90,5 +88,3 @@ export const FadeStagger = forwardRef<
 		</FadeStaggerContext.Provider>
 	)
 );
-
-FadeStagger.displayName = 'FadeStagger';

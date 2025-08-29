@@ -121,5 +121,3 @@ export const Sparkles = memo(
 		);
 	}
 );
-
-Sparkles.displayName = 'Sparkles';

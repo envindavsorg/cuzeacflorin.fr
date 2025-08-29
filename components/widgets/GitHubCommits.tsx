@@ -77,5 +77,3 @@ export const GitHubCommits = memo(async (): Promise<React.JSX.Element> => {
 		</Card>
 	);
 });
-
-GitHubCommits.displayName = 'GitHubCommits';

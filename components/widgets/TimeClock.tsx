@@ -63,5 +63,3 @@ export const TimeClock = memo((): React.JSX.Element => {
 		</Card>
 	);
 });
-
-TimeClock.displayName = 'TimeClock';

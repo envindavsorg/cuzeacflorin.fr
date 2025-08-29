@@ -7,7 +7,7 @@ import { AppleDevice } from '@/components/elements/AppleDevice';
 import { AppleSafari } from '@/components/elements/AppleSafari';
 import { baseURL } from '@/resources/meta';
 
-const IMAGE_BASE_PATH = '/images/portfolio/screen/' as const;
+const IMAGE_BASE_PATH = '/images/portfolio/' as const;
 const IMAGE_PATHS = {
 	desktop: {
 		light: `${IMAGE_BASE_PATH}/desktop/light.webp`,
@@ -28,8 +28,8 @@ export const PortfolioMockup = (): React.JSX.Element => {
 	}, []);
 
 	const { desktop, mobile } = IMAGE_PATHS;
-	// Use light theme as default for SSR to avoid hydration mismatch
-	const theme: ThemeValue = isMounted && resolvedTheme === 'dark' ? 'dark' : 'light';
+	const theme: ThemeValue =
+		isMounted && resolvedTheme === 'dark' ? 'dark' : 'light';
 	const images = useMemo(
 		() => ({ desktop: desktop[theme], mobile: mobile[theme] }),
 		[theme, desktop, mobile]
@@ -38,7 +38,7 @@ export const PortfolioMockup = (): React.JSX.Element => {
 	return (
 		<>
 			<AppleSafari
-				className="-rotate-10 md:-rotate-20 lg:-rotate-25 absolute top-30 left-15 z-10 h-full w-100 md:top-20 md:left-20 lg:top-15 lg:left-15"
+				className="-rotate-10 md:-rotate-20 lg:-rotate-25 absolute top-30 left-15 z-10 h-full w-100 max-md:hidden md:top-20 md:left-20 lg:top-15 lg:left-15"
 				src={images.desktop}
 				url={baseURL}
 			/>
@@ -50,5 +50,3 @@ export const PortfolioMockup = (): React.JSX.Element => {
 		</>
 	);
 };
-
-PortfolioMockup.displayName = 'PortfolioMockup';

@@ -71,5 +71,3 @@ export const ZoomControls = memo(
 		);
 	}
 );
-
-ZoomControls.displayName = 'ZoomControls';

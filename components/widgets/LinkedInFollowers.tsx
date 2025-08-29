@@ -78,5 +78,3 @@ export const LinkedInFollowers = memo(async (): Promise<React.JSX.Element> => {
 		</Card>
 	);
 });
-
-LinkedInFollowers.displayName = 'LinkedInFollowers';

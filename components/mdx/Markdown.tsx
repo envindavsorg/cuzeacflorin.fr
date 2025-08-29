@@ -33,18 +33,14 @@ const getTextContent = (node: React.ReactNode): string => {
 	return '';
 };
 
-const createHeading = (level: number) => {
-	const Heading = ({ children }: { children: React.ReactNode }) => {
+const createHeading =
+	(level: number) =>
+	({ children }: { children: React.ReactNode }) => {
 		const textContent = getTextContent(children);
 		const slug = textContent ? toKebabCase(textContent) : '';
 
 		return createElement(`h${level}`, { id: slug }, children);
 	};
-
-	Heading.displayName = `Heading${level}`;
-
-	return Heading;
-};
 
 const stackIcons: React.JSX.Element[] = stack.map(
 	({ icon: Icon, title }: Stack, index) => (
