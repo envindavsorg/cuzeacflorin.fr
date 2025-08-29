@@ -9,33 +9,30 @@
   Create. Develop. Imagine.
 </p>
 
-
-# 🚀 Portfolio - Cuzeac Florin
-
 > A modern and interactive portfolio built with Next.js 15, TypeScript, and an innovative widget-based architecture.
 
-**🌍 Live Demo**: [cuzeacflorin.fr](https://cuzeacflorin.fr/)
-**📊 Performance**: Perfect Lighthouse 100/100 across all metrics
+- **Live Demo**: [cuzeacflorin.fr](https://cuzeacflorin.fr/)
+- **Performance**: Perfect Lighthouse 100/100 across all metrics
 
 ---
 
 ## ✨ Features
 
-### 🎯 **Interactive Widgets**
+### **Interactive Widgets**
 - **TimeClock** : Real-time clock with smooth animations
 - **GitHub Stats** : Live stars and commits via API
 - **LinkedIn Followers** : Professional statistics
 - **Interactive Map** : Geolocation with Mapbox GL
 - **Theme Switcher** : Dark/light mode with persistence
 
-### 🏗️ **Modern Architecture**
+### **Modern Architecture**
 - **Next.js 15.5** with App Router and React 19
 - **Responsive grid system** with 4 adaptive layouts
 - **Zustand state management** with devtools and persistence
 - **Strict TypeScript** with optimized path mapping
 - **Dynamic MDX** with Shiki syntax highlighting
 
-### 🎨 **Design & Animation**
+### **Design & Animation**
 - **Tailwind CSS v4** with CSS Custom Properties
 - **Motion** (ex-Framer Motion) for animations
 - **Number Flow** for numeric transitions
@@ -299,6 +296,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 **Built with ❤️ by [Florin Cuzeac](https://cuzeacflorin.fr)**
 
-[🌍 Website](https://cuzeacflorin.fr) • [💼 LinkedIn](https://linkedin.com/in/florin-cuzeac) • [🐙 GitHub](https://github.com/envindavsorg)
+[Website](https://cuzeacflorin.fr) • [LinkedIn](https://linkedin.com/in/cuzeac-florin) • [GitHub](https://github.com/envindavsorg)
 
 </div>
