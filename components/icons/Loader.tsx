@@ -15,10 +15,6 @@ const icons: Record<
 > = {
 	bash: () =>
 		import('./content/Bash').then((mod) => ({ default: mod.BashIcon })),
-	bootstrap: () =>
-		import('./content/Bootstrap').then((mod) => ({
-			default: mod.BootstrapIcon,
-		})),
 	bun: () => import('./content/Bun').then((mod) => ({ default: mod.BunIcon })),
 	css: () => import('./content/CSS').then((mod) => ({ default: mod.CSSIcon })),
 	express: () =>

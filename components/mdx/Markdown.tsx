@@ -4,12 +4,17 @@ import React, { createElement } from 'react';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 import { CurrentDate } from '@/components/elements/CurrentDate';
+import { NextJSIcon } from '@/components/icons/content/Next';
+import { ReactIcon } from '@/components/icons/content/React';
+import { TailwindIcon } from '@/components/icons/content/Tailwind';
+import { TypeScriptIcon } from '@/components/icons/content/TypeScript';
 import {
 	Marquee,
 	MarqueeContent,
 	MarqueeFade,
 	MarqueeItem,
 } from '@/components/ui/Marquee';
+import { Separator } from '@/components/ui/Separator';
 import { shikiOptions } from '@/lib/shiki';
 import { cn, toKebabCase } from '@/lib/utils';
 import { stack } from '@/resources/stack';
@@ -61,7 +66,11 @@ const components = {
 	h5: createHeading(5),
 	h6: createHeading(6),
 	CurrentDate,
-	Today: CurrentDate,
+	ReactIcon,
+	TypeScriptIcon,
+	NextJSIcon,
+	TailwindIcon,
+	Separator,
 	Stack: ({ className }: StackProps) => (
 		<div className={cn('flex flex-col gap-y-4', className)}>
 			<Marquee>
