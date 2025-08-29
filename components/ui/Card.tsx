@@ -2,7 +2,7 @@
 
 import { ArrowUpRightIcon, type IconProps } from '@phosphor-icons/react';
 import { motion } from 'motion/react';
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import type React from 'react';
 import { Button } from '@/components/ui/Button';
 import {
@@ -124,13 +124,7 @@ const CardLink = ({
 	return (
 		<Tooltip>
 			<TooltipTrigger asChild>
-				<Link
-					aria-label={label}
-					className={className}
-					href={url}
-					rel="noopener noreferrer"
-					target="_blank"
-				>
+				<Link aria-label={label} className={className} href={url}>
 					<MotionButton
 						aria-label={label}
 						asChild

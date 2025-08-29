@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'motion/react';
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import type React from 'react';
 import { memo } from 'react';
 import { Card, CardLink } from '@/components/ui/Card';

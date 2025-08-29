@@ -7,7 +7,7 @@ import { getFirstProject } from '@/lib/projects';
 import { WHITESPACE_SEPARATOR } from '@/lib/regex';
 import { formatDate } from '@/lib/utils';
 
-export const PortfolioCreation = memo((): React.JSX.Element => {
+export const PortfolioJourney = memo((): React.JSX.Element => {
 	const { metadata, slug } = getFirstProject();
 	const [firstWordTitle, secondWordTitle] = metadata.title
 		.trim()

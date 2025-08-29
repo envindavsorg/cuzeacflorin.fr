@@ -1,7 +1,7 @@
 'use client';
 
 import { useAnimate } from 'motion/react';
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import { useTheme } from 'next-themes';
 import type React from 'react';
 import { memo, useEffect, useRef, useState } from 'react';
