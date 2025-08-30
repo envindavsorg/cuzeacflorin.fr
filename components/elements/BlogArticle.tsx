@@ -1,8 +1,8 @@
 import type React from 'react';
 import { CardLink } from '@/components/ui/Card';
 import { Paragraph } from '@/components/ui/Paragraph';
+import { date } from '@/lib/dayjs';
 import type { PostMetadata } from '@/lib/mdx';
-import { formatDate } from '@/lib/utils';
 
 type BlogArticleProps = {
 	metadata: PostMetadata;
@@ -40,7 +40,7 @@ export const BlogArticle = ({
 				</Paragraph>
 				<div className="flex gap-x-2 md:mt-3">
 					<span className="text-muted-foreground text-sm">
-						{formatDate(metadata.date)}
+						{date(metadata.date).format('ddd DD MMM YYYY')}
 					</span>
 					<span className="text-muted-foreground text-sm">•</span>
 					<span className="text-muted-foreground text-sm">

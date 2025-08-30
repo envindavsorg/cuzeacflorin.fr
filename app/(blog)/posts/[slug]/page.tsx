@@ -2,9 +2,10 @@ import { notFound } from 'next/navigation';
 import type React from 'react';
 import { CustomMDX } from '@/components/mdx/Markdown';
 import { Header } from '@/components/navigation/Header';
+import { date } from '@/lib/dayjs';
 import type { MDXData, PostMetadata } from '@/lib/mdx';
 import { getAllPosts } from '@/lib/posts';
-import { cn, formatDate } from '@/lib/utils';
+import { cn } from '@/lib/utils';
 
 type Params = {
 	slug: string;
@@ -48,7 +49,7 @@ const PostPage = async ({
 					</h1>
 					<div className="flex gap-x-2">
 						<span className="text-muted-foreground text-sm">
-							{formatDate(post.metadata.date)}
+							{date(post.metadata.date).format('ddd DD MMM YYYY')}
 						</span>
 						<span className="text-muted-foreground text-sm">•</span>
 						<span className="text-muted-foreground text-sm">

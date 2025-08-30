@@ -12,21 +12,6 @@ export const cn = (...inputClasses: ClassValue[]): string =>
 export const absoluteUrl = (path: string): string =>
 	`https://${baseURL}${path}`;
 
-export const toKebabCase = (string: string): string =>
-	string
-		.trim()
-		.toLowerCase()
-		.replace(/[^a-z0-9]+/g, '-')
-		.replace(/(^-+)|(-+$)/g, '');
-
-export const formatDate = (date: string): string =>
-	new Date(date).toLocaleDateString('fr-FR', {
-		weekday: 'short',
-		year: 'numeric',
-		month: 'long',
-		day: 'numeric',
-	});
-
 type GetInitialsOptions = {
 	maxInitials?: number;
 	fallback?: string;

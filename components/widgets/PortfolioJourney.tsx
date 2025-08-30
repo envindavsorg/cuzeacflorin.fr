@@ -3,9 +3,9 @@ import { memo } from 'react';
 import { PortfolioMockup } from '@/components/elements/PortfolioMockup';
 import { Card, CardLink } from '@/components/ui/Card';
 import { Paragraph } from '@/components/ui/Paragraph';
+import { date } from '@/lib/dayjs';
 import { getFirstProject } from '@/lib/projects';
 import { WHITESPACE_SEPARATOR } from '@/lib/regex';
-import { formatDate } from '@/lib/utils';
 
 export const PortfolioJourney = memo((): React.JSX.Element => {
 	const { metadata, slug } = getFirstProject();
@@ -35,7 +35,7 @@ export const PortfolioJourney = memo((): React.JSX.Element => {
 					{metadata.description}
 				</Paragraph>
 				<span className="text-muted-foreground text-sm max-md:hidden">
-					{formatDate(metadata.date)}
+					{date(metadata.date).format('ddd DD MMM YYYY')}
 				</span>
 			</div>
 

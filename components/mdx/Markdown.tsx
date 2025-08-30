@@ -16,7 +16,8 @@ import {
 } from '@/components/ui/Marquee';
 import { Separator } from '@/components/ui/Separator';
 import { shikiOptions } from '@/lib/shiki';
-import { cn, toKebabCase } from '@/lib/utils';
+import { toSlug } from '@/lib/slug';
+import { cn } from '@/lib/utils';
 import { stack } from '@/resources/stack';
 
 const getTextContent = (node: React.ReactNode): string => {
@@ -42,7 +43,7 @@ const createHeading =
 	(level: number) =>
 	({ children }: { children: React.ReactNode }) => {
 		const textContent = getTextContent(children);
-		const slug = textContent ? toKebabCase(textContent) : '';
+		const slug = textContent ? toSlug(textContent) : '';
 
 		return createElement(`h${level}`, { id: slug }, children);
 	};
