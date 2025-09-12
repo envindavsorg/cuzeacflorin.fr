@@ -106,10 +106,6 @@ export const Bento = ({
 			<section
 				className={cn(
 					'relative mx-auto w-full',
-					'max-w-[320px]',
-					'sm:max-w-[375px]',
-					'md:max-w-[800px]',
-					'lg:max-w-[1200px]',
 					isMounted ? 'translate-y-0 opacity-100' : '-translate-y-6 opacity-0',
 					'transition-[opacity,_transform] duration-300'
 				)}

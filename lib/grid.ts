@@ -32,7 +32,7 @@ export const gridItems: GridItem[] = [
 
 export const layouts = {
 	all: {
-		lg: [
+		xl: [
 			{ i: 'bio', x: 0, y: 0, w: 2, h: 1 },
 			{ i: 'location', x: 2, y: 0, w: 1, h: 1 },
 			{ i: 'clock', x: 3, y: 0, w: 1, h: 1 },
@@ -43,7 +43,7 @@ export const layouts = {
 			{ i: 'article', x: 0, y: 2, w: 2, h: 1 },
 			{ i: 'switcher', x: 3, y: 2, w: 1, h: 1 },
 			{ i: 'work', x: 0, y: 3, w: 2, h: 1 },
-			{ i: 'contact', x: 2, y: 3, w: 2, h: 1 },
+			{ i: 'contact', x: 2, y: 3, w: 2, h: 0.75 },
 		],
 		md: [
 			{ i: 'bio', x: 0, y: 0, w: 2, h: 2 },

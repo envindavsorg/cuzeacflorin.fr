@@ -3,10 +3,10 @@ type Breakpoints = {
 };
 
 export const breakpoints: Breakpoints = {
-	lg: 1199,
-	md: 799,
-	sm: 374,
-	xs: 319,
+	xl: 1280,
+	lg: 1024,
+	md: 768,
+	sm: 640,
 };
 
 type Heights = {
@@ -14,10 +14,10 @@ type Heights = {
 };
 
 export const heights: Heights = {
+	xl: 280,
 	lg: 280,
 	md: 180,
 	sm: 164,
-	xs: 136,
 };
 
 type Cols = {
@@ -25,8 +25,8 @@ type Cols = {
 };
 
 export const cols: Cols = {
+	xl: 5,
 	lg: 4,
-	md: 4,
+	md: 3,
 	sm: 2,
-	xs: 2,
 };

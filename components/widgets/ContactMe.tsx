@@ -10,7 +10,7 @@ import { cn } from '@/lib/utils';
 import { PROFILE_CONFIG } from '@/resources/profile';
 
 const {
-	contact: { title, description, email, social },
+	contact: { title, description, email },
 } = PROFILE_CONFIG;
 
 export const ContactMe = memo((): React.JSX.Element => {
@@ -39,23 +39,6 @@ export const ContactMe = memo((): React.JSX.Element => {
 				<Paragraph className="relative line-clamp-3 leading-relaxed max-sm:line-clamp-2 md:line-clamp-6 lg:line-clamp-4">
 					{description}
 				</Paragraph>
-				<div className="mt-3 inline-flex gap-x-6">
-					{social.map(({ name, url, icon: Icon }) => (
-						<MotionLink
-							aria-label={name}
-							className="group"
-							href={url}
-							key={name}
-							rel="noreferrer"
-							target="_blank"
-							whileHover={{ scale: 1.15 }}
-							whileTap={{ scale: 0.95 }}
-						>
-							<Icon className="size-8 transition-all duration-300 group-hover:text-theme" />
-							<span className="sr-only">{name}</span>
-						</MotionLink>
-					))}
-				</div>
 			</div>
 		</Card>
 	);

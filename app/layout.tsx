@@ -76,7 +76,7 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => (
 				<link href="https://vitals.vercel-insights.com" rel="dns-prefetch" />
 				<title>{`${PROFILE_CONFIG.firstName} ${PROFILE_CONFIG.lastName}`}</title>
 			</head>
-			<body className="relative select-none bg-background pt-10 font-geist-mono tracking-tight antialiased md:pt-15">
+			<body className="container relative mx-auto w-full max-w-7xl select-none bg-background pt-10 font-sans tracking-tight antialiased md:pt-15">
 				<AppProviders>
 					{children}
 					<Footer

@@ -3,13 +3,6 @@
 @plugin "@tailwindcss/typography";
 
 @theme inline {
-	/* breakpoints */
-	--breakpoint-sm: 374px;
-	--breakpoint-md: 799px;
-	--breakpoint-lg: 1199px;
-	--breakpoint-xl: initial;
-	--breakpoint-2xl: initial;
-
 	/* colors */
 	--color-theme: light-dark(oklch(0.65 0.2 46), oklch(0.9 0.16 99));
 	--color-background: light-dark(oklch(1 0 0), oklch(0 0 0));

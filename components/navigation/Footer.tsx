@@ -1,19 +1,56 @@
 'use client';
 
 import type { Player } from '@lordicon/react';
+import {
+	EnvelopeIcon,
+	GithubLogoIcon,
+	type Icon,
+	LinkedinLogoIcon,
+	PhoneIcon,
+} from '@phosphor-icons/react';
 import { CopyrightIcon } from '@phosphor-icons/react/dist/ssr';
 import { useIntersectionObserver } from '@uidotdev/usehooks';
+import { motion } from 'motion/react';
+import { Link } from 'next-view-transitions';
 import type React from 'react';
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { ScrambleText } from '@/components/animation/ScrambleText';
+import { useEffect, useMemo, useRef } from 'react';
 import { CurrentDate } from '@/components/elements/CurrentDate';
 import HeartIcon from '@/components/lottie/heart.json' with { type: 'json' };
 import { LordiconPlayer } from '@/components/lottie/LordiconPlayer';
+import { Metadata } from '@/components/navigation/Metadata';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/Avatar';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { Separator } from '@/components/ui/Separator';
-import { useBrowser } from '@/hooks/useBrowser';
 import { getInitials } from '@/lib/utils';
+
+type Social = {
+	name: string;
+	url: string;
+	icon: Icon;
+};
+
+const social: Social[] = [
+	{
+		name: 'Github',
+		url: 'https://github.com/envindavsorg/',
+		icon: GithubLogoIcon,
+	},
+	{
+		name: 'LinkedIn',
+		url: 'https://linkedin.com/in/cuzeacflorin/',
+		icon: LinkedinLogoIcon,
+	},
+	{
+		name: 'Téléphone',
+		url: 'tel:+33658058665',
+		icon: PhoneIcon,
+	},
+	{
+		name: 'E-mail',
+		url: 'mailto:mail@cuzeacflorin.fr',
+		icon: EnvelopeIcon,
+	},
+];
 
 type FooterProps = {
 	firstName: string;
@@ -46,148 +83,64 @@ export const Footer = ({
 		}
 	}, [isIntersecting]);
 
-	// get last commit hash
-	const commitHash = process.env.NEXT_PUBLIC_GIT_COMMIT || 'aucun commit';
-	// get browser name and icon
-	const { name, icon: Icon } = useBrowser();
-	// current date
-	const now = new Date();
-	const currentDate = now.toLocaleDateString('fr-FR', {
-		weekday: 'short',
-		day: 'numeric',
-		month: 'short',
-		year: 'numeric',
-	});
-	// window dimensions
-	const [dimensions, setDimensions] = useState({
-		width: 0,
-		height: 0,
-	});
-	useEffect(() => {
-		setDimensions({
-			width: window.innerWidth,
-			height: window.innerHeight,
-		});
-
-		const handleResize = () => {
-			setDimensions({
-				width: window.innerWidth,
-				height: window.innerHeight,
-			});
-		};
-
-		window.addEventListener('resize', handleResize);
-		return () => window.removeEventListener('resize', handleResize);
-	}, []);
-	const dimensionsText = `${dimensions.width}x${dimensions.height}`;
-	// latest date update
-	const date = process.env.NEXT_PUBLIC_GIT_COMMIT_DATE || 'aucune mise à jour';
-	const commitDate = new Date(date).toLocaleDateString();
-	const isToday = new Date().toLocaleDateString();
+	const MotionLink = motion.create(Link);
 
 	return (
-		<footer className="space-y-6 pt-3 pb-6" ref={ref}>
+		<footer className="pt-3 pb-6 sm:space-y-6" ref={ref}>
 			<Separator />
 
-			<div className="flex flex-col gap-y-3">
-				<h2 className="font-bold text-base">Metadata :</h2>
-				<div className="grid grid-cols-4 gap-3 md:grid-cols-3 lg:grid-cols-5">
-					<div className="flex flex-col gap-y-1 max-md:col-span-2">
-						<span className="font-medium text-sm">Dernier commit :</span>
-						<ScrambleText
-							className="text-muted-foreground italic"
-							text={commitHash}
-							trigger={isIntersecting}
-						/>
-					</div>
-					<div className="flex flex-col gap-y-1 max-md:col-span-2">
-						<span className="font-medium text-sm">Navigateur :</span>
-						<div className="flex items-center gap-2">
-							{Icon && <Icon className="size-4" />}
-							<ScrambleText
-								className="text-muted-foreground italic"
-								text={name}
-								trigger={isIntersecting}
+			<Metadata intersect={isIntersecting} />
+
+			<Separator />
+
+			<div className="flex max-md:flex-col-reverse max-md:gap-y-6 min-md:items-center min-md:justify-between">
+				<div className="flex items-center gap-x-6 md:gap-x-4">
+					<Avatar className="size-10">
+						<AvatarImage alt={fullName} src="/avatar.webp" />
+						<AvatarFallback>{initials}</AvatarFallback>
+					</Avatar>
+					<div className="*:!font-medium flex flex-col *:flex *:items-center">
+						<div className="*:!text-sm *:!text-foreground gap-x-1 *:font-semibold">
+							<CopyrightIcon className="size-4 pt-0.5" />{' '}
+							<CurrentDate format="yearly" /> -{' '}
+							<Paragraph className="leading-relaxed">{fullName}</Paragraph>
+						</div>
+						<div className="*:!text-xs *:!italic">
+							<Paragraph className="leading-relaxed">
+								Développé avec beaucoup d'
+							</Paragraph>
+							<LordiconPlayer
+								colorize="light-dark(var(--color-red-600), var(--color-red-300))"
+								icon={HeartIcon}
+								ref={playerRef}
 							/>
+							<Paragraph className="pl-0.5 leading-relaxed">
+								à {city}.
+							</Paragraph>
 						</div>
 					</div>
-					<div className="flex flex-col gap-y-1 max-md:col-span-full">
-						<span className="font-medium text-sm">Date actuelle :</span>
-						<ScrambleText
-							className="text-muted-foreground italic"
-							text={currentDate}
-							trigger={isIntersecting}
-						/>
-					</div>
-					<div className="flex flex-col gap-y-1 max-md:col-span-full">
-						<span className="font-medium text-sm">
-							Résolution{' '}
-							<span className="min-md:hidden">de votre appareil</span> :
-						</span>
-						<ScrambleText
-							className="text-muted-foreground italic"
-							text={dimensionsText}
-							trigger={isIntersecting}
-						/>
-					</div>
-					<div className="flex flex-col gap-y-1 max-md:col-span-full">
-						<span className="font-medium text-sm max-md:hidden">
-							Mise à jour :
-						</span>
-						<span className="font-medium text-sm min-md:hidden">
-							Dernière mise à jour publiée :
-						</span>
-						<ScrambleText
-							className="text-muted-foreground italic"
-							text={
-								commitDate === isToday
-									? `Aujourd'hui à ${new Date(date).toLocaleTimeString(
-											'fr-FR',
-											{
-												hour: '2-digit',
-												minute: '2-digit',
-											}
-										)}`
-									: new Date(date)
-											.toLocaleDateString('fr-FR', {
-												weekday: 'short',
-												day: 'numeric',
-												month: 'short',
-												hour: 'numeric',
-												minute: 'numeric',
-											})
-											.replace(',', ' à')
-							}
-							trigger={isIntersecting}
-						/>
-					</div>
 				</div>
-			</div>
 
-			<Separator />
+				<Separator className="min-md:hidden" />
 
-			<div className="flex items-center justify-start gap-x-4">
-				<Avatar className="size-10">
-					<AvatarImage alt={fullName} src="/avatar.webp" />
-					<AvatarFallback>{initials}</AvatarFallback>
-				</Avatar>
-				<div className="*:!font-medium flex flex-col *:flex *:items-center *:gap-x-1">
-					<div className="*:!text-sm *:!text-foreground">
-						<CopyrightIcon className="size-4 pt-0.5" />{' '}
-						<CurrentDate format="yearly" />{' '}
-						<Paragraph className="ms-1 leading-relaxed">{fullName}</Paragraph>
-					</div>
-					<div className="*:!text-xs *:!italic">
-						<Paragraph className="leading-relaxed">
-							Developpé avec beaucoup d'
-						</Paragraph>
-						<LordiconPlayer
-							colorize="light-dark(var(--color-red-600), var(--color-red-300))"
-							icon={HeartIcon}
-							ref={playerRef}
-						/>
-						<Paragraph className="leading-relaxed">à {city}.</Paragraph>
-					</div>
+				<div className="items-center gap-x-6 max-md:grid max-md:grid-cols-4 min-md:flex">
+					{social.map(({ name, url, icon: Icon }) => (
+						<MotionLink
+							aria-label={name}
+							className="group max-md:flex max-md:flex-col max-md:items-center max-md:justify-center max-md:gap-y-2"
+							href={url}
+							key={name}
+							rel="noreferrer"
+							target="_blank"
+							whileHover={{ scale: 1.15 }}
+							whileTap={{ scale: 0.95 }}
+						>
+							<Icon className="size-8 shrink-0 transition-all duration-300 group-hover:text-theme" />
+							<span className="font-medium text-muted-foreground text-xs italic group-hover:text-theme min-md:sr-only">
+								{name}
+							</span>
+						</MotionLink>
+					))}
 				</div>
 			</div>
 		</footer>

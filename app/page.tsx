@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import type React from 'react';
 import { useId } from 'react';
-import { Noise } from '@/components/animation/Noise';
 import { Bento } from '@/components/blocs/Bento';
 import { BentoItem } from '@/components/blocs/BentoItem';
 import { gridItems, layouts } from '@/lib/grid';
@@ -56,8 +55,6 @@ const Home = (): React.JSX.Element => {
 				strategy="afterInteractive"
 				type="application/ld+json"
 			/>
-
-			<Noise />
 
 			<h1 className="sr-only">
 				{firstName} {lastName}
