@@ -3,7 +3,7 @@ type Breakpoints = {
 };
 
 export const breakpoints: Breakpoints = {
-	xl: 1280,
+	xl: 1200,
 	lg: 1024,
 	md: 768,
 	sm: 640,
@@ -14,7 +14,7 @@ type Heights = {
 };
 
 export const heights: Heights = {
-	xl: 280,
+	xl: 230,
 	lg: 280,
 	md: 180,
 	sm: 164,

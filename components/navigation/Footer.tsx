@@ -86,7 +86,7 @@ export const Footer = ({
 	const MotionLink = motion.create(Link);
 
 	return (
-		<footer className="pt-3 pb-6 sm:space-y-6" ref={ref}>
+		<footer className="py-6 sm:space-y-6" ref={ref}>
 			<Separator />
 
 			<Metadata intersect={isIntersecting} />

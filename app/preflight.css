@@ -40,8 +40,8 @@ footer {
 	transition-property: height;
 	transition-duration: 200ms;
 	transition-timing-function: var(--ease-in-out);
-	background-color: red;
-	padding: 0;
+	border: 1px dashed var(--color-input);
+	border-radius: var(--radius-none);
 
 	.react-grid-item {
 		transition-property: left, top, width, height;

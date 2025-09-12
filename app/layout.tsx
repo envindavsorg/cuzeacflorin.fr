@@ -7,6 +7,7 @@ import type React from 'react';
 import { Analytics } from '@/components/analytics/Analytics';
 import { Sparkles } from '@/components/animation/Sparkles';
 import { Footer } from '@/components/navigation/Footer';
+import { BreakpointIndicator } from '@/components/ui/BreakpointIndicator';
 import { Toaster } from '@/components/ui/Sonner';
 import { fonts } from '@/fonts/fonts';
 import { cn } from '@/lib/utils';
@@ -86,6 +87,7 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => (
 					/>
 					<Sparkles density={150} />
 					<Toaster position="bottom-right" richColors />
+					<BreakpointIndicator />
 				</AppProviders>
 			</body>
 

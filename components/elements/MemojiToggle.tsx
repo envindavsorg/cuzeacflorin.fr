@@ -44,7 +44,7 @@ export const MemojiToggle = ({
 	return (
 		<LayoutGroup>
 			<div className="relative">
-				<div className="relative h-18 w-12 overflow-hidden md:h-20 md:w-14">
+				<div className="relative h-16 w-12 overflow-hidden">
 					<MotionImage
 						alt={`${firstName} ${lastName}`}
 						animate={animate}
@@ -60,7 +60,7 @@ export const MemojiToggle = ({
 					/>
 				</div>
 				<div
-					className="lg:-translate-x-1/2 lg:-translate-y-1/2 absolute top-4 left-2 size-8 rounded-full lg:top-1/2 lg:left-1/2"
+					className="absolute top-4 left-2 size-8 rounded-full"
 					ref={pulseRef}
 				/>
 			</div>
