@@ -1,8 +1,12 @@
+import './globals.css';
+import './preflight.css';
+
 import type { Metadata, Viewport } from 'next';
 import { ViewTransitions } from 'next-view-transitions';
 import type React from 'react';
 import { lazy, Suspense } from 'react';
 import { Sparkles } from '@/components/animation/Sparkles';
+import { Footer } from '@/components/navigation/Footer';
 import { Toaster } from '@/components/ui/Sonner';
 import { fonts } from '@/fonts/fonts';
 import { cn } from '@/lib/utils';
@@ -10,8 +14,6 @@ import { ComposeProviders, type Provider } from '@/providers/compose';
 import ThemeProvider from '@/providers/theme/Provider';
 import { defaultDescription, generateMetadata } from '@/resources/meta';
 import { PROFILE_CONFIG } from '@/resources/profile';
-import './globals.css';
-import { Footer } from '@/components/navigation/Footer';
 
 const { firstName, lastName } = PROFILE_CONFIG;
 

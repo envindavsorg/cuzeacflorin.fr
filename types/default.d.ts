@@ -14,6 +14,7 @@ declare global {
 		changeTheme: () => void;
 	};
 	type ThemeValue = 'light' | 'dark';
+	type ThemeMode = 'Sombre' | 'Clair' | 'Mode ?';
 
 	// media queries
 	type Breakpoints = {
