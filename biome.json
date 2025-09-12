@@ -19,6 +19,9 @@
         "noMagicNumbers": "off",
         "useFilenamingConvention": "off"
       },
+      "performance": {
+        "useTopLevelRegex": "off"
+      },
       "security": {
         "noDangerouslySetInnerHtml": "off"
       },

@@ -27,6 +27,24 @@ h4 {
 	}
 }
 
+footer {
+	max-width: 320px;
+	position: relative;
+	margin-inline: auto;
+
+	@media (width >= 374px) {
+		max-width: 344px;
+	}
+
+	@media (width >= 799px) {
+		max-width: 768px;
+	}
+
+	@media (width >= 1199px) {
+		max-width: 1168px;
+	}
+}
+
 /* React Grid Layout */
 .react-grid-layout {
 	position: relative;

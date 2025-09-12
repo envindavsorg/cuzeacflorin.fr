@@ -4,7 +4,7 @@ import './preflight.css';
 import type { Metadata, Viewport } from 'next';
 import { ViewTransitions } from 'next-view-transitions';
 import type React from 'react';
-import { lazy, Suspense } from 'react';
+import { Analytics } from '@/components/analytics/Analytics';
 import { Sparkles } from '@/components/animation/Sparkles';
 import { Footer } from '@/components/navigation/Footer';
 import { Toaster } from '@/components/ui/Sonner';
@@ -15,19 +15,7 @@ import ThemeProvider from '@/providers/theme/Provider';
 import { defaultDescription, generateMetadata } from '@/resources/meta';
 import { PROFILE_CONFIG } from '@/resources/profile';
 
-const { firstName, lastName } = PROFILE_CONFIG;
-
-const Analytics = lazy(() =>
-	import('@vercel/analytics/react').then((module) => ({
-		default: module.Analytics,
-	}))
-);
-
-const SpeedInsights = lazy(() =>
-	import('@vercel/speed-insights/react').then((module) => ({
-		default: module.SpeedInsights,
-	}))
-);
+const { firstName, lastName, location } = PROFILE_CONFIG;
 
 export const metadata: Metadata = generateMetadata();
 
@@ -88,23 +76,20 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => (
 				<link href="https://vitals.vercel-insights.com" rel="dns-prefetch" />
 				<title>{`${PROFILE_CONFIG.firstName} ${PROFILE_CONFIG.lastName}`}</title>
 			</head>
-			<body className="relative select-none bg-background py-10 font-geist-mono tracking-tight antialiased md:py-15">
+			<body className="relative select-none bg-background pt-10 font-geist-mono tracking-tight antialiased md:pt-15">
 				<AppProviders>
 					{children}
-					<Footer firstName={firstName} lastName={lastName} />
+					<Footer
+						city={location.city}
+						firstName={firstName}
+						lastName={lastName}
+					/>
 					<Sparkles density={150} />
 					<Toaster position="bottom-right" richColors />
 				</AppProviders>
-
-				<Suspense fallback={null}>
-					{process.env.NODE_ENV === 'production' && (
-						<>
-							<Analytics debug={false} mode={'production'} />
-							<SpeedInsights debug={false} />
-						</>
-					)}
-				</Suspense>
 			</body>
+
+			<Analytics />
 		</html>
 	</ViewTransitions>
 );

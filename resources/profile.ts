@@ -77,6 +77,7 @@ export const PROFILE_CONFIG = {
 	},
 
 	location: {
+		city: 'Paris',
 		zoom: {
 			max: 12,
 			min: 3,
