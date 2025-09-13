@@ -17,7 +17,7 @@ import { useEffect, useMemo, useRef } from 'react';
 import { CurrentDate } from '@/components/elements/CurrentDate';
 import HeartIcon from '@/components/lottie/heart.json' with { type: 'json' };
 import { LordiconPlayer } from '@/components/lottie/LordiconPlayer';
-import { Metadata } from '@/components/navigation/Metadata';
+import { Metadata } from '@/components/navigation/metadata/Metadata';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/Avatar';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { Separator } from '@/components/ui/Separator';

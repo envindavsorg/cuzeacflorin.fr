@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import useTimeStore from '@/stores/time.store';
 
-const useClockSync = (): void => {
+const useClockSync = () => {
 	const { updateTime, startBlinking, stopBlinking } = useTimeStore();
 
 	useEffect(() => {

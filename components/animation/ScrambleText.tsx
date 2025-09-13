@@ -1,6 +1,7 @@
 import type React from 'react';
 import { useEffect } from 'react';
 import { useScramble } from 'use-scramble';
+import { cn } from '@/lib/utils';
 
 type ScrambleTextProps = {
 	text: string;
@@ -27,7 +28,7 @@ export const ScrambleText = ({
 
 	return (
 		<span
-			className={className}
+			className={cn(className, 'text-muted-foreground italic')}
 			onFocus={replay}
 			onMouseOver={replay}
 			ref={ref}

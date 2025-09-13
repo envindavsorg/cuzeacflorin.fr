@@ -1,28 +1,29 @@
 import type React from 'react';
 import { ScrambleText } from '@/components/animation/ScrambleText';
-import type { MetadataProps } from '@/components/navigation/Metadata';
 import { MetadataItem } from '@/components/navigation/metadata/Item';
-import { getCachedGitInfo } from '@/lib/git';
+import type { MetadataProps } from '@/components/navigation/metadata/Metadata';
+import { useGitInfo } from '@/hooks/useGitInfo';
 
-export const Commit = async ({
-	intersect,
-}: MetadataProps): Promise<React.JSX.Element> => {
-	const { hash, branch } = await getCachedGitInfo();
+export const Commit = ({ intersect }: MetadataProps): React.JSX.Element => {
+	const { gitInfo } = useGitInfo();
 
 	return (
 		<MetadataItem title="Dernier commit :">
 			<div className="flex items-baseline gap-x-2">
+				<ScrambleText text={gitInfo?.hash || ''} trigger={intersect} />
 				<ScrambleText
-					className="text-muted-foreground italic"
-					text={hash}
+					className="!text-theme font-medium text-xs max-sm:hidden"
+					text={gitInfo ? `(branche ${gitInfo.branch})` : ''}
 					trigger={intersect}
 				/>
 				<ScrambleText
-					className="font-medium text-theme text-xs italic max-sm:hidden"
-					text={branch}
+					className="!text-theme font-medium text-xs min-sm:hidden"
+					text={gitInfo ? `(${gitInfo.branch})` : ''}
 					trigger={intersect}
 				/>
 			</div>
 		</MetadataItem>
 	);
 };
+
+Commit.displayName = 'MetadataCommit';

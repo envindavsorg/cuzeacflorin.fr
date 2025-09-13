@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import type React from 'react';
 import { useId } from 'react';
-import { Bento } from '@/components/blocs/Bento';
 import { generateOgMetadata } from '@/lib/image';
 import { defaultDescription } from '@/resources/meta';
 import { PROFILE_CONFIG } from '@/resources/profile';

@@ -1,28 +1,37 @@
+import dayjs from 'dayjs';
 import type React from 'react';
+import 'dayjs/locale/fr.js';
+import relativeTime from 'dayjs/plugin/relativeTime';
 import { ScrambleText } from '@/components/animation/ScrambleText';
-import type { MetadataProps } from '@/components/navigation/Metadata';
 import { MetadataItem } from '@/components/navigation/metadata/Item';
-import { getCachedGitInfo } from '@/lib/git';
+import type { MetadataProps } from '@/components/navigation/metadata/Metadata';
+import { useGitInfo } from '@/hooks/useGitInfo';
 
-export const Update = async ({
-	intersect,
-}: MetadataProps): Promise<React.JSX.Element> => {
-	const { date, timestamp } = await getCachedGitInfo();
+dayjs.locale('fr');
+dayjs.extend(relativeTime);
+
+export const Update = ({ intersect }: MetadataProps): React.JSX.Element => {
+	const { gitInfo } = useGitInfo();
+
+	const relativeTime = gitInfo
+		? `(${dayjs().to(dayjs(gitInfo.timestamp))})`
+		: '';
 
 	return (
-		<MetadataItem title="Navigateur utilisé :">
+		<MetadataItem
+			className="max-sm:col-span-full"
+			title="Dernière mise à jour :"
+		>
 			<div className="flex items-baseline gap-x-2">
+				<ScrambleText text={gitInfo?.date || ''} trigger={intersect} />
 				<ScrambleText
-					className="text-muted-foreground italic"
-					text={date}
-					trigger={intersect}
-				/>
-				<ScrambleText
-					className="font-medium text-theme text-xs italic min-lg:hidden"
-					text={timestamp}
+					className="!text-theme inline-block font-medium text-xs lg:hidden xl:inline-block"
+					text={relativeTime}
 					trigger={intersect}
 				/>
 			</div>
 		</MetadataItem>
 	);
 };
+
+Update.displayName = 'MetadataUpdate';
