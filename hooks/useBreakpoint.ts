@@ -1,16 +1,26 @@
 import { useEffect, useState } from 'react';
 import { breakpoints } from '@/lib/consts';
 
+const orderedEntries = Object.entries(breakpoints).sort((a, b) => a[1] - b[1]);
+
+const pickBreakpoint = (width: number): string => {
+	// Sélectionne le plus grand breakpoint dont la valeur est <= width (logique Tailwind min-width)
+	let picked = 'sm';
+	for (const [key, val] of orderedEntries) {
+		if (width >= val) {
+			picked = key;
+		}
+	}
+	return picked;
+};
+
 const useBreakpoint = (): Breakpoints => {
 	const [breakpoint, setBreakpoint] = useState<string>('');
 
 	useEffect(() => {
 		const handleResize = () => {
 			const width: number = window.innerWidth;
-			const newBreakpoint: string =
-				Object.keys(breakpoints).find((key) => width > breakpoints[key]) ??
-				'xxs';
-			setBreakpoint(newBreakpoint);
+			setBreakpoint(pickBreakpoint(width));
 		};
 
 		handleResize();

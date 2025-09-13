@@ -58,9 +58,9 @@ export const ThemeSwitcher = memo((): React.JSX.Element => {
 						}
 					>
 						{isDarkMode ? (
-							<SunIcon className="size-14 text-theme md:size-16" />
+							<SunIcon className="text-theme sm:size-12 md:size-16" />
 						) : (
-							<MoonIcon className="size-14 md:size-16" />
+							<MoonIcon className="sm:size-12 md:size-16" />
 						)}
 					</motion.div>
 				</AnimatePresence>

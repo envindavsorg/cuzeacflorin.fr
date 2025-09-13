@@ -29,18 +29,23 @@ export const BlogArticle = ({
 			/>
 
 			<div className="flex flex-col items-start justify-between gap-y-3">
-				<h2 className="font-archivo-black font-bold text-2xl text-theme">
+				<h2 className="w-full max-w-[14rem] font-archivo-black font-bold text-theme text-xl sm:max-w-xs md:text-2xl lg:max-w-full">
 					{metadata.title}
 				</h2>
-				<Paragraph className="line-clamp-3 text-balance max-sm:line-clamp-2 md:line-clamp-6 lg:line-clamp-3">
+				<Paragraph className="line-clamp-2 text-balance sm:line-clamp-3 md:line-clamp-2 lg:line-clamp-3">
 					{metadata.description}
 				</Paragraph>
-				<div className="mt-1 flex gap-x-3 text-muted-foreground text-sm italic">
+				<div className="mt-1 flex flex-row gap-x-3 gap-y-2 text-muted-foreground text-xs italic sm:flex-col md:flex-row md:text-sm">
 					<span>{date(metadata.date).format('ddd DD MMM YYYY')}</span>
-					<span>•</span>
-					<span>{reading?.readingTime} de lecture</span>
-					<span className="max-lg:hidden">•</span>
-					<span className="max-lg:hidden">{reading?.words} mots</span>
+					<span className="inline-block sm:hidden md:inline-block">•</span>
+					<span>
+						{reading?.readingTime}{' '}
+						<span className="hidden sm:inline-block md:hidden lg:inline-block">
+							de lecture
+						</span>
+					</span>
+					<span className="inline-block sm:hidden md:inline-block">•</span>
+					<span>{reading?.words} mots</span>
 				</div>
 			</div>
 		</>

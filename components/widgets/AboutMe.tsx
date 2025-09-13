@@ -39,13 +39,14 @@ export const AboutMe = memo((): React.JSX.Element => {
 					pulseRef={pulseScope}
 				/>
 				<Paragraph>
-					Bonjour et bienvenue, je m'appelle{' '}
-					<span className="font-archivo-black text-2xl text-theme">
+					Bonjour <span className="max-[820px]:hidden">et bienvenue,</span> je
+					m'appelle{' '}
+					<span className="font-archivo-black text-theme text-xl md:text-2xl">
 						{PROFILE_CONFIG.lastName}
 					</span>
 					.
 				</Paragraph>
-				<Paragraph className="text-balance">
+				<Paragraph className="max-[820px]:-mt-2 xl:text-balance">
 					Développeur web avec{' '}
 					<span className="font-bold">{experience.years} ans d'expérience</span>
 					. Je crée des solutions web où technique et design se rencontrent.

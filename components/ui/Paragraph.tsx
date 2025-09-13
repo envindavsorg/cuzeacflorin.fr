@@ -11,7 +11,7 @@ export const Paragraph = memo(
 	({ children, className }: ParagraphProps): React.JSX.Element => (
 		<p
 			className={cn(
-				'text-neutral-600 text-sm leading-relaxed md:text-base dark:text-neutral-300',
+				'text-neutral-600 text-sm leading-relaxed lg:text-base dark:text-neutral-300',
 				className
 			)}
 		>

@@ -3,16 +3,21 @@
 import { useAnimation } from 'motion/react';
 import type React from 'react';
 import { useEffect, useLayoutEffect, useMemo, useState } from 'react';
-import { type Layout, Responsive, WidthProvider } from 'react-grid-layout';
+import RGL, { type Layout, WidthProvider } from 'react-grid-layout';
 import { itemCategories } from '@/components/blocs/categories';
 import { NavBar } from '@/components/navigation/NavBar';
 import useBreakpoint from '@/hooks/useBreakpoint';
-import { breakpoints, cols, heights } from '@/lib/consts';
+import { breakpoints as bpMap, cols as colsMap, heights } from '@/lib/consts';
 import { cn } from '@/lib/utils';
 import { PROFILE_CONFIG } from '@/resources/profile';
 
 const { firstName, lastName } = PROFILE_CONFIG;
-const ResponsiveGridLayout = WidthProvider(Responsive);
+
+type GridAnyProps = { children?: React.ReactNode } & Record<string, unknown>;
+const BaseGrid = RGL as unknown as React.ComponentType<GridAnyProps>;
+const GridLayoutWithWidth = WidthProvider(
+	BaseGrid
+) as unknown as React.ComponentType<GridAnyProps>;
 
 const useIsomorphicLayoutEffect =
 	typeof window === 'undefined' ? useEffect : useLayoutEffect;
@@ -29,14 +34,15 @@ export const Bento = ({
 	children,
 }: Readonly<BentoProps>): React.JSX.Element => {
 	const [isMounted, setMounted] = useState(false);
-	const { breakpoint, setBreakpoint } = useBreakpoint();
+	const { breakpoint } = useBreakpoint();
 
+	// Hauteur de ligne selon breakpoint (fallback 280)
 	const [height, setHeight] = useState(() => {
 		if (typeof window === 'undefined') {
-			return 280;
+			return 230;
 		}
 		const currentBreakpoint = breakpoint || 'lg';
-		return heights[currentBreakpoint] || 280;
+		return heights[currentBreakpoint] || 230;
 	});
 
 	useIsomorphicLayoutEffect(() => {
@@ -76,7 +82,10 @@ export const Bento = ({
 		const hiddenItems = Object.entries(itemCategories)
 			.filter(
 				([_, categories]) =>
-					!(categories.includes('all') || categories.includes(filter))
+					!(
+						categories.includes('all' as FilterType) ||
+						categories.includes(filter)
+					)
 			)
 			.map(([itemId]) => `#${itemId}`)
 			.join(', ');
@@ -94,13 +103,44 @@ export const Bento = ({
 			: '';
 	}, [filter]);
 
+	// Sélectionne layout/cols selon breakpoint fenêtre (logique Tailwind min-width)
+	const currentBreakpoint = breakpoint || 'lg';
+	const currentCols = colsMap[currentBreakpoint] ?? 4; // xl:5, lg:4, md:3, sm:2
+
+	const available = layouts?.[filter] ?? {};
+	const bpValue = (key: string) => bpMap[key as keyof typeof bpMap] ?? 0;
+	const currentBpVal = bpValue(currentBreakpoint);
+	let selectedKey: string | undefined;
+
+	// 1) Essayer exactement le breakpoint courant
+	if (available[currentBreakpoint]) {
+		selectedKey = currentBreakpoint;
+	} else {
+		// 2) Chercher le plus proche inférieur
+		const candidates = Object.keys(available)
+			.filter((k) => bpValue(k) <= currentBpVal)
+			.sort((a, b) => bpValue(b) - bpValue(a));
+		selectedKey = candidates[0];
+
+		// 3) Si aucun inférieur, prendre le plus petit disponible
+		if (!selectedKey) {
+			const allKeys = Object.keys(available).sort(
+				(a, b) => bpValue(a) - bpValue(b)
+			);
+			selectedKey = allKeys[0];
+		}
+	}
+	const currentLayout: Layout[] = (selectedKey && available[selectedKey]) || [];
+
 	return (
 		<div className={className}>
 			<NavBar
 				className={className}
 				firstName={firstName}
 				lastName={lastName}
-				setFilter={setFilter}
+				setFilter={
+					setFilter as React.Dispatch<React.SetStateAction<FilterType>>
+				}
 			/>
 
 			<section
@@ -112,27 +152,20 @@ export const Bento = ({
 				suppressHydrationWarning
 			>
 				{isMounted && (
-					<ResponsiveGridLayout
-						breakpoints={breakpoints}
-						cols={cols}
+					<GridLayoutWithWidth
+						cols={currentCols}
 						draggableCancel=".cancel-drag"
 						isBounded
 						isDraggable={false}
 						isResizable={false}
-						layouts={layouts?.[filter] || {}}
+						layout={currentLayout}
 						margin={[16, 16]}
 						measureBeforeMount
-						onBreakpointChange={(newBreakpoint: string) => {
-							setBreakpoint(newBreakpoint);
-							if (heights[newBreakpoint]) {
-								setHeight(heights[newBreakpoint]);
-							}
-						}}
 						rowHeight={height}
 						useCSSTransforms
 					>
 						{children}
-					</ResponsiveGridLayout>
+					</GridLayoutWithWidth>
 				)}
 
 				{!isMounted && (
