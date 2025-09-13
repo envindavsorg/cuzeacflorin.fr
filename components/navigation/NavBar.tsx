@@ -1,26 +1,13 @@
-import { motion } from 'motion/react';
+import { ShapesIcon } from '@phosphor-icons/react/ssr';
 import type React from 'react';
-import type { Dispatch, SetStateAction } from 'react';
-import { Fade, FadeStagger } from '@/components/animation/Fade';
-import { Filter } from '@/components/filters/Filters';
-import { cn } from '@/lib/utils';
+import { ThemeSwitcher } from '@/components/widgets/ThemeSwitcher';
 
-type NavBarProps = {
-	setFilter: Dispatch<SetStateAction<FilterType>>;
-	firstName: string;
-	lastName: string;
-	className?: string;
-};
-
-export const NavBar = ({
-	setFilter,
-	className,
-}: NavBarProps): React.JSX.Element => (
-	<motion.nav animate={{ opacity: 1 }} initial={{ opacity: 1 }}>
-		<FadeStagger className={cn('w-full px-[4.5vw]', className)} faster>
-			<Fade asChild>
-				<Filter setFilterAction={setFilter} />
-			</Fade>
-		</FadeStagger>
-	</motion.nav>
+export const NavBar = (): React.JSX.Element => (
+	<div className="mx-auto flex w-full max-w-7xl items-center justify-between py-6">
+		<div className="flex items-center gap-x-3">
+			<ShapesIcon className="size-6 fill-theme" />
+			<h1 className="font-bold font-sans text-2xl">Mon portfolio</h1>
+		</div>
+		<ThemeSwitcher />
+	</div>
 );

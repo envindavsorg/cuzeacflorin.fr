@@ -1,3 +1,9 @@
+import {
+	EnvelopeIcon,
+	GithubLogoIcon,
+	LinkedinLogoIcon,
+	PhoneIcon,
+} from '@phosphor-icons/react/dist/ssr';
 import memoji1 from '@/images/memoji1.webp';
 import memoji2 from '@/images/memoji2.webp';
 import memoji3 from '@/images/memoji3.webp';
@@ -19,8 +25,16 @@ export const PROFILE_CONFIG = {
 		title: 'Envie de me dire bonjour ?',
 		description:
 			'Si vous avez un projet à lancer, besoin de mon aide pour quelque chose ou simplement envie de dire bonjour, alors contactez-moi. (je réponds vite !)',
-		email: 'mail@cueacflorin.fr',
-		phone: '06 58 05 86 65',
+		email: {
+			name: 'E-mail',
+			url: 'mailto:mail@cuzeacflorin.fr',
+			icon: EnvelopeIcon,
+		},
+		phone: {
+			name: 'Téléphone',
+			url: 'tel:+33658058665',
+			icon: PhoneIcon,
+		},
 	},
 
 	cv: {
@@ -39,6 +53,7 @@ export const PROFILE_CONFIG = {
 		url: 'https://www.linkedin.com/in/cuzeacflorin/',
 		handle: '@cuzeacflorin',
 		label: 'Visiter !',
+		icon: LinkedinLogoIcon,
 	},
 
 	github: {
@@ -46,6 +61,7 @@ export const PROFILE_CONFIG = {
 		url: 'https://github.com/envindavsorg',
 		handle: '@envindavsorg',
 		label: 'Visiter !',
+		icon: GithubLogoIcon,
 	},
 
 	location: {

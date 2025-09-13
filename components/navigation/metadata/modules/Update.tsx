@@ -18,14 +18,11 @@ export const Update = ({ intersect }: MetadataProps): React.JSX.Element => {
 		: '';
 
 	return (
-		<MetadataItem
-			className="max-sm:col-span-full"
-			title="Dernière mise à jour :"
-		>
+		<MetadataItem title="Dernière mise à jour :">
 			<div className="flex items-baseline gap-x-2">
 				<ScrambleText text={gitInfo?.date || ''} trigger={intersect} />
 				<ScrambleText
-					className="!text-theme inline-block font-medium text-xs lg:hidden xl:inline-block"
+					className="!text-theme font-medium text-xs min-lg:hidden"
 					text={relativeTime}
 					trigger={intersect}
 				/>

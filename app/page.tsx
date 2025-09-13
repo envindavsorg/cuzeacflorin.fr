@@ -1,3 +1,4 @@
+import { ShapesIcon } from '@phosphor-icons/react/ssr';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import type React from 'react';
@@ -44,6 +45,8 @@ const Home = (): React.JSX.Element => {
 
 	return (
 		<>
+			<p>test</p>
+
 			<Script
 				dangerouslySetInnerHTML={{
 					__html: JSON.stringify(structuredData),
@@ -52,12 +55,6 @@ const Home = (): React.JSX.Element => {
 				strategy="afterInteractive"
 				type="application/ld+json"
 			/>
-
-			<h1 className="sr-only">
-				{firstName} {lastName}
-			</h1>
-
-			{/*<Bento className="flex flex-col items-center justify-center gap-y-6" />*/}
 		</>
 	);
 };

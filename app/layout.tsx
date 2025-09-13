@@ -7,16 +7,15 @@ import type React from 'react';
 import { Analytics } from '@/components/analytics/Analytics';
 import { Sparkles } from '@/components/animation/Sparkles';
 import { Footer } from '@/components/navigation/Footer';
-import { BreakpointIndicator } from '@/components/ui/BreakpointIndicator';
+import { NavBar } from '@/components/navigation/NavBar';
 import { Toaster } from '@/components/ui/Sonner';
+import { TailwindIndicator } from '@/components/utils/TailwindIndicator';
 import { fonts } from '@/fonts/fonts';
 import { cn } from '@/lib/utils';
 import { ComposeProviders, type Provider } from '@/providers/compose';
 import ThemeProvider from '@/providers/theme/Provider';
 import { defaultDescription, generateMetadata } from '@/resources/meta';
 import { PROFILE_CONFIG } from '@/resources/profile';
-
-const { firstName, lastName, location } = PROFILE_CONFIG;
 
 export const metadata: Metadata = generateMetadata();
 
@@ -79,20 +78,19 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => (
 			</head>
 			<body
 				className={cn(
-					'container relative mx-auto w-full max-w-7xl',
-					'select-none bg-background font-sans tracking-tight antialiased'
+					'container relative min-h-screen bg-background font-sans tracking-tight antialiased',
+					'flex flex-col'
 				)}
 			>
 				<AppProviders>
-					{children}
-					<Footer
-						city={location.city}
-						firstName={firstName}
-						lastName={lastName}
-					/>
+					<NavBar />
+					<main className="relative mx-auto flex w-full max-w-7xl flex-1 flex-col">
+						{children}
+					</main>
+					<Footer />
 					<Sparkles density={150} />
 					<Toaster position="bottom-right" richColors />
-					<BreakpointIndicator />
+					<TailwindIndicator />
 				</AppProviders>
 			</body>
 

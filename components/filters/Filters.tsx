@@ -32,21 +32,17 @@ export const Filter = ({
 			event: React.MouseEvent<HTMLDivElement, MouseEvent>,
 			filter: string
 		): void => {
-			// Quick exit if same filter
 			if (selectedFilter === filter) {
 				return;
 			}
 
-			// Batch the state updates to prevent multiple re-renders
 			const target = event.currentTarget;
 			const newLeft = target.offsetLeft;
 			const newWidth = target.offsetWidth;
 
-			// Update immediately for better UX
 			setSelectedFilter(filter);
 			setFilterAction(filterMapping[filter]);
 
-			// Defer visual animations
 			requestAnimationFrame(() => {
 				setLeft(newLeft);
 				setWidth(newWidth);
@@ -64,25 +60,11 @@ export const Filter = ({
 			)}
 		>
 			<motion.div
-				animate={{
-					left,
-					width,
-					opacity: isInitialized ? 1 : 0,
-				}}
+				animate={{ left, width, opacity: isInitialized ? 1 : 0 }}
 				className="-z-10 absolute h-8 rounded-2xl border border-input bg-white"
-				initial={{
-					left,
-					width,
-					opacity: 0,
-				}}
-				style={{
-					left,
-					width,
-				}}
-				transition={{
-					duration: isInitialized ? 0.25 : 0,
-					ease: 'easeOut',
-				}}
+				initial={{ left, width, opacity: 0 }}
+				style={{ left, width }}
+				transition={{ duration: isInitialized ? 0.25 : 0, ease: 'easeOut' }}
 			/>
 
 			{filters.map((filter: string, idx: number) => (
