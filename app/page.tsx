@@ -3,8 +3,6 @@ import Script from 'next/script';
 import type React from 'react';
 import { useId } from 'react';
 import { Bento } from '@/components/blocs/Bento';
-import { BentoItem } from '@/components/blocs/BentoItem';
-import { gridItems, layouts } from '@/lib/grid';
 import { generateOgMetadata } from '@/lib/image';
 import { defaultDescription } from '@/resources/meta';
 import { PROFILE_CONFIG } from '@/resources/profile';
@@ -60,14 +58,7 @@ const Home = (): React.JSX.Element => {
 				{firstName} {lastName}
 			</h1>
 
-			<Bento
-				className="flex flex-col items-center justify-center gap-y-6"
-				layouts={layouts}
-			>
-				{gridItems.map(({ component, i }) => (
-					<BentoItem component={component} id={i} key={i} />
-				))}
-			</Bento>
+			{/*<Bento className="flex flex-col items-center justify-center gap-y-6" />*/}
 		</>
 	);
 };

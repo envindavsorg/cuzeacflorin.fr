@@ -10,18 +10,6 @@ export const breakpoints: Breakpoints = {
 	xs: 320,
 };
 
-type Heights = {
-	[key: string]: number;
-};
-
-export const heights: Heights = {
-	xl: 230,
-	lg: 230,
-	md: 230,
-	sm: 230,
-	xs: 230,
-};
-
 type Cols = {
 	[key: string]: number;
 };

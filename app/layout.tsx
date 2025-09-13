@@ -79,8 +79,8 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => (
 			</head>
 			<body
 				className={cn(
-					'container relative mx-auto w-full select-none bg-background pt-10 font-sans tracking-tight antialiased md:pt-15',
-					'max-w-7xl'
+					'container relative mx-auto w-full max-w-7xl',
+					'select-none bg-background font-sans tracking-tight antialiased'
 				)}
 			>
 				<AppProviders>

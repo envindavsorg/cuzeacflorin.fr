@@ -14,7 +14,7 @@ const {
 } = PROFILE_CONFIG;
 
 export const ContactMe = memo((): React.JSX.Element => {
-	const MotionLink = motion.create(Link);
+	const _MotionLink = motion.create(Link);
 
 	return (
 		<Card

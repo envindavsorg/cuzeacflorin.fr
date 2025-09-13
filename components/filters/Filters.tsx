@@ -2,7 +2,7 @@
 
 import { motion } from 'motion/react';
 import type React from 'react';
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { filterMapping, filters } from '@/components/filters/content';
 import { cn } from '@/lib/utils';
 
@@ -27,16 +27,33 @@ export const Filter = ({
 		}
 	}, []);
 
-	const handleClick = (
-		event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-		filter: string
-	): void =>
-		((event, filter: string) => {
-			setLeft(event.currentTarget.offsetLeft);
-			setWidth(event.currentTarget.offsetWidth);
+	const handleClick = useCallback(
+		(
+			event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+			filter: string
+		): void => {
+			// Quick exit if same filter
+			if (selectedFilter === filter) {
+				return;
+			}
+
+			// Batch the state updates to prevent multiple re-renders
+			const target = event.currentTarget;
+			const newLeft = target.offsetLeft;
+			const newWidth = target.offsetWidth;
+
+			// Update immediately for better UX
 			setSelectedFilter(filter);
 			setFilterAction(filterMapping[filter]);
-		})(event, filter);
+
+			// Defer visual animations
+			requestAnimationFrame(() => {
+				setLeft(newLeft);
+				setWidth(newWidth);
+			});
+		},
+		[selectedFilter, setFilterAction]
+	);
 
 	return (
 		<div
@@ -63,12 +80,8 @@ export const Filter = ({
 					width,
 				}}
 				transition={{
-					duration: isInitialized ? 0.4 : 0,
-					opacity: {
-						duration: 0.3,
-						ease: 'easeOut',
-					},
-					ease: [0.85, 0, 0.3, 1],
+					duration: isInitialized ? 0.25 : 0,
+					ease: 'easeOut',
 				}}
 			/>
 

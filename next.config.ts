@@ -1,5 +1,4 @@
 import type { NextConfig } from 'next';
-import { getGitCommitDate, getGitCommitHash } from '@/lib/git';
 
 const nextConfig: NextConfig = {
 	pageExtensions: ['mdx', 'ts', 'tsx'],
@@ -26,10 +25,6 @@ const nextConfig: NextConfig = {
 		ignoreDuringBuilds: true,
 	},
 	devIndicators: false,
-	env: {
-		NEXT_PUBLIC_GIT_COMMIT: getGitCommitHash(),
-		NEXT_PUBLIC_GIT_COMMIT_DATE: getGitCommitDate(),
-	},
 	experimental: {
 		mdxRs: true,
 		optimizePackageImports: [
