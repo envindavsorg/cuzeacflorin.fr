@@ -158,6 +158,7 @@ export const Bento = ({
 						isBounded
 						isDraggable={false}
 						isResizable={false}
+						key={`${currentBreakpoint}-${currentCols}-${selectedKey ?? 'none'}-${filter}-${height}`}
 						layout={currentLayout}
 						margin={[16, 16]}
 						measureBeforeMount
