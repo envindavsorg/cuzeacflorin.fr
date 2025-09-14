@@ -181,7 +181,7 @@ export const checkOverlaps = (layouts) => {
 - **MapLocationWidget** : Carte interactive Mapbox GL avec contrôles zoom
 
 **Widgets de données temps réel** :
-- **TimeClock** : Horloge animée avec séparateur clignotant
+- **TimeClockWidget** : Horloge animée avec séparateur clignotant
 - **LinkedInFollowers** : Stats LinkedIn via API
 - **GitHubStars** : Nombre de stars GitHub via Octokit
 - **GitHubCommits** : Commits récents avec SWR caching
@@ -192,10 +192,10 @@ export const checkOverlaps = (layouts) => {
 - **PortfolioJourney** : Showcase du processus de création
 - **ThemeSwitcher** : Switcher dark/light mode avec next-themes
 
-Exemple du widget **TimeClock** avec animation fluide :
+Exemple du widget **TimeClockWidget** avec animation fluide :
 
 ```tsx
-export const TimeClock = memo(() => {
+export const TimeClockWidget = memo(() => {
   const { hours, minutes } = useTimeParts();
   const showSeparator = useShowSeparator();
 

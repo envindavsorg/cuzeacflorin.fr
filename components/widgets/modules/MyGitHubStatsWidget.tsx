@@ -1,7 +1,11 @@
 'use client';
 
-import { ArrowRightIcon, BabyIcon, BriefcaseIcon } from '@phosphor-icons/react';
-import dayjs from 'dayjs';
+import {
+	ArrowRightIcon,
+	GitBranchIcon,
+	GitCommitIcon,
+	GithubLogoIcon,
+} from '@phosphor-icons/react';
 import { motion } from 'motion/react';
 import { Link } from 'next-view-transitions';
 import type React from 'react';
@@ -9,31 +13,39 @@ import { memo } from 'react';
 import { defaultVariantsNoDelay } from '@/components/animation/motion/motion.variants';
 import { Card } from '@/components/ui/Card';
 import { Paragraph } from '@/components/ui/Paragraph';
-import { date } from '@/lib/dayjs';
-import type { MDXData, PostMetadata } from '@/lib/mdx';
 import { cn } from '@/lib/utils';
+import { PROFILE_CONFIG } from '@/resources/profile';
 
-type WorkJourneyWidgetProps = {
-	post: MDXData<PostMetadata>;
+const { github } = PROFILE_CONFIG;
+
+type MyGitHubStatsWidgetProps = {
+	status: string | null;
+	stars: number;
+	commits: number;
+	followers: number;
 };
-export const WorkJourneyWidget = memo(
-	({ post }: WorkJourneyWidgetProps): React.JSX.Element => {
-		const { metadata, slug, reading } = post;
 
+export const MyGitHubStatsWidget = memo(
+	({
+		status,
+		stars,
+		commits,
+		followers,
+	}: MyGitHubStatsWidgetProps): React.JSX.Element => {
 		const MotionLink = motion.create(Link);
 
 		return (
 			<MotionLink
 				aria-label="Lire l'article !"
-				href={`/posts/${slug}`}
-				layoutId="work-journey-widget"
+				href={github.url}
+				layoutId="my-github-stats"
 				variants={defaultVariantsNoDelay}
 				whileHover={{ scale: 1.025 }}
 			>
 				<Card className="flex h-full flex-col justify-center p-4">
 					<div className="flex items-center justify-between">
 						<h3 className="font-semibold text-base tracking-tight group-hover:text-theme sm:text-lg">
-							{metadata.title}
+							Mes statistiques GitHub
 						</h3>
 						<span
 							className={cn(
@@ -44,37 +56,38 @@ export const WorkJourneyWidget = memo(
 								'text-theme group-hover:text-primary'
 							)}
 						>
-							{dayjs().to(dayjs(metadata.date))}
+							{status}
 						</span>
 					</div>
 
 					<Paragraph className="!text-xs sm:!text-sm mt-2 line-clamp-3 text-muted-foreground sm:mt-3">
-						{metadata.description}
+						Voici un aperçu de mon activité récente sur GitHub, incluant le
+						nombre d'étoiles, d'abonnés et de commits.
 					</Paragraph>
 
 					<div className="mt-2 flex-1">
 						<div className="flex flex-wrap gap-1.5">
 							<div className="rounded-sm bg-muted/50 px-2 py-1 text-muted-foreground text-xs shadow-elevation-light">
-								{date(metadata.date).format('ddd DD MMM YYYY')}
+								{stars} étoiles
 							</div>
 							<div className="rounded-sm bg-muted/50 px-2 py-1 text-muted-foreground text-xs shadow-elevation-light">
-								{reading?.readingTime}
+								{commits} commits
 							</div>
 							<div className="rounded-sm bg-muted/50 px-2 py-1 text-muted-foreground text-xs shadow-elevation-light">
-								{reading?.words} mots
+								{followers} abonnés
 							</div>
 						</div>
 					</div>
 
 					<div className="mt-3 flex items-center justify-between gap-3">
 						<div className="flex items-center gap-x-3">
-							<BabyIcon className="size-5 shrink-0" />
-							<ArrowRightIcon className="size-3 shrink-0 text-muted-foreground" />
-							<BriefcaseIcon className="size-5 shrink-0" />
+							<GithubLogoIcon className="size-4 shrink-0" />
+							<GitBranchIcon className="size-4 shrink-0" />
+							<GitCommitIcon className="size-4 shrink-0" />
 						</div>
 						<div className="flex items-center gap-x-1 *:text-muted-foreground">
 							<span className="text-xs group-hover:text-theme sm:text-sm">
-								En savoir plus
+								Voir mon profil
 							</span>
 							<ArrowRightIcon className="group-hover:-rotate-45 text-sm transition duration-200 group-hover:text-theme sm:text-base" />
 						</div>

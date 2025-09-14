@@ -1,7 +1,7 @@
 'use client';
 
-import { ArrowRightIcon, BabyIcon, BriefcaseIcon } from '@phosphor-icons/react';
-import dayjs from 'dayjs';
+import { ArrowRightIcon, UsersIcon } from '@phosphor-icons/react';
+import { LinkedinLogoIcon } from '@phosphor-icons/react/dist/ssr';
 import { motion } from 'motion/react';
 import { Link } from 'next-view-transitions';
 import type React from 'react';
@@ -9,31 +9,31 @@ import { memo } from 'react';
 import { defaultVariantsNoDelay } from '@/components/animation/motion/motion.variants';
 import { Card } from '@/components/ui/Card';
 import { Paragraph } from '@/components/ui/Paragraph';
-import { date } from '@/lib/dayjs';
-import type { MDXData, PostMetadata } from '@/lib/mdx';
 import { cn } from '@/lib/utils';
+import { PROFILE_CONFIG } from '@/resources/profile';
 
-type WorkJourneyWidgetProps = {
-	post: MDXData<PostMetadata>;
+const { linkedin } = PROFILE_CONFIG;
+
+type MyLinkedInStatsWidgetProps = {
+	followers: number;
 };
-export const WorkJourneyWidget = memo(
-	({ post }: WorkJourneyWidgetProps): React.JSX.Element => {
-		const { metadata, slug, reading } = post;
 
+export const MyLinkedInStatsWidget = memo(
+	({ followers }: MyLinkedInStatsWidgetProps): React.JSX.Element => {
 		const MotionLink = motion.create(Link);
 
 		return (
 			<MotionLink
 				aria-label="Lire l'article !"
-				href={`/posts/${slug}`}
-				layoutId="work-journey-widget"
+				href={linkedin.url}
+				layoutId="my-linkedin-stats"
 				variants={defaultVariantsNoDelay}
 				whileHover={{ scale: 1.025 }}
 			>
 				<Card className="flex h-full flex-col justify-center p-4">
 					<div className="flex items-center justify-between">
 						<h3 className="font-semibold text-base tracking-tight group-hover:text-theme sm:text-lg">
-							{metadata.title}
+							Mes statistiques LinkedIn
 						</h3>
 						<span
 							className={cn(
@@ -44,37 +44,34 @@ export const WorkJourneyWidget = memo(
 								'text-theme group-hover:text-primary'
 							)}
 						>
-							{dayjs().to(dayjs(metadata.date))}
+							WeFix
 						</span>
 					</div>
 
 					<Paragraph className="!text-xs sm:!text-sm mt-2 line-clamp-3 text-muted-foreground sm:mt-3">
-						{metadata.description}
+						Je partage régulièrement des articles techniques et des nouvelles de
+						l'industrie sur mon profil LinkedIn.
 					</Paragraph>
 
 					<div className="mt-2 flex-1">
 						<div className="flex flex-wrap gap-1.5">
 							<div className="rounded-sm bg-muted/50 px-2 py-1 text-muted-foreground text-xs shadow-elevation-light">
-								{date(metadata.date).format('ddd DD MMM YYYY')}
+								{followers} abonnés
 							</div>
 							<div className="rounded-sm bg-muted/50 px-2 py-1 text-muted-foreground text-xs shadow-elevation-light">
-								{reading?.readingTime}
-							</div>
-							<div className="rounded-sm bg-muted/50 px-2 py-1 text-muted-foreground text-xs shadow-elevation-light">
-								{reading?.words} mots
+								{linkedin.handle}
 							</div>
 						</div>
 					</div>
 
 					<div className="mt-3 flex items-center justify-between gap-3">
 						<div className="flex items-center gap-x-3">
-							<BabyIcon className="size-5 shrink-0" />
-							<ArrowRightIcon className="size-3 shrink-0 text-muted-foreground" />
-							<BriefcaseIcon className="size-5 shrink-0" />
+							<LinkedinLogoIcon className="size-4 shrink-0" />
+							<UsersIcon className="size-4 shrink-0" />
 						</div>
 						<div className="flex items-center gap-x-1 *:text-muted-foreground">
 							<span className="text-xs group-hover:text-theme sm:text-sm">
-								En savoir plus
+								Voir mon profil
 							</span>
 							<ArrowRightIcon className="group-hover:-rotate-45 text-sm transition duration-200 group-hover:text-theme sm:text-base" />
 						</div>

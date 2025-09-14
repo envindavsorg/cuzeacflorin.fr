@@ -55,7 +55,7 @@ const getGitInfo = async (): Promise<GitInfo> => {
 			hash: process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) || 'unknown',
 			branch: process.env.VERCEL_GIT_COMMIT_REF || 'main',
 			date: formatGitDate(commitDate),
-			timestamp: `(${dayjs().to(dayjs(commitDate))})`,
+			timestamp: commitDate,
 		};
 	}
 
@@ -75,11 +75,12 @@ const getGitInfo = async (): Promise<GitInfo> => {
 			timestamp,
 		};
 	} catch {
+		const now = new Date().toISOString();
 		return {
 			hash: 'dev',
 			branch: 'local',
-			date: formatGitDate(new Date().toISOString()),
-			timestamp: new Date().toISOString(),
+			date: formatGitDate(now),
+			timestamp: now,
 		};
 	}
 };

@@ -5,8 +5,8 @@ import { Link } from 'next-view-transitions';
 import type React from 'react';
 import { memo } from 'react';
 import { defaultVariantsNoDelay } from '@/components/animation/motion/motion.variants';
+import { MapView } from '@/components/map/MapView';
 import { Card } from '@/components/ui/Card';
-import { MapView } from '@/components/widgets/modules/map/MapView';
 import useLocationMap from '@/hooks/useLocationMap';
 
 export const MapLocationWidget = memo((): React.JSX.Element => {

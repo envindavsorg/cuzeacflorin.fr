@@ -9,7 +9,6 @@ import { Sparkles } from '@/components/animation/Sparkles';
 import { Footer } from '@/components/navigation/Footer';
 import { NavBar } from '@/components/navigation/NavBar';
 import { Toaster } from '@/components/ui/Sonner';
-import { TailwindIndicator } from '@/components/utils/TailwindIndicator';
 import { fonts } from '@/fonts/fonts';
 import { cn } from '@/lib/utils';
 import { ComposeProviders, type Provider } from '@/providers/compose';
@@ -90,7 +89,6 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => (
 					<Footer />
 					<Sparkles density={150} />
 					<Toaster position="bottom-right" richColors />
-					<TailwindIndicator />
 				</AppProviders>
 			</body>
 

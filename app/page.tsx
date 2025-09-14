@@ -2,12 +2,17 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import type React from 'react';
 import { useId } from 'react';
+import { getGitHubUserData } from '@/actions/github.action';
+import { getLinkedInFollowers } from '@/actions/linkedin.action';
 import { Counter } from '@/components/ui/Counter';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { WidgetGrid } from '@/components/widgets/Grid';
 import { AboutMeWidget } from '@/components/widgets/modules/AboutMeWidget';
+import { ContactMeWidget } from '@/components/widgets/modules/ContactMeWidget';
 import { MapLocationWidget } from '@/components/widgets/modules/MapLocationWidget';
+import { MyGitHubStatsWidget } from '@/components/widgets/modules/MyGitHubStatsWidget';
 import { MyJourneyWidget } from '@/components/widgets/modules/MyJourneyWidget';
+import { MyLinkedInStatsWidget } from '@/components/widgets/modules/MyLinkedInStatsWidget';
 import { PortfolioCreationWidget } from '@/components/widgets/modules/PortfolioCreationWidget';
 import { WorkJourneyWidget } from '@/components/widgets/modules/WorkJourneyWidget';
 import { generateOgMetadata } from '@/lib/image';
@@ -49,12 +54,19 @@ const structuredData = {
 	],
 };
 
-const Home = (): React.JSX.Element => {
+const Home = async (): Promise<React.JSX.Element> => {
 	const structuredDataId: string = useId();
 
 	const firstPost = getFirstPost();
 	const latestPost = getLatestPost();
 	const firstProject = getFirstProject();
+	const {
+		status,
+		stars,
+		contributions: { totalContributions },
+		followers,
+	} = await getGitHubUserData();
+	const { count } = await getLinkedInFollowers();
 
 	return (
 		<>
@@ -84,6 +96,14 @@ const Home = (): React.JSX.Element => {
 				<WorkJourneyWidget post={firstPost} />
 				<MapLocationWidget />
 				<PortfolioCreationWidget project={firstProject} />
+				<MyGitHubStatsWidget
+					commits={totalContributions}
+					followers={followers}
+					stars={stars}
+					status={status}
+				/>
+				<MyLinkedInStatsWidget followers={count} />
+				<ContactMeWidget />
 			</WidgetGrid>
 
 			<Script

@@ -1,6 +1,10 @@
 'use client';
 
-import { ArrowRightIcon, ArticleNyTimesIcon } from '@phosphor-icons/react';
+import {
+	ArrowRightIcon,
+	ArticleNyTimesIcon,
+	RocketLaunchIcon,
+} from '@phosphor-icons/react';
 import dayjs from 'dayjs';
 import { motion } from 'motion/react';
 import { Link } from 'next-view-transitions';
@@ -68,7 +72,11 @@ export const MyJourneyWidget = memo(
 					</div>
 
 					<div className="mt-3 flex items-center justify-between gap-3">
-						<ArticleNyTimesIcon className="size-5 shrink-0" />
+						<div className="flex items-center gap-x-3">
+							<ArticleNyTimesIcon className="size-5 shrink-0" />
+							<ArrowRightIcon className="size-3 shrink-0 text-muted-foreground" />
+							<RocketLaunchIcon className="size-5 shrink-0" />
+						</div>
 						<div className="flex items-center gap-x-1 *:text-muted-foreground">
 							<span className="text-xs group-hover:text-theme sm:text-sm">
 								Lire l'article

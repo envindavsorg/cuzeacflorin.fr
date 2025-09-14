@@ -19,7 +19,7 @@
 ## ✨ Features
 
 ### **Interactive Widgets**
-- **TimeClock** : Real-time clock with smooth animations
+- **TimeClockWidget** : Real-time clock with smooth animations
 - **GitHub Stats** : Live stars and commits via API
 - **LinkedIn Followers** : Professional statistics
 - **Interactive Map** : Geolocation with Mapbox GL
@@ -132,7 +132,7 @@ portfolio/
 │   │   ├── Sparkles.tsx        # tsParticles particles
 │   │   └── Motion/             # Motion animations
 │   ├── widgets/                 # Interactive widgets
-│   │   ├── TimeClock.tsx       # Real-time clock
+│   │   ├── TimeClockWidget.tsx       # Real-time clock
 │   │   ├── GitHubStats.tsx     # GitHub API stats
 │   │   ├── MapLocationWidget.tsx     # Mapbox map
 │   │   └── ...
@@ -192,7 +192,7 @@ LINKEDIN_API_TOKEN=your_linkedin_token
 ### Modular Widget System
 ```tsx
 // Each widget is a self-contained component
-export const TimeClock = memo(() => {
+export const TimeClockWidget = memo(() => {
   const { hours, minutes } = useTimeParts();
   const showSeparator = useShowSeparator();
 

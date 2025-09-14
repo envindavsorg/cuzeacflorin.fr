@@ -1,13 +1,16 @@
 'use client';
 
 import { ArrowRightIcon } from '@phosphor-icons/react';
-import { StarIcon } from '@phosphor-icons/react/ssr';
 import dayjs from 'dayjs';
 import { motion } from 'motion/react';
 import { Link } from 'next-view-transitions';
 import type React from 'react';
 import { memo } from 'react';
 import { defaultVariantsNoDelay } from '@/components/animation/motion/motion.variants';
+import { NextJSIcon } from '@/components/icons/content/Next';
+import { ReactIcon } from '@/components/icons/content/React';
+import { TailwindIcon } from '@/components/icons/content/Tailwind';
+import { TypeScriptIcon } from '@/components/icons/content/TypeScript';
 import { Card } from '@/components/ui/Card';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { date } from '@/lib/dayjs';
@@ -69,7 +72,12 @@ export const PortfolioCreationWidget = memo(
 					</div>
 
 					<div className="mt-3 flex items-center justify-between gap-3">
-						<StarIcon className="size-5 shrink-0" />
+						<div className="flex items-center gap-x-3">
+							<ReactIcon className="size-4 shrink-0" />
+							<NextJSIcon className="size-4 shrink-0" />
+							<TypeScriptIcon className="size-4 shrink-0" />
+							<TailwindIcon className="size-4 shrink-0" />
+						</div>
 						<div className="flex items-center gap-x-1 *:text-muted-foreground">
 							<span className="text-xs group-hover:text-theme sm:text-sm">
 								Lire l'article

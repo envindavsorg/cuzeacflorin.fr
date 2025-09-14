@@ -10,6 +10,7 @@ type GitHubUserData = {
 	login: string;
 	name: string;
 	avatar: string;
+	status: string | null;
 	followers: number;
 	following: number;
 	stars: number;
@@ -71,6 +72,9 @@ const fetchGitHubData = async (): Promise<GitHubUserData> => {
 				login: string;
 				name: string;
 				avatarUrl: string;
+				status: {
+					message: string | null;
+				} | null;
 				followers: {
 					totalCount: number;
 				};
@@ -107,6 +111,9 @@ const fetchGitHubData = async (): Promise<GitHubUserData> => {
 						login
 						name
 						avatarUrl
+						status {
+							message
+						}
 						followers {
 							totalCount
 						}
@@ -166,6 +173,7 @@ const fetchGitHubData = async (): Promise<GitHubUserData> => {
 			login: user.login,
 			name: user.name,
 			avatar: user.avatarUrl,
+			status: user.status?.message || null,
 			followers: user.followers.totalCount,
 			following: user.following.totalCount,
 			stars: user.repositories.nodes.reduce(

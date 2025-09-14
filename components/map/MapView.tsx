@@ -4,8 +4,8 @@ import { useTheme } from 'next-themes';
 import { forwardRef, memo } from 'react';
 import MapGL, { type MapRef, Marker } from 'react-map-gl/mapbox';
 import type { ViewStateChangeEvent } from 'react-map-gl/mapbox-legacy';
-import { LocationMarker } from '@/components/widgets/modules/map/LocationMarker';
-import { ZoomControls } from '@/components/widgets/modules/map/ZoomControls';
+import { LocationMarker } from '@/components/map/LocationMarker';
+import { ZoomControls } from '@/components/map/ZoomControls';
 import { PROFILE_CONFIG } from '@/resources/profile';
 import 'mapbox-gl/dist/mapbox-gl.css';
 

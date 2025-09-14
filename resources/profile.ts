@@ -24,16 +24,18 @@ export const PROFILE_CONFIG = {
 	contact: {
 		title: 'Envie de me dire bonjour ?',
 		description:
-			'Si vous avez un projet à lancer, besoin de mon aide pour quelque chose ou simplement envie de dire bonjour, alors contactez-moi. (je réponds vite !)',
+			'Si vous avez un projet à lancer ou simplement envie de dire bonjour, alors contactez-moi. (je réponds vite !)',
 		email: {
 			name: 'E-mail',
 			url: 'mailto:mail@cuzeacflorin.fr',
 			icon: EnvelopeIcon,
+			value: 'mail@cuzeacflorin.fr',
 		},
 		phone: {
 			name: 'Téléphone',
 			url: 'tel:+33658058665',
 			icon: PhoneIcon,
+			value: '06 58 05 86 65',
 		},
 	},
 
