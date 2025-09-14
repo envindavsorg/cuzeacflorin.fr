@@ -4,6 +4,9 @@ import type React from 'react';
 import { useId } from 'react';
 import { Counter } from '@/components/ui/Counter';
 import { Paragraph } from '@/components/ui/Paragraph';
+import { WidgetGrid } from '@/components/widgets/Grid';
+import { WidgetItem } from '@/components/widgets/Item';
+import { AboutMeWidget } from '@/components/widgets/modules/AboutMeWidget';
 import { generateOgMetadata } from '@/lib/image';
 import { defaultDescription } from '@/resources/meta';
 import { PROFILE_CONFIG } from '@/resources/profile';
@@ -65,6 +68,12 @@ const Home = (): React.JSX.Element => {
 					technique et design se rencontrent.
 				</span>
 			</Paragraph>
+
+			<WidgetGrid className="mt-6">
+				<WidgetItem>
+					<AboutMeWidget />
+				</WidgetItem>
+			</WidgetGrid>
 
 			<Script
 				dangerouslySetInnerHTML={{

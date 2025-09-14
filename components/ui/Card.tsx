@@ -19,8 +19,8 @@ const Card = ({
 }: React.ComponentProps<'div'>): React.JSX.Element => (
 	<div
 		className={cn(
-			'relative rounded-none border border-input bg-background/50 text-card-foreground backdrop-blur-md',
-			'size-full select-none overflow-hidden bg-noise',
+			'group relative rounded-none border border-input bg-card text-card-foreground',
+			'size-full select-none overflow-hidden shadow shadow-elevation-light',
 			className
 		)}
 		data-slot="card"

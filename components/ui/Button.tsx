@@ -29,7 +29,7 @@ export const buttonVariants = cva(
 				icon: cn(
 					'border border-input bg-card [&_svg]:text-foreground',
 					'outline-hidden hover:outline-hidden',
-					'ring-gray-200/45 hover:ring-2 dark:ring-gray-200/30',
+					'ring-gray-200/45 hover:ring-1 dark:ring-gray-200/30',
 					'transition-all duration-300 ease-out'
 				),
 			},

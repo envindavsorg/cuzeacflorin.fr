@@ -12,7 +12,6 @@ export const ThemeSwitcher = memo((): React.JSX.Element => {
 
 	return (
 		<motion.button
-			animate={{ scale: 1.15 }}
 			aria-label={isDarkMode ? 'Mode sombre' : 'Mode clair'}
 			className="cursor-pointer"
 			onClick={(event: React.MouseEvent<Element, MouseEvent> | undefined) => {
@@ -26,6 +25,7 @@ export const ThemeSwitcher = memo((): React.JSX.Element => {
 				damping: 17,
 			}}
 			type="button"
+			whileHover={{ scale: 1.05 }}
 			whileTap={{ scale: 0.95 }}
 		>
 			<AnimatePresence initial={false} mode="wait">

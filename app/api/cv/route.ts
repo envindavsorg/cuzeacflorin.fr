@@ -7,7 +7,7 @@ const FILE_NAME = '/cv/cv-cuzeac-florin.pdf';
 
 export type CvMetadata = {
 	sizeKB: number;
-	lastModified: string;
+	lastModified: Date | string;
 	cached?: boolean;
 };
 
@@ -21,7 +21,6 @@ export const GET = (): NextResponse<CvMetadata | CvMetadataError> => {
 
 		const { size, mtime } = statSync(pdfPath);
 		const sizeKB = Math.round(size / 1024);
-		const lastModified = mtime.toLocaleDateString('fr-FR');
 
 		const fileAge = Date.now() - mtime.getTime();
 		const maxAge = fileAge > 86_400_000 ? 3600 : 300;
@@ -29,7 +28,7 @@ export const GET = (): NextResponse<CvMetadata | CvMetadataError> => {
 		return NextResponse.json(
 			{
 				sizeKB,
-				lastModified,
+				lastModified: mtime,
 				cached: false,
 			},
 			{
@@ -58,7 +57,7 @@ export const GET = (): NextResponse<CvMetadata | CvMetadataError> => {
 		return NextResponse.json(
 			{
 				sizeKB: 0,
-				lastModified: new Date().toLocaleDateString('fr-FR'),
+				lastModified: 'aucune modification',
 				error: errorMessage,
 			},
 			{
