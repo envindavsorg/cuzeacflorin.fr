@@ -55,7 +55,7 @@ export const Counter = memo(
 		}, [value, interval, step]);
 
 		return (
-			<span className={cn('flex items-baseline gap-x-2', className)}>
+			<span className={cn(className)}>
 				<NumberFlow respectMotionPreference value={displayValue} /> {children}
 			</span>
 		);

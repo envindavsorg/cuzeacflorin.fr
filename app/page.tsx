@@ -1,13 +1,14 @@
-import { ShapesIcon } from '@phosphor-icons/react/ssr';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import type React from 'react';
 import { useId } from 'react';
+import { Counter } from '@/components/ui/Counter';
+import { Paragraph } from '@/components/ui/Paragraph';
 import { generateOgMetadata } from '@/lib/image';
 import { defaultDescription } from '@/resources/meta';
 import { PROFILE_CONFIG } from '@/resources/profile';
 
-const { firstName, lastName, welcome } = PROFILE_CONFIG;
+const { firstName, lastName, welcome, experience } = PROFILE_CONFIG;
 
 export const generateMetadata = async (): Promise<Metadata> =>
 	generateOgMetadata({
@@ -45,7 +46,25 @@ const Home = (): React.JSX.Element => {
 
 	return (
 		<>
-			<p>test</p>
+			<Paragraph className="text-left">
+				<span className="md:!text-xl !text-base bg-gradient-to-t from-gray-900 to-gray-900/90 bg-clip-text font-normal text-transparent tracking-tight dark:from-gray-100 dark:to-gray-100/90">
+					Développeur web avec{' '}
+					<Counter
+						className="text-theme tabular-nums"
+						interval={10}
+						step={10}
+						value={experience.years}
+					>
+						ans d'expérience
+					</Counter>
+					.
+				</span>
+				<span className="block" />
+				<span className="md:!text-xl !text-base bg-gradient-to-t from-muted-foreground to-muted-foreground/80 bg-clip-text font-normal text-transparent tracking-tight dark:from-muted-foreground dark:to-muted-foreground/70">
+					Je crée des solutions web où <br className="min-sm:hidden" />
+					technique et design se rencontrent.
+				</span>
+			</Paragraph>
 
 			<Script
 				dangerouslySetInnerHTML={{

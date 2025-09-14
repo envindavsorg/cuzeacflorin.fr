@@ -2,6 +2,7 @@ import {
 	Archivo_Black,
 	Geist_Mono,
 	Geist as Geist_Sans,
+	Inter_Tight as Inter_Sans,
 	Pixelify_Sans,
 } from 'next/font/google';
 
@@ -39,9 +40,19 @@ export const archivo = Archivo_Black({
 	fallback: ['system-ui', 'sans-serif'],
 });
 
+export const inter = Inter_Sans({
+	weight: ['400', '700'],
+	subsets: ['latin'],
+	variable: '--font-inter-tight',
+	display: 'swap',
+	preload: true,
+	fallback: ['system-ui', 'sans-serif'],
+});
+
 export const fonts = {
 	sans,
 	mono,
 	pixelify,
 	archivo,
+	inter,
 };
