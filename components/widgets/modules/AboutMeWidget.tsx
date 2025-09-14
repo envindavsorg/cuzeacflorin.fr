@@ -55,7 +55,7 @@ export const AboutMeWidget = memo((): React.JSX.Element => {
 
 				<Paragraph className="!text-xs sm:!text-sm mt-2 line-clamp-3 text-muted-foreground sm:mt-3">
 					Patch notes : mon CV a fait sa nouvelle mise à jour (comme ton iPhone,
-					mais en plus utile, et sans Liquid Glass).
+					mais en plus utile)
 				</Paragraph>
 
 				<div className="mt-2 flex-1">
@@ -79,9 +79,6 @@ export const AboutMeWidget = memo((): React.JSX.Element => {
 								fichier pdf
 							</div>
 							<div className="rounded-sm bg-muted/50 px-2 py-1 text-muted-foreground text-xs shadow-elevation-light">
-								<span className="inline-block lg:hidden xl:inline-block">
-									modifié le
-								</span>{' '}
 								{date(data.lastModified).format('ddd DD MMM YYYY')}
 							</div>
 						</div>

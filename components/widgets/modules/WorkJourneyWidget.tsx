@@ -58,7 +58,7 @@ export const WorkJourneyWidget = memo(
 								{date(metadata.date).format('ddd DD MMM YYYY')}
 							</div>
 							<div className="rounded-sm bg-muted/50 px-2 py-1 text-muted-foreground text-xs shadow-elevation-light">
-								{reading?.readingTime} de lecture
+								{reading?.readingTime}
 							</div>
 							<div className="rounded-sm bg-muted/50 px-2 py-1 text-muted-foreground text-xs shadow-elevation-light">
 								{reading?.words} mots
@@ -70,7 +70,7 @@ export const WorkJourneyWidget = memo(
 						<BriefcaseIcon className="size-5 shrink-0" />
 						<div className="flex items-center gap-x-1 *:text-muted-foreground">
 							<span className="text-xs group-hover:text-theme sm:text-sm">
-								Lire l'article
+								En savoir plus
 							</span>
 							<ArrowRightIcon className="group-hover:-rotate-45 text-sm transition duration-200 group-hover:text-theme sm:text-base" />
 						</div>
