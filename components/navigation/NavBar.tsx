@@ -9,7 +9,7 @@ import { ThemeSwitcher } from '@/components/widgets/temp/ThemeSwitcher';
 import { cn } from '@/lib/utils';
 import { PROFILE_CONFIG } from '@/resources/profile';
 
-const { firstName, lastName, avatars } = PROFILE_CONFIG;
+const { firstName, lastName, welcome, avatars } = PROFILE_CONFIG;
 
 const GENTLE_EASE = [0.4, 0, 0.2, 1] as const;
 const PULSE_DURATION = 1.2;
@@ -125,7 +125,7 @@ export const NavBar = (): React.JSX.Element => {
 					/>
 				</div>
 			</LayoutGroup>
-			<div className="ml-12">
+			<div className="ml-12 flex flex-col">
 				<h1>
 					<span
 						className={cn(
@@ -136,6 +136,9 @@ export const NavBar = (): React.JSX.Element => {
 						{firstName} {lastName}
 					</span>
 				</h1>
+				<span className="text-muted-foreground text-xs italic">
+					- {welcome}
+				</span>
 			</div>
 
 			<div className="flex items-center gap-x-6 sm:gap-x-8">

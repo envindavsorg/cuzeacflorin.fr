@@ -15,7 +15,7 @@ export const WidgetGrid = ({
 		animate="visible"
 		className={cn(
 			className,
-			'grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'
+			'grid auto-rows-fr grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'
 		)}
 	>
 		{children}

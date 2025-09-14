@@ -22,7 +22,7 @@ export const Footer = (): React.JSX.Element => {
 	const playerRef = useRef<Player>(null);
 	const [ref, entry] = useIntersectionObserver({
 		threshold: 0.1,
-		rootMargin: '0px',
+		rootMargin: '20px',
 	});
 
 	const fullName: string = useMemo(() => `${firstName} ${lastName}`, []);

@@ -6,6 +6,7 @@ import { Counter } from '@/components/ui/Counter';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { WidgetGrid } from '@/components/widgets/Grid';
 import { AboutMeWidget } from '@/components/widgets/modules/AboutMeWidget';
+import { MapLocationWidget } from '@/components/widgets/modules/MapLocationWidget';
 import { MyJourneyWidget } from '@/components/widgets/modules/MyJourneyWidget';
 import { WorkJourneyWidget } from '@/components/widgets/modules/WorkJourneyWidget';
 import { generateOgMetadata } from '@/lib/image';
@@ -78,6 +79,7 @@ const Home = (): React.JSX.Element => {
 				<AboutMeWidget />
 				<MyJourneyWidget post={latestPost} />
 				<WorkJourneyWidget post={firstPost} />
+				<MapLocationWidget />
 			</WidgetGrid>
 
 			<Script

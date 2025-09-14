@@ -78,7 +78,7 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => (
 			</head>
 			<body
 				className={cn(
-					'container relative min-h-screen bg-background font-sans tracking-tight antialiased',
+					'container relative min-h-screen bg-background font-sans tracking-tight antialiased max-sm:pt-16',
 					'flex flex-col'
 				)}
 			>

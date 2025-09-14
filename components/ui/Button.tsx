@@ -26,18 +26,13 @@ export const buttonVariants = cva(
 				ghost:
 					'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',
 				link: 'text-primary underline-offset-4 hover:underline',
-				icon: cn(
-					'border border-input bg-card [&_svg]:text-foreground',
-					'outline-hidden hover:outline-hidden',
-					'ring-gray-200/45 hover:ring-1 dark:ring-gray-200/30',
-					'transition-all duration-300 ease-out'
-				),
+				icon: 'border border-input bg-card outline-hidden hover:outline-hidden [&_svg]:text-foreground',
 			},
 			size: {
 				default: 'h-9 px-4 py-2 has-[>svg]:px-3',
 				sm: 'h-8 gap-1.5 rounded-md px-3 has-[>svg]:px-2.5',
 				lg: 'h-10 rounded-md px-6 has-[>svg]:px-4',
-				icon: 'size-11 rounded-full',
+				icon: 'size-10 rounded-full',
 			},
 		},
 		defaultVariants: {

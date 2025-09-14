@@ -18,7 +18,7 @@ export const LocationMarker = memo(
 			() => (
 				<motion.div
 					animate={{ scale: mouseEntered ? 1.1 : 1 }}
-					className="z-1 flex h-20 w-20 items-center justify-center rounded-full border-4 border-white bg-theme/20 ring ring-theme will-change-transform"
+					className="z-1 flex size-16 items-center justify-center rounded-full border-3 border-white bg-theme/20 ring-2 ring-theme will-change-transform"
 					transition={{ ease: [0.85, 0, 0.3, 1], duration: 0.5 }}
 				>
 					<motion.div
@@ -33,11 +33,11 @@ export const LocationMarker = memo(
 					>
 						<Image
 							alt={`${firstName} ${lastName}`}
-							height={44}
+							height={38}
 							priority
 							sizes="(max-width: 768px) 48px, 56px"
 							src={avatars[4]}
-							width={32}
+							width={26}
 						/>
 					</motion.div>
 				</motion.div>

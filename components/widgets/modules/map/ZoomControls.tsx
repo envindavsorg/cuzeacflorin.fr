@@ -41,7 +41,7 @@ export const ZoomControls = memo(
 							whileHover={{ scale: 1.05 }}
 							whileTap={{ scale: 0.95 }}
 						>
-							<MinusIcon className="size-4.5 text-black transition-transform duration-300 group-hover:rotate-180" />
+							<MinusIcon className="size-5 text-black" />
 						</MotionButton>
 					</TooltipTrigger>
 					<TooltipContent align="center" side="right" sideOffset={5}>
@@ -60,7 +60,7 @@ export const ZoomControls = memo(
 							whileHover={{ scale: 1.05 }}
 							whileTap={{ scale: 0.95 }}
 						>
-							<PlusIcon className="size-4.5 text-black transition-transform duration-300 group-hover:rotate-180" />
+							<PlusIcon className="size-5 text-black" />
 						</MotionButton>
 					</TooltipTrigger>
 					<TooltipContent align="center" side="left" sideOffset={5}>

@@ -4,8 +4,8 @@ import { useTheme } from 'next-themes';
 import { forwardRef, memo } from 'react';
 import MapGL, { type MapRef, Marker } from 'react-map-gl/mapbox';
 import type { ViewStateChangeEvent } from 'react-map-gl/mapbox-legacy';
-import { LocationMarker } from '@/components/map/LocationMarker';
-import { ZoomControls } from '@/components/map/ZoomControls';
+import { LocationMarker } from '@/components/widgets/modules/map/LocationMarker';
+import { ZoomControls } from '@/components/widgets/modules/map/ZoomControls';
 import { PROFILE_CONFIG } from '@/resources/profile';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
@@ -33,6 +33,8 @@ type MapViewProps = {
 	onError: () => void;
 	onZoomIn: () => void;
 	onZoomOut: () => void;
+	handleMouseEnter: () => void;
+	handleMouseLeave: () => void;
 };
 
 export const MapView = memo(
@@ -49,6 +51,8 @@ export const MapView = memo(
 				onError,
 				onZoomIn,
 				onZoomOut,
+				handleMouseEnter,
+				handleMouseLeave,
 			},
 			ref
 		) => {
@@ -75,13 +79,15 @@ export const MapView = memo(
 					scrollZoom={false}
 					touchZoomRotate={false}
 				>
-					<Marker
-						anchor="center"
-						latitude={location.latitude}
-						longitude={location.longitude}
-					>
-						<LocationMarker mouseEntered={mouseEntered} />
-					</Marker>
+					<div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+						<Marker
+							anchor="center"
+							latitude={location.latitude}
+							longitude={location.longitude}
+						>
+							<LocationMarker mouseEntered={mouseEntered} />
+						</Marker>
+					</div>
 
 					{isLoaded && (
 						<ZoomControls
