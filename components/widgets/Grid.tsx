@@ -13,10 +13,9 @@ export const WidgetGrid = ({
 }: WidgetGridProps): React.JSX.Element => (
 	<Motion
 		animate="visible"
-		asChild
 		className={cn(
-			'grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3',
-			className
+			className,
+			'grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'
 		)}
 	>
 		{children}

@@ -5,7 +5,7 @@ import { LayoutGroup, motion, useAnimate } from 'motion/react';
 import Image from 'next/image';
 import type React from 'react';
 import { useCallback, useRef, useState } from 'react';
-import { ThemeSwitcher } from '@/components/widgets/modules/ThemeSwitcher';
+import { ThemeSwitcher } from '@/components/widgets/temp/ThemeSwitcher';
 import { cn } from '@/lib/utils';
 import { PROFILE_CONFIG } from '@/resources/profile';
 

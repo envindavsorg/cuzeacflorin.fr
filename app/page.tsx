@@ -5,9 +5,11 @@ import { useId } from 'react';
 import { Counter } from '@/components/ui/Counter';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { WidgetGrid } from '@/components/widgets/Grid';
-import { WidgetItem } from '@/components/widgets/Item';
 import { AboutMeWidget } from '@/components/widgets/modules/AboutMeWidget';
+import { MyJourneyWidget } from '@/components/widgets/modules/MyJourneyWidget';
+import { WorkJourneyWidget } from '@/components/widgets/modules/WorkJourneyWidget';
 import { generateOgMetadata } from '@/lib/image';
+import { getFirstPost, getLatestPost } from '@/lib/posts';
 import { defaultDescription } from '@/resources/meta';
 import { PROFILE_CONFIG } from '@/resources/profile';
 
@@ -47,6 +49,9 @@ const structuredData = {
 const Home = (): React.JSX.Element => {
 	const structuredDataId: string = useId();
 
+	const firstPost = getFirstPost();
+	const latestPost = getLatestPost();
+
 	return (
 		<>
 			<Paragraph className="text-left">
@@ -70,9 +75,9 @@ const Home = (): React.JSX.Element => {
 			</Paragraph>
 
 			<WidgetGrid className="mt-6">
-				<WidgetItem>
-					<AboutMeWidget />
-				</WidgetItem>
+				<AboutMeWidget />
+				<MyJourneyWidget post={latestPost} />
+				<WorkJourneyWidget post={firstPost} />
 			</WidgetGrid>
 
 			<Script
