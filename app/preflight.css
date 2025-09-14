@@ -34,58 +34,6 @@ footer {
 	margin-inline: auto;
 }
 
-/* React Grid Layout */
-.react-grid-layout {
-	position: relative;
-	transition-property: height;
-	transition-duration: 200ms;
-	transition-timing-function: var(--ease-in-out);
-	border: 1px dashed var(--color-input);
-	border-radius: var(--radius-none);
-
-	.react-grid-item {
-		transition-property: left, top, width, height;
-		transition-delay: 0ms;
-		transition-duration: 500ms;
-		transition-timing-function: var(--ease-in-out);
-
-		img {
-			pointer-events: none;
-			user-select: none;
-		}
-
-		&.rezising {
-			z-index: 1;
-			transition-property: none;
-			will-change: width, height;
-		}
-
-		&.react-draggable-dragging {
-			z-index: 3;
-			transition-property: none;
-			will-change: transform;
-		}
-
-		&.dropping {
-			visibility: hidden;
-		}
-
-		&.react-grid-placeholder {
-			z-index: 2;
-			border-radius: var(--radius-3xl);
-			background-color: var(--color-black);
-			opacity: 5%;
-			transition-duration: 100ms;
-			user-select: none;
-
-			html.dark & {
-				background-color: var(--color-white);
-				opacity: 5%;
-			}
-		}
-	}
-}
-
 /* Mapbox */
 .mapboxgl-control-container {
 	display: none;
@@ -97,6 +45,12 @@ div[mapboxgl-children] {
 }
 
 /* MDX */
+.prose {
+	max-width: var(--container-7xl);
+	width: 100%;
+	margin-inline: auto;
+}
+
 .prose h1 .anchor,
 .prose h2 .anchor,
 .prose h3 .anchor,

@@ -3,12 +3,11 @@ import { notFound } from 'next/navigation';
 import { Link } from 'next-view-transitions';
 import type React from 'react';
 import { CustomMDX } from '@/components/mdx/Markdown';
-import { Header } from '@/components/navigation/Header';
 import { Button } from '@/components/ui/Button';
+import { Paragraph } from '@/components/ui/Paragraph';
 import { date } from '@/lib/dayjs';
 import type { MDXData, ProjectMetadata } from '@/lib/mdx';
 import { getAllProjects } from '@/lib/projects';
-import { cn } from '@/lib/utils';
 
 type Params = {
 	slug: string;
@@ -34,60 +33,55 @@ const ProjectPage = async ({
 	}
 
 	return (
-		<div
-			className={cn(
-				'relative mx-auto w-full has-[button.group:hover]:*:last:translate-y-4',
-				'max-w-[320px] sm:max-w-[375px] md:max-w-[800px] lg:max-w-[1200px]'
-			)}
-		>
-			<Header />
+		<section>
+			<Paragraph className="text-left">
+				<span className="md:!text-xl !text-base bg-gradient-to-t from-gray-900 to-gray-900/90 bg-clip-text font-normal text-transparent tracking-tight dark:from-gray-100 dark:to-gray-100/90">
+					{project.metadata.title}
+				</span>
+				<span className="block" />
+			</Paragraph>
 
-			<main className="mx-auto mt-10 flex max-w-prose flex-col gap-y-10 transition-transform duration-700 ease-in-out">
-				<section className="flex flex-col items-center justify-center gap-y-3">
-					<h1
-						className="inline-block text-center font-bold font-pixelify-sans text-3xl text-theme md:text-4xl"
-						title={project.metadata.title}
-					>
-						{project.metadata.title}
-					</h1>
-					<div className="flex gap-x-2">
-						<span className="text-muted-foreground text-sm">
-							{date(project.metadata.date).format('ddd DD MMM YYYY')}
-						</span>
-						<span className="text-muted-foreground text-sm">•</span>
-						<span className="text-muted-foreground text-sm">
-							{project.reading?.readingTime}
-						</span>
-						<span className="text-muted-foreground text-sm">•</span>
-						<span className="text-muted-foreground text-sm">
-							{project.reading?.words} mots
-						</span>
-					</div>
-					<div className="mt-6 flex flex-wrap items-center gap-3">
-						{JSON.parse(project.metadata.links).map(
-							(link: { url: string; name: string; type: string }) => (
-								<Link
-									href={link.url}
-									key={link.url}
-									rel="noreferrer nofollow noopener"
-									target="_blank"
-								>
-									<Button size="lg" variant="outline">
-										{link.type === 'demo' && <EyeIcon />}
-										{link.type === 'github' && <GithubLogoIcon />}
-										{link.name}
-									</Button>
-								</Link>
-							)
-						)}
-					</div>
-				</section>
+			<div className="flex gap-x-3">
+				<span className="md:!text-xl !text-base bg-gradient-to-t from-muted-foreground to-muted-foreground/80 bg-clip-text font-normal text-transparent tracking-tight dark:from-muted-foreground dark:to-muted-foreground/70">
+					{date(project.metadata.date).format('ddd DD MMM YYYY')}
+				</span>
+				<span className="md:!text-xl !text-base bg-gradient-to-t from-muted-foreground to-muted-foreground/80 bg-clip-text font-normal text-transparent tracking-tight dark:from-muted-foreground dark:to-muted-foreground/70">
+					•
+				</span>
+				<span className="md:!text-xl !text-base bg-gradient-to-t from-muted-foreground to-muted-foreground/80 bg-clip-text font-normal text-transparent tracking-tight dark:from-muted-foreground dark:to-muted-foreground/70">
+					{project.reading?.readingTime}
+				</span>
+				<span className="md:!text-xl !text-base bg-gradient-to-t from-muted-foreground to-muted-foreground/80 bg-clip-text font-normal text-transparent tracking-tight dark:from-muted-foreground dark:to-muted-foreground/70">
+					•
+				</span>
+				<span className="md:!text-xl !text-base bg-gradient-to-t from-muted-foreground to-muted-foreground/80 bg-clip-text font-normal text-transparent tracking-tight dark:from-muted-foreground dark:to-muted-foreground/70">
+					{project.reading?.words} mots
+				</span>
+			</div>
 
-				<article className="prose dark:prose-invert mt-3">
-					<CustomMDX source={project.content} />
-				</article>
-			</main>
-		</div>
+			<div className="mt-6 flex flex-wrap items-center gap-3">
+				{JSON.parse(project.metadata.links).map(
+					(link: { url: string; name: string; type: string }) => (
+						<Link
+							href={link.url}
+							key={link.url}
+							rel="noreferrer nofollow noopener"
+							target="_blank"
+						>
+							<Button size="lg" variant="outline">
+								{link.type === 'demo' && <EyeIcon />}
+								{link.type === 'github' && <GithubLogoIcon />}
+								{link.name}
+							</Button>
+						</Link>
+					)
+				)}
+			</div>
+
+			<article className="prose dark:prose-invert mt-6">
+				<CustomMDX source={project.content} />
+			</article>
+		</section>
 	);
 };
 

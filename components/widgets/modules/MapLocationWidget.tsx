@@ -42,21 +42,25 @@ export const MapLocationWidget = memo((): React.JSX.Element => {
 				{hasError ? (
 					<p>Error</p>
 				) : (
-					<MapView
-						canZoomIn={canZoomIn}
-						canZoomOut={canZoomOut}
-						handleMouseEnter={handleMouseEnter}
-						handleMouseLeave={handleMouseLeave}
-						isLoaded={isLoaded}
-						mouseEntered={mouseEntered}
-						onError={handleError}
-						onLoad={handleLoad}
-						onMove={handleMove}
-						onZoomIn={() => handleZoom('in')}
-						onZoomOut={() => handleZoom('out')}
-						ref={mapRef}
-						viewState={viewState}
-					/>
+					<>
+						<div className="absolute top-0 z-10 h-16 w-full bg-gradient-to-b from-input to-transparent" />
+						<div className="absolute bottom-0 z-10 h-4 w-full bg-gradient-to-t from-input to-transparent" />
+						<MapView
+							canZoomIn={canZoomIn}
+							canZoomOut={canZoomOut}
+							handleMouseEnter={handleMouseEnter}
+							handleMouseLeave={handleMouseLeave}
+							isLoaded={isLoaded}
+							mouseEntered={mouseEntered}
+							onError={handleError}
+							onLoad={handleLoad}
+							onMove={handleMove}
+							onZoomIn={() => handleZoom('in')}
+							onZoomOut={() => handleZoom('out')}
+							ref={mapRef}
+							viewState={viewState}
+						/>
+					</>
 				)}
 			</Card>
 		</MotionLink>

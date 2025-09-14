@@ -30,7 +30,7 @@ export const PortfolioCreationWidget = memo(
 		return (
 			<MotionLink
 				aria-label="Lire l'article !"
-				href={`/posts/${slug}`}
+				href={`/projects/${slug}`}
 				layoutId="my-journey-widget"
 				variants={defaultVariantsNoDelay}
 				whileHover={{ scale: 1.025 }}
