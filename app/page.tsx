@@ -8,9 +8,11 @@ import { WidgetGrid } from '@/components/widgets/Grid';
 import { AboutMeWidget } from '@/components/widgets/modules/AboutMeWidget';
 import { MapLocationWidget } from '@/components/widgets/modules/MapLocationWidget';
 import { MyJourneyWidget } from '@/components/widgets/modules/MyJourneyWidget';
+import { PortfolioCreationWidget } from '@/components/widgets/modules/PortfolioCreationWidget';
 import { WorkJourneyWidget } from '@/components/widgets/modules/WorkJourneyWidget';
 import { generateOgMetadata } from '@/lib/image';
 import { getFirstPost, getLatestPost } from '@/lib/posts';
+import { getFirstProject } from '@/lib/projects';
 import { defaultDescription } from '@/resources/meta';
 import { PROFILE_CONFIG } from '@/resources/profile';
 
@@ -52,6 +54,7 @@ const Home = (): React.JSX.Element => {
 
 	const firstPost = getFirstPost();
 	const latestPost = getLatestPost();
+	const firstProject = getFirstProject();
 
 	return (
 		<>
@@ -80,6 +83,7 @@ const Home = (): React.JSX.Element => {
 				<MyJourneyWidget post={latestPost} />
 				<WorkJourneyWidget post={firstPost} />
 				<MapLocationWidget />
+				<PortfolioCreationWidget project={firstProject} />
 			</WidgetGrid>
 
 			<Script
