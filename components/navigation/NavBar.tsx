@@ -82,14 +82,12 @@ export const NavBar = (): React.JSX.Element => {
 
 	const MotionImage = motion.create(Image);
 
-	const animate = hasUserInteracted
-		? { opacity: 1, scale: 1, rotate: 0 }
-		: undefined;
+	const animate = hasUserInteracted ? { opacity: 1, scale: 1, rotate: 0 } : {};
 
 	const exitRotate = avatar % 2 === 0 ? 30 : -30;
 	const exit = hasUserInteracted
 		? { opacity: 0, scale: 0.4, rotate: exitRotate }
-		: undefined;
+		: {};
 
 	const initialRotate = avatar % 2 === 0 ? -30 : 30;
 	const initial = hasUserInteracted

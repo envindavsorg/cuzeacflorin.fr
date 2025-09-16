@@ -116,7 +116,7 @@ const shiki: RehypeShikiOptions = {
 export const CustomMDX = async ({ ...props }): Promise<React.JSX.Element> => (
 	<MDXRemote
 		{...props}
-		components={{ ...components, ...(props.components || {}) }}
+		components={{ ...components, ...(props['components'] || {}) }}
 		options={{
 			mdxOptions: {
 				rehypePlugins: [
@@ -134,6 +134,6 @@ export const CustomMDX = async ({ ...props }): Promise<React.JSX.Element> => (
 				],
 			},
 		}}
-		source={props.source}
+		source={props['source']}
 	/>
 );

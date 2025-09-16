@@ -1,51 +1,37 @@
 'use client';
 
-import {
-	ArrowRightIcon,
-	GitBranchIcon,
-	GitCommitIcon,
-	GithubLogoIcon,
-} from '@phosphor-icons/react';
-import { motion } from 'motion/react';
-import { Link } from 'next-view-transitions';
+import { ArrowRightIcon, BabyIcon, BriefcaseIcon } from '@phosphor-icons/react';
+import dayjs from 'dayjs';
 import type React from 'react';
 import { memo } from 'react';
-import { defaultVariantsNoDelay } from '@/components/animation/motion/motion.variants';
+import type { MDXData } from '@/blog/mdx';
+import type { PostMetadata } from '@/blog/post';
 import { Card } from '@/components/ui/Card';
 import { Paragraph } from '@/components/ui/Paragraph';
+import { GridItem } from '@/components/widgets/GridItem';
+import { date } from '@/lib/dayjs';
 import { cn } from '@/lib/utils';
-import { PROFILE_CONFIG } from '@/resources/profile';
 
-const { github } = PROFILE_CONFIG;
-
-type MyGitHubStatsWidgetProps = {
-	status: string | null;
-	stars: number;
-	commits: number;
-	followers: number;
+type WorkJourneyProps = {
+	post: MDXData<PostMetadata> | null;
 };
-
-export const MyGitHubStatsWidget = memo(
-	({
-		status,
-		stars,
-		commits,
-		followers,
-	}: MyGitHubStatsWidgetProps): React.JSX.Element => {
-		const MotionLink = motion.create(Link);
+export const WorkJourney = memo(
+	({ post }: WorkJourneyProps): React.JSX.Element | null => {
+		if (!post) {
+			return null;
+		}
+		const { metadata, slug, reading } = post;
 
 		return (
-			<MotionLink
-				aria-label="Lire l'article !"
-				href={github.url}
-				layoutId="my-github-stats"
-				variants={defaultVariantsNoDelay}
-				whileHover={{ scale: 1.025 }}
+			<GridItem
+				aria="Lire l'article !"
+				link={`/posts/${slug}`}
+				slug="work-journey-widget"
 			>
 				<Card className="flex h-full flex-col justify-center p-4">
 					<div className="flex items-center justify-between">
 						<h3 className="font-semibold text-base tracking-tight group-hover:text-theme sm:text-lg">
-							Mes statistiques GitHub
+							{metadata.title}
 						</h3>
 						<span
 							className={cn(
@@ -56,44 +42,43 @@ export const MyGitHubStatsWidget = memo(
 								'text-theme group-hover:text-primary'
 							)}
 						>
-							{status}
+							{dayjs().to(dayjs(metadata.date))}
 						</span>
 					</div>
 
 					<Paragraph className="!text-xs sm:!text-sm mt-2 line-clamp-3 text-muted-foreground sm:mt-3">
-						Voici un aperçu de mon activité récente sur GitHub, incluant le
-						nombre d'étoiles, d'abonnés et de commits.
+						{metadata.description}
 					</Paragraph>
 
 					<div className="mt-2 flex-1">
 						<div className="flex flex-wrap gap-1.5">
 							<div className="rounded-sm bg-muted/50 px-2 py-1 text-muted-foreground text-xs shadow-elevation-light">
-								{stars} étoiles
+								{date(metadata.date).format('ddd DD MMM YYYY')}
 							</div>
 							<div className="rounded-sm bg-muted/50 px-2 py-1 text-muted-foreground text-xs shadow-elevation-light">
-								{commits} commits
+								{reading?.time}
 							</div>
 							<div className="rounded-sm bg-muted/50 px-2 py-1 text-muted-foreground text-xs shadow-elevation-light">
-								{followers} abonnés
+								{reading?.words} mots
 							</div>
 						</div>
 					</div>
 
 					<div className="mt-3 flex items-center justify-between gap-3">
 						<div className="flex items-center gap-x-3">
-							<GithubLogoIcon className="size-4 shrink-0" />
-							<GitBranchIcon className="size-4 shrink-0" />
-							<GitCommitIcon className="size-4 shrink-0" />
+							<BabyIcon className="size-5 shrink-0" />
+							<ArrowRightIcon className="size-3 shrink-0 text-muted-foreground" />
+							<BriefcaseIcon className="size-5 shrink-0" />
 						</div>
 						<div className="flex items-center gap-x-1 *:text-muted-foreground">
 							<span className="text-xs group-hover:text-theme sm:text-sm">
-								Voir mon profil
+								En savoir plus
 							</span>
 							<ArrowRightIcon className="group-hover:-rotate-45 text-sm transition duration-200 group-hover:text-theme sm:text-base" />
 						</div>
 					</div>
 				</Card>
-			</MotionLink>
+			</GridItem>
 		);
 	}
 );

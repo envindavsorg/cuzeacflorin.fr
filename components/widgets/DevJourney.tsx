@@ -1,39 +1,42 @@
 'use client';
 
-import { ArrowRightIcon, UsersIcon } from '@phosphor-icons/react';
-import { LinkedinLogoIcon } from '@phosphor-icons/react/dist/ssr';
-import { motion } from 'motion/react';
-import { Link } from 'next-view-transitions';
+import {
+	ArrowRightIcon,
+	ArticleNyTimesIcon,
+	RocketLaunchIcon,
+} from '@phosphor-icons/react';
+import dayjs from 'dayjs';
 import type React from 'react';
 import { memo } from 'react';
-import { defaultVariantsNoDelay } from '@/components/animation/motion/motion.variants';
+import type { MDXData } from '@/blog/mdx';
+import type { PostMetadata } from '@/blog/post';
 import { Card } from '@/components/ui/Card';
 import { Paragraph } from '@/components/ui/Paragraph';
+import { GridItem } from '@/components/widgets/GridItem';
+import { date } from '@/lib/dayjs';
 import { cn } from '@/lib/utils';
-import { PROFILE_CONFIG } from '@/resources/profile';
 
-const { linkedin } = PROFILE_CONFIG;
-
-type MyLinkedInStatsWidgetProps = {
-	followers: number;
+type DevJourneyProps = {
+	post: MDXData<PostMetadata> | null;
 };
 
-export const MyLinkedInStatsWidget = memo(
-	({ followers }: MyLinkedInStatsWidgetProps): React.JSX.Element => {
-		const MotionLink = motion.create(Link);
+export const DevJourney = memo(
+	({ post }: DevJourneyProps): React.JSX.Element | null => {
+		if (!post) {
+			return null;
+		}
+		const { metadata, slug, reading } = post;
 
 		return (
-			<MotionLink
-				aria-label="Lire l'article !"
-				href={linkedin.url}
-				layoutId="my-linkedin-stats"
-				variants={defaultVariantsNoDelay}
-				whileHover={{ scale: 1.025 }}
+			<GridItem
+				aria="Lire l'article !"
+				link={`/posts/${slug}`}
+				slug="my-journey-widget"
 			>
 				<Card className="flex h-full flex-col justify-center p-4">
 					<div className="flex items-center justify-between">
 						<h3 className="font-semibold text-base tracking-tight group-hover:text-theme sm:text-lg">
-							Mes statistiques LinkedIn
+							{metadata.title}
 						</h3>
 						<span
 							className={cn(
@@ -44,40 +47,43 @@ export const MyLinkedInStatsWidget = memo(
 								'text-theme group-hover:text-primary'
 							)}
 						>
-							WeFix
+							{dayjs().to(dayjs(metadata.date))}
 						</span>
 					</div>
 
 					<Paragraph className="!text-xs sm:!text-sm mt-2 line-clamp-3 text-muted-foreground sm:mt-3">
-						Je partage régulièrement des articles techniques et des nouvelles de
-						l'industrie sur mon profil LinkedIn.
+						{metadata.description}
 					</Paragraph>
 
 					<div className="mt-2 flex-1">
 						<div className="flex flex-wrap gap-1.5">
 							<div className="rounded-sm bg-muted/50 px-2 py-1 text-muted-foreground text-xs shadow-elevation-light">
-								{followers} abonnés
+								{date(metadata.date).format('ddd DD MMM YYYY')}
 							</div>
 							<div className="rounded-sm bg-muted/50 px-2 py-1 text-muted-foreground text-xs shadow-elevation-light">
-								{linkedin.handle}
+								{reading?.time}
+							</div>
+							<div className="rounded-sm bg-muted/50 px-2 py-1 text-muted-foreground text-xs shadow-elevation-light">
+								{reading?.words} mots
 							</div>
 						</div>
 					</div>
 
 					<div className="mt-3 flex items-center justify-between gap-3">
 						<div className="flex items-center gap-x-3">
-							<LinkedinLogoIcon className="size-4 shrink-0" />
-							<UsersIcon className="size-4 shrink-0" />
+							<ArticleNyTimesIcon className="size-5 shrink-0" />
+							<ArrowRightIcon className="size-3 shrink-0 text-muted-foreground" />
+							<RocketLaunchIcon className="size-5 shrink-0" />
 						</div>
 						<div className="flex items-center gap-x-1 *:text-muted-foreground">
 							<span className="text-xs group-hover:text-theme sm:text-sm">
-								Voir mon profil
+								Lire l'article
 							</span>
 							<ArrowRightIcon className="group-hover:-rotate-45 text-sm transition duration-200 group-hover:text-theme sm:text-base" />
 						</div>
 					</div>
 				</Card>
-			</MotionLink>
+			</GridItem>
 		);
 	}
 );

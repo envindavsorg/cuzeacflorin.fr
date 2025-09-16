@@ -134,7 +134,7 @@ portfolio/
 │   ├── widgets/                 # Interactive widgets
 │   │   ├── TimeClockWidget.tsx       # Real-time clock
 │   │   ├── GitHubStats.tsx     # GitHub API stats
-│   │   ├── MapLocationWidget.tsx     # Mapbox map
+│   │   ├── MapLocation.tsx     # Mapbox map
 │   │   └── ...
 │   ├── ui/                      # Reusable UI components
 │   └── mdx/                     # MDX components

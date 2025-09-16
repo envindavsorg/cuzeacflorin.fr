@@ -1,15 +1,13 @@
 'use client';
 
-import { motion } from 'motion/react';
-import { Link } from 'next-view-transitions';
 import type React from 'react';
 import { memo } from 'react';
-import { defaultVariantsNoDelay } from '@/components/animation/motion/motion.variants';
 import { MapView } from '@/components/map/MapView';
 import { Card } from '@/components/ui/Card';
+import { GridItem } from '@/components/widgets/GridItem';
 import useLocationMap from '@/hooks/useLocationMap';
 
-export const MapLocationWidget = memo((): React.JSX.Element => {
+export const MapLocation = memo((): React.JSX.Element => {
 	const {
 		mouseEntered,
 		viewState,
@@ -26,17 +24,11 @@ export const MapLocationWidget = memo((): React.JSX.Element => {
 		handleMouseLeave,
 	} = useLocationMap();
 
-	const MotionLink = motion.create(Link);
-
 	return (
-		<MotionLink
-			aria-label="Voir ma localisation !"
-			href="https://www.google.com/maps/place/Paris,+France"
-			layoutId="map-location-widget"
-			rel="noopener noreferrer"
-			target="_blank"
-			variants={defaultVariantsNoDelay}
-			whileHover={{ scale: 1.025 }}
+		<GridItem
+			aria="Voir ma localisation !"
+			link="https://www.google.com/maps/place/Paris,+France"
+			slug="map-location-widget"
 		>
 			<Card className="h-full p-0">
 				{hasError ? (
@@ -63,6 +55,6 @@ export const MapLocationWidget = memo((): React.JSX.Element => {
 					</>
 				)}
 			</Card>
-		</MotionLink>
+		</GridItem>
 	);
 });

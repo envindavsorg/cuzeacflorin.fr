@@ -21,7 +21,7 @@ const LayoutHome = ({
 			<div
 				className={cn(
 					'relative mx-auto flex w-full max-w-7xl flex-1 flex-col',
-					'transition-[opacity,_transform] duration-700',
+					'place-content-center transition-[opacity,_transform]',
 					isMounted ? 'translate-y-0 opacity-100' : '-translate-y-6 opacity-0'
 				)}
 			>

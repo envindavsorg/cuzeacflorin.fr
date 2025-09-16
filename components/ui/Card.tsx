@@ -103,11 +103,12 @@ const CardFooter = ({
 
 type CardLinkProps = {
 	className?: string;
-	url: string;
+	url?: string;
 	handle?: string;
 	label: string;
 	icon?: React.ComponentType<IconProps>;
 	rotate?: boolean;
+	action?: () => void;
 };
 
 const CardLink = ({
@@ -117,17 +118,19 @@ const CardLink = ({
 	label,
 	icon: Icon = ArrowUpRightIcon,
 	rotate = true,
+	action,
 }: CardLinkProps): React.JSX.Element => {
 	const MotionButton = motion.create(Button);
 
 	return (
 		<Tooltip>
 			<TooltipTrigger asChild>
-				<Link aria-label={label} className={className} href={url}>
+				<Link aria-label={label} className={className} href={url || '/'}>
 					<MotionButton
 						aria-label={label}
 						asChild
 						className="group"
+						onClick={action}
 						size="icon"
 						variant="icon"
 						whileHover={{ scale: 1.05 }}

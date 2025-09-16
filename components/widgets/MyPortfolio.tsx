@@ -1,37 +1,34 @@
 'use client';
 
-import { ArrowRightIcon, BabyIcon, BriefcaseIcon } from '@phosphor-icons/react';
+import { ArrowRightIcon } from '@phosphor-icons/react';
 import dayjs from 'dayjs';
-import { motion } from 'motion/react';
-import { Link } from 'next-view-transitions';
 import type React from 'react';
 import { memo } from 'react';
-import type { MDXData, PostMetadata } from '@/blog/mdx';
-import { defaultVariantsNoDelay } from '@/components/animation/motion/motion.variants';
+import type { MDXData } from '@/blog/mdx';
+import type { PostMetadata } from '@/blog/post';
+import { NextJSIcon } from '@/components/icons/content/Next';
+import { ReactIcon } from '@/components/icons/content/React';
+import { TailwindIcon } from '@/components/icons/content/Tailwind';
+import { TypeScriptIcon } from '@/components/icons/content/TypeScript';
 import { Card } from '@/components/ui/Card';
 import { Paragraph } from '@/components/ui/Paragraph';
+import { GridItem } from '@/components/widgets/GridItem';
 import { date } from '@/lib/dayjs';
 import { cn } from '@/lib/utils';
 
-type WorkJourneyWidgetProps = {
-	post: MDXData<PostMetadata> | null;
+type MyPortfolioProps = {
+	project: MDXData<PostMetadata>;
 };
-export const WorkJourneyWidget = memo(
-	({ post }: WorkJourneyWidgetProps): React.JSX.Element | null => {
-		if (!post) {
-			return null;
-		}
-		const { metadata, slug, reading } = post;
 
-		const MotionLink = motion.create(Link);
+export const MyPortfolio = memo(
+	({ project }: MyPortfolioProps): React.JSX.Element => {
+		const { metadata, slug, reading } = project;
 
 		return (
-			<MotionLink
-				aria-label="Lire l'article !"
-				href={`/posts/${slug}`}
-				layoutId="work-journey-widget"
-				variants={defaultVariantsNoDelay}
-				whileHover={{ scale: 1.025 }}
+			<GridItem
+				aria="Lire l'article !"
+				link={`/projects/${slug}`}
+				slug="my-journey-widget"
 			>
 				<Card className="flex h-full flex-col justify-center p-4">
 					<div className="flex items-center justify-between">
@@ -71,19 +68,20 @@ export const WorkJourneyWidget = memo(
 
 					<div className="mt-3 flex items-center justify-between gap-3">
 						<div className="flex items-center gap-x-3">
-							<BabyIcon className="size-5 shrink-0" />
-							<ArrowRightIcon className="size-3 shrink-0 text-muted-foreground" />
-							<BriefcaseIcon className="size-5 shrink-0" />
+							<ReactIcon className="size-4 shrink-0" />
+							<NextJSIcon className="size-4 shrink-0" />
+							<TypeScriptIcon className="size-4 shrink-0" />
+							<TailwindIcon className="size-4 shrink-0" />
 						</div>
 						<div className="flex items-center gap-x-1 *:text-muted-foreground">
 							<span className="text-xs group-hover:text-theme sm:text-sm">
-								En savoir plus
+								Lire l'article
 							</span>
 							<ArrowRightIcon className="group-hover:-rotate-45 text-sm transition duration-200 group-hover:text-theme sm:text-base" />
 						</div>
 					</div>
 				</Card>
-			</MotionLink>
+			</GridItem>
 		);
 	}
 );

@@ -2,21 +2,9 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import type React from 'react';
 import { useId } from 'react';
-import { getGitHubUserData } from '@/actions/github.action';
-import { getLinkedInFollowers } from '@/actions/linkedin.action';
-import { getPostBySlug } from '@/blog/post';
-import { getProjectBySlug } from '@/blog/project';
 import { Counter } from '@/components/ui/Counter';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { WidgetGrid } from '@/components/widgets/Grid';
-import { AboutMeWidget } from '@/components/widgets/modules/AboutMeWidget';
-import { ContactMeWidget } from '@/components/widgets/modules/ContactMeWidget';
-import { MapLocationWidget } from '@/components/widgets/modules/MapLocationWidget';
-import { MyGitHubStatsWidget } from '@/components/widgets/modules/MyGitHubStatsWidget';
-import { MyJourneyWidget } from '@/components/widgets/modules/MyJourneyWidget';
-import { MyLinkedInStatsWidget } from '@/components/widgets/modules/MyLinkedInStatsWidget';
-import { PortfolioCreationWidget } from '@/components/widgets/modules/PortfolioCreationWidget';
-import { WorkJourneyWidget } from '@/components/widgets/modules/WorkJourneyWidget';
 import { generateOgMetadata } from '@/lib/image';
 import { defaultDescription, generateStructuredData } from '@/resources/meta';
 import { PROFILE_CONFIG } from '@/resources/profile';
@@ -36,19 +24,8 @@ export const generateMetadata = async (): Promise<Metadata> =>
 
 const structuredData = generateStructuredData();
 
-const Home = async (): Promise<React.JSX.Element> => {
+const Home = (): React.JSX.Element => {
 	const structuredDataId: string = useId();
-	const aboutBlogPost = getPostBySlug('how-its-started');
-	const workBlogPost = getPostBySlug('work-and-always-work');
-	const portfolioProject = getProjectBySlug('my-portfolio-project');
-
-	const {
-		status,
-		stars,
-		contributions: { totalContributions },
-		followers,
-	} = await getGitHubUserData();
-	const { count } = await getLinkedInFollowers();
 
 	return (
 		<>
@@ -72,23 +49,7 @@ const Home = async (): Promise<React.JSX.Element> => {
 				</span>
 			</Paragraph>
 
-			<WidgetGrid className="mt-6">
-				<AboutMeWidget />
-				{aboutBlogPost && <MyJourneyWidget post={aboutBlogPost} />}
-				{workBlogPost && <WorkJourneyWidget post={workBlogPost} />}
-				<MapLocationWidget />
-				{portfolioProject && (
-					<PortfolioCreationWidget project={portfolioProject} />
-				)}
-				<MyGitHubStatsWidget
-					commits={totalContributions}
-					followers={followers}
-					stars={stars}
-					status={status}
-				/>
-				<MyLinkedInStatsWidget followers={count} />
-				<ContactMeWidget />
-			</WidgetGrid>
+			<WidgetGrid />
 
 			<Script
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
