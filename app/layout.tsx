@@ -6,8 +6,6 @@ import { ViewTransitions } from 'next-view-transitions';
 import type React from 'react';
 import { Analytics } from '@/components/analytics/Analytics';
 import { Sparkles } from '@/components/animation/Sparkles';
-import { Footer } from '@/components/navigation/Footer';
-import { NavBar } from '@/components/navigation/NavBar';
 import { Toaster } from '@/components/ui/Sonner';
 import { fonts } from '@/fonts/fonts';
 import { cn } from '@/lib/utils';
@@ -75,18 +73,11 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => (
 				<link href="https://vitals.vercel-insights.com" rel="dns-prefetch" />
 				<title>{`${PROFILE_CONFIG.firstName} ${PROFILE_CONFIG.lastName}`}</title>
 			</head>
-			<body
-				className={cn(
-					'container relative min-h-screen bg-background font-sans tracking-tight antialiased max-sm:pt-12',
-					'flex flex-col'
-				)}
-			>
+			<body className="container bg-background font-sans tracking-tight antialiased">
 				<AppProviders>
-					<NavBar />
-					<main className="relative mx-auto flex w-full max-w-7xl flex-1 flex-col">
+					<main className="relative flex min-h-screen flex-col max-sm:pt-12">
 						{children}
 					</main>
-					<Footer />
 					<Sparkles density={150} />
 					<Toaster position="bottom-right" richColors />
 				</AppProviders>

@@ -88,6 +88,7 @@
     "swr": "^2.3.6",
     "tslog": "^4.9.3",
     "use-scramble": "^2.2.15",
+    "usehooks-ts": "^3.1.1",
     "zustand": "^5.0.8"
   },
   "devDependencies": {
