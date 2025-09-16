@@ -1,10 +1,15 @@
 import { join } from 'node:path';
-import { getMDXData, type MDXData, type ProjectMetadata } from '@/lib/blog/mdx';
+import { type BaseMetadata, getMDXData, type MDXData } from '@/blog/mdx';
 
 let projectsCache: MDXData<ProjectMetadata>[] | null = null;
 let projectsBySlugCache: Map<string, MDXData<ProjectMetadata>> | null = null;
 
-const PROJECTS_DIR = join(process.cwd(), 'content/projects');
+const PROJECTS_DIR = join(process.cwd(), 'blog/content/projects');
+
+export interface ProjectMetadata extends BaseMetadata {
+	date: string;
+	links: string;
+}
 
 export const getAllProjects = (): MDXData<ProjectMetadata>[] => {
 	if (projectsCache !== null) {

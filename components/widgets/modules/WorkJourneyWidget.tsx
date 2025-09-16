@@ -6,10 +6,10 @@ import { motion } from 'motion/react';
 import { Link } from 'next-view-transitions';
 import type React from 'react';
 import { memo } from 'react';
+import type { MDXData, PostMetadata } from '@/blog/mdx';
 import { defaultVariantsNoDelay } from '@/components/animation/motion/motion.variants';
 import { Card } from '@/components/ui/Card';
 import { Paragraph } from '@/components/ui/Paragraph';
-import type { MDXData, PostMetadata } from '@/lib/blog/mdx';
 import { date } from '@/lib/dayjs';
 import { cn } from '@/lib/utils';
 

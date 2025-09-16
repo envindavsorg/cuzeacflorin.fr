@@ -1,9 +1,9 @@
 import { notFound } from 'next/navigation';
 import type React from 'react';
+import type { MDXData, PostMetadata } from '@/blog/mdx';
+import { getAllPosts } from '@/blog/post';
 import { CustomMDX } from '@/components/mdx/Markdown';
 import { Paragraph } from '@/components/ui/Paragraph';
-import type { MDXData, PostMetadata } from '@/lib/blog/mdx';
-import { getAllPosts } from '@/lib/blog/post';
 import { date } from '@/lib/dayjs';
 
 type Params = {

@@ -2,11 +2,11 @@ import { EyeIcon, GithubLogoIcon } from '@phosphor-icons/react/dist/ssr';
 import { notFound } from 'next/navigation';
 import { Link } from 'next-view-transitions';
 import type React from 'react';
+import type { MDXData, ProjectMetadata } from '@/blog/mdx';
+import { getAllProjects } from '@/blog/project';
 import { CustomMDX } from '@/components/mdx/Markdown';
 import { Button } from '@/components/ui/Button';
 import { Paragraph } from '@/components/ui/Paragraph';
-import type { MDXData, ProjectMetadata } from '@/lib/blog/mdx';
-import { getAllProjects } from '@/lib/blog/project';
 import { date } from '@/lib/dayjs';
 
 type Params = {

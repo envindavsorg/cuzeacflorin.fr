@@ -1,8 +1,9 @@
-import rehypeShiki from '@shikijs/rehype';
+import rehypeShiki, { type RehypeShikiOptions } from '@shikijs/rehype';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import React, { createElement } from 'react';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
+import { slugify } from '@/blog/slugify';
 import { CurrentDate } from '@/components/elements/CurrentDate';
 import { NextJSIcon } from '@/components/icons/content/Next';
 import { ReactIcon } from '@/components/icons/content/React';
@@ -15,8 +16,6 @@ import {
 	MarqueeItem,
 } from '@/components/ui/Marquee';
 import { Separator } from '@/components/ui/Separator';
-import { shikiOptions } from '@/lib/shiki';
-import { toSlug } from '@/lib/slug';
 import { cn } from '@/lib/utils';
 import { stack } from '@/resources/stack';
 
@@ -43,7 +42,7 @@ const createHeading =
 	(level: number) =>
 	({ children }: { children: React.ReactNode }) => {
 		const textContent = getTextContent(children);
-		const slug = textContent ? toSlug(textContent) : '';
+		const slug = textContent ? slugify(textContent) : '';
 
 		return createElement(`h${level}`, { id: slug }, children);
 	};
@@ -88,6 +87,32 @@ const components = {
 	),
 };
 
+const shiki: RehypeShikiOptions = {
+	themes: {
+		light: 'github-light',
+		dark: 'github-dark',
+	},
+	defaultColor: false,
+	cssVariablePrefix: '--shiki-',
+	transformers: [
+		{
+			name: 'add-language-class',
+			code(node) {
+				this.addClassToHast(node, `language-${this.options.lang}`);
+			},
+			line(node, line) {
+				node.properties['data-line'] = line;
+				if ([1, 3, 4].includes(line)) {
+					this.addClassToHast(node, 'highlight');
+				}
+			},
+			span(node, line, col) {
+				node.properties['data-token'] = `token:${line}:${col}`;
+			},
+		},
+	],
+};
+
 export const CustomMDX = async ({ ...props }): Promise<React.JSX.Element> => (
 	<MDXRemote
 		{...props}
@@ -96,7 +121,7 @@ export const CustomMDX = async ({ ...props }): Promise<React.JSX.Element> => (
 			mdxOptions: {
 				rehypePlugins: [
 					rehypeSlug,
-					[rehypeShiki, shikiOptions],
+					[rehypeShiki, shiki],
 					[
 						rehypeAutolinkHeadings,
 						{

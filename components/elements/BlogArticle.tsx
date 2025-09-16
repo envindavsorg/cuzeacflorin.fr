@@ -1,7 +1,7 @@
 import type React from 'react';
+import type { PostMetadata } from '@/blog/mdx';
 import { CardLink } from '@/components/ui/Card';
 import { Paragraph } from '@/components/ui/Paragraph';
-import type { PostMetadata } from '@/lib/blog/mdx';
 import { date } from '@/lib/dayjs';
 
 type BlogArticleProps = {

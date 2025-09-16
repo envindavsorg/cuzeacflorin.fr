@@ -1,4 +1,4 @@
-export const toSlug = (text: string, maxWords = 3): string => {
+export const slugify = (text: string, maxWords = 3): string => {
 	const accentsMap: Record<string, string> = {
 		à: 'a',
 		á: 'a',
