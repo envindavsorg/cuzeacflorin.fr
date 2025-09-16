@@ -11,24 +11,24 @@ export type Browser =
 	| 'Arc Browser'
 	| 'Mozilla Firefox'
 	| 'Google Chrome'
-	| 'Safari'
+	| 'Apple Safari'
 	| 'Microsoft Edge'
 	| 'Opera'
-	| 'Inconnu';
+	| 'Navigateur inconnu';
 
 export type BrowserInfo = {
 	name: Browser;
 	icon: ((props: SVGProps<SVGSVGElement>) => React.JSX.Element) | null;
 };
 
-const browserIcons: Record<Browser, BrowserInfo['icon']> = {
+const icons: Record<Browser, BrowserInfo['icon']> = {
 	'Arc Browser': ArcIcon,
 	'Mozilla Firefox': FirefoxIcon,
 	'Google Chrome': ChromeIcon,
-	Safari: SafariIcon,
+	'Apple Safari': SafariIcon,
 	'Microsoft Edge': EdgeIcon,
 	Opera: OperaIcon,
-	Inconnu: null,
+	'Navigateur inconnu': null,
 };
 
 const detectArc = (): boolean => {
@@ -36,7 +36,7 @@ const detectArc = (): boolean => {
 		return false;
 	}
 
-	const arcCSSVars = [
+	const vars = [
 		'--arc-palette-background',
 		'--arc-palette-foreground',
 		'--arc-palette-focus',
@@ -51,11 +51,11 @@ const detectArc = (): boolean => {
 	];
 
 	const styles = getComputedStyle(document.documentElement);
-	const arcVarCount = arcCSSVars.filter(
-		(varName) => styles.getPropertyValue(varName).trim() !== ''
+	const count = vars.filter(
+		(item) => styles.getPropertyValue(item).trim() !== ''
 	).length;
 
-	if (arcVarCount >= 2) {
+	if (count >= 2) {
 		return true;
 	}
 
@@ -75,14 +75,12 @@ const detectArc = (): boolean => {
 	}
 
 	if ('userAgentData' in navigator) {
-		const uaData = navigator.userAgentData as {
+		const data = navigator.userAgentData as {
 			brands?: { brand: string; version: string }[];
 		};
 
 		if (
-			uaData?.brands?.some((brand) =>
-				brand.brand?.toLowerCase().includes('arc')
-			)
+			data?.brands?.some((brand) => brand.brand?.toLowerCase().includes('arc'))
 		) {
 			return true;
 		}
@@ -97,7 +95,7 @@ const detectArc = (): boolean => {
 
 export const getBrowser = (): Browser => {
 	if (typeof window === 'undefined') {
-		return 'Inconnu';
+		return 'Navigateur inconnu';
 	}
 
 	if (detectArc()) {
@@ -119,21 +117,17 @@ export const getBrowser = (): Browser => {
 	}
 
 	if (ua.includes('Safari') && !ua.includes('Chrome')) {
-		return 'Safari';
+		return 'Apple Safari';
 	}
 
 	if (ua.includes('Chrome')) {
 		return 'Google Chrome';
 	}
 
-	return 'Inconnu';
+	return 'Navigateur inconnu';
 };
 
 export const getBrowserInfo = (): BrowserInfo => {
 	const name: Browser = getBrowser();
-
-	return {
-		name,
-		icon: browserIcons[name],
-	};
+	return { name, icon: icons[name] };
 };
