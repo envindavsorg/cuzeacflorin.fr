@@ -9,15 +9,18 @@ import { memo } from 'react';
 import { defaultVariantsNoDelay } from '@/components/animation/motion/motion.variants';
 import { Card } from '@/components/ui/Card';
 import { Paragraph } from '@/components/ui/Paragraph';
+import type { MDXData, PostMetadata } from '@/lib/blog/mdx';
 import { date } from '@/lib/dayjs';
-import type { MDXData, PostMetadata } from '@/lib/mdx';
 import { cn } from '@/lib/utils';
 
 type WorkJourneyWidgetProps = {
-	post: MDXData<PostMetadata>;
+	post: MDXData<PostMetadata> | null;
 };
 export const WorkJourneyWidget = memo(
-	({ post }: WorkJourneyWidgetProps): React.JSX.Element => {
+	({ post }: WorkJourneyWidgetProps): React.JSX.Element | null => {
+		if (!post) {
+			return null;
+		}
 		const { metadata, slug, reading } = post;
 
 		const MotionLink = motion.create(Link);
@@ -58,7 +61,7 @@ export const WorkJourneyWidget = memo(
 								{date(metadata.date).format('ddd DD MMM YYYY')}
 							</div>
 							<div className="rounded-sm bg-muted/50 px-2 py-1 text-muted-foreground text-xs shadow-elevation-light">
-								{reading?.readingTime}
+								{reading?.time}
 							</div>
 							<div className="rounded-sm bg-muted/50 px-2 py-1 text-muted-foreground text-xs shadow-elevation-light">
 								{reading?.words} mots

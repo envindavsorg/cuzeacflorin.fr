@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { readingTimeOnArticle } from '@/lib/read';
+import { readingTimeOnArticle } from '@/lib/blog/read';
 
 type BaseMetadata = {
 	title: string;
@@ -22,7 +22,7 @@ export type MDXData<T extends BaseMetadata> = {
 	slug: string;
 	content: string;
 	reading?: {
-		readingTime: string;
+		time: string;
 		words: number;
 	};
 };
@@ -64,14 +64,14 @@ export const getMDXData = <T extends BaseMetadata>(dir: string): MDXData<T>[] =>
 			const filePath = path.join(dir, dirent.name);
 			const fileContent = fs.readFileSync(filePath, 'utf-8');
 			const { metadata, content } = parseFrontmatter<T>(fileContent);
-			const { readingTime, words } = readingTimeOnArticle(content, 'fr');
+			const { time, words } = readingTimeOnArticle(content, 'fr');
 
 			return {
 				metadata,
 				slug: path.basename(dirent.name, path.extname(dirent.name)),
 				content,
 				reading: {
-					readingTime,
+					time,
 					words,
 				},
 			};

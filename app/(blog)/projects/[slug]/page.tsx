@@ -5,9 +5,9 @@ import type React from 'react';
 import { CustomMDX } from '@/components/mdx/Markdown';
 import { Button } from '@/components/ui/Button';
 import { Paragraph } from '@/components/ui/Paragraph';
+import type { MDXData, ProjectMetadata } from '@/lib/blog/mdx';
+import { getAllProjects } from '@/lib/blog/project';
 import { date } from '@/lib/dayjs';
-import type { MDXData, ProjectMetadata } from '@/lib/mdx';
-import { getAllProjects } from '@/lib/projects';
 
 type Params = {
 	slug: string;
@@ -49,7 +49,7 @@ const ProjectPage = async ({
 					•
 				</span>
 				<span className="md:!text-xl !text-base bg-gradient-to-t from-muted-foreground to-muted-foreground/80 bg-clip-text font-normal text-transparent tracking-tight dark:from-muted-foreground dark:to-muted-foreground/70">
-					{project.reading?.readingTime}
+					{project.reading?.time}
 				</span>
 				<span className="md:!text-xl !text-base bg-gradient-to-t from-muted-foreground to-muted-foreground/80 bg-clip-text font-normal text-transparent tracking-tight dark:from-muted-foreground dark:to-muted-foreground/70">
 					•

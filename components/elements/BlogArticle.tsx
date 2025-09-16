@@ -1,18 +1,13 @@
 import type React from 'react';
 import { CardLink } from '@/components/ui/Card';
 import { Paragraph } from '@/components/ui/Paragraph';
+import type { PostMetadata } from '@/lib/blog/mdx';
 import { date } from '@/lib/dayjs';
-import type { PostMetadata } from '@/lib/mdx';
 
 type BlogArticleProps = {
 	metadata: PostMetadata;
 	slug: string;
-	reading:
-		| {
-				readingTime: string;
-				words: number;
-		  }
-		| undefined;
+	reading: { time: string; words: number } | undefined;
 };
 
 export const BlogArticle = ({
@@ -39,7 +34,7 @@ export const BlogArticle = ({
 					<span>{date(metadata.date).format('ddd DD MMM YYYY')}</span>
 					<span className="inline-block sm:hidden md:inline-block">•</span>
 					<span>
-						{reading?.readingTime}{' '}
+						{reading?.time}{' '}
 						<span className="hidden sm:inline-block md:hidden lg:inline-block">
 							de lecture
 						</span>

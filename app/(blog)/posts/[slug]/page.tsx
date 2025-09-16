@@ -2,9 +2,9 @@ import { notFound } from 'next/navigation';
 import type React from 'react';
 import { CustomMDX } from '@/components/mdx/Markdown';
 import { Paragraph } from '@/components/ui/Paragraph';
+import type { MDXData, PostMetadata } from '@/lib/blog/mdx';
+import { getAllPosts } from '@/lib/blog/post';
 import { date } from '@/lib/dayjs';
-import type { MDXData, PostMetadata } from '@/lib/mdx';
-import { getAllPosts } from '@/lib/posts';
 
 type Params = {
 	slug: string;
@@ -46,7 +46,7 @@ const PostPage = async ({
 					•
 				</span>
 				<span className="md:!text-xl !text-base bg-gradient-to-t from-muted-foreground to-muted-foreground/80 bg-clip-text font-normal text-transparent tracking-tight dark:from-muted-foreground dark:to-muted-foreground/70">
-					{post.reading?.readingTime}
+					{post.reading?.time}
 				</span>
 				<span className="md:!text-xl !text-base bg-gradient-to-t from-muted-foreground to-muted-foreground/80 bg-clip-text font-normal text-transparent tracking-tight dark:from-muted-foreground dark:to-muted-foreground/70">
 					•

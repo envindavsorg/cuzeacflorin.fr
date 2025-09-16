@@ -13,8 +13,8 @@ import { TailwindIcon } from '@/components/icons/content/Tailwind';
 import { TypeScriptIcon } from '@/components/icons/content/TypeScript';
 import { Card } from '@/components/ui/Card';
 import { Paragraph } from '@/components/ui/Paragraph';
+import type { MDXData, PostMetadata } from '@/lib/blog/mdx';
 import { date } from '@/lib/dayjs';
-import type { MDXData, PostMetadata } from '@/lib/mdx';
 import { cn } from '@/lib/utils';
 
 type PortfolioCreationWidgetProps = {
@@ -63,7 +63,7 @@ export const PortfolioCreationWidget = memo(
 								{date(metadata.date).format('ddd DD MMM YYYY')}
 							</div>
 							<div className="rounded-sm bg-muted/50 px-2 py-1 text-muted-foreground text-xs shadow-elevation-light">
-								{reading?.readingTime}
+								{reading?.time}
 							</div>
 							<div className="rounded-sm bg-muted/50 px-2 py-1 text-muted-foreground text-xs shadow-elevation-light">
 								{reading?.words} mots

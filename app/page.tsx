@@ -15,10 +15,10 @@ import { MyJourneyWidget } from '@/components/widgets/modules/MyJourneyWidget';
 import { MyLinkedInStatsWidget } from '@/components/widgets/modules/MyLinkedInStatsWidget';
 import { PortfolioCreationWidget } from '@/components/widgets/modules/PortfolioCreationWidget';
 import { WorkJourneyWidget } from '@/components/widgets/modules/WorkJourneyWidget';
+import { getPostBySlug } from '@/lib/blog/post';
+import { getProjectBySlug } from '@/lib/blog/project';
 import { generateOgMetadata } from '@/lib/image';
-import { getFirstPost, getLatestPost } from '@/lib/posts';
-import { getFirstProject } from '@/lib/projects';
-import { defaultDescription } from '@/resources/meta';
+import { defaultDescription, generateStructuredData } from '@/resources/meta';
 import { PROFILE_CONFIG } from '@/resources/profile';
 
 const { firstName, lastName, welcome, experience } = PROFILE_CONFIG;
@@ -34,32 +34,14 @@ export const generateMetadata = async (): Promise<Metadata> =>
 		},
 	});
 
-const structuredData = {
-	'@context': 'https://schema.org',
-	'@type': 'Person',
-	name: `${firstName} ${lastName}`,
-	workJobTitle: welcome,
-	description: defaultDescription,
-	worksFor: {
-		'@type': 'Organization',
-		name: 'WeFix',
-	},
-	knowsAbout: [
-		'Développement web',
-		'React',
-		'Next.js',
-		'UX/UI Design',
-		'JavaScript',
-		'TypeScript',
-	],
-};
+const structuredData = generateStructuredData();
 
 const Home = async (): Promise<React.JSX.Element> => {
 	const structuredDataId: string = useId();
+	const aboutBlogPost = getPostBySlug('how-its-started');
+	const workBlogPost = getPostBySlug('work-and-always-work');
+	const portfolioProject = getProjectBySlug('my-portfolio-project');
 
-	const firstPost = getFirstPost();
-	const latestPost = getLatestPost();
-	const firstProject = getFirstProject();
 	const {
 		status,
 		stars,
@@ -92,10 +74,12 @@ const Home = async (): Promise<React.JSX.Element> => {
 
 			<WidgetGrid className="mt-6">
 				<AboutMeWidget />
-				<MyJourneyWidget post={latestPost} />
-				<WorkJourneyWidget post={firstPost} />
+				{aboutBlogPost && <MyJourneyWidget post={aboutBlogPost} />}
+				{workBlogPost && <WorkJourneyWidget post={workBlogPost} />}
 				<MapLocationWidget />
-				<PortfolioCreationWidget project={firstProject} />
+				{portfolioProject && (
+					<PortfolioCreationWidget project={portfolioProject} />
+				)}
 				<MyGitHubStatsWidget
 					commits={totalContributions}
 					followers={followers}
@@ -107,9 +91,7 @@ const Home = async (): Promise<React.JSX.Element> => {
 			</WidgetGrid>
 
 			<Script
-				dangerouslySetInnerHTML={{
-					__html: JSON.stringify(structuredData),
-				}}
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
 				id={structuredDataId}
 				strategy="afterInteractive"
 				type="application/ld+json"
