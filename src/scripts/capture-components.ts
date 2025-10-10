@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import GIFEncoder from 'gifencoder';
+import { GifEncoder } from '@skyra/gifenc';
 import { PNG } from 'pngjs';
 import puppeteer, {
 	type Browser,
@@ -60,7 +60,7 @@ const captureGif = async (
 		`📹 Recording ${totalFrames} frames at ${fps}fps for ${duration}ms...`
 	);
 
-	const encoder = new GIFEncoder(Math.round(box.width), Math.round(box.height));
+	const encoder = new GifEncoder(Math.round(box.width), Math.round(box.height));
 	const stream = fs.createWriteStream(outputPath);
 	encoder.createReadStream().pipe(stream);
 
