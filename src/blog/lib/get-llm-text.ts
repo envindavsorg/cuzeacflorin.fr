@@ -3,8 +3,8 @@ import { remark } from 'remark';
 import remarkGfm from 'remark-gfm';
 import remarkMdx from 'remark-mdx';
 import { remarkComponent } from '@/lib/remark-component';
-import type { Post } from '@/types/post';
 import 'dayjs/locale/fr.js';
+import type { Post } from '@/blog/types/post';
 
 dayjs.locale('fr');
 

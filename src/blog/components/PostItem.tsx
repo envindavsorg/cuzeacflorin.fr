@@ -3,8 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type React from 'react';
 import { lazy } from 'react';
+import type { Post } from '@/blog/types/post';
 import { cn } from '@/lib/utils';
-import type { Post } from '@/types/post';
 import 'dayjs/locale/fr.js';
 import {
 	BookBookmarkIcon,
