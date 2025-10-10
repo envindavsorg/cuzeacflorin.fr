@@ -1,7 +1,7 @@
 import type React from 'react';
-import { Panel, PanelHeader, PanelTitle } from '../../../../components/ui/Panel';
-import { CollapsibleList } from '../../components/CollapsibleList';
-import { CERTIFICATIONS } from '../../data/certifications';
+import { Panel, PanelHeader, PanelTitle } from '@/components/ui/Panel';
+import { CollapsibleList } from '@/features/root/components/CollapsibleList';
+import { CERTIFICATIONS } from '@/features/root/data/certifications';
 import { CertificationItem } from './CertificationItem';
 
 const CertificationsLength = (): React.JSX.Element => (

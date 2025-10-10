@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { type BrowserInfo, getBrowserInfo } from '../lib/browser';
+import { type BrowserInfo, getBrowserInfo } from '@/lib/browser';
 
 const useBrowser = () => {
 	const [browser, setBrowser] = useState<BrowserInfo>({

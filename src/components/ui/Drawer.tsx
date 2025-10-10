@@ -4,7 +4,7 @@ import { XIcon } from '@phosphor-icons/react';
 import { AnimatePresence, motion } from 'motion/react';
 import type React from 'react';
 import { createContext, useContext, useEffect, useState } from 'react';
-import { cn } from '../../lib/utils';
+import { cn } from '@/lib/utils';
 
 type DrawerContextType = {
 	isOpen: boolean;

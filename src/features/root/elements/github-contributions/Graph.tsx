@@ -4,7 +4,7 @@ import { SpinnerIcon } from '@phosphor-icons/react';
 import dayjs from 'dayjs';
 import type React from 'react';
 import { use } from 'react';
-import type { Activity } from '../../../../components/ui/ContributionGraph';
+import type { Activity } from '@/components/ui/ContributionGraph';
 import {
 	ContributionGraph,
 	ContributionGraphBlock,
@@ -12,13 +12,13 @@ import {
 	ContributionGraphFooter,
 	ContributionGraphLegend,
 	ContributionGraphTotalCount,
-} from '../../../../components/ui/ContributionGraph';
+} from '@/components/ui/ContributionGraph';
 import {
 	Tooltip,
 	TooltipContent,
 	TooltipTrigger,
-} from '../../../../components/ui/Tooltip';
-import { GITHUB_USERNAME } from '../../../../config/site';
+} from '@/components/ui/Tooltip';
+import { GITHUB_USERNAME } from '@/config/site';
 import 'dayjs/locale/fr.js';
 
 dayjs.locale('fr');

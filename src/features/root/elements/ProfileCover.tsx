@@ -1,7 +1,7 @@
 import type React from 'react';
-import { Greetings } from '../../../components/animations/Greetings';
-import { GreetingsContextMenu } from '../../context/GreetingsContextMenu';
-import { cn } from '../../../lib/utils';
+import { Greetings } from '@/components/animations/Greetings';
+import { GreetingsContextMenu } from '@/features/context/GreetingsContextMenu';
+import { cn } from '@/lib/utils';
 
 const ProfileCover = (): React.JSX.Element => (
 	<GreetingsContextMenu>

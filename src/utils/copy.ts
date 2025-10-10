@@ -1,4 +1,4 @@
-import { logger } from '../lib/logger';
+import { logger } from '@/lib/logger';
 
 const copyText = async (text: string) => {
 	try {

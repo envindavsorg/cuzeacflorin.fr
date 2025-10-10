@@ -6,7 +6,7 @@ import {
 	PaletteIcon,
 } from '@phosphor-icons/react/ssr';
 import type React from 'react';
-import type { ExperiencePositionIcon } from '../../data/experiences';
+import type { ExperiencePositionIcon } from '@/features/root/data/experiences';
 
 const iconMap: Record<ExperiencePositionIcon, Icon> = {
 	code: CodeIcon,

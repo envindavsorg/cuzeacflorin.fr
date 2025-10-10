@@ -1,14 +1,14 @@
 import dayjs from 'dayjs';
-import { getAllPosts } from '../../../blog/data/posts';
-import { getLLMText } from '../../../blog/lib/get-llm-text';
-import type { Post } from '../../../blog/types/post';
-import { SITE_INFO } from '../../../config/site';
-import { CERTIFICATIONS } from '../../../features/root/data/certifications';
-import { EXPERIENCES } from '../../../features/root/data/experiences';
-import { PROJECTS } from '../../../features/root/data/projects';
-import { SOCIAL_LINKS } from '../../../features/root/data/social-links';
-import { techStack } from '../../../features/root/data/tech-stack';
-import { USER } from '../../../features/root/data/user';
+import { getAllPosts } from '@/blog/data/posts';
+import { getLLMText } from '@/blog/lib/get-llm-text';
+import type { Post } from '@/blog/types/post';
+import { SITE_INFO } from '@/config/site';
+import { CERTIFICATIONS } from '@/features/root/data/certifications';
+import { EXPERIENCES } from '@/features/root/data/experiences';
+import { PROJECTS } from '@/features/root/data/projects';
+import { SOCIAL_LINKS } from '@/features/root/data/social-links';
+import { techStack } from '@/features/root/data/tech-stack';
+import { USER } from '@/features/root/data/user';
 import 'dayjs/locale/fr.js';
 
 dayjs.locale('fr');

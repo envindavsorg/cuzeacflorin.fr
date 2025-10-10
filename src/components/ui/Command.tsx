@@ -3,6 +3,7 @@
 import { MagnifyingGlassIcon } from '@phosphor-icons/react';
 import { Command as CommandPrimitive } from 'cmdk';
 import type React from 'react';
+import { cn } from '@/lib/utils';
 import {
 	Dialog,
 	DialogContent,
@@ -10,7 +11,6 @@ import {
 	DialogHeader,
 	DialogTitle,
 } from './Dialog';
-import { cn } from '../../lib/utils';
 
 const Command = ({
 	className,

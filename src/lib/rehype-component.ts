@@ -2,9 +2,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { u } from 'unist-builder';
 import { visit } from 'unist-util-visit';
-import { Index } from '../__registry__';
+import { Index } from '@/__registry__';
+import type { UnistNode, UnistTree } from '@/types/unist';
 import { logger } from './logger';
-import type { UnistNode, UnistTree } from '../types/unist';
 
 const getNodeAttributeByName = (node: UnistNode, name: string) =>
 	node.attributes?.find((attribute) => attribute.name === name);

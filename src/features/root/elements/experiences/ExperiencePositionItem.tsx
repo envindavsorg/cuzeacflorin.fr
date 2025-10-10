@@ -1,18 +1,18 @@
 import { InfinityIcon } from '@phosphor-icons/react/ssr';
 import type React from 'react';
-import { Markdown } from '../../../../components/markdown/markdown';
+import { Markdown } from '@/components/markdown/markdown';
 import {
 	CollapsibleChevronsIcon,
 	CollapsibleContent,
 	CollapsibleTrigger,
 	CollapsibleWithContext,
-} from '../../../../components/ui/Collapsible';
-import { Separator } from '../../../../components/ui/Separator';
-import { Tag } from '../../../../components/ui/Tag';
-import { Prose } from '../../../../components/ui/Typography';
-import type { ExperiencePosition } from '../../data/experiences';
+} from '@/components/ui/Collapsible';
+import { Separator } from '@/components/ui/Separator';
+import { Tag } from '@/components/ui/Tag';
+import { Prose } from '@/components/ui/Typography';
+import type { ExperiencePosition } from '@/features/root/data/experiences';
+import { cn } from '@/lib/utils';
 import { ExperienceIcon } from './ExperiencePositionIcon';
-import { cn } from '../../../../lib/utils';
 
 type ExperiencePositionItemProps = {
 	position: ExperiencePosition;

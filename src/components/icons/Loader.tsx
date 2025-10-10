@@ -1,8 +1,8 @@
 'use client';
 
 import { type ComponentType, lazy, Suspense } from 'react';
-import { logger } from '../../lib/logger';
-import { cn } from '../../lib/utils';
+import { logger } from '@/lib/logger';
+import { cn } from '@/lib/utils';
 
 type IconProps = {
 	className?: string;

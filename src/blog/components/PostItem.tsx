@@ -3,21 +3,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type React from 'react';
 import { lazy } from 'react';
-import type { Post } from '../types/post';
-import { cn } from '../../lib/utils';
+import { cn } from '@/lib/utils';
+import type { Post } from '@/types/post';
 import 'dayjs/locale/fr.js';
 import {
 	BookBookmarkIcon,
 	CalendarBlankIcon,
 	ClockIcon,
 } from '@phosphor-icons/react/ssr';
-import { Tag } from '../../components/ui/Tag';
-import { Prose } from '../../components/ui/Typography';
+import { Tag } from '@/components/ui/Tag';
+import { Prose } from '@/components/ui/Typography';
 
 dayjs.locale('fr');
 
 const ReactIcon = lazy(() =>
-	import('../../components/icons/content/React').then((m) => ({
+	import('@/components/icons/content/React').then((m) => ({
 		default: m.ReactIcon,
 	}))
 );

@@ -1,9 +1,9 @@
 'use client';
 
 import type React from 'react';
-import { Tabs } from '../../ui/Tabs';
-import type { InstallationType } from '../../../hooks/use-config';
-import useConfig from '../../../hooks/use-config';
+import { Tabs } from '@/components/ui/Tabs';
+import type { InstallationType } from '@/hooks/use-config';
+import useConfig from '@/hooks/use-config';
 
 export const CodeTabs = (
 	props: React.ComponentProps<typeof Tabs>

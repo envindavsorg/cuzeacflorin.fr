@@ -7,7 +7,7 @@ import puppeteer, {
 	type ElementHandle,
 	type Page,
 } from 'puppeteer-core';
-import { logger } from '../lib/logger';
+import { logger } from '@/lib/logger';
 
 const executablePath =
 	'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';

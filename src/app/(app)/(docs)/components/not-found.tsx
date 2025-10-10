@@ -1,7 +1,7 @@
 import { ArrowLeftIcon } from '@phosphor-icons/react/ssr';
 import Link from 'next/link';
 import type React from 'react';
-import { Button } from '../../../../components/ui/Button';
+import { Button } from '@/components/ui/Button';
 
 export const metadata = {
 	title: 'Page introuvable',

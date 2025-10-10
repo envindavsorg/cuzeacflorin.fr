@@ -23,9 +23,11 @@ export const YouTubeEmbed = ({
 	</div>
 );
 
-export const FramedImage = ({ ...props }: React.ComponentProps<'img'>) => (
+export const FramedImage = ({
+	...props
+}: React.ComponentProps<'img'>): React.JSX.Element => (
 	<figure className="relative [&_img]:rounded-lg">
-		<img {...props} />
+		<img {...props} alt="Frame" />
 		<div className="pointer-events-none absolute inset-0 rounded-lg ring-1 ring-black/10 ring-inset dark:ring-white/10" />
 	</figure>
 );

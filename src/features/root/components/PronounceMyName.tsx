@@ -2,8 +2,8 @@
 
 import { SpeakerHighIcon } from '@phosphor-icons/react';
 import { motion } from 'motion/react';
-import { soundManager } from '../../../lib/sound-manager';
-import { cn } from '../../../lib/utils';
+import { soundManager } from '@/lib/sound-manager';
+import { cn } from '@/lib/utils';
 
 type PronounceMyNameProps = {
 	className?: string;

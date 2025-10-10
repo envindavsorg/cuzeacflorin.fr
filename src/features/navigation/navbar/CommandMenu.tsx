@@ -24,8 +24,8 @@ import Image, { type StaticImageData } from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useTheme } from 'next-themes';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import type { Post } from '../../../blog/types/post';
-import { Button } from '../../../components/ui/Button';
+import type { Post } from '@/blog/types/post';
+import { Button } from '@/components/ui/Button';
 import {
 	CommandDialog,
 	CommandEmpty,
@@ -34,11 +34,11 @@ import {
 	CommandItem,
 	CommandList,
 	CommandSeparator,
-} from '../../../components/ui/Command';
-import { Separator } from '../../../components/ui/Separator';
-import { CuzeacFlorinMark } from '../../assets/CuzeacFlorinMark';
-import { SOCIAL_LINKS } from '../../root/data/social-links';
-import { cn } from '../../../lib/utils';
+} from '@/components/ui/Command';
+import { Separator } from '@/components/ui/Separator';
+import { CuzeacFlorinMark } from '@/features/assets/CuzeacFlorinMark';
+import { SOCIAL_LINKS } from '@/features/root/data/social-links';
+import { cn } from '@/lib/utils';
 
 type CommandLinkItem = {
 	title: string;

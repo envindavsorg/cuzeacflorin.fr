@@ -1,5 +1,5 @@
 import type React from 'react';
-import type { Experience } from '../../data/experiences';
+import type { Experience } from '@/features/root/data/experiences';
 import { ExperiencePositionItem } from './ExperiencePositionItem';
 
 type ExperienceItemProps = {

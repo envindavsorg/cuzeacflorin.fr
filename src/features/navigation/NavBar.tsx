@@ -2,20 +2,18 @@ import { GithubLogoIcon, RssIcon } from '@phosphor-icons/react/ssr';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import type React from 'react';
-import { getAllPosts } from '../../blog/data/posts';
-import type { Post } from '../../blog/types/post';
-import { Button } from '../../components/ui/Button';
-import { MAIN_NAV, SOURCE_CODE_GITHUB_URL } from '../../config/site';
+import { getAllPosts } from '@/blog/data/posts';
+import type { Post } from '@/blog/types/post';
+import { Button } from '@/components/ui/Button';
+import { MAIN_NAV, SOURCE_CODE_GITHUB_URL } from '@/config/site';
+import { cn } from '@/lib/utils';
 import { DesktopNav } from './navbar/DesktopNav';
-import { cn } from '../../lib/utils';
 import { SiteHeaderMark } from './navbar/SiteHeaderMark';
 import { SiteHeaderWrapper } from './navbar/SiteHeaderWrapper';
 import { ToggleTheme } from './navbar/ToggleTheme';
 
 const CommandMenu = dynamic(() =>
-	import('./navbar/CommandMenu').then(
-		(mod) => mod.CommandMenu
-	)
+	import('./navbar/CommandMenu').then((mod) => mod.CommandMenu)
 );
 
 const MobileNav = dynamic(() =>

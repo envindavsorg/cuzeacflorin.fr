@@ -1,8 +1,0 @@
-onlyBuiltDependencies:
-  - '@tailwindcss/oxide'
-  - '@tsparticles/engine'
-  - '@vercel/speed-insights'
-  - canvas
-  - esbuild
-  - msw
-  - sharp

@@ -16,10 +16,10 @@ import {
 	ContextMenuItem,
 	ContextMenuSeparator,
 	ContextMenuTrigger,
-} from '../../components/ui/ContextMenu';
-import { META_THEME_COLORS } from '../../config/site';
-import useMetaColor from '../../hooks/use-meta-color';
-import { soundManager } from '../../lib/sound-manager';
+} from '@/components/ui/ContextMenu';
+import { META_THEME_COLORS } from '@/config/site';
+import useMetaColor from '@/hooks/use-meta-color';
+import { soundManager } from '@/lib/sound-manager';
 
 type RootContextMenuProps = {
 	children: React.ReactNode;

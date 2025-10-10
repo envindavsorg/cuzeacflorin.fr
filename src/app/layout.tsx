@@ -1,14 +1,14 @@
-import '../styles/globals.css';
+import '@/styles/globals.css';
 
 import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import type React from 'react';
 import type { WebSite, WithContext } from 'schema-dts';
-import { META_THEME_COLORS, SITE_INFO } from '../config/site';
-import { USER } from '../features/root/data/user';
-import { mono, sans } from '../lib/fonts';
-import { cn } from '../lib/utils';
-import { Providers } from '../providers/Providers';
+import { META_THEME_COLORS, SITE_INFO } from '@/config/site';
+import { USER } from '@/features/root/data/user';
+import { mono, sans } from '@/lib/fonts';
+import { cn } from '@/lib/utils';
+import { Providers } from '@/providers/Providers';
 
 const getWebSiteJsonLd = (): WithContext<WebSite> => ({
 	'@context': 'https://schema.org',

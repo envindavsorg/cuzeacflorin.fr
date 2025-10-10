@@ -1,10 +1,7 @@
 import type React from 'react';
-import { Panel, PanelHeader, PanelTitle } from '../../../../components/ui/Panel';
-import { SOCIAL_LINKS } from '../../data/social-links';
-import {
-	type FollowerCounts,
-	SocialLinksItem,
-} from './SocialLinksItem';
+import { Panel, PanelHeader, PanelTitle } from '@/components/ui/Panel';
+import { SOCIAL_LINKS } from '@/features/root/data/social-links';
+import { type FollowerCounts, SocialLinksItem } from './SocialLinksItem';
 
 const SocialLinks = ({
 	githubFollowers,

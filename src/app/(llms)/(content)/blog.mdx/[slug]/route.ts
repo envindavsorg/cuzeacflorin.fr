@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
-import { getAllPosts } from '../../../../../blog/data/posts';
-import { getLLMText } from '../../../../../blog/lib/get-llm-text';
-import type { Post } from '../../../../../blog/types/post';
+import { getAllPosts } from '@/blog/data/posts';
+import { getLLMText } from '@/blog/lib/get-llm-text';
+import type { Post } from '@/blog/types/post';
 
 export const generateStaticParams = async (): Promise<{ slug: string }[]> => {
 	const posts: Post[] = getAllPosts();

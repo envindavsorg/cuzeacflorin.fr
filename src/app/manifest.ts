@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { SITE_INFO } from '../config/site';
+import { SITE_INFO } from '@/config/site';
 
 const manifest = (): MetadataRoute.Manifest => ({
 	short_name: SITE_INFO.name,

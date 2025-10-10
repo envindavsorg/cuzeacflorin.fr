@@ -3,7 +3,7 @@
 import { XIcon } from '@phosphor-icons/react';
 import { Dialog as DialogPrimitive } from 'radix-ui';
 import type React from 'react';
-import { cn } from '../../lib/utils';
+import { cn } from '@/lib/utils';
 
 const Dialog = ({
 	...props

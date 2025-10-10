@@ -6,11 +6,11 @@ import { useIntersectionObserver } from '@uidotdev/usehooks';
 import Link from 'next/link';
 import type React from 'react';
 import { useEffect, useRef } from 'react';
-import { HeartIcon } from '../../components/icons/HeartIcon';
-import { PizzaIcon } from '../../components/icons/Pizza';
-import { Divider } from '../../components/ui/Divider';
+import { HeartIcon } from '@/components/icons/HeartIcon';
+import { PizzaIcon } from '@/components/icons/Pizza';
+import { Divider } from '@/components/ui/Divider';
+import { cn } from '@/lib/utils';
 import { Metadata } from './Metadata';
-import { cn } from '../../lib/utils';
 
 type FooterProps = {
 	commit?: {

@@ -2,9 +2,9 @@
 
 import { AnimatePresence } from 'motion/react';
 import { useState } from 'react';
-import { BonjourEffect } from './effects/BonjourEffect';
-import { HelloEffect } from './effects/HelloEffect';
-import { HolaEffect } from './effects/HolaEffect';
+import { BonjourEffect } from '@/components/animations/effects/BonjourEffect';
+import { HelloEffect } from '@/components/animations/effects/HelloEffect';
+import { HolaEffect } from '@/components/animations/effects/HolaEffect';
 
 type Greeting = 'bonjour' | 'hello' | 'hola';
 const GREETINGS: Greeting[] = ['bonjour', 'hello', 'hola'];

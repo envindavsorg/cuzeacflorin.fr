@@ -1,12 +1,9 @@
 'use server';
 
 import { revalidateTag, unstable_cache } from 'next/cache';
+import { octokit } from '@/lib/octokit';
 import { GITHUB_QUERY } from './query/github.query';
-import type {
-	GitHubResponse,
-	GitHubUserData,
-} from './types/github.types';
-import { octokit } from '../../../lib/octokit';
+import type { GitHubResponse, GitHubUserData } from './types/github.types';
 
 const { GITHUB_USERNAME = '', GITHUB_REPO_NAME = '' } = process.env;
 

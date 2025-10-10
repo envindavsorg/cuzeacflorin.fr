@@ -1,5 +1,5 @@
 import type React from 'react';
-import { CodeCollapsibleWrapper } from './CodeCollapsibleWrapper';
+import { CodeCollapsibleWrapper } from '@/components/markdown/elements/CodeCollapsibleWrapper';
 
 type ComponentSourceProps = {
 	name: string;

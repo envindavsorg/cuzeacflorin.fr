@@ -5,17 +5,17 @@ import {
 } from '@phosphor-icons/react/ssr';
 import Image from 'next/image';
 import type React from 'react';
-import { Markdown } from '../../../../components/markdown/markdown';
+import { Markdown } from '@/components/markdown/markdown';
 import {
 	CollapsibleChevronsIcon,
 	CollapsibleContent,
 	CollapsibleTrigger,
 	CollapsibleWithContext,
-} from '../../../../components/ui/Collapsible';
-import { Tag } from '../../../../components/ui/Tag';
-import { SimpleTooltip } from '../../../../components/ui/Tooltip';
-import { Prose } from '../../../../components/ui/Typography';
-import type { Project } from '../../data/projects';
+} from '@/components/ui/Collapsible';
+import { Tag } from '@/components/ui/Tag';
+import { SimpleTooltip } from '@/components/ui/Tooltip';
+import { Prose } from '@/components/ui/Typography';
+import type { Project } from '@/features/root/data/projects';
 
 type ProjectItemProps = {
 	className?: string;

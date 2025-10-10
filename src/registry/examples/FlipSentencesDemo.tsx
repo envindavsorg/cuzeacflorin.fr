@@ -1,7 +1,7 @@
 'use client';
 
 import type React from 'react';
-import { FlipSentences } from '../flip-sentences';
+import { FlipSentences } from '@/registry/flip-sentences';
 
 const EXAMPLE_SENTENCES = [
 	'Imagine, code, crée, inspire.',

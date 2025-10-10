@@ -3,7 +3,7 @@
 import type { TargetAndTransition } from 'motion/react';
 import { motion } from 'motion/react';
 import type React from 'react';
-import { cn } from '../../lib/utils';
+import { cn } from '@/lib/utils';
 
 const initialProps: TargetAndTransition = {
 	pathLength: 0,

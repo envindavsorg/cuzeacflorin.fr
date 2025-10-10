@@ -6,8 +6,8 @@ import { loadSlim } from '@tsparticles/slim';
 import { useTheme } from 'next-themes';
 import type React from 'react';
 import { memo, useEffect, useMemo, useState } from 'react';
-import { checkPerformanceSupport, createSparkleOptions } from '../../lib/sparkles';
-import { cn } from '../../lib/utils';
+import { checkPerformanceSupport, createSparkleOptions } from '@/lib/sparkles';
+import { cn } from '@/lib/utils';
 
 type SparklesProps = {
 	id?: string;

@@ -2,9 +2,9 @@
 
 import { EnvelopeIcon } from '@phosphor-icons/react';
 import type React from 'react';
-import { IntroItem } from './IntroItem';
-import useIsClient from '../../../../hooks/use-is-client';
-import { decodeEmail } from '../../../../utils/string';
+import { IntroItem } from '@/features/root/elements/overview/IntroItem';
+import useIsClient from '@/hooks/use-is-client';
+import { decodeEmail } from '@/utils/string';
 
 type EmailItemProps = {
 	email: string;

@@ -1,6 +1,6 @@
 import type React from 'react';
-import { Panel, PanelHeader, PanelTitle } from '../../../../components/ui/Panel';
-import { EXPERIENCES } from '../../data/experiences';
+import { Panel, PanelHeader, PanelTitle } from '@/components/ui/Panel';
+import { EXPERIENCES } from '@/features/root/data/experiences';
 import { ExperienceItem } from './ExperienceItem';
 
 export const Experiences = (): React.JSX.Element => (

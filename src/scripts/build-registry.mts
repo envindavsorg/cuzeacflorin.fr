@@ -3,8 +3,8 @@ import path from 'node:path';
 import { rimraf } from 'rimraf';
 import { type Registry, registrySchema } from 'shadcn/schema';
 
-const { registryConfig } = await import('../config/registry.js');
-const { registry } = await import('../registry');
+const { registryConfig } = await import('@/config/registry.js');
+const { registry } = await import('@/registry');
 const REGISTRY_PATH = path.join(process.cwd(), 'src/__registry__');
 const PUBLIC_REGISTRY_PATH = path.join(process.cwd(), 'public/r');
 

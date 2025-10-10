@@ -2,9 +2,9 @@ import { ArrowUpRightIcon } from '@phosphor-icons/react/ssr';
 import Image from 'next/image';
 import Link from 'next/link';
 import type React from 'react';
-import { Counter } from '../../../../components/text/Counter';
-import type { SocialLinksProps } from '../../data/social-links';
-import { cn } from '../../../../lib/utils';
+import { Counter } from '@/components/text/Counter';
+import type { SocialLinksProps } from '@/features/root/data/social-links';
+import { cn } from '@/lib/utils';
 
 export type FollowerCounts = {
 	githubFollowers: number;

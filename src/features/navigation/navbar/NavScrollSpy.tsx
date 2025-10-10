@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Nav, type NavigationItem } from './Nav';
-import useMediaQuery from '../../../hooks/use-media-query';
+import { Nav, type NavigationItem } from '@/features/navigation/navbar/Nav';
+import useMediaQuery from '@/hooks/use-media-query';
 
 const useActiveItem = (itemIds: string[], enabled = true) => {
 	const [activeId, setActiveId] = useState<string | null>(null);

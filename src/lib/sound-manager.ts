@@ -1,4 +1,4 @@
-import { logger } from './logger';
+import { logger } from '@/lib/logger';
 
 class SoundManager {
 	private readonly audioCache = new Map<string, HTMLAudioElement>();

@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import type { MetadataRoute } from 'next';
-import { getAllPosts, getPostsByCategory } from '../blog/data/posts';
-import { SITE_INFO } from '../config/site';
+import { getAllPosts, getPostsByCategory } from '@/blog/data/posts';
+import { SITE_INFO } from '@/config/site';
 import 'dayjs/locale/fr.js';
 
 dayjs.locale('fr');

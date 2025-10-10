@@ -1,8 +1,8 @@
 import type { StaticImageData } from 'next/image';
-import githubImage from '../../../images/github.webp';
-import linkedinImage from '../../../images/linkedin.webp';
-import mailImage from '../../../images/mail.webp';
-import phoneImage from '../../../images/phone.webp';
+import githubImage from '@/images/github.webp';
+import linkedinImage from '@/images/linkedin.webp';
+import mailImage from '@/images/mail.webp';
+import phoneImage from '@/images/phone.webp';
 
 export type SocialLinksProps = {
 	icon: StaticImageData;

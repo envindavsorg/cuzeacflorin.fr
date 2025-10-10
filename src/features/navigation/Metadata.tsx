@@ -10,9 +10,9 @@ import { useWindowSize } from '@uidotdev/usehooks';
 import dayjs from 'dayjs';
 import type React from 'react';
 import { memo, useMemo } from 'react';
-import { Panel, PanelHeader, PanelTitle } from '../../components/ui/Panel';
-import useBrowser from '../../hooks/use-browser';
-import { cn } from '../../lib/utils';
+import { Panel, PanelHeader, PanelTitle } from '@/components/ui/Panel';
+import useBrowser from '@/hooks/use-browser';
+import { cn } from '@/lib/utils';
 import 'dayjs/locale/fr.js';
 
 dayjs.locale('fr');

@@ -1,13 +1,13 @@
 import type React from 'react';
-import { Markdown } from '../../../components/markdown/markdown';
+import { Markdown } from '@/components/markdown/markdown';
 import {
 	Panel,
 	PanelContent,
 	PanelHeader,
 	PanelTitle,
-} from '../../../components/ui/Panel';
-import { Prose } from '../../../components/ui/Typography';
-import { USER } from '../data/user';
+} from '@/components/ui/Panel';
+import { Prose } from '@/components/ui/Typography';
+import { USER } from '@/features/root/data/user';
 import { ProfileAboutToggle } from './ProfileAboutToggle';
 
 const ProfileAbout = (): React.JSX.Element => {

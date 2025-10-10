@@ -1,5 +1,5 @@
-import type React from './React';
-import type { SVGProps } from './React';
+import type React from 'react';
+import type { SVGProps } from 'react';
 
 export const YarnIcon = ({
 	...props

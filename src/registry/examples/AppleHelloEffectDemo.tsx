@@ -1,7 +1,7 @@
 'use client';
 
 import type React from 'react';
-import { AppleHelloEffect } from '../apple-hello-effect';
+import { AppleHelloEffect } from '@/registry/apple-hello-effect';
 
 const AppleHelloEffectDemo = (): React.JSX.Element => (
 	<div className="flex min-h-64 items-center justify-center">

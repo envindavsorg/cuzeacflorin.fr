@@ -2,8 +2,8 @@ import dayjs from 'dayjs';
 import { remark } from 'remark';
 import remarkGfm from 'remark-gfm';
 import remarkMdx from 'remark-mdx';
-import type { Post } from '../types/post';
-import { remarkComponent } from '../../lib/remark-component';
+import { remarkComponent } from '@/lib/remark-component';
+import type { Post } from '@/types/post';
 import 'dayjs/locale/fr.js';
 
 dayjs.locale('fr');

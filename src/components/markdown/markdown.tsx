@@ -3,7 +3,7 @@ import { MarkdownAsync } from 'react-markdown';
 import rehypeExternalLinks from 'rehype-external-links';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
-import { rehypeAddQueryParams } from '../../lib/rehype-add-query-params';
+import { rehypeAddQueryParams } from '@/lib/rehype-add-query-params';
 
 const Markdown = (
 	props: React.ComponentProps<typeof MarkdownAsync>

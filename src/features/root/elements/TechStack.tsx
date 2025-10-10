@@ -4,15 +4,15 @@ import {
 	MarqueeContent,
 	MarqueeFade,
 	MarqueeItem,
-} from '../../../components/ui/Marquee';
+} from '@/components/ui/Marquee';
 import {
 	Panel,
 	PanelContent,
 	PanelHeader,
 	PanelTitle,
-} from '../../../components/ui/Panel';
-import { type Stack, techStack } from '../data/tech-stack';
-import { cn } from '../../../lib/utils';
+} from '@/components/ui/Panel';
+import { type Stack, techStack } from '@/features/root/data/tech-stack';
+import { cn } from '@/lib/utils';
 
 const stackIcons: React.JSX.Element[] = techStack.map(
 	({ icon: Icon, title }: Stack, index) => (

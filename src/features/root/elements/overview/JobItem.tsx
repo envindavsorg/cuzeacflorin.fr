@@ -1,6 +1,6 @@
 import { BriefcaseIcon } from '@phosphor-icons/react/ssr';
 import type React from 'react';
-import { IntroItem } from './IntroItem';
+import { IntroItem } from '@/features/root/elements/overview/IntroItem';
 
 type JobItemProps = {
 	title: string;

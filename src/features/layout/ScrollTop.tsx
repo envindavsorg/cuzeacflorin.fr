@@ -4,9 +4,9 @@ import type { Player } from '@lordicon/react';
 import { useMotionValueEvent, useScroll } from 'motion/react';
 import type React from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { ArrowUpIcon } from '../../components/icons/ArrowUpIcon';
-import { Button } from '../../components/ui/Button';
-import { cn } from '../../lib/utils';
+import { ArrowUpIcon } from '@/components/icons/ArrowUpIcon';
+import { Button } from '@/components/ui/Button';
+import { cn } from '@/lib/utils';
 
 const VISIBILITY_THRESHOLD = 400;
 

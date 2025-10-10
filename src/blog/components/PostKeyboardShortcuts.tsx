@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import type React from 'react';
 import { useEffect } from 'react';
-import type { Post } from '../types/post';
+import type { Post } from '@/types/post';
 
 type PostKeyboardShortcutsProps = {
 	basePath: string;

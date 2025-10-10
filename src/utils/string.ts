@@ -1,4 +1,4 @@
-import { formatIncompletePhoneNumber } from '../lib/libphonenumber';
+import { formatIncompletePhoneNumber } from '@/lib/libphonenumber';
 
 export const decodeEmail = (email: string) => atob(email);
 

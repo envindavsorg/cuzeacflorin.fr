@@ -65,7 +65,7 @@ export const Index: Record<string, any> = {
 			},
 		],
 		component: React.lazy(
-			() => import('../registry/examples/AppleHelloEffectDemo.tsx')
+			() => import('@/registry/examples/AppleHelloEffectDemo.tsx')
 		),
 	},
 	'theme-switcher-demo': {
@@ -79,7 +79,7 @@ export const Index: Record<string, any> = {
 			},
 		],
 		component: React.lazy(
-			() => import('../registry/examples/ThemeSwitcherDemo.tsx')
+			() => import('@/registry/examples/ThemeSwitcherDemo.tsx')
 		),
 	},
 	'flip-sentences-demo': {
@@ -93,7 +93,7 @@ export const Index: Record<string, any> = {
 			},
 		],
 		component: React.lazy(
-			() => import('../registry/examples/FlipSentencesDemo.tsx')
+			() => import('@/registry/examples/FlipSentencesDemo.tsx')
 		),
 	},
 };

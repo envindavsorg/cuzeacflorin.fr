@@ -1,16 +1,16 @@
 import { CheckIcon, InfoIcon } from '@phosphor-icons/react/ssr';
 import dayjs from 'dayjs';
 import type { Metadata } from 'next';
-import { PostItem } from '../../../../blog/components/PostItem';
-import { PostTagFilter } from '../../../../blog/components/PostTagFilter';
-import { getPostsByCategory } from '../../../../blog/data/posts';
-import type { Post } from '../../../../blog/types/post';
+import { PostItem } from '@/blog/components/PostItem';
+import { PostTagFilter } from '@/blog/components/PostTagFilter';
+import { getPostsByCategory } from '@/blog/data/posts';
+import type { Post } from '@/blog/types/post';
 import {
 	AnimatedSpan,
 	Terminal,
 	TypingAnimation,
-} from '../../../../components/animations/Terminal';
-import { BadgeWithIcon } from '../../../../components/ui/Badge';
+} from '@/components/animations/Terminal';
+import { BadgeWithIcon } from '@/components/ui/Badge';
 
 export const metadata: Metadata = {
 	title: 'Composants React',

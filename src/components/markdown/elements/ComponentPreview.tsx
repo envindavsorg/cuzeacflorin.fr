@@ -2,14 +2,14 @@
 
 import { CodeIcon, EyeIcon, RepeatIcon } from '@phosphor-icons/react';
 import React, { useMemo, useState } from 'react';
-import { Index } from '../../../__registry__';
+import { Index } from '@/__registry__';
+import { Button } from '@/components/ui/Button';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
+import { SimpleTooltip } from '@/components/ui/Tooltip';
+import { Code as CodeInline } from '@/components/ui/Typography';
+import { cn } from '@/lib/utils';
 import { CodeCollapsibleWrapper } from './CodeCollapsibleWrapper';
 import { OpenInV0 } from './OpenInV0';
-import { Button } from '../../ui/Button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../ui/Tabs';
-import { SimpleTooltip } from '../../ui/Tooltip';
-import { Code as CodeInline } from '../../ui/Typography';
-import { cn } from '../../../lib/utils';
 
 export const ComponentPreview = ({
 	className,

@@ -1,5 +1,5 @@
 import sharp from 'sharp';
-import { logger } from '../lib/logger';
+import { logger } from '@/lib/logger';
 
 const convertImageToJpeg = async (imageBuffer: Buffer): Promise<Buffer> => {
 	try {

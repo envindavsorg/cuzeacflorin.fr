@@ -4,14 +4,11 @@ import {
 	PanelContent,
 	PanelHeader,
 	PanelTitle,
-} from '../../../../components/ui/Panel';
-import { Tag } from '../../../../components/ui/Tag';
-import { getGitHubUserData } from '../../actions/github.action';
-import { getGitHubContributions } from '../../data/github-contributions';
-import {
-	Graph,
-	GraphFallback,
-} from './Graph';
+} from '@/components/ui/Panel';
+import { Tag } from '@/components/ui/Tag';
+import { getGitHubUserData } from '@/features/root/actions/github.action';
+import { getGitHubContributions } from '@/features/root/data/github-contributions';
+import { Graph, GraphFallback } from './Graph';
 
 export const GitHubContributions = async () => {
 	const contributions = getGitHubContributions();

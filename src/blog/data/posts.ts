@@ -1,8 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
-import { readingTime } from '../lib/read';
-import type { Post, PostMetadata } from '../types/post';
+import { readingTime } from '@/blog/lib/read';
+import type { Post, PostMetadata } from '@/blog/types/post';
 
 const parseFrontmatter = (fileContent: string) => {
 	const file = matter(fileContent);

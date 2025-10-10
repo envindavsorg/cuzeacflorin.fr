@@ -10,21 +10,21 @@ import Link from 'next/link';
 import { useTheme } from 'next-themes';
 import type React from 'react';
 import { toast } from 'sonner';
-import { getBonjourSVG } from '../../components/animations/effects/BonjourEffect';
-import { getHelloSVG } from '../../components/animations/effects/HelloEffect';
-import { getHolaSVG } from '../../components/animations/effects/HolaEffect';
-import { EnglishFlag } from '../../components/icons/flags/EnglishFlag';
-import { FrenchFlag } from '../../components/icons/flags/FrenchFlag';
-import { SpanishFlag } from '../../components/icons/flags/SpanishFlag';
+import { getBonjourSVG } from '@/components/animations/effects/BonjourEffect';
+import { getHelloSVG } from '@/components/animations/effects/HelloEffect';
+import { getHolaSVG } from '@/components/animations/effects/HolaEffect';
+import { EnglishFlag } from '@/components/icons/flags/EnglishFlag';
+import { FrenchFlag } from '@/components/icons/flags/FrenchFlag';
+import { SpanishFlag } from '@/components/icons/flags/SpanishFlag';
 import {
 	ContextMenu,
 	ContextMenuContent,
 	ContextMenuItem,
 	ContextMenuSeparator,
 	ContextMenuTrigger,
-} from '../../components/ui/ContextMenu';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/Tabs';
-import copyText from '../../utils/copy';
+} from '@/components/ui/ContextMenu';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
+import copyText from '@/utils/copy';
 
 type GreetingsContextMenuProps = {
 	children: React.ReactNode;

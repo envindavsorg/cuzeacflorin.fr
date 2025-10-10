@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import type React from 'react';
-import { FlipSentences } from '../components/FlipSentences';
-import { PronounceMyName } from '../components/PronounceMyName';
-import { USER } from '../data/user';
-import { cn } from '../../../lib/utils';
+import { PronounceMyName } from '@/features/root/components/PronounceMyName';
+import { USER } from '@/features/root/data/user';
+import { cn } from '@/lib/utils';
+import { FlipSentences } from '@/registry/flip-sentences';
 
 export const ProfileHeader = (): React.JSX.Element => (
 	<div className="screen-line-after flex border-edge border-x">

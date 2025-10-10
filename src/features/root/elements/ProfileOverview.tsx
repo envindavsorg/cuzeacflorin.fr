@@ -5,13 +5,13 @@ import {
 	MapPinIcon,
 } from '@phosphor-icons/react/ssr';
 import type React from 'react';
-import { Panel, PanelContent } from '../../../components/ui/Panel';
-import { USER } from '../data/user';
+import { Panel, PanelContent } from '@/components/ui/Panel';
+import { USER } from '@/features/root/data/user';
+import { urlToName } from '@/utils/url';
 import { EmailItem } from './overview/EmailItem';
 import { IntroItem } from './overview/IntroItem';
 import { JobItem } from './overview/JobItem';
 import { PhoneItem } from './overview/PhoneItem';
-import { urlToName } from '../../../utils/url';
 
 const ProfileOverview = (): React.JSX.Element => (
 	<Panel>

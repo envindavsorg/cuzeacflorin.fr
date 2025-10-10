@@ -1,8 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import puppeteer from 'puppeteer-core';
-import { logger } from '../lib/logger';
-import type { CaptureScreenshot, FilePath } from '../types/capture';
+import { logger } from '@/lib/logger';
+import type { CaptureScreenshot, FilePath } from '@/types/capture';
 
 const executablePath =
 	'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';

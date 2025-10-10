@@ -1,7 +1,7 @@
 import type React from 'react';
-import { Divider } from '../../components/ui/Divider';
-import { ProfileHeader } from '../../features/root/elements/ProfileHeader';
-import { ProfileOverview } from '../../features/root/elements/ProfileOverview';
+import { Divider } from '@/components/ui/Divider';
+import { ProfileHeader } from '@/features/root/elements/ProfileHeader';
+import { ProfileOverview } from '@/features/root/elements/ProfileOverview';
 
 const Page = (): React.JSX.Element => (
 	<div className="mx-auto flex h-screen flex-col justify-center md:max-w-3xl">

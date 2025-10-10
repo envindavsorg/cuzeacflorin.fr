@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { SITE_INFO } from '../config/site';
+import { SITE_INFO } from '@/config/site';
 
 const robots = (): MetadataRoute.Robots => ({
 	rules: [

@@ -9,16 +9,16 @@ import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import { visit } from 'unist-util-visit';
-import { CodeBlockCommand } from './elements/CodeBlockCommand';
-import { CodeCollapsibleWrapper } from './elements/CodeCollapsibleWrapper';
-import { CodeTabs } from './elements/CodeTabs';
-import { ComponentPreview } from './elements/ComponentPreview';
-import { ComponentSource } from './elements/ComponentSource';
-import { CopyButton } from './elements/CopyButton';
+import { CodeBlockCommand } from '@/components/markdown/elements/CodeBlockCommand';
+import { CodeCollapsibleWrapper } from '@/components/markdown/elements/CodeCollapsibleWrapper';
+import { CodeTabs } from '@/components/markdown/elements/CodeTabs';
+import { ComponentPreview } from '@/components/markdown/elements/ComponentPreview';
+import { ComponentSource } from '@/components/markdown/elements/ComponentSource';
+import { CopyButton } from '@/components/markdown/elements/CopyButton';
 import {
 	FramedImage,
 	YouTubeEmbed,
-} from './elements/Embed';
+} from '@/components/markdown/elements/Embed';
 import {
 	Table,
 	TableBody,
@@ -26,15 +26,15 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
-} from '../ui/Table';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/Tabs';
-import { Code, Heading } from '../ui/Typography';
-import { rehypeAddQueryParams } from '../../lib/rehype-add-query-params';
-import { rehypeComponent } from '../../lib/rehype-component';
-import { rehypeNpmCommand } from '../../lib/rehype-npm-command';
-import { remarkCodeImport } from '../../lib/remark-code-import';
-import { cn } from '../../lib/utils';
-import type { NpmCommands } from '../../types/unist';
+} from '@/components/ui/Table';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
+import { Code, Heading } from '@/components/ui/Typography';
+import { rehypeAddQueryParams } from '@/lib/rehype-add-query-params';
+import { rehypeComponent } from '@/lib/rehype-component';
+import { rehypeNpmCommand } from '@/lib/rehype-npm-command';
+import { remarkCodeImport } from '@/lib/remark-code-import';
+import { cn } from '@/lib/utils';
+import type { NpmCommands } from '@/types/unist';
 
 const JSONIcon = lazy(() =>
 	import('../icons/content/JSON').then((m) => ({

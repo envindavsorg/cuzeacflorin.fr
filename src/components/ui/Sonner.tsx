@@ -2,9 +2,9 @@
 
 import { useTheme } from 'next-themes';
 import type React from 'react';
-import type { ToasterProps } from './Sonner';
-import { Toaster as Sonner } from './Sonner';
-import { cn } from '../../lib/utils';
+import type { ToasterProps } from 'sonner';
+import { Toaster as Sonner } from 'sonner';
+import { cn } from '@/lib/utils';
 
 const Toaster = ({ ...props }: ToasterProps): React.JSX.Element => {
 	const { theme = 'system' } = useTheme();

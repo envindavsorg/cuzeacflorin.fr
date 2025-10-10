@@ -5,23 +5,23 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { BlogPosting as PageSchema, WithContext } from 'schema-dts';
-import { LLMCopyButtonWithViewOptions } from '../../../../../blog/actions/post.action';
-import { PostKeyboardShortcuts } from '../../../../../blog/components/PostKeyboardShortcuts';
-import { PostShareMenu } from '../../../../../blog/components/PostShareMenu';
+import { LLMCopyButtonWithViewOptions } from '@/blog/actions/post.action';
+import { PostKeyboardShortcuts } from '@/blog/components/PostKeyboardShortcuts';
+import { PostShareMenu } from '@/blog/components/PostShareMenu';
 import {
 	findNeighbour,
 	getPostBySlug,
 	getPostsByCategory,
-} from '../../../../../blog/data/posts';
-import { InlineToc } from '../../../../../blog/elements/InlineToc';
-import type { Post } from '../../../../../blog/types/post';
-import { MDX } from '../../../../../components/markdown/mdx';
-import { Button } from '../../../../../components/ui/Button';
-import { Divider } from '../../../../../components/ui/Divider';
-import { Prose } from '../../../../../components/ui/Typography';
-import { SITE_INFO } from '../../../../../config/site';
-import { USER } from '../../../../../features/root/data/user';
-import { cn } from '../../../../../lib/utils';
+} from '@/blog/data/posts';
+import { InlineToc } from '@/blog/elements/InlineToc';
+import type { Post } from '@/blog/types/post';
+import { MDX } from '@/components/markdown/mdx';
+import { Button } from '@/components/ui/Button';
+import { Divider } from '@/components/ui/Divider';
+import { Prose } from '@/components/ui/Typography';
+import { SITE_INFO } from '@/config/site';
+import { USER } from '@/features/root/data/user';
+import { cn } from '@/lib/utils';
 import 'dayjs/locale/fr.js';
 
 dayjs.locale('fr');

@@ -1,5 +1,5 @@
-import type { Activity } from '../../../components/ui/ContributionGraph';
-import { GITHUB_USERNAME } from '../../../config/site';
+import type { Activity } from '@/components/ui/ContributionGraph';
+import { GITHUB_USERNAME } from '@/config/site';
 
 type GitHubContributionsResponse = {
 	contributions: Activity[];

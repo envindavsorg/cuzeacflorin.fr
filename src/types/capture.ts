@@ -1,5 +1,5 @@
 import type { Browser } from 'puppeteer-core';
-import type { SIZE } from '../scripts/capture';
+import type { SIZE } from '@/scripts/capture';
 
 export type Theme = 'light' | 'dark';
 

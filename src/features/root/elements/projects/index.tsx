@@ -1,7 +1,7 @@
 import type React from 'react';
-import { Panel, PanelHeader, PanelTitle } from '../../../../components/ui/Panel';
-import { CollapsibleList } from '../../components/CollapsibleList';
-import { PROJECTS } from '../../data/projects';
+import { Panel, PanelHeader, PanelTitle } from '@/components/ui/Panel';
+import { CollapsibleList } from '@/features/root/components/CollapsibleList';
+import { PROJECTS } from '@/features/root/data/projects';
 import { ProjectItem } from './ProjectItem';
 
 type ProjectsLengthProps = {

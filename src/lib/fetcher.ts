@@ -1,4 +1,4 @@
-import { logger } from './logger';
+import { logger } from '@/lib/logger';
 
 export const fetcher = async <T>(url: string | URL | Request): Promise<T> => {
 	const response = await fetch(url);

@@ -4,10 +4,10 @@ import { CircleHalfIcon } from '@phosphor-icons/react';
 import { useTheme } from 'next-themes';
 import type React from 'react';
 import { useCallback } from 'react';
-import { Button } from '../../../components/ui/Button';
-import { META_THEME_COLORS } from '../../../config/site';
-import useMetaColor from '../../../hooks/use-meta-color';
-import { soundManager } from '../../../lib/sound-manager';
+import { Button } from '@/components/ui/Button';
+import { META_THEME_COLORS } from '@/config/site';
+import useMetaColor from '@/hooks/use-meta-color';
+import { soundManager } from '@/lib/sound-manager';
 
 export const ToggleTheme = (): React.JSX.Element => {
 	const { resolvedTheme, setTheme } = useTheme();

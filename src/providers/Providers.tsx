@@ -3,13 +3,13 @@
 import { Provider as JotaiProvider } from 'jotai';
 import dynamic from 'next/dynamic';
 import type React from 'react';
-import { Analytics } from './analytics/Analytics';
-import { Compose, type Provider } from './utils/Compose';
-import ProgressProvider from './modules/ProgressProvider';
-import ThemeProvider from './modules/ThemeProvider';
+import { Analytics } from '@/providers/analytics/Analytics';
+import ProgressProvider from '@/providers/modules/ProgressProvider';
+import ThemeProvider from '@/providers/modules/ThemeProvider';
+import { Compose, type Provider } from '@/providers/utils/Compose';
 
 const Toaster = dynamic(
-	() => import('../components/ui/Sonner').then((mod) => mod.Toaster),
+	() => import('@/components/ui/Sonner').then((mod) => mod.Toaster),
 	{ ssr: false }
 );
 
