@@ -1,0 +1,103 @@
+'use client';
+
+import {
+	ClockClockwiseIcon,
+	GitCommitIcon,
+	MonitorIcon,
+	PlanetIcon,
+} from '@phosphor-icons/react';
+import { useWindowSize } from '@uidotdev/usehooks';
+import dayjs from 'dayjs';
+import type React from 'react';
+import { memo, useMemo } from 'react';
+import { Panel, PanelHeader, PanelTitle } from '../../components/ui/Panel';
+import useBrowser from '../../hooks/use-browser';
+import { cn } from '../../lib/utils';
+import 'dayjs/locale/fr.js';
+
+dayjs.locale('fr');
+
+type MetadataItemProps = {
+	icon: React.ElementType;
+	label: string;
+	value: string;
+};
+
+const MetadataItem = memo<MetadataItemProps>(({ icon: Icon, label, value }) => (
+	<div className="flex items-center gap-x-3">
+		<Icon className="size-5" />
+		<div className="flex flex-col gap-y-0.5">
+			<span className="text-muted-foreground text-xs">{label}</span>
+			<p className="font-medium text-sm">{value}</p>
+		</div>
+	</div>
+));
+
+MetadataItem.displayName = 'MetadataItem';
+
+export type MetadataProps = {
+	commit?: {
+		branch: string | undefined;
+		hash: string | undefined;
+		update: string | undefined;
+	};
+};
+
+const Metadata = ({ commit }: MetadataProps): React.JSX.Element => {
+	const { name, icon: BrowserIcon } = useBrowser();
+	const { width = 0, height = 0 } = useWindowSize();
+
+	const items = useMemo(
+		() => [
+			{
+				icon: BrowserIcon || PlanetIcon,
+				label: 'Navigateur actuel :',
+				value: name,
+			},
+			{
+				icon: GitCommitIcon,
+				label: 'Dernier commit :',
+				value: `${commit?.hash} (${commit?.branch})`,
+			},
+			{
+				icon: ClockClockwiseIcon,
+				label: 'Mise à jour :',
+				value: dayjs(commit?.update).format('ddd DD MMM YYYY'),
+			},
+			{
+				icon: MonitorIcon,
+				label: 'Résolution :',
+				value: `${width}x${height} pixels`,
+			},
+		],
+		[BrowserIcon, name, commit, width, height]
+	);
+
+	return (
+		<Panel>
+			<PanelHeader>
+				<PanelTitle>Meta-données</PanelTitle>
+			</PanelHeader>
+
+			<div
+				className={cn(
+					'grid grid-cols-2 lg:grid-cols-4',
+					'divide-x divide-edge *:p-4 max-lg:divide-y'
+				)}
+			>
+				{items.map((item) => (
+					<MetadataItem
+						icon={item.icon}
+						key={item.label}
+						label={item.label}
+						value={item.value}
+					/>
+				))}
+			</div>
+		</Panel>
+	);
+};
+
+Metadata.displayName = 'Metadata';
+
+export { Metadata };

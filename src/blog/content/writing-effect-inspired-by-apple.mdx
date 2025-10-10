@@ -1,0 +1,116 @@
+---
+title: Apple Writing Effect
+description: Créez un effet d'écriture "Bonjour" inspiré d'Apple en utilisant Motion for React.
+imageDark: /images/blog/apple-hello-effect-demo/dark.gif
+imageLight: /images/blog/apple-hello-effect-demo/light.gif
+category: components
+createdAt: 2025-10-02
+updatedAt: 2025-10-02
+tags: ["React"]
+author: "Cuzeac Florin"
+new: true
+---
+
+<ComponentPreview
+    name="apple-hello-effect-demo"
+    openInV0Url="https://cuzeacflorin.fr/r/apple-hello-effect.json"
+    canReplay
+/>
+
+## Installation
+
+<CodeTabs className="gap-0">
+
+<TabsListInstallType />
+
+<TabsContent value="cli" className="[&>figure]:mb-0">
+
+```bash
+npx shadcn@latest add @envindavsorg/apple-hello-effect
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Installez les dépendances suivantes :</Step>
+
+```bash
+npm install motion clsx tailwind-merge
+```
+
+<Step>
+	Ajoutez le helper <span className="font-semibold text-theme">cn</span> dans votre projet :
+</Step>
+
+<ComponentSource
+  src="src/lib/utils.ts"
+  title="lib/utils.ts"
+  showLineNumbers
+  collapsible={false}
+/>
+
+<Step>Copiez et collez le code suivant dans votre projet :</Step>
+
+<ComponentSource
+  name="apple-hello-effect"
+  title="components/AppleHelloEffect.tsx"
+  showLineNumbers
+/>
+
+<Step>
+    Mettez à jour les chemins d'import de vos dépendances
+    pour correspondre à la structure de votre projet et ainsi le faire fonctionner correctement.
+</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Utilisation
+
+```tsx
+import {
+    AppleHelloEnglishEffect,
+    AppleHelloFrenchEffect,
+    AppleHelloSpanishEffect
+} from "@/components/apple-hello-effect";
+```
+
+```tsx
+<AppleHelloEnglishEffect
+    speed={1}
+    onAnimationComplete={() => console.log("Animation complete!")}
+/>
+
+<AppleHelloFrenchEffect
+    speed={1}
+    onAnimationComplete={() => console.log("Animation complete!")}
+/>
+<AppleHelloSpanishEffect
+    speed={1}
+    onAnimationComplete={() => console.log("Animation complete!")}
+/>
+```
+
+## Propriétés
+
+| Prop                  | Type         | Default     | Description                                                                                               |
+| --------------------- | ------------ | ----------- | --------------------------------------------------------------------------------------------------------- |
+| `speed`               | `number`     | 1           | Un multiplicateur qui affecte la durée de l'animation. Des valeurs plus élevées ralentissent l'animation. |
+| `onAnimationComplete` | `() => void` | `undefined` | Fonction de rappel déclenchée lorsque l'animation se termine.                                             |
+
+## Connaissances supplémentaires
+
+- Documentation officielle pour l'effet, avec le SVG extrait de macOS Sonoma au format SVG : https://www.figma.com/community/file/1414773009964314315/official-apple-hello-lettering
+- Une bibliothèque d'animation moderne pour JavaScript et React : https://motion.dev
+- Hébergez votre propre registre de composants : https://ui.shadcn.com/docs/registry
+
+## Références
+
+- https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pathLength
+- https://motion.dev/docs/react-motion-component

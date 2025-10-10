@@ -1,0 +1,98 @@
+---
+title: Flip Sentences
+description: Un composant React animé avec motion/react qui fait défiler automatiquement une liste de phrases avec une transition fluide.
+imageDark: /images/blog/flip-sentences-demo/dark.gif
+imageLight: /images/blog/flip-sentences-demo/light.gif
+category: components
+createdAt: 2025-10-03
+updatedAt: 2025-10-03
+tags: ["React"]
+author: "Cuzeac Florin"
+new: true
+---
+
+<ComponentPreview
+  name="flip-sentences-demo"
+  openInV0Url="https://cuzeacflorin.fr/r/flip-sentences.json"
+  canReplay
+/>
+
+## Installation
+
+<CodeTabs className="gap-0">
+
+<TabsListInstallType />
+
+<TabsContent value="cli" className="[&>figure]:mb-0">
+
+```bash
+npx shadcn@latest add @envindavsorg/flip-sentences
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Installez les dépendances suivantes :</Step>
+
+```bash
+npm install motion clsx tailwind-merge
+```
+
+<Step>
+	Ajoutez le helper <span className="font-semibold text-theme">cn</span> dans votre projet :
+</Step>
+
+<ComponentSource
+  src="src/lib/utils.ts"
+  title="lib/utils.ts"
+  showLineNumbers
+  collapsible={false}
+/>
+
+<Step>Créez le tableau avec les phrases que vous souhaitez voir défiler :</Step>
+
+```ts
+const EXAMPLE_SENTENCES = [
+	'Imagine, code, crée, inspire.',
+	'Chaque petit pixel compte !',
+	'Chaque petit détail compte !',
+	'Du concept au déploiement !',
+];
+```
+
+<Step>Copiez et collez le code suivant dans votre projet :</Step>
+
+<ComponentSource
+  name="flip-sentences"
+  title="components/FlipSentences.tsx"
+  showLineNumbers
+/>
+
+<Step>
+    Mettez à jour les chemins d'import de vos dépendances
+    pour correspondre à la structure de votre projet et ainsi le faire fonctionner correctement.
+</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Utilisation
+
+```tsx
+import { FlipSentences } from "@/components/flip-sentences";
+```
+
+```tsx
+<FlipSentences sentences={EXAMPLE_SENTENCES} />
+```
+
+## Références
+
+- https://ui.shadcn.com/docs/registry
+- https://motion.dev/docs/react-motion-component

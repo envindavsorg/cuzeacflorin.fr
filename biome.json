@@ -1,0 +1,84 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "extends": ["ultracite"],
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "tab",
+    "lineWidth": 80,
+    "formatWithErrors": true,
+    "useEditorconfig": true
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  },
+  "files": {
+    "ignoreUnknown": false
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "a11y": {
+        "noStaticElementInteractions": "off",
+        "noNoninteractiveElementInteractions": "off",
+        "useSemanticElements": "off",
+        "useAltText": "off"
+      },
+      "complexity": {
+        "noExcessiveCognitiveComplexity": "off",
+        "noUselessStringRaw": "off"
+      },
+      "correctness": {
+        "useExhaustiveDependencies": "off",
+        "noUnknownTypeSelector": "off",
+        "noNestedComponentDefinitions": "off"
+      },
+      "security": {
+        "noDangerouslySetInnerHtml": "off"
+      },
+      "performance": {
+        "noBarrelFile": "off",
+        "noImgElement": "off",
+        "useTopLevelRegex": "off"
+      },
+      "style": {
+        "noMagicNumbers": "off",
+        "useFilenamingConvention": "off",
+        "noNestedTernary": "off"
+      },
+      "suspicious": {
+        "useAwait": "off",
+        "noExplicitAny": "off",
+        "noUnknownAtRules": "off",
+        "noArrayIndexKey": "off"
+      },
+      "nursery": {
+        "noShadow": "off",
+        "useImageSize": "off",
+        "useMaxParams": "off",
+        "noReactForwardRef": "off",
+        "useSortedClasses": {
+          "fix": "safe",
+          "options": {
+            "attributes": ["classList", "className"],
+            "functions": ["clsx", "cva", "tw", "cn"]
+          },
+          "level": "warn"
+        }
+      }
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "semicolons": "always"
+    },
+    "parser": {
+      "unsafeParameterDecoratorsEnabled": true
+    }
+  }
+}
