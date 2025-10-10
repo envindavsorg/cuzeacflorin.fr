@@ -1,7 +1,7 @@
 {
   "name": "cuzeacflorin.fr",
-  "version": "2.0.0",
-  "description": "Modern interactive portfolio built with Next.js 15, React 19 & TypeScript and perfect Lighthouse scores (100/100). Showcases cutting-edge web technologies with responsive grid system, live GitHub/LinkedIn stats, Mapbox integration, and smooth Motion animations.",
+  "version": "2.0.1",
+  "description": "A minimal portfolio, component registry, and blog to showcase my work as a frontend developer.",
   "homepage": "https://cuzeacflorin.fr",
   "license": "MIT",
   "author": {
