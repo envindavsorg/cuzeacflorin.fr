@@ -1,5 +1,5 @@
 import { join } from 'node:path';
-import { type BaseMetadata, getMDXData, type MDXData } from '@/blog/mdx';
+import { type BaseMetadata, getMDXData, type MDXData } from '@/lib/blog/mdx';
 
 export interface PostMetadata extends BaseMetadata {
 	date: string;
@@ -8,7 +8,7 @@ export interface PostMetadata extends BaseMetadata {
 let postsCache: MDXData<PostMetadata>[] | null = null;
 let postsBySlugCache: Map<string, MDXData<PostMetadata>> | null = null;
 
-const POSTS_DIR = join(process.cwd(), 'blog/content/posts');
+const POSTS_DIR = join(process.cwd(), 'lib/blog/content/posts');
 
 export const getAllPosts = (): MDXData<PostMetadata>[] => {
 	if (postsCache !== null) {

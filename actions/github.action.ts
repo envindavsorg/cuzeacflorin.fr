@@ -1,8 +1,9 @@
-'use server';
+"use server";
 
-import { unstable_cache } from 'next/cache';
-import { logger } from '@/lib/logger';
-import { octokit } from '@/lib/octokit';
+import { unstable_cache } from "next/cache";
+import { octokit } from "@/lib/github/octokit";
+import { logger } from "@/lib/logger";
+import { log } from "node:console";
 
 const { GITHUB_USERNAME } = process.env;
 
@@ -45,7 +46,7 @@ type GitHubUserData = {
 	};
 };
 
-const CACHE_TAG = 'github-user-data';
+const CACHE_TAG = "github-user-data";
 const CACHE_REVALIDATE = 3600; // 1 hour in seconds
 const MEMORY_CACHE_TTL = 60 * 1000; // 1 minute in milliseconds
 
@@ -59,12 +60,15 @@ const fetchGitHubData = async (): Promise<GitHubUserData> => {
 
 	try {
 		const now = Date.now();
-		if (memoryCache.data && now - memoryCache.timestamp < MEMORY_CACHE_TTL) {
+		if (
+			memoryCache.data &&
+			now - memoryCache.timestamp < MEMORY_CACHE_TTL
+		) {
 			return memoryCache.data;
 		}
 
 		if (!GITHUB_USERNAME) {
-			throw new Error('GitHub username not configured');
+			throw new Error("GitHub username not configured");
 		}
 
 		const { user } = await octokit.graphql<{
@@ -147,17 +151,19 @@ const fetchGitHubData = async (): Promise<GitHubUserData> => {
 					}
 				}
 			`,
-			{ username: GITHUB_USERNAME }
+			{ username: GITHUB_USERNAME },
 		);
 
 		const weeklyContributions =
 			user.contributionsCollection.contributionCalendar.weeks;
 
-		let maxContributionDay = { contributionCount: 0, date: '', color: '' };
+		let maxContributionDay = { contributionCount: 0, date: "", color: "" };
 
 		for (const week of weeklyContributions) {
 			for (const day of week.contributionDays) {
-				if (day.contributionCount > maxContributionDay.contributionCount) {
+				if (
+					day.contributionCount > maxContributionDay.contributionCount
+				) {
 					maxContributionDay = day;
 				}
 			}
@@ -165,9 +171,10 @@ const fetchGitHubData = async (): Promise<GitHubUserData> => {
 
 		const latestContributions = weeklyContributions.slice(-16);
 		const totalContributions =
-			user.contributionsCollection.contributionCalendar.totalContributions;
+			user.contributionsCollection.contributionCalendar
+				.totalContributions;
 
-		const colors = ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'];
+		const colors = ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"];
 
 		const data: GitHubUserData = {
 			login: user.login,
@@ -178,7 +185,7 @@ const fetchGitHubData = async (): Promise<GitHubUserData> => {
 			following: user.following.totalCount,
 			stars: user.repositories.nodes.reduce(
 				(totalStars, repo) => totalStars + repo.stargazers.totalCount,
-				0
+				0,
 			),
 			contributions: {
 				totalContributions,
@@ -202,27 +209,27 @@ const fetchGitHubData = async (): Promise<GitHubUserData> => {
 
 		return data;
 	} catch (error) {
-		logger.error('GitHub data fetch error:', error);
+		logger.error("GitHub data fetch error:", error);
 
 		if (memoryCache.data) {
 			return memoryCache.data;
 		}
 
-		throw new Error('Failed to fetch GitHub user data');
+		throw new Error("Failed to fetch GitHub user data");
 	}
 };
 
 export const getGitHubUserData = unstable_cache(
 	fetchGitHubData,
-	[CACHE_TAG, GITHUB_USERNAME || 'default'],
+	[CACHE_TAG, GITHUB_USERNAME || "default"],
 	{
 		revalidate: CACHE_REVALIDATE,
 		tags: [CACHE_TAG],
-	}
+	},
 );
 
 export const revalidateGitHubData = async () => {
-	'use server';
-	const { revalidateTag } = await import('next/cache');
+	"use server";
+	const { revalidateTag } = await import("next/cache");
 	revalidateTag(CACHE_TAG);
 };

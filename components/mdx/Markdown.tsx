@@ -3,7 +3,6 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import React, { createElement } from 'react';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
-import { slugify } from '@/blog/slugify';
 import { CurrentDate } from '@/components/elements/CurrentDate';
 import { NextJSIcon } from '@/components/icons/content/Next';
 import { ReactIcon } from '@/components/icons/content/React';
@@ -16,6 +15,7 @@ import {
 	MarqueeItem,
 } from '@/components/ui/Marquee';
 import { Separator } from '@/components/ui/Separator';
+import { slugify } from '@/lib/blog/slugify';
 import { cn } from '@/lib/utils';
 import { stack } from '@/resources/stack';
 

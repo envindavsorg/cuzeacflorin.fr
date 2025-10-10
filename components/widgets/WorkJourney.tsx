@@ -4,11 +4,11 @@ import { ArrowRightIcon, BabyIcon, BriefcaseIcon } from '@phosphor-icons/react';
 import dayjs from 'dayjs';
 import type React from 'react';
 import { memo } from 'react';
-import type { MDXData } from '@/blog/mdx';
-import type { PostMetadata } from '@/blog/post';
 import { Card } from '@/components/ui/Card';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { GridItem } from '@/components/widgets/GridItem';
+import type { MDXData } from '@/lib/blog/mdx';
+import type { PostMetadata } from '@/lib/blog/post';
 import { date } from '@/lib/dayjs';
 import { cn } from '@/lib/utils';
 

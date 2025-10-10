@@ -1,10 +1,10 @@
-import { type ClassValue, clsx } from 'clsx';
-import { twMerge } from 'tailwind-merge';
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 import {
 	WHITESPACE_AND_HYPHEN_SEPARATOR,
 	WHITESPACE_SEPARATOR,
-} from '@/lib/regex';
-import { baseURL } from '@/resources/meta';
+} from "@/lib/regex";
+import { baseURL } from "@/resources/meta";
 
 export const cn = (...inputClasses: ClassValue[]): string =>
 	twMerge(clsx(inputClasses));
@@ -22,9 +22,9 @@ export const getInitials = (
 	fullName: string,
 	{
 		maxInitials = 2,
-		fallback = '?',
+		fallback = "?",
 		handleHyphens = false,
-	}: GetInitialsOptions = {}
+	}: GetInitialsOptions = {},
 ): string => {
 	if (!fullName?.trim()) {
 		return fallback;
@@ -41,7 +41,7 @@ export const getInitials = (
 		.slice(0, maxInitials)
 		.map((word) => word[0]?.toUpperCase())
 		.filter(Boolean)
-		.join('');
+		.join("");
 
 	return initials || fallback;
 };

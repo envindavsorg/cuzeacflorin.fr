@@ -40,9 +40,7 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => (
 			className={cn(
 				'scrollbar-hide h-full antialiased',
 				fonts.sans.variable,
-				fonts.mono.variable,
-				fonts.pixelify.variable,
-				fonts.archivo.variable
+				fonts.mono.variable
 			)}
 			dir="ltr"
 			lang="fr"

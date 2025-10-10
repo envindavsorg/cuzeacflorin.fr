@@ -1,8 +1,6 @@
 import type React from 'react';
 import { getGitHubUserData } from '@/actions/github.action';
 import { getLinkedInFollowers } from '@/actions/linkedin.action';
-import { getPostBySlug } from '@/blog/post';
-import { getProjectBySlug } from '@/blog/project';
 import { Motion } from '@/components/motion/Motion';
 import { AboutMe } from '@/components/widgets/AboutMe';
 import { ContactMe } from '@/components/widgets/ContactMe';
@@ -12,6 +10,8 @@ import { LinkedInStats } from '@/components/widgets/LinkedInStats';
 import { MapLocation } from '@/components/widgets/MapLocation';
 import { MyPortfolio } from '@/components/widgets/MyPortfolio';
 import { WorkJourney } from '@/components/widgets/WorkJourney';
+import { getPostBySlug } from '@/lib/blog/post';
+import { getProjectBySlug } from '@/lib/blog/project';
 
 export const WidgetGrid = async (): Promise<React.JSX.Element> => {
 	const aboutBlogPost = getPostBySlug('how-its-started');
