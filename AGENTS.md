@@ -5,23 +5,30 @@ with the cuzeacflorin.fr codebase - a Next.js portfolio, blog, and component reg
 
 ## Project Overview
 
-**cuzeacflorin.fr** is a minimal portfolio, component registry,
-and blog built with modern web technologies. It serves as:
+**cuzeacflorin.fr** is a modern interactive portfolio built with cutting-edge web technologies. It serves as:
 
-- Personal portfolio for Cuzeac Florin (@envindavsorg)
-- Component registry using shadcn/ui system
-- Blog with MDX content
-- Showcase for custom React components
+- Personal portfolio for Florin Cuzeac (@envindavsorg) - Développeur Front-End Senior @ WeFix by Fnac
+- Component registry using shadcn/ui system for distributing reusable React components
+- Blog with MDX content for technical articles
+- Showcase for custom React components with animation effects
+- Real-time GitHub integration and live stats
 
 ### Tech Stack
 
-- **Framework**: Next.js 15 (App Router)
-- **Styling**: Tailwind CSS v4
-- **UI Components**: shadcn/ui + custom components
-- **Package Manager**: pnpm
-- **Language**: TypeScript
-- **Content**: MDX for blog posts
+- **Framework**: Next.js 15.5.4 with App Router and Turbopack
+- **React**: React 19.2.0
+- **Styling**: Tailwind CSS v4 with PostCSS
+- **UI Components**: shadcn/ui + custom registry components
+- **Animations**: Motion (Framer Motion) for smooth animations
+- **State Management**: Jotai, Zustand
+- **Package Manager**: pnpm 10.18.2
+- **Language**: TypeScript 5.9.3
+- **Content**: MDX for blog posts with custom components
+- **Linting**: Biome.js (extends ultracite config)
 - **Deployment**: Vercel
+- **Node**: v20 or v22+ required
+- **Analytics**: Vercel Analytics & Speed Insights
+- **GitHub Integration**: Octokit for repository data
 
 ## Project Structure
 
@@ -73,10 +80,19 @@ The project features a custom component registry built on top of shadcn/ui:
 
 ### Available Components
 
-1. **theme-switcher** - Theme switching component
-2. **flip-sentences** - Text animation component
-3. **apple-hello-effect** - Apple-style writing effect
-4. **utils** - Utility functions
+1. **theme-switcher** - Theme switching component with system/light/dark modes
+   - Dependencies: next-themes, @phosphor-icons/react, motion
+   - Docs: https://cuzeacflorin.fr/components/theme-switcher-component
+
+2. **flip-sentences** - Animated text component that cycles through sentences
+   - Dependencies: motion
+   - Docs: https://cuzeacflorin.fr/components/flip-sentences
+
+3. **apple-hello-effect** - Apple-inspired writing effect (Bonjour, Hello, Hola)
+   - Dependencies: motion
+   - Docs: https://cuzeacflorin.fr/components/writing-effect-inspired-by-apple
+
+4. **utils** - Utility functions (cn for Tailwind class merging)
 
 ### Registry Build Process
 
@@ -111,10 +127,12 @@ pnpm build
 
 ### Code Standards
 
-- **TypeScript**: Strict mode enabled
-- **ESLint**: Next.js configuration
-- **Prettier**: Code formatting
+- **TypeScript**: Strict mode enabled (v5.9.3)
+- **Linting**: Biome.js (extends ultracite config)
+- **Formatting**: Tabs for indentation, 80 character line width, single quotes
 - **File naming**: kebab-case for files, PascalCase for components
+- **Import Aliases**: Use `@/*` for imports from `src/`
+- **Class Names**: Use `cn()` utility from `@/lib/utils` for merging Tailwind classes
 
 ### Component Development
 
@@ -150,14 +168,18 @@ pnpm build
 
 See `.env.example` for required variables:
 
-- `APP_URL` - Application URL
-- `REGISTRY_URL` - Registry base URL
+- `NEXT_PUBLIC_APP_URL` - Application URL (https://cuzeacflorin.fr)
+- `NEXT_PUBLIC_REGISTRY_URL` - Registry base URL (https://cuzeacflorin.fr/r)
+- GitHub token for API integration (optional)
 
 ### Site Configuration
 
-- Navigation: `MAIN_NAV` in `src/config/site.ts`
-- Theme colors: `META_THEME_COLORS`
-- GitHub repo: `SOURCE_CODE_GITHUB_REPO`
+- **Navigation**: `MAIN_NAV` in `src/config/site.ts` (Accueil, Blog, Composants)
+- **Theme Colors**: `META_THEME_COLORS` (light: #FFFFFF, dark: #09090B)
+- **GitHub Username**: envindavsorg
+- **GitHub Repo**: envindavsorg/cuzeacflorin.fr
+- **Registry URL**: https://cuzeacflorin.fr/r
+- **Contact**: contact@cuzeacflorin.fr (encoded in base64 in user.ts)
 
 ## Common Tasks
 
@@ -247,9 +269,10 @@ pnpm preview        # Build and preview locally
 
 ### Code Quality
 
-- Run `pnpm lint` before committing
-- Use `pnpm format:write` for code formatting
+- Run `pnpm lint` before committing (uses Biome.js)
+- Use `pnpm lint:fix` for automatic formatting
 - Check types with `pnpm check-types`
+- Pre-commit hooks with husky and lint-staged
 
 ### Testing Registry Components
 

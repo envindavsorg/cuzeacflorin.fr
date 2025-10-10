@@ -1,6 +1,6 @@
 # [cuzeacflorin.fr](https://cuzeacflorin.fr)
 
-A minimal portfolio, component registry, and blog to showcase my work as a Design Engineer.
+A minimal portfolio, component registry, and blog to showcase my work as a frontend developer.
 
 Check out the live site: [cuzeacflorin.fr](https://cuzeacflorin.fr)
 
