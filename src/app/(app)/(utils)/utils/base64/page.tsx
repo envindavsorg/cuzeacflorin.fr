@@ -221,7 +221,6 @@ const Base64Page = () => {
 					</div>
 				)}
 
-				{/* Erreur */}
 				{error && (
 					<motion.div
 						animate={{ opacity: 1, scale: 1 }}
