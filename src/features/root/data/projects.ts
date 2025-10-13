@@ -48,7 +48,6 @@ Fonctionnalités principales :
 - Fusion profonde d'objets avec préservation des types
 - Alternative moderne aux chaînes ?. infinies
 `,
-		isExpanded: true,
 	},
 	{
 		id: 'portfolio',

@@ -51,6 +51,7 @@ export const EXPERIENCES: Experience[] = [
 					'CSS',
 					'Git',
 				],
+				isExpanded: true,
 			},
 			{
 				id: '73151add-7adf-4035-a237-b5803ceb5478',
@@ -73,6 +74,7 @@ export const EXPERIENCES: Experience[] = [
 					'Wireframes',
 					'Usability Testing',
 				],
+				isExpanded: true,
 			},
 		],
 		isCurrentEmployer: true,
