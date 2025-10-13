@@ -48,13 +48,16 @@
       "style": {
         "noMagicNumbers": "off",
         "useFilenamingConvention": "off",
-        "noNestedTernary": "off"
+        "noNestedTernary": "off",
+        "noParameterAssign": "off"
       },
       "suspicious": {
         "useAwait": "off",
         "noExplicitAny": "off",
         "noUnknownAtRules": "off",
-        "noArrayIndexKey": "off"
+        "noArrayIndexKey": "off",
+        "noImplicitAnyLet": "off",
+        "noEvolvingTypes": "off"
       },
       "nursery": {
         "noShadow": "off",

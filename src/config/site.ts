@@ -27,6 +27,10 @@ export const MAIN_NAV: NavigationItem[] = [
 		title: 'Composants',
 		href: '/components',
 	},
+	{
+		title: 'Outils',
+		href: '/utils',
+	},
 ];
 
 export const GITHUB_USERNAME = 'envindavsorg';
