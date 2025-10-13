@@ -25,7 +25,11 @@ const Base64Page = () => {
 
 	const encodeToBase64 = useCallback((text: string) => {
 		try {
-			const encoded = btoa(unescape(encodeURIComponent(text)));
+			const uint8Array = new TextEncoder().encode(text);
+			const binaryString = Array.from(uint8Array, (byte) =>
+				String.fromCodePoint(byte)
+			).join('');
+			const encoded = btoa(binaryString);
 			setEncodedText(encoded);
 			setError(null);
 		} catch (_err) {
@@ -37,7 +41,12 @@ const Base64Page = () => {
 	const decodeFromBase64 = useCallback((text: string) => {
 		try {
 			const urlDecoded = decodeURIComponent(text);
-			const decoded = decodeURIComponent(escape(atob(urlDecoded)));
+			const binaryString = atob(urlDecoded);
+			const uint8Array = Uint8Array.from(
+				binaryString,
+				(char) => char.codePointAt(0) ?? 0
+			);
+			const decoded = new TextDecoder().decode(uint8Array);
 			setDecodedText(decoded);
 			setError(null);
 		} catch (_err) {
