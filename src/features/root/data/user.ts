@@ -1,3 +1,10 @@
+import type { StaticImageData } from 'next/image';
+import memoji1 from '@/images/memojis/memoji1.webp';
+import memoji2 from '@/images/memojis/memoji2.webp';
+import memoji3 from '@/images/memojis/memoji3.webp';
+import memoji4 from '@/images/memojis/memoji4.webp';
+import memoji5 from '@/images/memojis/memoji5.webp';
+
 export type User = {
 	firstName: string;
 	lastName: string;
@@ -8,6 +15,17 @@ export type User = {
 	bio: string;
 	flipSentences: string[];
 	address: string;
+	location: {
+		city: string;
+		zoom: {
+			max: number;
+			min: number;
+			default: number;
+			step: number;
+		};
+		latitude: number;
+		longitude: number;
+	};
 	phoneNumber: string;
 	email: string;
 	website: string;
@@ -21,6 +39,7 @@ export type User = {
 	avatar: string;
 	ogImage: string;
 	namePronunciationUrl: string;
+	avatars: StaticImageData[];
 	keywords: string[];
 	dateCreated: string;
 };
@@ -40,6 +59,17 @@ export const USER: User = {
 		'Du concept au déploiement !',
 	],
 	address: 'Paris, France',
+	location: {
+		city: 'Paris',
+		zoom: {
+			max: 12,
+			min: 3,
+			default: 10,
+			step: 0.5,
+		},
+		latitude: 48.858_093,
+		longitude: 2.294_694,
+	},
 	phoneNumber: 'MDYgNTggMDUgODYgNjU=',
 	email: 'Y29udGFjdEBjdXplYWNmbG9yaW4uZnI=',
 	website: 'https://cuzeacflorin.fr',
@@ -47,7 +77,7 @@ export const USER: User = {
 	avatar: '/images/avatar.webp',
 	ogImage: '/images/og-image-dark.png?t=1755355653',
 	namePronunciationUrl: '/audio/florin.mp3',
-
+	avatars: [memoji1, memoji2, memoji3, memoji4, memoji5],
 	jobs: [
 		{
 			title: 'Développeur Front-End Senior',

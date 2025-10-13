@@ -1,5 +1,5 @@
 export const GITHUB_QUERY = `
-    query ($username: String!, $repoName: String!) {
+    query ($username: String!, $repoName: String!, $from: DateTime!, $to: DateTime!) {
         user(login: $username) {
             login
             name
@@ -14,6 +14,18 @@ export const GITHUB_QUERY = `
                 nodes {
                     stargazers {
                         totalCount
+                    }
+                }
+            }
+            contributionsCollection(from: $from, to: $to) {
+                contributionCalendar {
+                    totalContributions
+                    weeks {
+                        contributionDays {
+                            contributionCount
+                            date
+                            contributionLevel
+                        }
                     }
                 }
             }

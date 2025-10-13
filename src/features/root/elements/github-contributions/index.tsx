@@ -7,12 +7,11 @@ import {
 } from '@/components/ui/Panel';
 import { Tag } from '@/components/ui/Tag';
 import { getGitHubUserData } from '@/features/root/actions/github.action';
-import { getGitHubContributions } from '@/features/root/data/github-contributions';
 import { Graph, GraphFallback } from './Graph';
 
 export const GitHubContributions = async () => {
-	const contributions = getGitHubContributions();
-	const { stars, followers, following } = await getGitHubUserData();
+	const { stars, followers, following, contributions } =
+		await getGitHubUserData();
 
 	return (
 		<Panel id="github-contributions">

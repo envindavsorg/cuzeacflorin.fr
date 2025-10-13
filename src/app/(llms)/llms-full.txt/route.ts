@@ -1,4 +1,3 @@
-import dayjs from 'dayjs';
 import { getAllPosts } from '@/blog/data/posts';
 import { getLLMText } from '@/blog/lib/get-llm-text';
 import type { Post } from '@/blog/types/post';
@@ -9,9 +8,7 @@ import { PROJECTS } from '@/features/root/data/projects';
 import { SOCIAL_LINKS } from '@/features/root/data/social-links';
 import { techStack } from '@/features/root/data/tech-stack';
 import { USER } from '@/features/root/data/user';
-import 'dayjs/locale/fr.js';
-
-dayjs.locale('fr');
+import { dayjs } from '@/lib/dayjs';
 
 const allPosts: Post[] = getAllPosts();
 

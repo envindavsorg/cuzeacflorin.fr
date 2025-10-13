@@ -1,9 +1,7 @@
 'use client';
 
 import { SpinnerIcon } from '@phosphor-icons/react';
-import dayjs from 'dayjs';
 import type React from 'react';
-import { use } from 'react';
 import type { Activity } from '@/components/ui/ContributionGraph';
 import {
 	ContributionGraph,
@@ -19,16 +17,14 @@ import {
 	TooltipTrigger,
 } from '@/components/ui/Tooltip';
 import { GITHUB_USERNAME } from '@/config/site';
-import 'dayjs/locale/fr.js';
-
-dayjs.locale('fr');
+import { dayjs } from '@/lib/dayjs';
 
 type GraphProps = {
-	contributions: Promise<Activity[]>;
+	contributions: Activity[];
 };
 
 export const Graph = ({ contributions }: GraphProps): React.JSX.Element => {
-	const data = use(contributions);
+	const data = contributions;
 
 	return (
 		<ContributionGraph

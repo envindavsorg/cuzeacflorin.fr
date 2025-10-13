@@ -7,15 +7,12 @@ import {
 	PlanetIcon,
 } from '@phosphor-icons/react';
 import { useWindowSize } from '@uidotdev/usehooks';
-import dayjs from 'dayjs';
 import type React from 'react';
 import { memo, useMemo } from 'react';
 import { Panel, PanelHeader, PanelTitle } from '@/components/ui/Panel';
 import useBrowser from '@/hooks/use-browser';
+import { dayjs } from '@/lib/dayjs';
 import { cn } from '@/lib/utils';
-import 'dayjs/locale/fr.js';
-
-dayjs.locale('fr');
 
 type MetadataItemProps = {
 	icon: React.ElementType;

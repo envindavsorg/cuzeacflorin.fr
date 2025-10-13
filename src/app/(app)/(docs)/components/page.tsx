@@ -1,5 +1,4 @@
 import { CheckIcon, InfoIcon } from '@phosphor-icons/react/ssr';
-import dayjs from 'dayjs';
 import type { Metadata } from 'next';
 import { PostItem } from '@/blog/components/PostItem';
 import { PostTagFilter } from '@/blog/components/PostTagFilter';
@@ -11,6 +10,7 @@ import {
 	TypingAnimation,
 } from '@/components/animations/Terminal';
 import { BadgeWithIcon } from '@/components/ui/Badge';
+import { dayjs } from '@/lib/dayjs';
 
 export const metadata: Metadata = {
 	title: 'Composants React',

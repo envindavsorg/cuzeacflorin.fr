@@ -1,20 +1,17 @@
-import dayjs from 'dayjs';
-import Image from 'next/image';
-import Link from 'next/link';
-import type React from 'react';
-import { lazy } from 'react';
-import type { Post } from '@/blog/types/post';
-import { cn } from '@/lib/utils';
-import 'dayjs/locale/fr.js';
 import {
 	BookBookmarkIcon,
 	CalendarBlankIcon,
 	ClockIcon,
 } from '@phosphor-icons/react/ssr';
+import Image from 'next/image';
+import Link from 'next/link';
+import type React from 'react';
+import { lazy } from 'react';
+import type { Post } from '@/blog/types/post';
 import { Tag } from '@/components/ui/Tag';
 import { Prose } from '@/components/ui/Typography';
-
-dayjs.locale('fr');
+import { dayjs } from '@/lib/dayjs';
+import { cn } from '@/lib/utils';
 
 const ReactIcon = lazy(() =>
 	import('@/components/icons/content/React').then((m) => ({

@@ -1,12 +1,9 @@
-import dayjs from 'dayjs';
 import type { Metadata } from 'next';
 import { PostItem } from '@/blog/components/PostItem';
+import { PostTagFilter } from '@/blog/components/PostTagFilter';
 import { getPostsByCategory } from '@/blog/data/posts';
 import type { Post } from '@/blog/types/post';
-import 'dayjs/locale/fr.js';
-import { PostTagFilter } from '@/blog/components/PostTagFilter';
-
-dayjs.locale('fr');
+import { dayjs } from '@/lib/dayjs';
 
 export const metadata: Metadata = {
 	title: 'Mes articles de blog',

@@ -1,5 +1,4 @@
 import { ArrowLeftIcon, ArrowRightIcon } from '@phosphor-icons/react/ssr';
-import dayjs from 'dayjs';
 import { getTableOfContents } from 'fumadocs-core/server';
 import type { Metadata } from 'next';
 import Link from 'next/link';
@@ -21,10 +20,8 @@ import { Divider } from '@/components/ui/Divider';
 import { Prose } from '@/components/ui/Typography';
 import { SITE_INFO } from '@/config/site';
 import { USER } from '@/features/root/data/user';
+import { dayjs } from '@/lib/dayjs';
 import { cn } from '@/lib/utils';
-import 'dayjs/locale/fr.js';
-
-dayjs.locale('fr');
 
 type Props = {
 	params: Promise<{

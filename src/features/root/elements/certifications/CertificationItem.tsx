@@ -1,14 +1,11 @@
 import { ArrowUpRightIcon } from '@phosphor-icons/react/ssr';
-import dayjs from 'dayjs';
-import type React from 'react';
-import { Separator } from '@/components/ui/Separator';
-import { cn } from '@/lib/utils';
-import 'dayjs/locale/fr.js';
 import Link from 'next/link';
+import type React from 'react';
 import { VercelIcon } from '@/components/icons/content/Vercel';
+import { Separator } from '@/components/ui/Separator';
 import type { Certification } from '@/features/root/data/certifications';
-
-dayjs.locale('fr');
+import { dayjs } from '@/lib/dayjs';
+import { cn } from '@/lib/utils';
 
 const Icons = {
 	vercel: (

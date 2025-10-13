@@ -1,12 +1,9 @@
-import dayjs from 'dayjs';
 import { remark } from 'remark';
 import remarkGfm from 'remark-gfm';
 import remarkMdx from 'remark-mdx';
-import { remarkComponent } from '@/lib/remark-component';
-import 'dayjs/locale/fr.js';
 import type { Post } from '@/blog/types/post';
-
-dayjs.locale('fr');
+import { dayjs } from '@/lib/dayjs';
+import { remarkComponent } from '@/lib/remark-component';
 
 const processor = remark().use(remarkMdx).use(remarkComponent).use(remarkGfm);
 

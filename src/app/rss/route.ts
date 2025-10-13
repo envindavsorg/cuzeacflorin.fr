@@ -1,10 +1,7 @@
-import dayjs from 'dayjs';
 import { getAllPosts } from '@/blog/data/posts';
 import { SITE_INFO } from '@/config/site';
 import { USER } from '@/features/root/data/user';
-import 'dayjs/locale/fr.js';
-
-dayjs.locale('fr');
+import { dayjs } from '@/lib/dayjs';
 
 export const dynamic = 'force-static';
 
