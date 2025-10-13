@@ -203,7 +203,7 @@ const ColorGeneratorPage = () => {
 
 			<div className="screen-line-before w-full border-edge border-b" />
 
-			<div className="flex flex-col gap-4 p-4 md:flex-row md:justify-between">
+			<div className="flex flex-row justify-between gap-x-3 p-4">
 				<Button className="text-sm" onClick={genColors} variant="outline">
 					<SwatchesIcon className="size-5" />
 					Générer
@@ -277,10 +277,10 @@ const ColorGeneratorPage = () => {
 						projets web. Chaque couleur est soigneusement sélectionnée pour
 						assurer une esthétique cohérente et attrayante.
 					</p>
-					<div className="space-y-2">
+					<div className="space-y-6">
 						{Object.entries(colorScheme).map(([key, value]) => (
 							<div
-								className="flex flex-col justify-between gap-4 md:flex-row md:items-center"
+								className="flex flex-col justify-between gap-2 md:flex-row md:items-center"
 								key={key}
 							>
 								<span>{key}</span>

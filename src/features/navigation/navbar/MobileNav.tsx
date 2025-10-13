@@ -2,6 +2,7 @@
 
 import {
 	CodeBlockIcon,
+	GearSixIcon,
 	HouseIcon,
 	ListIcon,
 	PenNibIcon,
@@ -57,6 +58,9 @@ export const MobileNav = ({
 						)}
 						{link.title === 'Composants' && (
 							<CodeBlockIcon className="size-4 text-foreground" />
+						)}
+						{link.title === 'Outils' && (
+							<GearSixIcon className="size-4 text-foreground" />
 						)}
 
 						<Link href={link.href}>
