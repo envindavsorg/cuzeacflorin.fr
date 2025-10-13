@@ -18,12 +18,12 @@ const ProfileOverview = (): React.JSX.Element => (
 		<h2 className="sr-only">Vue de base de mon profil</h2>
 
 		<PanelContent className="flex flex-col gap-3">
-			{USER.jobs.map((job, idx: number) => (
+			{USER.jobs.map(({ company, title, website }, idx: number) => (
 				<JobItem
-					company={job.company}
-					key={`${idx}-${job.company}`}
-					title={job.title}
-					website={job.website}
+					company={company}
+					key={`${idx}-${company}`}
+					title={title}
+					website={website}
 				/>
 			))}
 
