@@ -141,7 +141,7 @@ const Page = async ({ params }: Props) => {
 						markdownUrl={`/utils/${post.slug}.mdx`}
 					/>
 
-					<PostShareMenu url={`/utils/${post.slug}`} />
+					<PostShareMenu url={`/utils/${post.slug}.mdx`} />
 
 					{previous && (
 						<Button asChild size="icon:sm" variant="secondary">
