@@ -1,4 +1,3 @@
-import type React from 'react';
 import type { ProfilePage as PageSchema, WithContext } from 'schema-dts';
 import { Divider } from '@/components/ui/Divider';
 import { getGitHubUserData } from '@/features/root/actions/github.action';
@@ -32,7 +31,7 @@ const getPageJsonLd = (): WithContext<PageSchema> => ({
 	},
 });
 
-const Page = async (): Promise<React.JSX.Element> => {
+const Page = async () => {
 	const [github, linkedin] = await Promise.all([
 		getGitHubUserData().then((data) => data.followers),
 		getLinkedInFollowers().then((data) => data.count),

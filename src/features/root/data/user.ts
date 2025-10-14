@@ -28,6 +28,7 @@ export type User = {
 	};
 	phoneNumber: string;
 	email: string;
+	emailCV: string;
 	website: string;
 	jobTitle: string;
 	jobs: {
@@ -50,7 +51,7 @@ export const USER: User = {
 	displayName: 'Florin',
 	username: 'envindavsorg',
 	gender: 'homme',
-	pronouns: 'il/lui',
+	pronouns: 'il/lui (homme)',
 	bio: 'Crée, code, innove. Les petits détails comptent.',
 	flipSentences: [
 		'Imagine, code, crée, inspire.',
@@ -72,6 +73,7 @@ export const USER: User = {
 	},
 	phoneNumber: 'MDYgNTggMDUgODYgNjU=',
 	email: 'Y29udGFjdEBjdXplYWNmbG9yaW4uZnI=',
+	emailCV: 'Y3ZAY3V6ZWFjZmxvcmluLmZy',
 	website: 'https://cuzeacflorin.fr',
 	jobTitle: 'Développeur et designer web',
 	avatar: '/images/avatar.webp',

@@ -14,7 +14,7 @@ export type FollowerCounts = {
 type SocialLinksItemProps = SocialLinksProps & FollowerCounts;
 
 const FOLLOWER_CONFIG = {
-	GitHub: { step: 10, label: 'followers', key: 'githubFollowers' },
+	GitHub: { step: 10, label: 'abonnés', key: 'githubFollowers' },
 	LinkedIn: { step: 1000, label: 'abonnés', key: 'linkedinFollowers' },
 } as const;
 
