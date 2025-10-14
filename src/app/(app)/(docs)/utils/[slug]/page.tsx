@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { BlogPosting as PageSchema, WithContext } from 'schema-dts';
-import { LLMCopyButtonWithViewOptions } from '@/blog/actions/post.action';
 import { PostKeyboardShortcuts } from '@/blog/components/PostKeyboardShortcuts';
 import { PostShareMenu } from '@/blog/components/PostShareMenu';
 import {
@@ -136,12 +135,7 @@ const Page = async ({ params }: Props) => {
 				</Button>
 
 				<div className="flex items-center gap-2">
-					<LLMCopyButtonWithViewOptions
-						isComponent
-						markdownUrl={`/utils/${post.slug}.mdx`}
-					/>
-
-					<PostShareMenu url={`/utils/${post.slug}.mdx`} />
+					<PostShareMenu url={`/utils/${post.slug}`} />
 
 					{previous && (
 						<Button asChild size="icon:sm" variant="secondary">
