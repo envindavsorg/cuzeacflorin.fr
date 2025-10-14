@@ -21,6 +21,7 @@ import {
 	FramedImage,
 	YouTubeEmbed,
 } from '@/components/markdown/elements/Embed';
+import InternetSpeedTest from '@/components/markdown/elements/InternetSpeedTest';
 import { LoremIpsumGenerator } from '@/components/markdown/elements/LoremIpsumGenerator';
 import {
 	Table,
@@ -204,6 +205,7 @@ const components: MDXRemoteProps['components'] = {
 	Base64Component: Base64,
 	ColorGeneratorComponent: ColorGenerator,
 	LoremIpsumGeneratorComponent: LoremIpsumGenerator,
+	InternetSpeedTestComponent: InternetSpeedTest,
 };
 
 const options: MDXRemoteProps['options'] = {

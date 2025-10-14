@@ -67,6 +67,7 @@
   ],
   "dependencies": {
     "@bprogress/next": "^3.2.12",
+    "@cloudflare/speedtest": "^1.6.0",
     "@hookform/resolvers": "^5.2.2",
     "@lordicon/react": "^1.11.0",
     "@number-flow/react": "^0.5.10",
@@ -165,7 +166,7 @@
       "biome check --write --unsafe"
     ]
   },
-  "packageManager": "pnpm@10.18.2",
+  "packageManager": "pnpm@10.18.3",
   "private": true,
   "trustedDependencies": [
     "@tailwindcss/oxide",

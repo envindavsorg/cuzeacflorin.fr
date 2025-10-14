@@ -1,4 +1,9 @@
-import { PaletteIcon, TextTIcon, VaultIcon } from '@phosphor-icons/react/ssr';
+import {
+	GlobeIcon,
+	PaletteIcon,
+	TextTIcon,
+	VaultIcon,
+} from '@phosphor-icons/react/ssr';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { PostTagFilter } from '@/blog/components/PostTagFilter';
@@ -103,6 +108,9 @@ const ComponentsPage = async ({
 								)}
 								{post.metadata.tags?.includes('Texte') && (
 									<TextTIcon className="pointer-events-none size-5 text-muted-foreground" />
+								)}
+								{post.metadata.tags?.includes('Internet') && (
+									<GlobeIcon className="pointer-events-none size-5 text-muted-foreground" />
 								)}
 							</div>
 
