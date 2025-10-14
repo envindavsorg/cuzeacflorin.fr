@@ -8,12 +8,10 @@ import {
 	LockSimpleOpenIcon,
 	SwatchesIcon,
 } from '@phosphor-icons/react';
-import { ArrowLeftIcon } from '@phosphor-icons/react/ssr';
 import { motion } from 'motion/react';
-import Link from 'next/link';
 import { Poline, positionFunctions } from 'poline';
+import type React from 'react';
 import { useCallback, useState } from 'react';
-import { PostShareMenu } from '@/blog/components/PostShareMenu';
 import { Button } from '@/components/ui/Button';
 import { ColorPicker } from '@/components/ui/ColorPicker';
 import {
@@ -22,14 +20,12 @@ import {
 	TooltipProvider,
 	TooltipTrigger,
 } from '@/components/ui/Tooltip';
-import { Prose } from '@/components/ui/Typography';
-import { cn } from '@/lib/utils';
 
 type ColorScheme = {
 	[key: string]: string;
 };
 
-const ColorGeneratorPage = () => {
+export const ColorGenerator = (): React.JSX.Element => {
 	const [colorScheme, setColorScheme] = useState<ColorScheme>({
 		background: '0 0% 100%',
 		foreground: '240 10% 3.9%',
@@ -161,46 +157,6 @@ const ColorGeneratorPage = () => {
 
 	return (
 		<>
-			<div className="flex items-center justify-between p-2 pl-4">
-				<Button
-					asChild
-					className="h-7 gap-2 rounded-lg px-0 font-mono text-muted-foreground"
-					variant="link"
-				>
-					<Link href="/utils">
-						<ArrowLeftIcon className="size-4" />
-						Tous les outils
-					</Link>
-				</Button>
-
-				<PostShareMenu url="/utils/color-generator" />
-			</div>
-
-			<div className="screen-line-before screen-line-after">
-				<div
-					className={cn(
-						'h-8',
-						'before:-left-[100vw] before:-z-1 before:absolute before:h-full before:w-[200vw]',
-						'before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-edge)]/56'
-					)}
-				/>
-			</div>
-
-			<Prose className="px-4">
-				<h1 className="screen-line-after !mb-0 font-semibold">
-					Générateur de couleurs (shadcn/ui)
-				</h1>
-
-				<p className="lead mt-0 py-3">
-					Créez des palettes de couleurs harmonieuses pour vos projets web avec
-					ce générateur de couleurs interactif. Sélectionnez, ajustez et copiez
-					facilement vos couleurs préférées. Utilisez les boutons ci-dessous
-					pour générer de nouvelles palettes, réinitialiser les couleurs par
-					défaut ou copier l'ensemble des variables CSS pour une intégration
-					facile dans vos feuilles de style.
-				</p>
-			</Prose>
-
 			<div className="screen-line-before w-full border-edge border-b" />
 
 			<div className="flex flex-row justify-between gap-x-3 p-4">
@@ -271,7 +227,9 @@ const ColorGeneratorPage = () => {
 					}}
 					transition={{ duration: 0.5 }}
 				>
-					<h3 className="mb-2 font-semibold text-xl">Aperçu des couleurs</h3>
+					<h3 className="mt-0 mb-2 font-semibold text-black text-xl">
+						Aperçu des couleurs
+					</h3>
 					<p className="mb-6 font-medium text-sm">
 						Explorez une palette de couleurs harmonieuses générée pour vos
 						projets web. Chaque couleur est soigneusement sélectionnée pour
@@ -331,5 +289,3 @@ const ColorGeneratorPage = () => {
 		</>
 	);
 };
-
-export default ColorGeneratorPage;

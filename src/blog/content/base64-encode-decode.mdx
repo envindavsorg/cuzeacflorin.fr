@@ -1,0 +1,49 @@
+---
+title: Encodeur / décodeur Base64
+description: Encodez et décodez facilement vos textes en Base64. Collez votre texte dans le champ d'entrée pour l'encoder, ou collez du Base64 dans le champ encodé pour le décoder automatiquement. Idéal pour les API, les headers HTTP, et le stockage de données.
+category: utils
+createdAt: 2025-10-13
+updatedAt: 2025-10-14
+tags: ["Base64"]
+new: true
+---
+
+<Base64Component />
+
+Utilisez cet encodeur et décodeur Base64 gratuit pour convertir facilement entre texte brut et chaînes encodées en Base64.
+Cet outil est parfait pour décoder les réponses API.
+Aucune inscription nécessaire — collez simplement vos données et convertissez instantanément.
+
+<div className="screen-line-before w-full border-edge border-b" />
+
+## Comment utiliser l'outil de décodage Base64 :
+
+Vous pouvez utiliser cet outil pour décoder des chaînes encodées en Base64,
+ou pour reconvertir des chaînes de texte Base64 vers leur chaîne binaire d'origine.
+Collez simplement vos données et copiez le résultat.
+
+### Cas d'usage :
+
+- **Conversion de données :** Convertissez des chaînes de texte vers leur forme binaire d'origine, utile pour traiter des données textuelles encodées.
+- **Débogage :** Décodez des données Base64 lors du dépannage ou de l'analyse de ressources web.
+
+## Utiliser Base64 en JavaScript :
+
+En JavaScript, l'encodage et le décodage Base64 peuvent être effectués
+en utilisant les fonctions natives **btoa** et **atob**, comme illustré ci-dessous :
+
+```javascript
+const text = "Hello, world!";
+const encoded = btoa(text);
+console.log(encoded); // Résultat: "SGVsbG8sIHdvcmxkIQ=="
+```
+
+```javascript
+const encoded = "SGVsbG8sIHdvcmxkIQ==";
+const decoded = atob(encoded);
+console.log(decoded); // Résultat: "Hello, world!"
+```
+
+Ces fonctions facilitent la gestion de l'encodage et du décodage directement dans votre code JavaScript, permettant un traitement et une transmission fluides des données dans les applications web.
+
+<div className="h-6" />

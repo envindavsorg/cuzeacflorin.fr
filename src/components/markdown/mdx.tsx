@@ -9,9 +9,11 @@ import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import { visit } from 'unist-util-visit';
+import { Base64 } from '@/components/markdown/elements/Base64';
 import { CodeBlockCommand } from '@/components/markdown/elements/CodeBlockCommand';
 import { CodeCollapsibleWrapper } from '@/components/markdown/elements/CodeCollapsibleWrapper';
 import { CodeTabs } from '@/components/markdown/elements/CodeTabs';
+import { ColorGenerator } from '@/components/markdown/elements/ColorGenerator';
 import { ComponentPreview } from '@/components/markdown/elements/ComponentPreview';
 import { ComponentSource } from '@/components/markdown/elements/ComponentSource';
 import { CopyButton } from '@/components/markdown/elements/CopyButton';
@@ -198,6 +200,8 @@ const components: MDXRemoteProps['components'] = {
 	),
 	YouTubeEmbed,
 	FramedImage,
+	Base64Component: Base64,
+	ColorGeneratorComponent: ColorGenerator,
 };
 
 const options: MDXRemoteProps['options'] = {

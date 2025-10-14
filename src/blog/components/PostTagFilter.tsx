@@ -34,6 +34,9 @@ export const PostTagFilter = ({
 		if (tag !== 'Tous les composants') {
 			params.set('tag', tag);
 		}
+		if (tag !== 'Tous les outils') {
+			params.set('tag', tag);
+		}
 		router.push(`${pathname}?${params.toString()}`);
 	};
 
