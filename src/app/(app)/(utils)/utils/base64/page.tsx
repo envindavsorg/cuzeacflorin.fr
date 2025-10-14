@@ -6,20 +6,25 @@ import {
 	CopyIcon,
 } from '@phosphor-icons/react';
 import { ArrowLeftIcon } from '@phosphor-icons/react/ssr';
-import { motion } from 'motion/react';
 import Link from 'next/link';
-import { useCallback, useState } from 'react';
+import { type ChangeEvent, useCallback, useState } from 'react';
 import { toast } from 'sonner';
 import { PostShareMenu } from '@/blog/components/PostShareMenu';
 import { Button } from '@/components/ui/Button';
 import { Textarea } from '@/components/ui/Textarea';
 import { Prose } from '@/components/ui/Typography';
+import { DirectionAwareTabs } from '@/components/ux/DirectionAwareTabs';
 import { cn } from '@/lib/utils';
 
 const Base64Page = () => {
-	const [inputText, setInputText] = useState('');
-	const [encodedText, setEncodedText] = useState('');
-	const [decodedText, setDecodedText] = useState('');
+	// États pour l'onglet "Encoder"
+	const [encodeInputText, setEncodeInputText] = useState('');
+	const [encodeOutputText, setEncodeOutputText] = useState('');
+
+	// États pour l'onglet "Décoder"
+	const [decodeInputText, setDecodeInputText] = useState('');
+	const [decodeOutputText, setDecodeOutputText] = useState('');
+
 	const [copiedField, setCopiedField] = useState<string | null>(null);
 	const [error, setError] = useState<string | null>(null);
 
@@ -30,52 +35,76 @@ const Base64Page = () => {
 				String.fromCodePoint(byte)
 			).join('');
 			const encoded = btoa(binaryString);
-			setEncodedText(encoded);
+			setEncodeOutputText(encoded);
 			setError(null);
 		} catch (_err) {
 			setError("Erreur lors de l'encodage");
-			setEncodedText('');
+			setEncodeOutputText('');
 		}
 	}, []);
 
 	const decodeFromBase64 = useCallback((text: string) => {
 		try {
-			const urlDecoded = decodeURIComponent(text);
+			// Validation Base64 : doit contenir uniquement des caractères valides
+			const base64Regex = /^[A-Za-z0-9+/]*={0,2}$/;
+			const cleanText = text.trim();
+
+			if (!base64Regex.test(cleanText)) {
+				setError(
+					'Format Base64 invalide. Utilisez uniquement A-Z, a-z, 0-9, +, / et ='
+				);
+				setDecodeOutputText('');
+				return;
+			}
+
+			const urlDecoded = decodeURIComponent(cleanText);
 			const binaryString = atob(urlDecoded);
 			const uint8Array = Uint8Array.from(
 				binaryString,
 				(char) => char.codePointAt(0) ?? 0
 			);
-			const decoded = new TextDecoder().decode(uint8Array);
-			setDecodedText(decoded);
+			const decoded = new TextDecoder('utf-8', { fatal: true }).decode(
+				uint8Array
+			);
+
+			// Vérifier si le résultat contient des caractères de remplacement
+			if (decoded.includes('\uFFFD')) {
+				setError(
+					'Le texte décodé contient des caractères invalides. Vérifiez le Base64.'
+				);
+				setDecodeOutputText('');
+				return;
+			}
+
+			setDecodeOutputText(decoded);
 			setError(null);
 		} catch (_err) {
 			setError(
 				'Erreur lors du décodage. Vérifiez que le texte est un Base64 valide.'
 			);
-			setDecodedText('');
+			setDecodeOutputText('');
 		}
 	}, []);
 
-	const handleInputChange = useCallback(
+	const handleEncodeInputChange = useCallback(
 		(value: string) => {
-			setInputText(value);
+			setEncodeInputText(value);
 			if (value) {
 				encodeToBase64(value);
 			} else {
-				setEncodedText('');
+				setEncodeOutputText('');
 			}
 		},
 		[encodeToBase64]
 	);
 
-	const handleEncodedChange = useCallback(
+	const handleDecodeInputChange = useCallback(
 		(value: string) => {
-			setEncodedText(value);
+			setDecodeInputText(value);
 			if (value) {
 				decodeFromBase64(value);
 			} else {
-				setDecodedText('');
+				setDecodeOutputText('');
 				setError(null);
 			}
 		},
@@ -90,11 +119,131 @@ const Base64Page = () => {
 	}, []);
 
 	const handleReset = useCallback(() => {
-		setInputText('');
-		setEncodedText('');
-		setDecodedText('');
+		setEncodeInputText('');
+		setEncodeOutputText('');
+		setDecodeInputText('');
+		setDecodeOutputText('');
 		setError(null);
 	}, []);
+
+	// tabs
+	const tabs = [
+		{
+			id: 0,
+			label: 'Encoder',
+			content: (
+				<div className="flex w-full flex-col gap-y-6 overflow-hidden">
+					<div className="flex flex-col gap-y-3">
+						<div className="flex items-center justify-between">
+							<h3 className="font-semibold text-base">Texte à encoder</h3>
+							{encodeInputText && (
+								<Button
+									onClick={() => handleCopy(encodeInputText, 'encode-input')}
+									size="icon:sm"
+									variant="ghost"
+								>
+									{copiedField === 'encode-input' ? (
+										<CheckIcon className="size-5" />
+									) : (
+										<CopyIcon className="size-5" />
+									)}
+								</Button>
+							)}
+						</div>
+						<Textarea
+							className="min-h-[120px] font-mono sm:min-h-[150px]"
+							onChange={(event: ChangeEvent<HTMLTextAreaElement>) =>
+								handleEncodeInputChange(event.target.value)
+							}
+							placeholder="Entrez votre texte ici..."
+							value={encodeInputText}
+						/>
+					</div>
+					<div className="flex flex-col gap-y-3">
+						<div className="flex items-center justify-between">
+							<h3 className="font-semibold text-base">Base64</h3>
+							{encodeOutputText && (
+								<Button
+									onClick={() => handleCopy(encodeOutputText, 'encode-output')}
+									size="sm"
+									variant="ghost"
+								>
+									{copiedField === 'encode-output' ? (
+										<CheckIcon className="size-5" />
+									) : (
+										<CopyIcon className="size-5" />
+									)}
+								</Button>
+							)}
+						</div>
+						<div className="min-h-[120px] w-full overflow-auto rounded-md border border-input bg-background px-3 py-2 font-mono text-sm sm:min-h-[150px]">
+							{encodeOutputText}
+						</div>
+					</div>
+				</div>
+			),
+		},
+		{
+			id: 1,
+			label: 'Décoder',
+			content: (
+				<div className="flex w-full flex-col gap-y-6 overflow-hidden">
+					<div className="flex flex-col gap-y-3">
+						<div className="flex items-center justify-between">
+							<h3 className="font-semibold text-base">Base64</h3>
+							{decodeInputText && (
+								<Button
+									onClick={() => handleCopy(decodeInputText, 'decode-input')}
+									size="sm"
+									variant="ghost"
+								>
+									{copiedField === 'decode-input' ? (
+										<CheckIcon className="size-5" />
+									) : (
+										<CopyIcon className="size-5" />
+									)}
+								</Button>
+							)}
+						</div>
+						<Textarea
+							className="min-h-[120px] font-mono sm:min-h-[150px]"
+							onChange={(event: ChangeEvent<HTMLTextAreaElement>) =>
+								handleDecodeInputChange(event.target.value)
+							}
+							placeholder="Collez du Base64 ici pour le décoder..."
+							value={decodeInputText}
+						/>
+					</div>
+					<div className="flex flex-col gap-y-3">
+						<div className="flex items-center justify-between">
+							<h3 className="font-semibold text-base">Texte décodé</h3>
+							{decodeOutputText && (
+								<Button
+									onClick={() => handleCopy(decodeOutputText, 'decode-output')}
+									size="sm"
+									variant="ghost"
+								>
+									{copiedField === 'decode-output' ? (
+										<CheckIcon className="size-5" />
+									) : (
+										<CopyIcon className="size-5" />
+									)}
+								</Button>
+							)}
+						</div>
+						<div
+							className={cn(
+								'min-h-[120px] w-full overflow-auto rounded-md border border-input bg-background px-3 py-2 font-mono text-sm sm:min-h-[150px]',
+								error && 'text-red-600 dark:text-red-300'
+							)}
+						>
+							{error ? error : decodeOutputText}
+						</div>
+					</div>
+				</div>
+			),
+		},
+	];
 
 	return (
 		<>
@@ -138,99 +287,15 @@ const Base64Page = () => {
 
 			<div className="screen-line-before w-full border-edge border-b" />
 
-			<div className="flex justify-end p-4">
-				<Button className="text-sm" onClick={handleReset} variant="outline">
-					<ArrowsClockwiseIcon className="size-5" />
-					Réinitialiser
-				</Button>
-			</div>
+			<div className="p-4">
+				<DirectionAwareTabs tabs={tabs} />
 
-			<div className="screen-line-before w-full border-edge border-b" />
-
-			<div className="space-y-6 p-4">
-				<div className="overflow-hidden">
-					<div className="mb-3 flex items-center justify-between">
-						<h3 className="font-semibold text-xl">Texte à encoder :</h3>
-						{inputText && (
-							<Button
-								onClick={() => handleCopy(inputText, 'input')}
-								size="sm"
-								variant="ghost"
-							>
-								{copiedField === 'input' ? (
-									<CheckIcon className="size-5" />
-								) : (
-									<CopyIcon className="size-5" />
-								)}
-							</Button>
-						)}
-					</div>
-					<Textarea
-						className="min-h-[120px] font-mono"
-						onChange={(e) => handleInputChange(e.target.value)}
-						placeholder="Entrez votre texte ici..."
-						value={inputText}
-					/>
+				<div className="mt-6 flex justify-end">
+					<Button className="text-sm" onClick={handleReset} variant="outline">
+						<ArrowsClockwiseIcon className="size-5" />
+						Réinitialiser les champs
+					</Button>
 				</div>
-
-				<div className="overflow-hidden">
-					<div className="mb-3 flex items-center justify-between">
-						<h3 className="font-semibold text-xl">Base64 encodé :</h3>
-						{encodedText && (
-							<Button
-								onClick={() => handleCopy(encodedText, 'encoded')}
-								size="sm"
-								variant="ghost"
-							>
-								{copiedField === 'encoded' ? (
-									<CheckIcon className="size-5" />
-								) : (
-									<CopyIcon className="size-5" />
-								)}
-							</Button>
-						)}
-					</div>
-					<Textarea
-						className="min-h-[120px] font-mono"
-						onChange={(e) => handleEncodedChange(e.target.value)}
-						placeholder="Ou collez du Base64 ici pour le décoder..."
-						value={encodedText}
-					/>
-				</div>
-
-				{/* Résultat décodé */}
-				{decodedText && (
-					<div className="overflow-hidden">
-						<div className="mb-3 flex items-center justify-between">
-							<h3 className="font-semibold text-xl">Texte décodé :</h3>
-							<Button
-								onClick={() => handleCopy(decodedText, 'decoded')}
-								size="sm"
-								variant="ghost"
-							>
-								{copiedField === 'decoded' ? (
-									<CheckIcon className="size-5" />
-								) : (
-									<CopyIcon className="size-5" />
-								)}
-							</Button>
-						</div>
-						<div className="min-h-[120px] w-full overflow-auto rounded-md border border-input bg-background px-3 py-2 font-mono text-sm">
-							{decodedText}
-						</div>
-					</div>
-				)}
-
-				{error && (
-					<motion.div
-						animate={{ opacity: 1, scale: 1 }}
-						className="rounded-lg border-1 border-red-600 bg-destructive/10 p-4 text-center font-medium text-red-600 text-sm dark:border-red-300 dark:text-red-300"
-						initial={{ opacity: 0, scale: 0.95 }}
-						transition={{ duration: 0.3 }}
-					>
-						{error}
-					</motion.div>
-				)}
 			</div>
 
 			<div className="screen-line-before w-full border-edge border-b" />

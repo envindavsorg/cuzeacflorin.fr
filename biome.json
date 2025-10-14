@@ -64,6 +64,7 @@
         "useImageSize": "off",
         "useMaxParams": "off",
         "noReactForwardRef": "off",
+        "noUnusedExpressions": "off",
         "useSortedClasses": {
           "fix": "safe",
           "options": {
