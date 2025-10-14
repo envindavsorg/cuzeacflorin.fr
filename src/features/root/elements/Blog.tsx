@@ -2,7 +2,7 @@ import { ArrowRightIcon } from '@phosphor-icons/react/ssr';
 import Link from 'next/link';
 import type React from 'react';
 import { PostItem } from '@/blog/components/PostItem';
-import { getAllPosts } from '@/blog/data/posts';
+import { getPostsByCategory } from '@/blog/data/posts';
 import type { Post } from '@/blog/types/post';
 import { Button } from '@/components/ui/Button';
 import { Panel, PanelHeader, PanelTitle } from '@/components/ui/Panel';
@@ -20,7 +20,7 @@ const BlogPostsLength = ({
 );
 
 export const Blog = (): React.JSX.Element => {
-	const allPosts: Post[] = getAllPosts();
+	const allPosts: Post[] = getPostsByCategory('article');
 
 	return (
 		<Panel id="blog">

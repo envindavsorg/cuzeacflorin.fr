@@ -16,6 +16,7 @@ import { ProfileOverview } from '@/features/root/elements/ProfileOverview';
 import { Projects } from '@/features/root/elements/projects';
 import { SocialLinks } from '@/features/root/elements/social-links';
 import { TechStack } from '@/features/root/elements/TechStack';
+import { Utils } from '@/features/root/elements/Utils';
 import { dayjs } from '@/lib/dayjs';
 
 const getPageJsonLd = (): WithContext<PageSchema> => ({
@@ -67,6 +68,8 @@ const Page = async (): Promise<React.JSX.Element> => {
 				<Certifications />
 				<Divider />
 				<Blog />
+				<Divider />
+				<Utils />
 				<Divider />
 				<Experiences />
 				<Divider />
