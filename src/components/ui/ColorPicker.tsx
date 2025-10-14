@@ -103,11 +103,11 @@ export const ColorPicker = ({
 					variant="outline"
 				>
 					<div
-						className="mr-2 h-4 w-4 rounded-full shadow-sm"
+						className="mr-2 size-4 rounded-full shadow-sm"
 						style={{ backgroundColor: colorInput }}
 					/>
 					<span className="flex-grow">{trimColorString(colorInput)}</span>
-					<CaretDownIcon className="h-4 w-4 opacity-50" />
+					<CaretDownIcon className="size-4 opacity-50" />
 				</Button>
 			</PopoverTrigger>
 			<PopoverContent className="w-[240px] p-3">
@@ -130,7 +130,7 @@ export const ColorPicker = ({
 						}}
 					>
 						<motion.div
-							className="absolute h-4 w-4 rounded-full border-2 border-white shadow-md"
+							className="absolute size-4 rounded-full border-2 border-white shadow-md"
 							style={{
 								left: `${hsl[1]}%`,
 								top: `${100 - hsl[2]}%`,
@@ -193,7 +193,7 @@ export const ColorPicker = ({
 											initial={{ scale: 0 }}
 											transition={{ duration: 0.2 }}
 										>
-											<CheckIcon className="absolute inset-0 m-auto h-4 w-4 text-white" />
+											<CheckIcon className="absolute inset-0 m-auto size-4 text-white" />
 										</motion.div>
 									)}
 								</motion.button>

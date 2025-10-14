@@ -1,4 +1,4 @@
-import { PaletteIcon, TextTIcon } from '@phosphor-icons/react/ssr';
+import { PaletteIcon, TextTIcon, VaultIcon } from '@phosphor-icons/react/ssr';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { PostTagFilter } from '@/blog/components/PostTagFilter';
@@ -96,10 +96,13 @@ const ComponentsPage = async ({
 								className="mx-4 flex size-8 shrink-0 items-center justify-center rounded-lg border border-muted-foreground/15 bg-muted ring-1 ring-edge ring-offset-1 ring-offset-background"
 							>
 								{post.metadata.tags?.includes('Base64') && (
-									<TextTIcon className="pointer-events-none size-5 text-muted-foreground" />
+									<VaultIcon className="pointer-events-none size-5 text-muted-foreground" />
 								)}
 								{post.metadata.tags?.includes('Colors') && (
 									<PaletteIcon className="pointer-events-none size-5 text-muted-foreground" />
+								)}
+								{post.metadata.tags?.includes('Texte') && (
+									<TextTIcon className="pointer-events-none size-5 text-muted-foreground" />
 								)}
 							</div>
 

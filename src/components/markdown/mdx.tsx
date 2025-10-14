@@ -21,6 +21,7 @@ import {
 	FramedImage,
 	YouTubeEmbed,
 } from '@/components/markdown/elements/Embed';
+import { LoremIpsumGenerator } from '@/components/markdown/elements/LoremIpsumGenerator';
 import {
 	Table,
 	TableBody,
@@ -202,6 +203,7 @@ const components: MDXRemoteProps['components'] = {
 	FramedImage,
 	Base64Component: Base64,
 	ColorGeneratorComponent: ColorGenerator,
+	LoremIpsumGeneratorComponent: LoremIpsumGenerator,
 };
 
 const options: MDXRemoteProps['options'] = {
