@@ -21,7 +21,7 @@ import {
 	FramedImage,
 	YouTubeEmbed,
 } from '@/components/markdown/elements/Embed';
-import InternetSpeedTest from '@/components/markdown/elements/InternetSpeedTest';
+import { InternetSpeedTest } from '@/components/markdown/elements/InternetSpeedTest';
 import { LoremIpsumGenerator } from '@/components/markdown/elements/LoremIpsumGenerator';
 import {
 	Table,
