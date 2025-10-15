@@ -72,7 +72,7 @@ const NotFound = () => (
 			</PanelContent>
 			<div className="screen-line-before flex justify-center py-2">
 				<Button asChild variant="default">
-					<Link aria-label="Retour en arrière" href="/">
+					<Link aria-label="Retour en arrière" href="/public">
 						<ArrowLeftIcon className="size-5" />
 						Retour en arrière
 					</Link>
