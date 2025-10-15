@@ -73,7 +73,10 @@ const Page = async () => {
 				<ProfileOverview />
 				<Divider />
 				<Panel>
-					<Link href="/cv/resume.pdf" rel="noopener noreferrer" target="_blank">
+					<Link
+						aria-label="Voir et télécharger mon CV"
+						href="https://assets.cuzeacflorin.fr/cv/resume.pdf"
+					>
 						<PanelHeader className="group flex items-center justify-center gap-x-3 p-4">
 							<ArrowDownIcon
 								className="size-6 text-theme transition-transform duration-500 ease-in-out group-hover:rotate-180"
