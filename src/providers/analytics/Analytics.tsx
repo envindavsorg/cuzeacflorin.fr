@@ -1,8 +1,6 @@
 import type React from 'react';
 import { lazy, Suspense } from 'react';
 
-const { NODE_ENV } = process.env;
-
 const AnalyticsReact = lazy(() =>
 	import('@vercel/analytics/react').then((module) => ({
 		default: module.Analytics,
@@ -17,11 +15,7 @@ const SpeedInsights = lazy(() =>
 
 export const Analytics = (): React.JSX.Element => (
 	<Suspense fallback={null}>
-		{NODE_ENV === 'production' && (
-			<>
-				<AnalyticsReact debug={false} mode={NODE_ENV} />
-				<SpeedInsights debug={false} />
-			</>
-		)}
+		<AnalyticsReact debug={true} mode="auto" />
+		<SpeedInsights debug={true} />
 	</Suspense>
 );
