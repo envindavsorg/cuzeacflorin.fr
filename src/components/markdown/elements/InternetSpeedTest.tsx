@@ -129,7 +129,7 @@ export const InternetSpeedTest = (): React.JSX.Element => {
 
 	return (
 		<>
-			<div className="grid gap-6 py-6 sm:grid-cols-2 md:grid-cols-4">
+			<div className="grid grid-cols-2 gap-6 py-6 md:grid-cols-4">
 				<Card
 					className={cn(
 						'relative row-span-1 flex flex-col gap-y-8 border-edge p-4 md:col-span-2 md:gap-y-12 md:p-6',
@@ -143,9 +143,9 @@ export const InternetSpeedTest = (): React.JSX.Element => {
 					)}
 				>
 					<div className="flex items-center justify-between">
-						<div className="flex items-center gap-x-3">
-							<DownloadIcon className="size-4 md:size-5" />
-							<h4 className="!font-normal mt-0 mb-0 text-sm md:text-base">
+						<div className="flex items-center gap-x-2 sm:gap-x-3">
+							<DownloadIcon className="size-3 sm:size-4 md:size-5" />
+							<h4 className="!font-normal mt-0 mb-0 text-xs sm:text-sm md:text-base">
 								Téléchargement
 							</h4>
 						</div>
@@ -156,9 +156,9 @@ export const InternetSpeedTest = (): React.JSX.Element => {
 					</div>
 
 					<div className="flex flex-1 flex-col justify-end">
-						<div className="font-bold font-mono text-3xl tabular-nums leading-none md:text-5xl">
+						<div className="font-bold font-mono text-2xl tabular-nums leading-none sm:text-3xl md:text-5xl">
 							{((testState.result.download || 0) / 1_000_000).toFixed(2)}
-							<span className="ml-2 font-normal text-muted-foreground text-sm md:text-lg">
+							<span className="ml-2 font-normal text-muted-foreground text-xs sm:text-sm md:text-lg">
 								Mb/s
 							</span>
 						</div>
@@ -178,9 +178,9 @@ export const InternetSpeedTest = (): React.JSX.Element => {
 					)}
 				>
 					<div className="flex items-center justify-between">
-						<div className="flex items-center gap-x-3">
-							<UploadIcon className="size-4 md:size-5" />
-							<h4 className="!font-normal mt-0 mb-0 text-sm md:text-base">
+						<div className="flex items-center gap-x-2 sm:gap-x-3">
+							<UploadIcon className="size-3 sm:size-4 md:size-5" />
+							<h4 className="!font-normal mt-0 mb-0 text-xs sm:text-sm md:text-base">
 								Téléversement
 							</h4>
 						</div>
@@ -191,9 +191,9 @@ export const InternetSpeedTest = (): React.JSX.Element => {
 					</div>
 
 					<div className="flex flex-1 flex-col justify-end">
-						<div className="font-bold font-mono text-3xl tabular-nums leading-none md:text-5xl">
+						<div className="font-bold font-mono text-2xl tabular-nums leading-none sm:text-3xl md:text-5xl">
 							{((testState.result.upload || 0) / 1_000_000).toFixed(2)}
-							<span className="ml-2 font-normal text-muted-foreground text-sm md:text-lg">
+							<span className="ml-2 font-normal text-muted-foreground text-xs sm:text-sm md:text-lg">
 								Mb/s
 							</span>
 						</div>
@@ -213,10 +213,10 @@ export const InternetSpeedTest = (): React.JSX.Element => {
 					)}
 				>
 					<div className="flex items-center justify-between">
-						<div className="flex items-center gap-x-3">
-							<SpeedometerIcon className="size-4 md:size-5" />
-							<h4 className="!font-normal mt-0 mb-0 text-sm md:text-base">
-								Latence moyenne
+						<div className="flex items-center gap-x-2 sm:gap-x-3">
+							<SpeedometerIcon className="size-3 sm:size-4 md:size-5" />
+							<h4 className="!font-normal mt-0 mb-0 text-xs sm:text-sm md:text-base">
+								Latence <span className="max-sm:hidden">moyenne</span>
 							</h4>
 						</div>
 						<PulsatingCircle
@@ -226,9 +226,9 @@ export const InternetSpeedTest = (): React.JSX.Element => {
 					</div>
 
 					<div className="flex flex-1 flex-col justify-end">
-						<div className="font-bold font-mono text-3xl tabular-nums leading-none md:text-5xl">
+						<div className="font-bold font-mono text-2xl tabular-nums leading-none sm:text-3xl md:text-5xl">
 							{(testState.result.latency || 0).toFixed(3)}
-							<span className="ml-2 font-normal text-muted-foreground text-sm md:text-lg">
+							<span className="ml-2 font-normal text-muted-foreground text-xs sm:text-sm md:text-lg">
 								ms
 							</span>
 						</div>
@@ -248,10 +248,10 @@ export const InternetSpeedTest = (): React.JSX.Element => {
 					)}
 				>
 					<div className="flex items-center justify-between">
-						<div className="flex items-center gap-x-3">
-							<GaugeIcon className="size-4 md:size-5" />
-							<h4 className="!font-normal mt-0 mb-0 text-sm md:text-base">
-								Gigue moyenne
+						<div className="flex items-center gap-x-2 sm:gap-x-3">
+							<GaugeIcon className="size-3 sm:size-4 md:size-5" />
+							<h4 className="!font-normal mt-0 mb-0 text-xs sm:text-sm md:text-base">
+								Gigue <span className="max-sm:hidden">moyenne</span>
 							</h4>
 						</div>
 						<PulsatingCircle
@@ -261,9 +261,9 @@ export const InternetSpeedTest = (): React.JSX.Element => {
 					</div>
 
 					<div className="flex flex-1 flex-col justify-end">
-						<div className="font-bold font-mono text-3xl tabular-nums leading-none md:text-5xl">
+						<div className="font-bold font-mono text-2xl tabular-nums leading-none sm:text-3xl md:text-5xl">
 							{(testState.result.jitter || 0).toFixed(3)}
-							<span className="ml-2 font-normal text-muted-foreground text-sm md:text-lg">
+							<span className="ml-2 font-normal text-muted-foreground text-xs sm:text-sm md:text-lg">
 								ms
 							</span>
 						</div>

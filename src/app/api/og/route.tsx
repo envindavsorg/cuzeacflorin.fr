@@ -20,35 +20,33 @@ export const GET = async (req: NextRequest) => {
 	try {
 		const { searchParams } = req.nextUrl;
 
-		// Extract parameters with defaults
 		const type = (searchParams.get('type') as PageType) || 'homepage';
 		const title =
 			searchParams.get('title') || `${USER.firstName} ${USER.lastName}`;
 		const description = searchParams.get('description') || USER.bio;
 
-		// Define styles based on page type
 		const getTypeStyles = (pageType: PageType) => {
 			const baseStyles = {
 				homepage: {
 					badge: "Page d'accueil",
 				},
 				blog: {
-					badge: 'Blog',
+					badge: `Portfolio | ${USER.firstName} ${USER.lastName} | Blog`,
 				},
 				blogArticle: {
-					badge: 'Article de blog',
+					badge: `Portfolio | ${USER.firstName} ${USER.lastName} | Article de blog`,
 				},
 				components: {
-					badge: 'Composants',
+					badge: `Portfolio | ${USER.firstName} ${USER.lastName} | Composants`,
 				},
 				componentsArticle: {
-					badge: 'Composant',
+					badge: `Portfolio | ${USER.firstName} ${USER.lastName} | Composant`,
 				},
 				utils: {
-					badge: 'Outils',
+					badge: `Portfolio | ${USER.firstName} ${USER.lastName} | Outils`,
 				},
 				utilsArticle: {
-					badge: 'Outil',
+					badge: `Portfolio | ${USER.firstName} ${USER.lastName} | Outil`,
 				},
 			};
 			return baseStyles[pageType] || baseStyles.homepage;

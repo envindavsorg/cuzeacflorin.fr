@@ -126,18 +126,18 @@
 }
 
 :root {
-	--background: oklch(1 0 0);
-	--foreground: oklch(0.141 0.005 285.823);
-	--primary: oklch(0.141 0.005 285.823);
+	--background: oklch(0.982 0.004 91.446);
+	--foreground: oklch(0.191 0.002 106.586);
+	--primary: oklch(0.191 0.002 106.586);
 	--primary-foreground: oklch(0.985 0 0);
 	--secondary: oklch(0.967 0.001 286.375);
-	--secondary-foreground: oklch(0.141 0.005 285.823);
+	--secondary-foreground: oklch(0.191 0.002 106.586);
 	--muted: oklch(0.967 0.001 286.375);
 	--muted-foreground: oklch(0.552 0.016 285.938);
-	--card: oklch(1 0 0);
-	--card-foreground: oklch(0.141 0.005 285.823);
-	--popover: oklch(1 0 0);
-	--popover-foreground: oklch(0.141 0.005 285.823);
+	--card: oklch(0.982 0.004 91.446);
+	--card-foreground: oklch(0.191 0.002 106.586);
+	--popover: oklch(0.982 0.004 91.446);
+	--popover-foreground: oklch(0.191 0.002 106.586);
 	--popover-border: color-mix(in oklab, var(--color-black) 15%, transparent);
 	--accent: oklch(0.967 0.001 286.375);
 	--accent2: color-mix(in oklab, var(--accent) 50%, transparent);
@@ -151,17 +151,17 @@
 	--destructive: oklch(0.577 0.245 27.325);
 	--link: oklch(0.488 0.243 264.376);
 	--code: oklch(0.985 0 0);
-	--code-foreground: oklch(0.141 0.005 285.823);
+	--code-foreground: oklch(0.191 0.002 106.586);
 	--code-number: oklch(0.705 0.015 286.067);
 	--code-highlight: oklch(0.967 0.001 286.375);
-	--selection: oklch(0.141 0.005 285.823);
+	--selection: oklch(0.191 0.002 106.586);
 	--selection-foreground: oklch(0.985 0 0);
 	--shadow-popover: 0 6px 24px rgba(0, 0, 0, 0.25);
 }
 
 .dark {
-	--background: oklch(0.141 0.005 285.823);
-	--foreground: oklch(0.985 0 0);
+	--background: oklch(0.191 0.002 106.586);
+	--foreground: oklch(0.982 0.004 91.446);
 	--primary: oklch(0.37 0.013 285.805);
 	--primary-foreground: oklch(0.985 0 0);
 	--secondary: oklch(0.274 0.006 286.033);
@@ -187,7 +187,7 @@
 	--code-number: oklch(0.552 0.016 285.938);
 	--code-highlight: oklch(0.274 0.006 286.033);
 	--selection: oklch(0.985 0 0);
-	--selection-foreground: oklch(0.141 0.005 285.823);
+	--selection-foreground: oklch(0.191 0.002 106.586);
 	--shadow-popover: 0 0 24px rgba(0, 0, 0, 0.5);
 }
 
