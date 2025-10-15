@@ -2,6 +2,7 @@ import { ArrowDownIcon } from '@phosphor-icons/react/ssr';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import type { ProfilePage as PageSchema, WithContext } from 'schema-dts';
+import { getI18nInstance } from '@/app/appRouterI18n';
 import { Divider } from '@/components/ui/Divider';
 import { Panel, PanelHeader, PanelTitle } from '@/components/ui/Panel';
 import { getGitHubUserData } from '@/features/root/actions/github.action';
@@ -47,7 +48,14 @@ const getPageJsonLd = (): WithContext<PageSchema> => ({
 	},
 });
 
-const Page = async () => {
+type PageProps = {
+	params: Promise<{ lang: string }>;
+};
+
+const Page = async ({ params }: PageProps) => {
+	const { lang } = await params;
+	const i18n = getI18nInstance(lang);
+
 	const [github, linkedin] = await Promise.all([
 		getGitHubUserData().then((data) => data.followers),
 		getLinkedInFollowers().then((data) => data.count),
@@ -80,7 +88,10 @@ const Page = async () => {
 								weight="duotone"
 							/>
 							<PanelTitle className="!text-xl">
-								Voir et télécharger mon CV
+								{i18n._({
+									id: 'homepage.cv.download',
+									message: 'View and download my resume',
+								})}
 							</PanelTitle>
 						</PanelHeader>
 					</Link>

@@ -1,6 +1,7 @@
 import '@/styles/globals.css';
 
 import type { Metadata, Viewport } from 'next';
+import { headers } from 'next/headers';
 import Script from 'next/script';
 import type React from 'react';
 import type { WebSite, WithContext } from 'schema-dts';
@@ -8,7 +9,7 @@ import { META_THEME_COLORS, SITE_INFO } from '@/config/site';
 import { USER } from '@/features/root/data/user';
 import { mono, sans } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
-import { Providers } from '@/providers/Providers';
+import linguiConfig from '../../lingui.config';
 
 const getWebSiteJsonLd = (): WithContext<WebSite> => ({
 	'@context': 'https://schema.org',
@@ -93,35 +94,38 @@ type RootLayoutProps = {
 	children: React.ReactNode;
 };
 
-const RootLayout = ({ children }: RootLayoutProps): React.JSX.Element => (
-	<html
-		className={cn(
-			'no-scrollbar h-full antialiased',
-			sans.variable,
-			mono.variable
-		)}
-		lang="en"
-		suppressHydrationWarning
-	>
-		<head>
-			<script
-				dangerouslySetInnerHTML={{ __html: darkModeScript }}
-				type="text/javascript"
-			/>
-			<Script src={`data:text/javascript;base64,${btoa(darkModeScript)}`} />
-			<script
-				dangerouslySetInnerHTML={{
-					__html: JSON.stringify(getWebSiteJsonLd()).replace(/</g, '\\u003c'),
-				}}
-				type="application/ld+json"
-			/>
-			<title>Mon portfolio - Cuzeac Florin</title>
-		</head>
+const RootLayout = async ({ children }: RootLayoutProps) => {
+	const headersList = await headers();
+	const lang = headersList.get('x-locale') || linguiConfig.locales[0] || 'en';
 
-		<body>
-			<Providers>{children}</Providers>
-		</body>
-	</html>
-);
+	return (
+		<html
+			className={cn(
+				'no-scrollbar h-full antialiased',
+				sans.variable,
+				mono.variable
+			)}
+			lang={lang}
+			suppressHydrationWarning
+		>
+			<head>
+				<script
+					dangerouslySetInnerHTML={{ __html: darkModeScript }}
+					type="text/javascript"
+				/>
+				<Script src={`data:text/javascript;base64,${btoa(darkModeScript)}`} />
+				<script
+					dangerouslySetInnerHTML={{
+						__html: JSON.stringify(getWebSiteJsonLd()).replace(/</g, '\\u003c'),
+					}}
+					type="application/ld+json"
+				/>
+				<title>Mon portfolio - Cuzeac Florin</title>
+			</head>
+
+			<body>{children}</body>
+		</html>
+	);
+};
 
 export default RootLayout;

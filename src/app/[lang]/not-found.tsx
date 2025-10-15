@@ -15,7 +15,7 @@ export const metadata = {
 };
 
 const NotFound = (): React.JSX.Element => (
-	<div className="mx-auto flex h-[calc(100svh-5.5rem)] flex-col justify-center">
+	<div className="mx-auto flex h-screen flex-col justify-center md:max-w-3xl">
 		<div className="screen-line-after after:-bottom-px grow border-edge border-x">
 			<div className="flex h-4" />
 		</div>
@@ -56,7 +56,7 @@ const NotFound = (): React.JSX.Element => (
 
 				<div className="border-edge border-t">
 					<h1 className="flex items-center text-balance pl-4 font-semibold text-2xl sm:text-4xl">
-						Ce composant n’existe pas !
+						Oups, cette page n’existe pas !
 					</h1>
 				</div>
 			</div>
@@ -67,13 +67,13 @@ const NotFound = (): React.JSX.Element => (
 		<Panel>
 			<PanelContent>
 				<Prose className="text-muted-foreground">
-					Oups, peut-être avez-vous cliqué sur un ancien lien ou avez-vous fait
-					une faute de frappe ...
+					Peut-être avez-vous cliqué sur un ancien lien ou avez-vous fait une
+					faute de frappe ...
 				</Prose>
 			</PanelContent>
 			<div className="screen-line-before flex justify-center py-2">
 				<Button asChild variant="default">
-					<Link aria-label="Retour en arrière" href="/">
+					<Link aria-label="Retour en arrière" href="/public">
 						<ArrowLeftIcon className="size-5" />
 						Retour en arrière
 					</Link>

@@ -43,13 +43,15 @@
       "performance": {
         "noBarrelFile": "off",
         "noImgElement": "off",
-        "useTopLevelRegex": "off"
+        "useTopLevelRegex": "off",
+        "noAccumulatingSpread": "off"
       },
       "style": {
         "noMagicNumbers": "off",
         "useFilenamingConvention": "off",
         "noNestedTernary": "off",
-        "noParameterAssign": "off"
+        "noParameterAssign": "off",
+        "noNonNullAssertion": "off"
       },
       "suspicious": {
         "useAwait": "off",

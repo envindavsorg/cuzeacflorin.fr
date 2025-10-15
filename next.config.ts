@@ -25,6 +25,33 @@ const nextConfig: NextConfig = {
 		dangerouslyAllowSVG: true,
 		contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
 	},
+	turbopack: {
+		rules: {
+			'*.po': {
+				loaders: ['@lingui/loader'],
+				as: '*.js',
+			},
+		},
+	},
+	experimental: {
+		swcPlugins: [['@lingui/swc-plugin', {}]],
+	},
+	webpack: (config) => {
+		config.module.rules.push({
+			test: /\.po$/,
+			use: '@lingui/loader',
+		});
+		return config;
+	},
+	async redirects() {
+		return [
+			{
+				source: '/',
+				destination: '/fr',
+				permanent: false,
+			},
+		];
+	},
 	async rewrites() {
 		return [
 			{
