@@ -1,6 +1,9 @@
+import { ArrowDownIcon } from '@phosphor-icons/react/ssr';
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import type { ProfilePage as PageSchema, WithContext } from 'schema-dts';
 import { Divider } from '@/components/ui/Divider';
+import { Panel, PanelHeader, PanelTitle } from '@/components/ui/Panel';
 import { getGitHubUserData } from '@/features/root/actions/github.action';
 import { getLinkedInFollowers } from '@/features/root/actions/linkedin.action';
 import { USER } from '@/features/root/data/user';
@@ -68,6 +71,20 @@ const Page = async () => {
 				<ProfileHeader />
 				<Divider />
 				<ProfileOverview />
+				<Divider />
+				<Panel>
+					<Link href="/cv/resume.pdf" rel="noopener noreferrer" target="_blank">
+						<PanelHeader className="group flex items-center justify-center gap-x-3 p-4">
+							<ArrowDownIcon
+								className="size-6 text-theme transition-transform duration-500 ease-in-out group-hover:rotate-180"
+								weight="duotone"
+							/>
+							<PanelTitle className="!text-xl">
+								Voir et télécharger mon CV
+							</PanelTitle>
+						</PanelHeader>
+					</Link>
+				</Panel>
 				<Divider />
 				<SocialLinks githubFollowers={github} linkedinFollowers={linkedin} />
 				<Divider />
