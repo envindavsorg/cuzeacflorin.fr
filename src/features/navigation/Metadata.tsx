@@ -41,8 +41,8 @@ export type MetadataProps = {
 };
 
 const Metadata = ({ commit }: MetadataProps): React.JSX.Element => {
-	const { name, icon: BrowserIcon } = useBrowser();
 	const { width = 0, height = 0 } = useWindowSize();
+	const { name, icon: BrowserIcon } = useBrowser();
 
 	const items = useMemo(
 		() => [
