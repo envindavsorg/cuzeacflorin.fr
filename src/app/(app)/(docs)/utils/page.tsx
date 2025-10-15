@@ -10,8 +10,20 @@ import { PostTagFilter } from '@/blog/components/PostTagFilter';
 import { getPostsByCategory } from '@/blog/data/posts';
 import type { Post } from '@/blog/types/post';
 import { dayjs } from '@/lib/dayjs';
+import { generateOgMetadata } from '@/lib/og-image';
 
-export const metadata: Metadata = {
+export const generateMetadata = async (): Promise<Metadata> =>
+	generateOgMetadata({
+		title: 'Outils web',
+		description: 'Différents outils pour les développeurs web.',
+		ogImageParams: {
+			type: 'utils',
+			title: 'Outils web',
+			description: 'Différents outils pour les développeurs web.',
+		},
+	});
+
+const metadata: Metadata = {
 	title: 'Outils web',
 	description:
 		'Différents outils pour les développeurs web, utiles dans la vie de tous les jours.',
@@ -103,7 +115,7 @@ const ComponentsPage = async ({
 								{post.metadata.tags?.includes('Base64') && (
 									<VaultIcon className="pointer-events-none size-5 text-muted-foreground" />
 								)}
-								{post.metadata.tags?.includes('Colors') && (
+								{post.metadata.tags?.includes('Couleurs') && (
 									<PaletteIcon className="pointer-events-none size-5 text-muted-foreground" />
 								)}
 								{post.metadata.tags?.includes('Texte') && (

@@ -54,7 +54,7 @@ export const Utils = (): React.JSX.Element => {
 								{post.metadata.tags?.includes('Base64') && (
 									<VaultIcon className="pointer-events-none size-5 text-muted-foreground" />
 								)}
-								{post.metadata.tags?.includes('Colors') && (
+								{post.metadata.tags?.includes('Couleurs') && (
 									<PaletteIcon className="pointer-events-none size-5 text-muted-foreground" />
 								)}
 								{post.metadata.tags?.includes('Texte') && (

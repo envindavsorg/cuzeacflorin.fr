@@ -4,8 +4,20 @@ import { PostTagFilter } from '@/blog/components/PostTagFilter';
 import { getPostsByCategory } from '@/blog/data/posts';
 import type { Post } from '@/blog/types/post';
 import { dayjs } from '@/lib/dayjs';
+import { generateOgMetadata } from '@/lib/og-image';
 
-export const metadata: Metadata = {
+export const generateMetadata = async (): Promise<Metadata> =>
+	generateOgMetadata({
+		title: 'Mes articles de blog',
+		description: 'Retrouvez tous mes articles de blog.',
+		ogImageParams: {
+			type: 'blog',
+			title: 'Mes articles de blog',
+			description: 'Retrouvez tous mes articles de blog.',
+		},
+	});
+
+const metadata: Metadata = {
 	title: 'Mes articles de blog',
 	description:
 		'Retrouvez tous mes articles de blog sur le développement web, les bonnes pratiques, et plus encore.',

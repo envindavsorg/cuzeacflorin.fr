@@ -14,7 +14,7 @@ const nextConfig: NextConfig = {
 			},
 			{
 				protocol: 'https',
-				hostname: 'www.cuzeacflorin.fr',
+				hostname: 'cuzeacflorin.fr',
 			},
 		],
 		qualities: [75, 100],

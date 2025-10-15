@@ -187,7 +187,7 @@ src/
 Create a `.env.local` file with the following variables:
 
 ```env
-NEXT_PUBLIC_APP_URL=https://cuzeacflorin.fr
+NEXT_PUBLIC_BASE_URL=https://cuzeacflorin.fr
 NEXT_PUBLIC_REGISTRY_URL=https://cuzeacflorin.fr/r
 # GitHub token (optional, for enhanced API rate limits)
 GITHUB_TOKEN=your_github_token_here

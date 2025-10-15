@@ -3,7 +3,7 @@ import { USER } from '@/features/root/data/user';
 
 export const SITE_INFO = {
 	name: USER.displayName,
-	url: process.env.NEXT_PUBLIC_APP_URL || 'https://cuzeacflorin.fr',
+	url: process.env.NEXT_PUBLIC_BASE_URL || 'https://cuzeacflorin.fr',
 	ogImage: USER.ogImage,
 	description: USER.bio,
 	keywords: USER.keywords,

@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import type { ProfilePage as PageSchema, WithContext } from 'schema-dts';
 import { Divider } from '@/components/ui/Divider';
 import { getGitHubUserData } from '@/features/root/actions/github.action';
@@ -17,6 +18,18 @@ import { SocialLinks } from '@/features/root/elements/social-links';
 import { TechStack } from '@/features/root/elements/TechStack';
 import { Utils } from '@/features/root/elements/Utils';
 import { dayjs } from '@/lib/dayjs';
+import { generateOgMetadata } from '@/lib/og-image';
+
+export const generateMetadata = async (): Promise<Metadata> =>
+	generateOgMetadata({
+		title: `${USER.firstName} ${USER.lastName}`,
+		description: USER.bio,
+		ogImageParams: {
+			type: 'homepage',
+			title: `${USER.firstName} ${USER.lastName}`,
+			description: USER.bio,
+		},
+	});
 
 const getPageJsonLd = (): WithContext<PageSchema> => ({
 	'@context': 'https://schema.org',

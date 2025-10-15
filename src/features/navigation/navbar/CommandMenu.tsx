@@ -2,12 +2,12 @@
 
 import {
 	ArrowElbowDownLeftIcon,
-	AtomIcon,
 	BriefcaseIcon,
 	CircleHalfTiltIcon,
 	CodeBlockIcon,
 	CommandIcon,
 	CubeIcon,
+	GearSixIcon,
 	HouseIcon,
 	IdentificationCardIcon,
 	MagnifyingGlassIcon,
@@ -16,7 +16,6 @@ import {
 	type Icon as PhosphorIcon,
 	StackIcon,
 	SunIcon,
-	TextAaIcon,
 	UserSoundIcon,
 } from '@phosphor-icons/react';
 import { useCommandState } from 'cmdk';
@@ -303,13 +302,16 @@ export const CommandMenu = ({ posts }: CommandMenuProps): React.JSX.Element => {
 		[setTheme]
 	);
 
-	const { blogLinks, componentLinks } = useMemo(
+	const { articlesLinks, componentLinks, utilsLinks } = useMemo(
 		() => ({
-			blogLinks: posts
-				.filter((post) => post.metadata?.category !== 'components')
+			articlesLinks: posts
+				.filter((post) => post.metadata?.category === 'article')
 				.map(postToCommandLinkItem),
 			componentLinks: posts
 				.filter((post) => post.metadata?.category === 'components')
+				.map(postToCommandLinkItem),
+			utilsLinks: posts
+				.filter((post) => post.metadata?.category === 'utils')
 				.map(postToCommandLinkItem),
 		}),
 		[posts]
@@ -364,18 +366,27 @@ export const CommandMenu = ({ posts }: CommandMenuProps): React.JSX.Element => {
 					<CommandSeparator />
 
 					<CommandLinkGroup
-						fallbackIcon={TextAaIcon}
+						fallbackIcon={PenNibIcon}
 						heading="Derniers articles de blog :"
-						links={blogLinks}
+						links={articlesLinks}
 						onLinkSelect={handleOpenLink}
 					/>
 
 					<CommandSeparator />
 
 					<CommandLinkGroup
-						fallbackIcon={AtomIcon}
+						fallbackIcon={CodeBlockIcon}
 						heading="Derniers snippets de code :"
 						links={componentLinks}
+						onLinkSelect={handleOpenLink}
+					/>
+
+					<CommandSeparator />
+
+					<CommandLinkGroup
+						fallbackIcon={GearSixIcon}
+						heading="Derniers outils :"
+						links={utilsLinks}
 						onLinkSelect={handleOpenLink}
 					/>
 

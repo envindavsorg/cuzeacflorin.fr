@@ -11,8 +11,20 @@ import {
 } from '@/components/animations/Terminal';
 import { BadgeWithIcon } from '@/components/ui/Badge';
 import { dayjs } from '@/lib/dayjs';
+import { generateOgMetadata } from '@/lib/og-image';
 
-export const metadata: Metadata = {
+export const generateMetadata = async (): Promise<Metadata> =>
+	generateOgMetadata({
+		title: 'Composants React',
+		description: 'Ma collection de snippets React réutilisables.',
+		ogImageParams: {
+			type: 'components',
+			title: 'Composants React',
+			description: 'Ma collection de snippets React réutilisables.',
+		},
+	});
+
+const metadata: Metadata = {
 	title: 'Composants React',
 	description:
 		'Ma collection de snippets React réutilisables pour accélérer le développement de vos projets.',

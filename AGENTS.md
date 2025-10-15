@@ -168,7 +168,7 @@ pnpm build
 
 See `.env.example` for required variables:
 
-- `NEXT_PUBLIC_APP_URL` - Application URL (https://cuzeacflorin.fr)
+- `NEXT_PUBLIC_BASE_URL` - Application URL (https://cuzeacflorin.fr)
 - `NEXT_PUBLIC_REGISTRY_URL` - Registry base URL (https://cuzeacflorin.fr/r)
 - GitHub token for API integration (optional)
 

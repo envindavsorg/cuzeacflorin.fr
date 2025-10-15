@@ -18,6 +18,7 @@ import { Prose } from '@/components/ui/Typography';
 import { SITE_INFO } from '@/config/site';
 import { USER } from '@/features/root/data/user';
 import { dayjs } from '@/lib/dayjs';
+import { generateOgMetadata } from '@/lib/og-image';
 import { cn } from '@/lib/utils';
 
 type Props = {
@@ -43,32 +44,23 @@ export const generateMetadata = async ({
 		return notFound();
 	}
 
-	const { title, description, imageLight, createdAt, updatedAt } =
-		post.metadata;
+	const { title, description } = post.metadata;
 	const postUrl = `/utils/${post.slug}`;
-	const ogImage = imageLight || `/og/simple?title=${encodeURIComponent(title)}`;
 
-	return {
+	const og = generateOgMetadata({
 		title,
 		description,
+		ogImageParams: {
+			type: 'utilsArticle',
+			title,
+			description,
+		},
+	});
+
+	return {
+		...og,
 		alternates: {
 			canonical: postUrl,
-		},
-		openGraph: {
-			url: postUrl,
-			type: 'article',
-			publishedTime: dayjs(createdAt).toISOString(),
-			modifiedTime: dayjs(updatedAt).toISOString(),
-			images: {
-				url: ogImage,
-				width: 1200,
-				height: 630,
-				alt: title,
-			},
-		},
-		twitter: {
-			card: 'summary_large_image',
-			images: [ogImage],
 		},
 	};
 };
