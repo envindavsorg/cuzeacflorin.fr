@@ -65,7 +65,11 @@ const SocialLinksItem = ({
 							{' '}
 							-{' '}
 							<span className="font-medium text-theme">
-								<Counter step={config.step} value={followerCount} />{' '}
+								{process.env.ENV_TYPE === 'capture' ? (
+									followerCount
+								) : (
+									<Counter step={config.step} value={followerCount} />
+								)}{' '}
 								{config.label}
 							</span>
 						</>

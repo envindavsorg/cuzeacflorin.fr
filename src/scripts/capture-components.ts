@@ -56,7 +56,7 @@ const captureGif = async (
 	const frameInterval = 1000 / fps;
 	const totalFrames = Math.ceil(duration / frameInterval);
 
-	logger.debug(
+	logger.info(
 		`📹 Recording ${totalFrames} frames at ${fps}fps for ${duration}ms...`
 	);
 
@@ -80,7 +80,7 @@ const captureGif = async (
 		await new Promise((resolve) => setTimeout(resolve, frameInterval));
 
 		if ((i + 1) % 10 === 0) {
-			logger.debug(`  Progress: ${i + 1}/${totalFrames} frames`);
+			logger.info(`  Progress: ${i + 1}/${totalFrames} frames`);
 		}
 	}
 
@@ -120,8 +120,6 @@ const captureComponent = async ({
 
 	const url = `${baseUrl}/blog/${blogSlug}`;
 
-	await page.goto(url, { waitUntil: 'networkidle2' });
-
 	await page.emulateMediaFeatures([
 		{
 			name: 'prefers-color-scheme',
@@ -129,11 +127,17 @@ const captureComponent = async ({
 		},
 	]);
 
+	await page.evaluateOnNewDocument((theme) => {
+		localStorage.setItem('theme', theme);
+	}, theme);
+
+	await page.goto(url, { waitUntil: 'networkidle2' });
+
 	await page.waitForSelector('[role="tabpanel"][data-state="active"]', {
 		timeout: 10_000,
 	});
 
-	await new Promise((resolve) => setTimeout(resolve, 2000));
+	await new Promise((resolve) => setTimeout(resolve, 3000));
 
 	const componentElement = await page.$(
 		'[data-screenshot-anchor-target-for-capture]'
@@ -186,7 +190,7 @@ const captureComponent = async ({
 
 		const gifPath = path.join(componentDir, `${theme}.gif`);
 		await captureGif(page, remountedElement, duration, gifPath);
-		logger.debug(`✅ GIF saved: ${gifPath}`);
+		logger.info(`✅ GIF saved: ${gifPath}`);
 	} else {
 		const filePath = path.join(
 			componentDir,
@@ -199,7 +203,7 @@ const captureComponent = async ({
 			quality: 90,
 		});
 
-		logger.debug(`✅ Screenshot saved: ${filePath}`);
+		logger.info(`✅ Screenshot saved: ${filePath}`);
 	}
 
 	await page.close();
@@ -212,7 +216,7 @@ const main = async (): Promise<void> => {
 
 	try {
 		for (const component of COMPONENTS) {
-			logger.debug(
+			logger.info(
 				`📸 Capturing ${component.canReplay ? 'GIFs' : 'screenshots'} for ${component.name}...`
 			);
 
@@ -227,7 +231,7 @@ const main = async (): Promise<void> => {
 			}
 		}
 
-		logger.debug('✅ All component screenshots captured successfully.');
+		logger.info('✅ All component screenshots captured successfully.');
 	} catch (error) {
 		logger.error('⛔️ Error capturing component screenshots:', error);
 	} finally {

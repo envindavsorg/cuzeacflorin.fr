@@ -2,9 +2,11 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { rimraf } from 'rimraf';
 import { type Registry, registrySchema } from 'shadcn/schema';
-
+// @ts-ignore
 const { registryConfig } = await import('@/config/registry.js');
+// @ts-ignore
 const { registry } = await import('@/registry');
+
 const REGISTRY_PATH = path.join(process.cwd(), 'src/__registry__');
 const PUBLIC_REGISTRY_PATH = path.join(process.cwd(), 'public/r');
 

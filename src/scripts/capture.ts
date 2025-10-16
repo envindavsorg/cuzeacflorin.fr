@@ -1,13 +1,13 @@
 import fs from 'node:fs';
-import path from 'node:path';
-import puppeteer from 'puppeteer-core';
+import { join } from 'node:path';
+import puppeteer, { type Page } from 'puppeteer-core';
 import { logger } from '@/lib/logger';
 import type { CaptureScreenshot, FilePath } from '@/types/capture';
 
 const executablePath =
 	'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const url = process.env.URL || 'http://localhost:1408';
-const outputDir = path.join(process.cwd(), '.envindavsorg/screenshots');
+const outputDir = join(process.cwd(), '.envindavsorg/screenshots');
 
 export const SIZE = {
 	desktop: {
@@ -31,16 +31,21 @@ const captureScreenshot = async ({
 	themes = ['light'],
 	type = 'webp',
 }: CaptureScreenshot): Promise<void> => {
-	await fs.promises.mkdir(outputDir, { recursive: true });
-
-	const page = await browser.newPage();
-
-	const { width, height } = SIZE[size];
-	await page.setViewport({ width, height });
-
-	await page.goto(url, { waitUntil: 'networkidle2' });
+	await fs.promises.mkdir(outputDir, {
+		recursive: true,
+	});
 
 	for (const theme of themes) {
+		const page: Page = await browser.newPage();
+
+		// set viewport size
+		const { width, height } = SIZE[size];
+		await page.setViewport({
+			width,
+			height,
+		});
+
+		// emulate dark or light mode
 		await page.emulateMediaFeatures([
 			{
 				name: 'prefers-color-scheme',
@@ -48,10 +53,21 @@ const captureScreenshot = async ({
 			},
 		]);
 
-		const filePath = path.join(
-			outputDir,
-			`screenshot-${size}-${theme}.${type}`
-		) as FilePath;
+		// set theme in localStorage
+		// this must be done before any content is loaded to avoid a flash of incorrect theme
+		await page.evaluateOnNewDocument((theme) => {
+			localStorage.setItem('theme', theme);
+		}, theme);
+
+		// navigate to the page
+		await page.goto(url, {
+			waitUntil: 'networkidle2',
+		});
+
+		// wait for 2 seconds to ensure all fonts and images are loaded
+		await new Promise((resolve) => setTimeout(resolve, 2000));
+
+		const filePath = join(outputDir, `${size}-${theme}.${type}`) as FilePath;
 
 		await page.screenshot({
 			path: filePath,
@@ -59,10 +75,10 @@ const captureScreenshot = async ({
 			quality: type === 'png' ? undefined : 90,
 		});
 
-		logger.debug(`✅ Screenshot saved : ${filePath}`);
-	}
+		logger.info(`✅ Screenshot saved : ${filePath}`);
 
-	await page.close();
+		await page.close();
+	}
 };
 
 const main = async (): Promise<void> => {
@@ -93,7 +109,7 @@ const main = async (): Promise<void> => {
 			type: 'png',
 		});
 
-		logger.debug('✅ All screenshots captured successfully.');
+		logger.info('✅ All screenshots captured successfully.');
 	} catch (error) {
 		logger.error('⛔️ Error capturing screenshots:', error);
 	} finally {
