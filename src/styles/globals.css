@@ -17,8 +17,7 @@
 }
 
 @theme inline {
-	--color-theme: light-dark(hsl(230, 91%, 64%), hsl(51, 100%, 56%));
-
+	--color-theme: var(--theme);
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
 	--color-primary: var(--primary);
@@ -49,22 +48,19 @@
 	--color-code-highlight: var(--code-highlight);
 	--color-selection: var(--selection);
 	--color-selection-foreground: var(--selection-foreground);
+	--shadow-popover: var(--shadow-popover);
 
 	--font-sans: var(--font-sans);
 	--font-mono: var(--font-mono);
-
-	--shadow-popover: var(--shadow-popover);
 
 	--animate-fade-in: fade-in var(--tw-duration, 200ms) ease-out;
 	--animate-fade-out: fade-out var(--tw-duration, 200ms) ease-out;
 
 	--animate-collapsible-fade-down:
-		collapsible-down var(--tw-duration, 200ms) ease-out, fade-in
-		var(--tw-duration, 200ms) ease-out;
+		collapsible-down var(--tw-duration, 200ms) ease-out, fade-in var(--tw-duration, 200ms) ease-out;
 
 	--animate-collapsible-fade-up:
-		collapsible-up var(--tw-duration, 200ms) ease-out, fade-out
-		var(--tw-duration, 200ms) ease-out;
+		collapsible-up var(--tw-duration, 200ms) ease-out, fade-out var(--tw-duration, 200ms) ease-out;
 
 	@keyframes fade-in {
 		from {
@@ -97,35 +93,8 @@
 	color-scheme: light;
 }
 
-@utility no-scrollbar {
-	-ms-overflow-style: none;
-	scrollbar-width: none;
-	&::-webkit-scrollbar {
-		display: none;
-	}
-}
-
-@utility link {
-	@apply font-medium underline underline-offset-4;
-}
-
-@utility screen-line-before {
-	@apply relative before:absolute before:top-0 before:-left-[100vw] before:-z-1 before:h-px before:w-[200vw] before:bg-edge;
-}
-
-@utility screen-line-after {
-	@apply relative after:absolute after:bottom-0 after:-left-[100vw] after:-z-1 after:h-px after:w-[200vw] after:bg-edge;
-}
-
-@utility step {
-	counter-increment: step;
-	&::before {
-		@apply mr-2 inline-flex size-7 items-center justify-center rounded-full border border-muted-foreground/15 bg-muted text-center -indent-px text-sm font-medium text-muted-foreground ring-1 ring-edge ring-offset-1 ring-offset-background md:absolute md:-mt-0.5 md:-ml-11.5 md:size-8;
-		content: counter(step);
-	}
-}
-
 :root {
+	--theme: oklch(0.589 0.209 270.105);
 	--background: oklch(0.982 0.004 91.446);
 	--foreground: oklch(0.191 0.002 106.586);
 	--primary: oklch(0.191 0.002 106.586);
@@ -160,6 +129,7 @@
 }
 
 .dark {
+	--theme: oklch(0.899 0.181 97.45);
 	--background: oklch(0.191 0.002 106.586);
 	--foreground: oklch(0.982 0.004 91.446);
 	--primary: oklch(0.37 0.013 285.805);
@@ -189,6 +159,34 @@
 	--selection: oklch(0.985 0 0);
 	--selection-foreground: oklch(0.191 0.002 106.586);
 	--shadow-popover: 0 0 24px rgba(0, 0, 0, 0.5);
+}
+
+@utility no-scrollbar {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+@utility link {
+	@apply font-medium underline underline-offset-4;
+}
+
+@utility screen-line-before {
+	@apply relative before:absolute before:top-0 before:-left-[100vw] before:-z-1 before:h-px before:w-[200vw] before:bg-edge;
+}
+
+@utility screen-line-after {
+	@apply relative after:absolute after:bottom-0 after:-left-[100vw] after:-z-1 after:h-px after:w-[200vw] after:bg-edge;
+}
+
+@utility step {
+	counter-increment: step;
+	&::before {
+		@apply mr-2 inline-flex size-7 items-center justify-center rounded-full border border-muted-foreground/15 bg-muted text-center -indent-px text-sm font-medium text-muted-foreground ring-1 ring-edge ring-offset-1 ring-offset-background md:absolute md:-mt-0.5 md:-ml-11.5 md:size-8;
+		content: counter(step);
+	}
 }
 
 @layer base {

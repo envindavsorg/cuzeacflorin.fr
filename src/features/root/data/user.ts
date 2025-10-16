@@ -77,7 +77,7 @@ export const USER: User = {
 	website: 'https://cuzeacflorin.fr',
 	jobTitle: 'Développeur et designer web',
 	avatar: '/images/avatar.webp',
-	ogImage: '/images/og-image-dark.png?t=1755355653',
+	ogImage: '/images/og-image.png?t=1755355653',
 	namePronunciationUrl: '/audio/florin.mp3',
 	avatars: [memoji1, memoji2, memoji3, memoji4, memoji5],
 	jobs: [

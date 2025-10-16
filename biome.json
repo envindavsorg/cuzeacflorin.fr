@@ -8,6 +8,11 @@
     "formatWithErrors": true,
     "useEditorconfig": true
   },
+  "css": {
+    "formatter": {
+      "lineWidth": 120
+    }
+  },
   "assist": {
     "actions": {
       "source": {

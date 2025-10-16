@@ -29,25 +29,25 @@ const manifest = (): MetadataRoute.Manifest => ({
 	scope: '/',
 	screenshots: [
 		{
-			src: '/screenshot-mobile-dark.webp',
+			src: '/meta/mobile-dark.webp',
 			type: 'image/webp',
 			sizes: '440x956',
 			form_factor: 'narrow',
 		},
 		{
-			src: '/screenshot-mobile-light.webp',
+			src: '/meta/mobile-light.webp',
 			type: 'image/webp',
 			sizes: '440x956',
 			form_factor: 'narrow',
 		},
 		{
-			src: '/screenshot-desktop-dark.webp',
+			src: '/meta/desktop-dark.webp',
 			type: 'image/webp',
 			sizes: '1920x1080',
 			form_factor: 'wide',
 		},
 		{
-			src: '/screenshot-desktop-light.webp',
+			src: '/meta/desktop-light.webp',
 			type: 'image/webp',
 			sizes: '1920x1080',
 			form_factor: 'wide',

@@ -1,3 +1,4 @@
+import { getStatus, type StatusResponse } from '@openstatus/react';
 import dynamic from 'next/dynamic';
 import type React from 'react';
 import { Sparkles } from '@/components/animations/Sparkles';
@@ -23,6 +24,10 @@ const AppLayout = async ({ children }: Readonly<AppLayoutProps>) => {
 	const { branch, commit } = await getGitHubUserData();
 	const { hash, date } = commit;
 
+	const status: StatusResponse = await getStatus(
+		process.env.OPENSTATUS_SLUG || 'cuzeacflorin-fr'
+	);
+
 	return (
 		<>
 			<NavBar />
@@ -30,7 +35,7 @@ const AppLayout = async ({ children }: Readonly<AppLayoutProps>) => {
 				<main className="max-w-screen overflow-x-hidden px-2">{children}</main>
 			</RootContextMenu>
 			<Sparkles density={150} />
-			<Footer commit={{ branch, hash, update: date }} />
+			<Footer commit={{ branch, hash, update: date }} status={status} />
 			<ScrollTop />
 		</>
 	);
