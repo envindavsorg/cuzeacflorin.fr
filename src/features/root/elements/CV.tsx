@@ -111,10 +111,11 @@ export const CV = (): React.JSX.Element => {
 
 					<DialogContent className="sm:max-w-[425px]">
 						<DialogHeader>
-							<DialogTitle className="leading-normal">
-								Recevez mon CV directement dans votre boîte de réception !
+							<DialogTitle className="text-start leading-normal">
+								Recevez mon CV directement <br className="min-sm:hidden" /> dans
+								votre boîte de réception !
 							</DialogTitle>
-							<DialogDescription>
+							<DialogDescription className="text-start">
 								Entrez votre prénom et votre adresse e-mail dans le formulaire
 								ci-dessous pour recevoir immédiatement mon CV.
 							</DialogDescription>
@@ -168,7 +169,7 @@ export const CV = (): React.JSX.Element => {
 
 								<DialogFooter className="mt-6">
 									<Button
-										className="group"
+										className="group ms-auto w-fit"
 										disabled={isLoading}
 										type="submit"
 										variant="default"
