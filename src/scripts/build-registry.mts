@@ -2,6 +2,7 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { rimraf } from 'rimraf';
 import { type Registry, registrySchema } from 'shadcn/schema';
+import consola from "consola";
 // @ts-ignore
 const { registryConfig } = await import('@/config/registry.js');
 // @ts-ignore
@@ -102,19 +103,20 @@ export const Index: Record<string, any> = {`;
 };
 
 try {
-	console.log('💽 Building registry...');
+	consola.info('Building registry ...');
 
 	const result = registrySchema.safeParse(registry);
 
 	if (!result.success) {
-		console.error(result.error);
+		consola.error(result.error);
 		process.exit(1);
 	}
 
 	await buildRegistry(result.data);
 
-	console.log('✅ Done!');
+	consola.success('Registry built successfully !');
 } catch (error) {
-	console.error(error);
+	consola.error(error);
+	
 	process.exit(1);
 }

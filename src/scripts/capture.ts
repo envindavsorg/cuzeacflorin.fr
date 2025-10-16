@@ -1,13 +1,16 @@
-import fs from 'node:fs';
+import { promises } from 'node:fs';
 import { join } from 'node:path';
-import puppeteer, { type Page } from 'puppeteer-core';
-import { logger } from '@/lib/logger';
-import type { CaptureScreenshot, FilePath } from '@/types/capture';
+import { green, red, yellow } from 'colorette';
+import consola from 'consola';
+import { type Browser, launch, type Page } from 'puppeteer-core';
+import type { CaptureScreenshot, FilePath, Theme } from '@/types/capture';
 
 const executablePath =
 	'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const url = process.env.URL || 'http://localhost:1408';
-const outputDir = join(process.cwd(), '.envindavsorg/screenshots');
+
+const screenshotsDir = join(process.cwd(), 'public/meta');
+const ogDir = join(process.cwd(), 'public/og');
 
 export const SIZE = {
 	desktop: {
@@ -31,7 +34,9 @@ const captureScreenshot = async ({
 	themes = ['light'],
 	type = 'webp',
 }: CaptureScreenshot): Promise<void> => {
-	await fs.promises.mkdir(outputDir, {
+	const outputDir = size === 'og-image' ? ogDir : screenshotsDir;
+
+	await promises.mkdir(outputDir, {
 		recursive: true,
 	});
 
@@ -67,51 +72,45 @@ const captureScreenshot = async ({
 		// wait for 2 seconds to ensure all fonts and images are loaded
 		await new Promise((resolve) => setTimeout(resolve, 2000));
 
-		const filePath = join(outputDir, `${size}-${theme}.${type}`) as FilePath;
+		const fileName: string = `${size}-${theme}.${type}`;
+		const path = join(outputDir, fileName) as FilePath;
+		const quality = type === 'png' ? undefined : 90;
 
-		await page.screenshot({
-			path: filePath,
-			type,
-			quality: type === 'png' ? undefined : 90,
-		});
+		await page.screenshot({ path, type, quality });
 
-		logger.info(`✅ Screenshot saved : ${filePath}`);
+		const relativePath = path.replace(process.cwd(), '');
+
+		consola.info(
+			`${size === 'og-image' ? 'OG Image' : 'Screenshot'} saved : ${yellow(relativePath)}`
+		);
 
 		await page.close();
 	}
 };
 
 const main = async (): Promise<void> => {
-	const browser = await puppeteer.launch({
+	const browser: Browser = await launch({
 		executablePath,
 	});
 
+	const themes: Theme[] = ['light', 'dark'];
+
 	try {
-		await captureScreenshot({
-			browser,
-			url,
-			size: 'desktop',
-			themes: ['light', 'dark'],
-		});
-
-		await captureScreenshot({
-			browser,
-			url,
-			size: 'mobile',
-			themes: ['light', 'dark'],
-		});
-
+		await captureScreenshot({ browser, url, size: 'desktop', themes });
+		await captureScreenshot({ browser, url, size: 'mobile', themes });
 		await captureScreenshot({
 			browser,
 			url: `${url}/og`,
 			size: 'og-image',
-			themes: ['light', 'dark'],
+			themes: ['dark'],
 			type: 'png',
 		});
 
-		logger.info('✅ All screenshots captured successfully.');
+		consola.success(
+			`All screenshots and og image ${green('captured successfully')} !`
+		);
 	} catch (error) {
-		logger.error('⛔️ Error capturing screenshots:', error);
+		consola.error(`${red('Error capturing')} screenshots or og image:`, error);
 	} finally {
 		await browser.close();
 	}

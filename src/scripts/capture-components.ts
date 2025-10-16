@@ -1,18 +1,18 @@
-import fs from 'node:fs';
-import path from 'node:path';
+import { createWriteStream, promises } from 'node:fs';
+import { join } from 'node:path';
 import { GifEncoder } from '@skyra/gifenc';
+import consola from 'consola';
 import { PNG } from 'pngjs';
 import puppeteer, {
 	type Browser,
 	type ElementHandle,
 	type Page,
 } from 'puppeteer-core';
-import { logger } from '@/lib/logger';
 
 const executablePath =
 	'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const baseUrl = process.env.URL || 'http://localhost:1408';
-const outputDir = path.join(process.cwd(), 'public/images/blog');
+const outputDir = join(process.cwd(), 'public/images/blog');
 
 const COMPONENTS = [
 	{
@@ -56,12 +56,12 @@ const captureGif = async (
 	const frameInterval = 1000 / fps;
 	const totalFrames = Math.ceil(duration / frameInterval);
 
-	logger.info(
-		`📹 Recording ${totalFrames} frames at ${fps}fps for ${duration}ms...`
+	consola.info(
+		`Recording ${totalFrames} frames at ${fps}fps for ${duration}ms...`
 	);
 
 	const encoder = new GifEncoder(Math.round(box.width), Math.round(box.height));
-	const stream = fs.createWriteStream(outputPath);
+	const stream = createWriteStream(outputPath);
 	encoder.createReadStream().pipe(stream);
 
 	encoder.start();
@@ -80,7 +80,7 @@ const captureGif = async (
 		await new Promise((resolve) => setTimeout(resolve, frameInterval));
 
 		if ((i + 1) % 10 === 0) {
-			logger.info(`  Progress: ${i + 1}/${totalFrames} frames`);
+			consola.info(`  - progress: ${i + 1}/${totalFrames} frames`);
 		}
 	}
 
@@ -99,8 +99,8 @@ const captureComponent = async ({
 	canReplay,
 	duration,
 }: CaptureComponentOptions): Promise<void> => {
-	const componentDir = path.join(outputDir, componentName);
-	await fs.promises.mkdir(componentDir, { recursive: true });
+	const componentDir = join(outputDir, componentName);
+	await promises.mkdir(componentDir, { recursive: true });
 
 	const page = await browser.newPage();
 
@@ -114,7 +114,7 @@ const captureComponent = async ({
 
 	const blogSlug = slugMap[componentName];
 	if (!blogSlug) {
-		logger.warn(`⚠️  No blog slug mapping found for ${componentName}`);
+		consola.warn(`No blog slug mapping found for ${componentName}`);
 		return;
 	}
 
@@ -144,8 +144,10 @@ const captureComponent = async ({
 	);
 
 	if (!componentElement) {
-		logger.warn(`⚠️  Component preview not found for ${componentName}`);
+		consola.warn(`Component preview not found for ${componentName}`);
+
 		await page.close();
+
 		return;
 	}
 
@@ -154,23 +156,29 @@ const captureComponent = async ({
 			const preview = document.querySelector(
 				'[role="tabpanel"][data-state="active"]'
 			);
+
 			if (!preview) {
 				return false;
 			}
 
 			const buttons = preview.querySelectorAll('button');
+
 			for (const btn of buttons) {
 				if (btn.querySelector('svg')) {
 					(btn as HTMLButtonElement).click();
+
 					return true;
 				}
 			}
+
 			return false;
 		});
 
 		if (!buttonFound) {
-			logger.warn(`⚠️  Replay button not found for ${componentName}`);
+			consola.warn(`Replay button not found for ${componentName}`);
+
 			await page.close();
+
 			return;
 		}
 
@@ -181,21 +189,22 @@ const captureComponent = async ({
 		);
 
 		if (!remountedElement) {
-			logger.warn(
-				`⚠️  Component element not found after remount for ${componentName}`
+			consola.warn(
+				`Component element not found after remount for ${componentName}`
 			);
+
 			await page.close();
+
 			return;
 		}
 
-		const gifPath = path.join(componentDir, `${theme}.gif`);
+		const gifPath = join(componentDir, `${theme}.gif`);
+
 		await captureGif(page, remountedElement, duration, gifPath);
-		logger.info(`✅ GIF saved: ${gifPath}`);
+
+		consola.success(`GIF saved: ${gifPath}`);
 	} else {
-		const filePath = path.join(
-			componentDir,
-			`${theme}.webp`
-		) as `${string}.webp`;
+		const filePath = join(componentDir, `${theme}.webp`) as `${string}.webp`;
 
 		await componentElement.screenshot({
 			path: filePath,
@@ -203,7 +212,7 @@ const captureComponent = async ({
 			quality: 90,
 		});
 
-		logger.info(`✅ Screenshot saved: ${filePath}`);
+		consola.success(`Screenshot saved: ${filePath}`);
 	}
 
 	await page.close();
@@ -216,8 +225,8 @@ const main = async (): Promise<void> => {
 
 	try {
 		for (const component of COMPONENTS) {
-			logger.info(
-				`📸 Capturing ${component.canReplay ? 'GIFs' : 'screenshots'} for ${component.name}...`
+			consola.info(
+				`Capturing ${component.canReplay ? 'GIFs' : 'screenshots'} for ${component.name}...`
 			);
 
 			for (const theme of THEMES) {
@@ -231,9 +240,9 @@ const main = async (): Promise<void> => {
 			}
 		}
 
-		logger.info('✅ All component screenshots captured successfully.');
+		consola.success('All component screenshots captured successfully.');
 	} catch (error) {
-		logger.error('⛔️ Error capturing component screenshots:', error);
+		consola.error('Error capturing component screenshots:', error);
 	} finally {
 		await browser.close();
 	}

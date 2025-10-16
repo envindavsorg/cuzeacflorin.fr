@@ -50,7 +50,11 @@ export const ProfileHeader = (): React.JSX.Element => (
 				</div>
 
 				<div className="h-auto border-edge border-t py-1 pl-4">
-					<FlipSentences sentences={USER.flipSentences} />
+					{process.env.ENV_TYPE === 'capture' ? (
+						<p>Imagine, code, crée, inspire.</p>
+					) : (
+						<FlipSentences sentences={USER.flipSentences} />
+					)}
 				</div>
 			</div>
 		</div>

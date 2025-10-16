@@ -82,7 +82,7 @@ export const GET = async (req: NextRequest) => {
 				<img
 					alt="Element"
 					height="300px"
-					src="https://cuzeacflorin.fr/og/og-banner.png"
+					src="https://cuzeacflorin.fr/images/og-banner.png"
 					style={{
 						position: 'absolute',
 						bottom: '-10%',

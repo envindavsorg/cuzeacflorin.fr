@@ -135,6 +135,7 @@
     "@types/pngjs": "^6.0.5",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.1",
+    "colorette": "^2.0.20",
     "gray-matter": "^4.0.3",
     "husky": "^9.1.7",
     "libphonenumber-metadata-generator": "^2.0.3",
