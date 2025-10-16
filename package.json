@@ -80,6 +80,7 @@
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.9.1",
     "@uidotdev/usehooks": "^2.4.1",
+    "@uploadthing/react": "^7.3.3",
     "@vercel/analytics": "^1.5.0",
     "@vercel/blob": "^2.0.0",
     "@vercel/speed-insights": "^1.2.0",
@@ -116,6 +117,7 @@
     "tailwind-merge": "^3.3.1",
     "tslog": "^4.10.2",
     "tsup": "^8.5.0",
+    "uploadthing": "^7.7.4",
     "use-scramble": "^2.2.15",
     "vcard-creator": "^0.7.2",
     "zod": "^4.1.12"

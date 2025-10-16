@@ -1,13 +1,11 @@
-import { ArrowDownIcon } from '@phosphor-icons/react/ssr';
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import type { ProfilePage as PageSchema, WithContext } from 'schema-dts';
 import { Divider } from '@/components/ui/Divider';
-import { Panel, PanelHeader, PanelTitle } from '@/components/ui/Panel';
 import { getGitHubUserData } from '@/features/root/actions/github.action';
 import { getLinkedInFollowers } from '@/features/root/actions/linkedin.action';
 import { USER } from '@/features/root/data/user';
 import { Blog } from '@/features/root/elements/Blog';
+import { CV } from '@/features/root/elements/CV';
 import { Certifications } from '@/features/root/elements/certifications';
 import { Experiences } from '@/features/root/elements/experiences';
 import { GitHubContributions } from '@/features/root/elements/github-contributions';
@@ -72,22 +70,7 @@ const Page = async () => {
 				<Divider />
 				<ProfileOverview />
 				<Divider />
-				<Panel>
-					<Link
-						aria-label="Voir et télécharger mon CV"
-						href="https://assets.cuzeacflorin.fr/cv/resume.pdf"
-					>
-						<PanelHeader className="group flex items-center justify-center gap-x-3 p-4">
-							<ArrowDownIcon
-								className="size-6 text-theme transition-transform duration-500 ease-in-out group-hover:rotate-180"
-								weight="duotone"
-							/>
-							<PanelTitle className="!text-xl">
-								Voir et télécharger mon CV
-							</PanelTitle>
-						</PanelHeader>
-					</Link>
-				</Panel>
+				<CV />
 				<Divider />
 				<SocialLinks githubFollowers={github} linkedinFollowers={linkedin} />
 				<Divider />

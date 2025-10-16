@@ -16,10 +16,6 @@ const nextConfig: NextConfig = {
 				protocol: 'https',
 				hostname: 'cuzeacflorin.fr',
 			},
-			{
-				protocol: 'https',
-				hostname: 'assets.cuzeacflorin.fr',
-			},
 		],
 		qualities: [75, 100],
 		formats: ['image/avif', 'image/webp'],
@@ -30,25 +26,16 @@ const nextConfig: NextConfig = {
 		contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
 	},
 	async rewrites() {
-		return {
-			beforeFiles: [
-				{
-					source: '/:path*',
-					has: [{ type: 'host', value: 'assets.cuzeacflorin.fr' }],
-					destination: '/assets/:path*',
-				},
-			],
-			afterFiles: [
-				{
-					source: '/blog/:slug.mdx',
-					destination: '/blog.mdx/:slug',
-				},
-				{
-					source: '/components/:slug.mdx',
-					destination: '/blog.mdx/:slug',
-				},
-			],
-		};
+		return [
+			{
+				source: '/blog/:slug.mdx',
+				destination: '/blog.mdx/:slug',
+			},
+			{
+				source: '/components/:slug.mdx',
+				destination: '/blog.mdx/:slug',
+			},
+		];
 	},
 	async headers() {
 		return [
