@@ -1,9 +1,8 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { ArrowDownIcon, PaperPlaneIcon } from '@phosphor-icons/react';
+import { PaperPlaneIcon } from '@phosphor-icons/react';
 import consola from 'consola';
-import Link from 'next/link';
 import type React from 'react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -35,6 +34,7 @@ import {
 	PanelTitle,
 } from '@/components/ui/Panel';
 import { Spinner } from '@/components/ui/Spinner';
+import { Prose } from '@/components/ui/Typography';
 
 const emailFormSchema = z.object({
 	firstName: z
@@ -91,30 +91,22 @@ export const CV = (): React.JSX.Element => {
 
 	return (
 		<Panel>
-			<Link
-				aria-label="Voir et télécharger mon CV"
-				className="no-underline"
-				href="https://cfhi75vpdo.ufs.sh/f/tIhJKzZYPGQBJWs54PG2sVmGEapT3CScHg1W4uQLZUI5FKoN"
-				rel="noopener noreferrer"
-				target="_blank"
-			>
-				<PanelHeader className="group flex items-center justify-center gap-x-3 p-4">
-					<ArrowDownIcon
-						className="size-6 text-theme transition-transform duration-500 ease-in-out group-hover:rotate-180"
-						weight="duotone"
-					/>
-					<PanelTitle className="!text-xl">
-						Voir et télécharger mon CV
-					</PanelTitle>
-				</PanelHeader>
-			</Link>
+			<PanelHeader>
+				<PanelTitle>Mon CV</PanelTitle>
+			</PanelHeader>
 
 			<PanelContent>
+				<Prose>
+					Découvrez mon CV pour en savoir plus sur mon parcours, mes compétences
+					et mes expériences professionnelles. Cliquez sur le bouton ci-dessous
+					pour recevoir une copie directement dans votre boîte e-mail.
+				</Prose>
+			</PanelContent>
+
+			<div className="screen-line-before flex justify-center py-2">
 				<Dialog onOpenChange={setOpen} open={open}>
 					<DialogTrigger asChild>
-						<Button size="sm" variant="default">
-							Recevoir mon CV sur votre mail
-						</Button>
+						<Button variant="default">Recevoir mon CV</Button>
 					</DialogTrigger>
 
 					<DialogContent className="sm:max-w-[425px]">
@@ -176,23 +168,19 @@ export const CV = (): React.JSX.Element => {
 
 								<DialogFooter className="mt-6">
 									<Button
-										className="group w-full"
+										className="group"
 										disabled={isLoading}
-										size="lg"
 										type="submit"
+										variant="default"
 									>
 										{isLoading ? (
 											<>
-												<span className="font-semibold text-sm">
-													Envoi du mail en cours ...
-												</span>
+												Envoi du mail en cours ...
 												<Spinner />
 											</>
 										) : (
 											<>
-												<span className="font-semibold text-sm">
-													Recevoir mon CV
-												</span>
+												Recevoir mon CV
 												<PaperPlaneIcon className="size-4 transition-transform duration-500 ease-in-out group-hover:rotate-45" />
 											</>
 										)}
@@ -202,7 +190,7 @@ export const CV = (): React.JSX.Element => {
 						</Form>
 					</DialogContent>
 				</Dialog>
-			</PanelContent>
+			</div>
 		</Panel>
 	);
 };
