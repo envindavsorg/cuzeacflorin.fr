@@ -26,7 +26,11 @@ const DialogPortal = ({
 const DialogClose = ({
 	...props
 }: React.ComponentProps<typeof DialogPrimitive.Close>): React.JSX.Element => (
-	<DialogPrimitive.Close data-slot="dialog-close" {...props} />
+	<DialogPrimitive.Close
+		className="cursor-pointer"
+		data-slot="dialog-close"
+		{...props}
+	/>
 );
 
 const DialogOverlay = ({

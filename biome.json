@@ -54,7 +54,8 @@
         "noMagicNumbers": "off",
         "useFilenamingConvention": "off",
         "noNestedTernary": "off",
-        "noParameterAssign": "off"
+        "noParameterAssign": "off",
+        "noNonNullAssertion": "off"
       },
       "suspicious": {
         "useAwait": "off",
