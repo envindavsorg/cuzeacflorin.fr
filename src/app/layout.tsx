@@ -20,9 +20,17 @@ const getWebSiteJsonLd = (): WithContext<WebSite> => ({
 
 const darkModeScript = String.raw`
 	try {
-        if (localStorage.theme === 'dark' || ((!('theme' in localStorage) || localStorage.theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        const isDark = localStorage.theme === 'dark' || ((!('theme' in localStorage) || localStorage.theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+        if (isDark) {
             document.querySelector('meta[name="theme-color"]').setAttribute('content', '${META_THEME_COLORS.dark}')
         }
+
+        // Change all favicon links based on theme
+        const faviconUrl = isDark ? '/favicons/favicon-dark.ico' : '/favicons/favicon-light.ico';
+        document.querySelectorAll('link[rel="icon"]').forEach(function(link) {
+            link.href = faviconUrl;
+        });
     } catch (_) {}
 
     try {
@@ -70,8 +78,12 @@ export const metadata: Metadata = {
 	icons: {
 		icon: [
 			{
-				url: '/favicon.ico',
-				sizes: 'any',
+				url: '/favicons/favicon-light.ico',
+				media: '(prefers-color-scheme: light)',
+			},
+			{
+				url: '/favicons/favicon-dark.ico',
+				media: '(prefers-color-scheme: dark)',
 			},
 		],
 		apple: {
