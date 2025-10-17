@@ -1,7 +1,7 @@
 import type React from 'react';
 import { cn } from '@/lib/utils';
 
-const ProfileCoverStatic = (): React.JSX.Element => (
+export const CoverStatic = (): React.JSX.Element => (
 	<div
 		className={cn(
 			'aspect-2/1 select-none border-edge border-x sm:aspect-3/1',
@@ -88,7 +88,3 @@ const ProfileCoverStatic = (): React.JSX.Element => (
 		</svg>
 	</div>
 );
-
-ProfileCoverStatic.displayName = 'ProfileCoverStatic';
-
-export { ProfileCoverStatic };

@@ -161,7 +161,7 @@ src/
 ├── app/                    # Next.js App Router pages
 │   ├── (app)/             # Main routes (Accueil, Blog, Composants)
 │   ├── (llms)/            # LLM-specific routes
-│   ├── og/                # Open Graph image generation
+│   ├── og/                # Open ContribGraph image generation
 │   └── rss/               # RSS feed generation
 ├── components/            # Shared UI components
 │   ├── ui/                # shadcn UI components

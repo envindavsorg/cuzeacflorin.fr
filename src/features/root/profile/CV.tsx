@@ -1,7 +1,7 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { PaperPlaneIcon } from '@phosphor-icons/react';
+import { EnvelopeIcon, PaperPlaneIcon } from '@phosphor-icons/react';
 import consola from 'consola';
 import type React from 'react';
 import { useState } from 'react';
@@ -96,17 +96,19 @@ export const CV = (): React.JSX.Element => {
 			</PanelHeader>
 
 			<PanelContent>
-				<Prose>
+				<Prose className="text-muted-foreground">
 					Découvrez mon CV pour en savoir plus sur mon parcours, mes compétences
 					et mes expériences professionnelles. Cliquez sur le bouton ci-dessous
 					pour recevoir une copie directement dans votre boîte e-mail.
 				</Prose>
 			</PanelContent>
 
-			<div className="screen-line-before flex justify-center py-2">
+			<div className="screen-line-before flex justify-center py-2 md:justify-end md:pr-4">
 				<Dialog onOpenChange={setOpen} open={open}>
 					<DialogTrigger asChild>
-						<Button variant="default">Recevoir mon CV</Button>
+						<Button variant="default">
+							Recevoir mon CV <EnvelopeIcon className="size-4" />
+						</Button>
 					</DialogTrigger>
 
 					<DialogContent className="sm:max-w-[425px]">

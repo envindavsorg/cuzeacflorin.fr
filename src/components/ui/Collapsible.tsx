@@ -87,7 +87,43 @@ const Collapsible = CollapsiblePrimitive.Root;
 
 const CollapsibleTrigger = CollapsiblePrimitive.CollapsibleTrigger;
 
-const CollapsibleContent = CollapsiblePrimitive.CollapsibleContent;
+const CollapsibleContent = forwardRef<
+	HTMLDivElement,
+	React.ComponentProps<typeof CollapsiblePrimitive.CollapsibleContent>
+>(
+	({ children, className, ...props }, ref): React.JSX.Element => (
+		<CollapsiblePrimitive.CollapsibleContent
+			asChild
+			className={className}
+			ref={ref}
+			{...props}
+		>
+			<motion.div
+				animate="open"
+				exit="collapsed"
+				initial="collapsed"
+				transition={{
+					duration: 0.3,
+					ease: [0.4, 0, 0.2, 1],
+				}}
+				variants={{
+					open: {
+						opacity: 1,
+						height: 'auto',
+					},
+					collapsed: {
+						opacity: 0,
+						height: 0,
+					},
+				}}
+			>
+				{children}
+			</motion.div>
+		</CollapsiblePrimitive.CollapsibleContent>
+	)
+);
+
+CollapsibleContent.displayName = 'CollapsibleContent';
 
 type CollapsibleContextType = {
 	open: boolean;

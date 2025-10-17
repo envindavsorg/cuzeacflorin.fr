@@ -16,13 +16,14 @@ import { Tag } from '@/components/ui/Tag';
 import { SimpleTooltip } from '@/components/ui/Tooltip';
 import { Prose } from '@/components/ui/Typography';
 import type { Project } from '@/features/root/data/projects';
+import { cn } from '@/lib/utils';
 
 type ProjectItemProps = {
 	className?: string;
 	project: Project;
 };
 
-export const ProjectItem = ({
+export const ProjectsItem = ({
 	className,
 	project,
 }: ProjectItemProps): React.JSX.Element => {
@@ -46,25 +47,31 @@ export const ProjectItem = ({
 						/>
 					) : (
 						<div
-							aria-hidden="true"
-							className="mx-4 flex size-6 shrink-0 select-none items-center justify-center rounded-lg border border-muted-foreground/15 bg-muted text-muted-foreground ring-1 ring-edge ring-offset-1 ring-offset-background"
+							aria-hidden
+							className={cn(
+								'mx-4 flex size-8 shrink-0 items-center justify-center bg-muted',
+								'rounded-lg border border-muted-foreground/15 ring-1 ring-edge ring-offset-1 ring-offset-background'
+							)}
 						>
-							<CodaLogoIcon className="size-4" />
+							<CodaLogoIcon
+								className="pointer-events-none size-5 text-theme"
+								weight="duotone"
+							/>
 						</div>
 					)}
 
 					<div className="flex-1 border-edge border-l border-dashed">
 						<CollapsibleTrigger className="flex w-full select-none items-center gap-4 p-4 pr-2 text-left">
 							<div className="flex-1">
-								<h3 className="mb-1 text-balance font-medium leading-snug">
+								<h2 className="mb-1 text-balance font-medium text-base leading-snug sm:text-lg">
 									{project.title}
-								</h3>
+								</h2>
 
-								<dl className="text-muted-foreground text-sm">
+								<dl className="text-muted-foreground text-xs sm:text-sm">
 									<dt className="sr-only">Période du projet</dt>
 									<dd className="flex items-center gap-0.5">
 										<span>{start}</span>
-										<span className="font-mono">-</span>
+										<span className="px-2 font-mono">-</span>
 										{isOngoing ? (
 											<>
 												<InfinityIcon
@@ -87,7 +94,7 @@ export const ProjectItem = ({
 									rel="noopener"
 									target="_blank"
 								>
-									<LinkIcon className="pointer-events-none size-4" />
+									<LinkIcon className="pointer-events-none size-5" />
 									<span className="sr-only">Ouvrir le lien du projet</span>
 								</a>
 							</SimpleTooltip>

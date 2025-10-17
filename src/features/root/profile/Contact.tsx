@@ -1,9 +1,9 @@
 import type React from 'react';
 import { Panel, PanelHeader, PanelTitle } from '@/components/ui/Panel';
 import { SOCIAL_LINKS } from '@/features/root/data/social-links';
-import { type FollowerCounts, SocialLinksItem } from './SocialLinksItem';
+import { ContactItem, type FollowerCounts } from './ContactItem';
 
-const SocialLinks = ({
+export const Contact = ({
 	githubFollowers,
 	linkedinFollowers,
 }: FollowerCounts): React.JSX.Element => (
@@ -20,7 +20,7 @@ const SocialLinks = ({
 
 			<div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
 				{SOCIAL_LINKS.map((link) => (
-					<SocialLinksItem
+					<ContactItem
 						key={link.href}
 						{...link}
 						githubFollowers={githubFollowers}
@@ -31,7 +31,3 @@ const SocialLinks = ({
 		</div>
 	</Panel>
 );
-
-SocialLinks.displayName = 'SocialLinks';
-
-export { SocialLinks };

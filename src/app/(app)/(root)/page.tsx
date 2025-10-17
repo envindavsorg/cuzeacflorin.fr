@@ -4,20 +4,20 @@ import { Divider } from '@/components/ui/Divider';
 import { getGitHubUserData } from '@/features/root/actions/github.action';
 import { getLinkedInFollowers } from '@/features/root/actions/linkedin.action';
 import { USER } from '@/features/root/data/user';
-import { Blog } from '@/features/root/elements/Blog';
-import { CV } from '@/features/root/elements/CV';
-import { Certifications } from '@/features/root/elements/certifications';
-import { Experiences } from '@/features/root/elements/experiences';
-import { GitHubContributions } from '@/features/root/elements/github-contributions';
-import { ProfileAbout } from '@/features/root/elements/ProfileAbout';
-import { ProfileCover } from '@/features/root/elements/ProfileCover';
-import { ProfileCoverStatic } from '@/features/root/elements/ProfileCoverStatic';
-import { ProfileHeader } from '@/features/root/elements/ProfileHeader';
-import { ProfileOverview } from '@/features/root/elements/ProfileOverview';
-import { Projects } from '@/features/root/elements/projects';
-import { SocialLinks } from '@/features/root/elements/social-links';
-import { TechStack } from '@/features/root/elements/TechStack';
-import { Utils } from '@/features/root/elements/Utils';
+import { About } from '@/features/root/profile/About';
+import { Blog } from '@/features/root/profile/Blog';
+import { Certs } from '@/features/root/profile/Certs';
+import { Commits } from '@/features/root/profile/Commits';
+import { Contact } from '@/features/root/profile/Contact';
+import { Cover } from '@/features/root/profile/Cover';
+import { CoverStatic } from '@/features/root/profile/CoverStatic';
+import { CV } from '@/features/root/profile/CV';
+import { Experiences } from '@/features/root/profile/Experience';
+import { Header } from '@/features/root/profile/Header';
+import { Overview } from '@/features/root/profile/Overview';
+import { Projects } from '@/features/root/profile/Projects';
+import { TechStack } from '@/features/root/profile/TechStack';
+import { Utils } from '@/features/root/profile/Utils';
 import { dayjs } from '@/lib/dayjs';
 import { generateOgMetadata } from '@/lib/og-image';
 
@@ -61,32 +61,30 @@ const Page = async () => {
 			/>
 
 			<div className="mx-auto md:max-w-3xl">
-				{process.env.ENV_TYPE === 'capture' ? (
-					<ProfileCoverStatic />
-				) : (
-					<ProfileCover />
-				)}
-				<ProfileHeader />
+				{process.env.ENV_TYPE === 'capture' ? <CoverStatic /> : <Cover />}
+				<Header />
 				<Divider />
-				<ProfileOverview />
+				<Overview />
 				<Divider />
 				<CV />
 				<Divider />
-				<SocialLinks githubFollowers={github} linkedinFollowers={linkedin} />
+				<Contact githubFollowers={github} linkedinFollowers={linkedin} />
 				<Divider />
-				<ProfileAbout />
+				<About />
 				<Divider />
-				<GitHubContributions />
+				<Commits />
 				<Divider />
 				<TechStack />
 				<Divider />
-				<Certifications />
-				<Divider />
 				<Blog />
+				<Divider />
+				<Certs />
 				<Divider />
 				<Utils />
 				<Divider />
 				<Experiences />
+				<Divider />
+				<CV />
 				<Divider />
 				<Projects />
 				<Divider />

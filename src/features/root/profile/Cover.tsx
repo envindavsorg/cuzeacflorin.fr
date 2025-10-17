@@ -3,7 +3,7 @@ import { Greetings } from '@/components/animations/Greetings';
 import { GreetingsContextMenu } from '@/features/context/GreetingsContextMenu';
 import { cn } from '@/lib/utils';
 
-const ProfileCover = (): React.JSX.Element => (
+export const Cover = (): React.JSX.Element => (
 	<GreetingsContextMenu>
 		<div
 			className={cn(
@@ -19,7 +19,3 @@ const ProfileCover = (): React.JSX.Element => (
 		</div>
 	</GreetingsContextMenu>
 );
-
-ProfileCover.displayName = 'ProfileCover';
-
-export { ProfileCover };

@@ -253,6 +253,11 @@ export const CommandMenu = ({ posts }: CommandMenuProps): React.JSX.Element => {
 	const { setTheme } = useTheme();
 
 	const [open, setOpen] = useState(false);
+	const [mounted, setMounted] = useState(false);
+
+	useEffect(() => {
+		setMounted(true);
+	}, []);
 
 	useEffect(() => {
 		const abortController = new AbortController();
@@ -343,90 +348,92 @@ export const CommandMenu = ({ posts }: CommandMenuProps): React.JSX.Element => {
 				</CommandMenuKbd>
 			</Button>
 
-			<CommandDialog onOpenChange={setOpen} open={open}>
-				<CommandInput placeholder="Tapez une commande ou recherchez ..." />
+			{mounted && (
+				<CommandDialog onOpenChange={setOpen} open={open}>
+					<CommandInput placeholder="Tapez une commande ou recherchez ..." />
 
-				<CommandList className="min-h-80">
-					<CommandEmpty>Aucun résultat ...</CommandEmpty>
+					<CommandList className="min-h-80">
+						<CommandEmpty>Aucun résultat ...</CommandEmpty>
 
-					<CommandLinkGroup
-						heading="Menu principal :"
-						links={MENU_LINKS}
-						onLinkSelect={handleOpenLink}
-					/>
+						<CommandLinkGroup
+							heading="Menu principal :"
+							links={MENU_LINKS}
+							onLinkSelect={handleOpenLink}
+						/>
 
-					<CommandSeparator />
+						<CommandSeparator />
 
-					<CommandLinkGroup
-						heading="Contenu de mon portfolio :"
-						links={DAIFOLIO_LINKS}
-						onLinkSelect={handleOpenLink}
-					/>
+						<CommandLinkGroup
+							heading="Contenu de mon portfolio :"
+							links={DAIFOLIO_LINKS}
+							onLinkSelect={handleOpenLink}
+						/>
 
-					<CommandSeparator />
+						<CommandSeparator />
 
-					<CommandLinkGroup
-						fallbackIcon={PenNibIcon}
-						heading="Derniers articles de blog :"
-						links={articlesLinks}
-						onLinkSelect={handleOpenLink}
-					/>
+						<CommandLinkGroup
+							fallbackIcon={PenNibIcon}
+							heading="Derniers articles de blog :"
+							links={articlesLinks}
+							onLinkSelect={handleOpenLink}
+						/>
 
-					<CommandSeparator />
+						<CommandSeparator />
 
-					<CommandLinkGroup
-						fallbackIcon={CodeBlockIcon}
-						heading="Derniers snippets de code :"
-						links={componentLinks}
-						onLinkSelect={handleOpenLink}
-					/>
+						<CommandLinkGroup
+							fallbackIcon={CodeBlockIcon}
+							heading="Derniers snippets de code :"
+							links={componentLinks}
+							onLinkSelect={handleOpenLink}
+						/>
 
-					<CommandSeparator />
+						<CommandSeparator />
 
-					<CommandLinkGroup
-						fallbackIcon={GearSixIcon}
-						heading="Derniers outils :"
-						links={utilsLinks}
-						onLinkSelect={handleOpenLink}
-					/>
+						<CommandLinkGroup
+							fallbackIcon={GearSixIcon}
+							heading="Derniers outils :"
+							links={utilsLinks}
+							onLinkSelect={handleOpenLink}
+						/>
 
-					<CommandSeparator />
+						<CommandSeparator />
 
-					<CommandLinkGroup
-						heading="Retrouvez-moi sur :"
-						links={SOCIAL_LINK_ITEMS}
-						onLinkSelect={handleOpenLink}
-					/>
+						<CommandLinkGroup
+							heading="Retrouvez-moi sur :"
+							links={SOCIAL_LINK_ITEMS}
+							onLinkSelect={handleOpenLink}
+						/>
 
-					<CommandSeparator />
+						<CommandSeparator />
 
-					<CommandGroup heading="Thème de l'interface :">
-						<CommandItem
-							keywords={['theme']}
-							onSelect={() => handleThemeChange('light')}
-						>
-							<SunIcon className="size-4 text-foreground" />
-							Mode clair
-						</CommandItem>
-						<CommandItem
-							keywords={['theme']}
-							onSelect={() => handleThemeChange('dark')}
-						>
-							<MoonIcon className="size-4 text-foreground" />
-							Mode sombre
-						</CommandItem>
-						<CommandItem
-							keywords={['theme']}
-							onSelect={() => handleThemeChange('system')}
-						>
-							<CircleHalfTiltIcon className="size-4 text-foreground" />
-							Thème automatique
-						</CommandItem>
-					</CommandGroup>
-				</CommandList>
+						<CommandGroup heading="Thème de l'interface :">
+							<CommandItem
+								keywords={['theme']}
+								onSelect={() => handleThemeChange('light')}
+							>
+								<SunIcon className="size-4 text-foreground" />
+								Mode clair
+							</CommandItem>
+							<CommandItem
+								keywords={['theme']}
+								onSelect={() => handleThemeChange('dark')}
+							>
+								<MoonIcon className="size-4 text-foreground" />
+								Mode sombre
+							</CommandItem>
+							<CommandItem
+								keywords={['theme']}
+								onSelect={() => handleThemeChange('system')}
+							>
+								<CircleHalfTiltIcon className="size-4 text-foreground" />
+								Thème automatique
+							</CommandItem>
+						</CommandGroup>
+					</CommandList>
 
-				<CommandMenuFooter />
-			</CommandDialog>
+					<CommandMenuFooter />
+				</CommandDialog>
+			)}
 		</>
 	);
 };

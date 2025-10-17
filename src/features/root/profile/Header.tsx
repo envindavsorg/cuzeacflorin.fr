@@ -5,7 +5,7 @@ import { USER } from '@/features/root/data/user';
 import { cn } from '@/lib/utils';
 import { FlipSentences } from '@/registry/flip-sentences';
 
-export const ProfileHeader = (): React.JSX.Element => (
+export const Header = (): React.JSX.Element => (
 	<div className="screen-line-after flex border-edge border-x">
 		<div className="shrink-0 border-edge border-r">
 			<div className="mx-[2px] my-[3px]">

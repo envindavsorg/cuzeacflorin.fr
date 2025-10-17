@@ -11,14 +11,14 @@ export type FollowerCounts = {
 	linkedinFollowers: number;
 };
 
-type SocialLinksItemProps = SocialLinksProps & FollowerCounts;
+type ContactItemProps = SocialLinksProps & FollowerCounts;
 
 const FOLLOWER_CONFIG = {
 	GitHub: { step: 10, label: 'abonnés', key: 'githubFollowers' },
 	LinkedIn: { step: 1000, label: 'abonnés', key: 'linkedinFollowers' },
 } as const;
 
-const SocialLinksItem = ({
+export const ContactItem = ({
 	icon,
 	title,
 	description,
@@ -26,7 +26,7 @@ const SocialLinksItem = ({
 	href,
 	githubFollowers,
 	linkedinFollowers,
-}: SocialLinksItemProps): React.JSX.Element => {
+}: ContactItemProps): React.JSX.Element => {
 	const followerData = { githubFollowers, linkedinFollowers };
 	const config = FOLLOWER_CONFIG[title as keyof typeof FOLLOWER_CONFIG];
 	const followerCount = config
@@ -84,7 +84,3 @@ const SocialLinksItem = ({
 		</Link>
 	);
 };
-
-SocialLinksItem.displayName = 'SocialLinksItem';
-
-export { SocialLinksItem };

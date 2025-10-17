@@ -1,4 +1,11 @@
-import { InfinityIcon } from '@phosphor-icons/react/ssr';
+import type { Icon, IconProps } from '@phosphor-icons/react';
+import {
+	BriefcaseIcon,
+	CodeIcon,
+	GraduationCapIcon,
+	InfinityIcon,
+	PaletteIcon,
+} from '@phosphor-icons/react/ssr';
 import type React from 'react';
 import { Markdown } from '@/components/markdown/markdown';
 import {
@@ -10,9 +17,27 @@ import {
 import { Separator } from '@/components/ui/Separator';
 import { Tag } from '@/components/ui/Tag';
 import { Prose } from '@/components/ui/Typography';
-import type { ExperiencePosition } from '@/features/root/data/experiences';
+import type {
+	ExperiencePosition,
+	ExperiencePositionIcon,
+} from '@/features/root/data/experiences';
 import { cn } from '@/lib/utils';
-import { ExperienceIcon } from './ExperiencePositionIcon';
+
+const iconMap: Record<ExperiencePositionIcon, Icon> = {
+	code: CodeIcon,
+	design: PaletteIcon,
+	education: GraduationCapIcon,
+};
+
+export const ExperienceIcon = ({
+	icon,
+	...props
+}: {
+	icon: ExperiencePositionIcon | undefined;
+} & IconProps): React.JSX.Element => {
+	const IconComponent = icon ? iconMap[icon] : BriefcaseIcon;
+	return <IconComponent {...props} />;
+};
 
 type ExperiencePositionItemProps = {
 	position: ExperiencePosition;

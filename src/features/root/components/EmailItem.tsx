@@ -2,7 +2,7 @@
 
 import { EnvelopeIcon } from '@phosphor-icons/react';
 import type React from 'react';
-import { IntroItem } from '@/features/root/elements/overview/IntroItem';
+import { OverviewItem } from '@/features/root/profile/OverviewItem';
 import useIsClient from '@/hooks/use-is-client';
 import { decodeEmail } from '@/utils/string';
 
@@ -15,7 +15,7 @@ const EmailItem = ({ email }: EmailItemProps): React.JSX.Element => {
 	const emailDecoded = decodeEmail(email);
 
 	return (
-		<IntroItem
+		<OverviewItem
 			content={isClient ? emailDecoded : '[email masqué]'}
 			href={isClient ? `mailto:${emailDecoded}` : '#'}
 			icon={EnvelopeIcon}

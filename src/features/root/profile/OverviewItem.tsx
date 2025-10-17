@@ -1,17 +1,17 @@
 import type { Icon } from '@phosphor-icons/react';
 import type React from 'react';
 
-type IntroItemProps = {
+type OverviewItemProps = {
 	icon: Icon;
 	content: React.ReactNode;
 	href?: string;
 };
 
-const IntroItem = ({
+const OverviewItem = ({
 	icon: Icon,
 	content,
 	href,
-}: IntroItemProps): React.JSX.Element => (
+}: OverviewItemProps): React.JSX.Element => (
 	<div className="flex items-center gap-4 font-medium font-mono text-sm">
 		<div
 			aria-hidden
@@ -37,6 +37,6 @@ const IntroItem = ({
 	</div>
 );
 
-IntroItem.displayName = 'IntroItem';
+OverviewItem.displayName = 'IntroItem';
 
-export { IntroItem };
+export { OverviewItem };

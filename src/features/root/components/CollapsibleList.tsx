@@ -47,20 +47,19 @@ export const CollapsibleList = <T,>({
 		</CollapsibleContent>
 
 		{items.length > max && (
-			<div className="flex h-12 items-center justify-center pb-px">
+			<div className="flex justify-center py-2 md:justify-end md:pr-4">
 				<CollapsibleTrigger asChild>
 					<Button className="group/collapsible-trigger flex" variant="default">
 						<span className="hidden group-data-[state=closed]/collapsible-trigger:block">
 							Afficher plus
 						</span>
-
 						<span className="hidden group-data-[state=open]/collapsible-trigger:block">
 							Afficher moins
 						</span>
 
 						<CaretDownIcon
 							aria-hidden
-							className="group-data-[state=open]/collapsible-trigger:rotate-180"
+							className="transition-transform duration-300 ease-in-out group-data-[state=open]/collapsible-trigger:rotate-180"
 						/>
 					</Button>
 				</CollapsibleTrigger>

@@ -6,10 +6,11 @@ import {
 	PanelTitle,
 } from '@/components/ui/Panel';
 import { Tag } from '@/components/ui/Tag';
+import { Prose } from '@/components/ui/Typography';
 import { getGitHubUserData } from '@/features/root/actions/github.action';
-import { Graph, GraphFallback } from './Graph';
+import { CommitsGraph, GraphFallback } from './CommitsGraph';
 
-export const GitHubContributions = async () => {
+export const Commits = async () => {
 	const { stars, followers, following, contributions } =
 		await getGitHubUserData();
 
@@ -19,16 +20,21 @@ export const GitHubContributions = async () => {
 				<PanelTitle>Mes statistiques GitHub</PanelTitle>
 			</PanelHeader>
 
-			<PanelContent>
-				<p className="mb-3 text-muted-foreground text-sm">
+			<PanelContent className="screen-line-after py-2">
+				<Prose className="text-muted-foreground">
 					Voici un aperçu de mon activité récente sur GitHub, incluant le nombre
 					d'étoiles, d'abonnés et de commits.
-				</p>
-				<Suspense fallback={<GraphFallback />}>
-					<Graph contributions={contributions} />
-				</Suspense>
+				</Prose>
+			</PanelContent>
 
-				<ul className="mt-3 flex flex-wrap gap-1.5">
+			<PanelContent>
+				<Suspense fallback={<GraphFallback />}>
+					<CommitsGraph contributions={contributions} />
+				</Suspense>
+			</PanelContent>
+
+			<PanelContent className="screen-line-before py-2">
+				<ul className="flex flex-wrap justify-end gap-1.5">
 					<li className="flex">
 						<Tag>{stars} étoiles</Tag>
 					</li>

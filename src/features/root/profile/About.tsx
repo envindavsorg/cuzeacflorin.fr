@@ -8,9 +8,9 @@ import {
 } from '@/components/ui/Panel';
 import { Prose } from '@/components/ui/Typography';
 import { USER } from '@/features/root/data/user';
-import { ProfileAboutToggle } from './ProfileAboutToggle';
+import { AboutToggle } from './AboutToggle';
 
-const ProfileAbout = (): React.JSX.Element => {
+const About = (): React.JSX.Element => {
 	const paragraphs = USER.about.trim().split('\n\n');
 	const firstParagraph = paragraphs[0];
 	const restParagraphs = paragraphs.slice(1).join('\n\n');
@@ -22,17 +22,17 @@ const ProfileAbout = (): React.JSX.Element => {
 			</PanelHeader>
 
 			<PanelContent className="!pb-0">
-				<Prose>
+				<Prose className="text-muted-foreground">
 					<Markdown>{firstParagraph}</Markdown>
-					<ProfileAboutToggle>
+					<AboutToggle>
 						<Markdown>{restParagraphs}</Markdown>
-					</ProfileAboutToggle>
+					</AboutToggle>
 				</Prose>
 			</PanelContent>
 		</Panel>
 	);
 };
 
-ProfileAbout.displayName = 'ProfileAbout';
+About.displayName = 'ProfileAbout';
 
-export { ProfileAbout };
+export { About };

@@ -11,6 +11,7 @@ import {
 	PanelHeader,
 	PanelTitle,
 } from '@/components/ui/Panel';
+import { Prose } from '@/components/ui/Typography';
 import { type Stack, techStack } from '@/features/root/data/tech-stack';
 import { cn } from '@/lib/utils';
 
@@ -30,6 +31,18 @@ export const TechStack = (): React.JSX.Element => (
 		<PanelHeader>
 			<PanelTitle>Ma stack technique</PanelTitle>
 		</PanelHeader>
+
+		<PanelContent className="screen-line-after py-2">
+			<Prose className="text-muted-foreground">
+				Mon expertise se concentre sur l'écosystème JavaScript moderne. Au
+				quotidien, je développe avec React, Next.js et TypeScript, en utilisant
+				Tailwind CSS pour le styling et Framer Motion pour les animations. Côté
+				back-end, je travaille avec Node.js et des frameworks comme Express ou
+				Fastify, connectés à MongoDB ou PostgreSQL. Je maîtrise l'ensemble de la
+				chaîne de développement, de la conception sur Figma au déploiement, en
+				passant par Git pour le versioning.
+			</Prose>
+		</PanelContent>
 
 		<PanelContent
 			className={cn(

@@ -7,7 +7,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type React from 'react';
 import { lazy } from 'react';
+import { PostIsNew } from '@/blog/components/PostIsNew';
 import type { Post } from '@/blog/types/post';
+import { Badge } from '@/components/ui/Badge';
 import { Tag } from '@/components/ui/Tag';
 import { Prose } from '@/components/ui/Typography';
 import { dayjs } from '@/lib/dayjs';
@@ -30,9 +32,8 @@ export const PostItem = ({
 }: PostItemProps): React.JSX.Element => (
 	<Link
 		className={cn(
-			'group/post flex flex-col gap-2 p-2',
-			'max-sm:screen-line-before max-sm:screen-line-after',
-			'sm:nth-[2n+1]:screen-line-before sm:nth-[2n+1]:screen-line-after'
+			'group/post flex flex-col gap-y-4 p-4',
+			'max-sm:screen-line-before max-sm:screen-line-after sm:nth-[2n+1]:screen-line-before sm:nth-[2n+1]:screen-line-after'
 		)}
 		href={
 			post.metadata.category === 'article'
@@ -66,9 +67,12 @@ export const PostItem = ({
 				<div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-black/10 ring-inset dark:ring-white/10" />
 
 				{post.metadata.new && (
-					<span className="absolute top-1.5 right-1.5 rounded-md bg-theme px-1.5 font-medium font-mono text-background text-shadow-xs text-xs">
-						Nouveau
-					</span>
+					<Badge className="absolute top-1.5 right-1.5" variant="secondary">
+						<div className="flex items-center gap-x-1.5">
+							<span className="font-semibold text-theme">Nouveau</span>{' '}
+							<PostIsNew />
+						</div>
+					</Badge>
 				)}
 
 				{post.metadata.tags?.includes('React') && (
@@ -80,30 +84,30 @@ export const PostItem = ({
 			</div>
 		)}
 
-		<div className="flex flex-col gap-1 p-2">
-			<h3 className="text-balance font-medium text-lg leading-snug underline-offset-4 group-hover/post:underline sm:text-xl">
+		<div className="flex flex-col">
+			<h2 className="text-balance font-medium text-base leading-snug sm:text-lg">
 				{post.metadata.title}
-			</h3>
-			<Prose className="text-muted-foreground text-sm sm:text-base">
+			</h2>
+			<Prose className="mt-1.5 text-muted-foreground">
 				{post.metadata.description}
 			</Prose>
 
 			{post.metadata.category === 'article' && (
-				<dl className="mt-2">
+				<dl className="mt-3">
 					<dt className="sr-only">Méta-données</dt>
 					<dd className="flex gap-x-2 font-medium text-sm">
-						<Tag className="flex items-center gap-x-1 text-foreground">
-							<CalendarBlankIcon className="size-4" />
+						<Tag className="flex items-center gap-x-2 text-foreground">
+							<CalendarBlankIcon className="size-4 text-theme" />
 							<time dateTime={dayjs(post.metadata.createdAt).toISOString()}>
 								{dayjs(post.metadata.createdAt).format('ddd DD MMM')}
 							</time>
 						</Tag>
-						<Tag className="flex items-center gap-x-1 text-foreground">
-							<ClockIcon className="size-4" />
+						<Tag className="flex items-center gap-x-2 text-foreground">
+							<ClockIcon className="size-4 text-theme" />
 							<span>{post.reading?.time}</span>
 						</Tag>
-						<Tag className="flex items-center gap-x-1 text-foreground">
-							<BookBookmarkIcon className="size-4" />
+						<Tag className="flex items-center gap-x-2 text-foreground">
+							<BookBookmarkIcon className="size-4 text-theme" />
 							<span>{post.reading?.words} mots</span>
 						</Tag>
 					</dd>

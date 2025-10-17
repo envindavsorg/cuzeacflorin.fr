@@ -1,6 +1,6 @@
 import { BriefcaseIcon } from '@phosphor-icons/react/ssr';
 import type React from 'react';
-import { IntroItem } from '@/features/root/elements/overview/IntroItem';
+import { OverviewItem } from '@/features/root/profile/OverviewItem';
 
 type JobItemProps = {
 	title: string;
@@ -13,7 +13,7 @@ const JobItem = ({
 	company,
 	website,
 }: JobItemProps): React.JSX.Element => (
-	<IntroItem
+	<OverviewItem
 		content={
 			<>
 				{title} @

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { metadata } from '@/app/(app)/(docs)/blog/metadata';
 import { PostItem } from '@/blog/components/PostItem';
 import { PostTagFilter } from '@/blog/components/PostTagFilter';
 import { getPostsByCategory } from '@/blog/data/posts';
@@ -16,12 +17,6 @@ export const generateMetadata = async (): Promise<Metadata> =>
 			description: 'Retrouvez tous mes articles de blog.',
 		},
 	});
-
-const metadata: Metadata = {
-	title: 'Mes articles de blog',
-	description:
-		'Retrouvez tous mes articles de blog sur le développement web, les bonnes pratiques, et plus encore.',
-};
 
 type BlogArticlesPageProps = {
 	searchParams: Promise<{
@@ -66,9 +61,7 @@ const BlogArticlesPage = async ({
 	return (
 		<div className="min-h-svh">
 			<div className="screen-line-after px-4">
-				<h1 className="font-semibold text-3xl sm:text-4xl">
-					{String(metadata.title)}
-				</h1>
+				<h1 className="font-semibold text-3xl sm:text-4xl">{metadata.title}</h1>
 			</div>
 
 			<div className="screen-line-after p-4">

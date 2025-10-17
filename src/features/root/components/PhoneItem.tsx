@@ -1,7 +1,7 @@
 'use client';
 
 import { PhoneIcon } from '@phosphor-icons/react';
-import { IntroItem } from '@/features/root/elements/overview/IntroItem';
+import { OverviewItem } from '@/features/root/profile/OverviewItem';
 import useIsClient from '@/hooks/use-is-client';
 import { decodePhoneNumber, formatPhoneNumber } from '@/utils/string';
 
@@ -10,7 +10,7 @@ const PhoneItem = ({ phoneNumber }: { phoneNumber: string }) => {
 	const phoneNumberDecoded = decodePhoneNumber(phoneNumber);
 
 	return (
-		<IntroItem
+		<OverviewItem
 			content={
 				isClient ? formatPhoneNumber(phoneNumberDecoded) : '[numéro masqué]'
 			}
