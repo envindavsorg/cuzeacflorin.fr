@@ -30,7 +30,6 @@ export const PostShareMenu = ({
 	url,
 }: PostShareMenuProps): React.JSX.Element => {
 	const absoluteUrl = useMemo(() => getAbsoluteUrl(url), [url]);
-
 	const shareUrls = useMemo(
 		() => ({
 			x: `https://x.com/intent/tweet?url=${encodeURIComponent(absoluteUrl)}`,
@@ -38,6 +37,7 @@ export const PostShareMenu = ({
 		}),
 		[absoluteUrl]
 	);
+
 	const { x, linkedin } = shareUrls;
 
 	const handleCopy = useCallback(() => {

@@ -8,7 +8,7 @@ export const addQueryParams = (
 	query: Record<string, string>
 ): string => {
 	try {
-		const url = new URL(urlString);
+		const url: URL = new URL(urlString);
 		for (const [key, value] of Object.entries(query)) {
 			url.searchParams.set(key, value);
 		}

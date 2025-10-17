@@ -1,17 +1,13 @@
+import consola from 'consola';
 import sharp from 'sharp';
-import { logger } from '@/lib/logger';
 
-const convertImageToJpeg = async (imageBuffer: Buffer): Promise<Buffer> => {
+const convertImageToJpeg = async (imageBuffer: Buffer) => {
 	try {
 		return await sharp(imageBuffer)
-			.jpeg({
-				quality: 90,
-				progressive: true,
-				mozjpeg: true,
-			})
+			.jpeg({ quality: 90, progressive: true, mozjpeg: true })
 			.toBuffer();
 	} catch (error) {
-		logger.error('Error converting image to JPEG:', error);
+		consola.error('Error converting image to .jpeg !');
 		throw error;
 	}
 };
