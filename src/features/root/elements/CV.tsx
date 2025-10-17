@@ -1,8 +1,9 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { EnvelopeIcon, PaperPlaneIcon } from '@phosphor-icons/react';
+import { EnvelopeIcon, EyeIcon, PaperPlaneIcon } from '@phosphor-icons/react';
 import consola from 'consola';
+import Link from 'next/link';
 import type React from 'react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -103,7 +104,17 @@ export const CV = (): React.JSX.Element => {
 				</Prose>
 			</PanelContent>
 
-			<div className="screen-line-before flex justify-center py-2 md:justify-end md:pr-4">
+			<div className="screen-line-before flex justify-center gap-3 py-2 md:justify-end md:pr-4">
+				<Link
+					aria-label="Voir ou télécharger mon CV"
+					href="https://cfhi75vpdo.ufs.sh/f/tIhJKzZYPGQBJWs54PG2sVmGEapT3CScHg1W4uQLZUI5FKoN"
+					rel="noopener noreferrer"
+					target="_blank"
+				>
+					<Button variant="outline">
+						Voir mon CV <EyeIcon className="size-4" />
+					</Button>
+				</Link>
 				<Dialog onOpenChange={setOpen} open={open}>
 					<DialogTrigger asChild>
 						<Button variant="default">

@@ -9,7 +9,7 @@ import {
 import { Prose } from '@/components/ui/Typography';
 import { CollapsibleList } from '@/features/root/components/CollapsibleList';
 import { CERTIFICATIONS } from '@/features/root/data/certifications';
-import { CertItem } from '@/features/root/profile/CertsItem';
+import { CertItem } from '@/features/root/elements/CertsItem';
 
 export const Certs = (): React.JSX.Element => (
 	<Panel id="certs">

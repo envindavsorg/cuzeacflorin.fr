@@ -1,5 +1,11 @@
 import type React from 'react';
-import { Panel, PanelHeader, PanelTitle } from '@/components/ui/Panel';
+import {
+	Panel,
+	PanelContent,
+	PanelHeader,
+	PanelTitle,
+} from '@/components/ui/Panel';
+import { Prose } from '@/components/ui/Typography';
 import { SOCIAL_LINKS } from '@/features/root/data/social-links';
 import { ContactItem, type FollowerCounts } from './ContactItem';
 
@@ -11,6 +17,14 @@ export const Contact = ({
 		<PanelHeader>
 			<PanelTitle>Me contacter & réseaux sociaux</PanelTitle>
 		</PanelHeader>
+
+		<PanelContent className="screen-line-after py-2">
+			<Prose className="text-muted-foreground">
+				Vous avez un projet, une question ou simplement envie d'échanger ?
+				N'hésitez pas à me contacter. Je suis également actif sur les réseaux
+				sociaux où je partage mon actualité et mes découvertes techniques.
+			</Prose>
+		</PanelContent>
 
 		<div className="relative">
 			<div className="-z-1 pointer-events-none absolute inset-0 grid grid-cols-1 gap-4 max-sm:hidden sm:grid-cols-2">

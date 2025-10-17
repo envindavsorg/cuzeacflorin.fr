@@ -2,7 +2,7 @@
 
 import { EnvelopeIcon } from '@phosphor-icons/react';
 import type React from 'react';
-import { OverviewItem } from '@/features/root/profile/OverviewItem';
+import { OverviewItem } from '@/features/root/elements/OverviewItem';
 import useIsClient from '@/hooks/use-is-client';
 import { decodeEmail } from '@/utils/string';
 

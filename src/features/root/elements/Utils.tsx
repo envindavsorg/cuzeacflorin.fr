@@ -13,7 +13,7 @@ import {
 	PanelTitle,
 } from '@/components/ui/Panel';
 import { Prose } from '@/components/ui/Typography';
-import { UtilsItem } from '@/features/root/profile/UtilsItem';
+import { UtilsItem } from '@/features/root/elements/UtilsItem';
 import { dayjs } from '@/lib/dayjs';
 
 export const Utils = (): React.JSX.Element => {

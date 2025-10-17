@@ -67,7 +67,11 @@ export const ExperiencePositionItem = ({
 								'border border-muted-foreground/15 ring-1 ring-edge ring-offset-1 ring-offset-background'
 							)}
 						>
-							<ExperienceIcon className="size-4" icon={position.icon} />
+							<ExperienceIcon
+								className="pointer-events-none size-4 text-theme"
+								icon={position.icon}
+								weight="duotone"
+							/>
 						</div>
 
 						<h4 className="flex-1 text-balance font-medium">

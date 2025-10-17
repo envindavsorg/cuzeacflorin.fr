@@ -1,7 +1,7 @@
 'use client';
 
 import { PhoneIcon } from '@phosphor-icons/react';
-import { OverviewItem } from '@/features/root/profile/OverviewItem';
+import { OverviewItem } from '@/features/root/elements/OverviewItem';
 import useIsClient from '@/hooks/use-is-client';
 import { decodePhoneNumber, formatPhoneNumber } from '@/utils/string';
 

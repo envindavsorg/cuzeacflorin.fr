@@ -10,7 +10,7 @@ import { EmailItem } from '@/features/root/components/EmailItem';
 import { JobItem } from '@/features/root/components/JobItem';
 import { PhoneItem } from '@/features/root/components/PhoneItem';
 import { USER } from '@/features/root/data/user';
-import { OverviewItem } from '@/features/root/profile/OverviewItem';
+import { OverviewItem } from '@/features/root/elements/OverviewItem';
 import { urlToName } from '@/utils/url';
 
 export const Overview = (): React.JSX.Element => (

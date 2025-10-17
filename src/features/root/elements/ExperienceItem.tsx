@@ -15,7 +15,7 @@ export const ExperienceItem = ({
 				<span className="flex size-2 rounded-full bg-zinc-300 dark:bg-zinc-600" />
 			</div>
 
-			<h3 className="font-semibold text-lg leading-snug">
+			<h3 className="text-balance font-medium text-base leading-snug sm:text-lg">
 				{experience.companyName}
 			</h3>
 

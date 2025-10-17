@@ -4,7 +4,7 @@ import { PostTagFilter } from '@/blog/components/PostTagFilter';
 import { getPostsByCategory } from '@/blog/data/posts';
 import type { Post } from '@/blog/types/post';
 import { Prose } from '@/components/ui/Typography';
-import { UtilsItem } from '@/features/root/profile/UtilsItem';
+import { UtilsItem } from '@/features/root/elements/UtilsItem';
 import { dayjs } from '@/lib/dayjs';
 import { generateOgMetadata } from '@/lib/og-image';
 

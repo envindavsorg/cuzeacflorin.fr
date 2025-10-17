@@ -1,6 +1,6 @@
 import { BriefcaseIcon } from '@phosphor-icons/react/ssr';
 import type React from 'react';
-import { OverviewItem } from '@/features/root/profile/OverviewItem';
+import { OverviewItem } from '@/features/root/elements/OverviewItem';
 
 type JobItemProps = {
 	title: string;

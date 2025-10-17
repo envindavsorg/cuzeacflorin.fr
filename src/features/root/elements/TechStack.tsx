@@ -34,13 +34,28 @@ export const TechStack = (): React.JSX.Element => (
 
 		<PanelContent className="screen-line-after py-2">
 			<Prose className="text-muted-foreground">
-				Mon expertise se concentre sur l'écosystème JavaScript moderne. Au
-				quotidien, je développe avec React, Next.js et TypeScript, en utilisant
-				Tailwind CSS pour le styling et Framer Motion pour les animations. Côté
-				back-end, je travaille avec Node.js et des frameworks comme Express ou
-				Fastify, connectés à MongoDB ou PostgreSQL. Je maîtrise l'ensemble de la
-				chaîne de développement, de la conception sur Figma au déploiement, en
-				passant par Git pour le versioning.
+				Mon expertise se concentre sur l'écosystème{' '}
+				<span className="font-medium text-foreground">JavaScript</span> moderne.
+				Au quotidien, je développe avec{' '}
+				<span className="font-medium text-foreground">React</span>,{' '}
+				<span className="font-medium text-foreground">Next.js</span> et{' '}
+				<span className="font-medium text-foreground">TypeScript</span>, en
+				utilisant{' '}
+				<span className="font-medium text-foreground">Tailwind CSS</span> pour
+				le styling et{' '}
+				<span className="font-medium text-foreground">Motion</span> pour les
+				animations. Côté back-end, je travaille avec{' '}
+				<span className="font-medium text-foreground">Node.js</span> et des
+				frameworks comme{' '}
+				<span className="font-medium text-foreground">Express</span> ou{' '}
+				<span className="font-medium text-foreground">Fastify</span>, connectés
+				à <span className="font-medium text-foreground">MongoDB</span> ou{' '}
+				<span className="font-medium text-foreground">PostgreSQL</span>. Je
+				maîtrise l'ensemble de la chaîne de développement, de la conception sur{' '}
+				<span className="font-medium text-foreground">Figma</span> au
+				déploiement, en passant par{' '}
+				<span className="font-medium text-foreground">Git</span> pour le
+				versioning.
 			</Prose>
 		</PanelContent>
 
