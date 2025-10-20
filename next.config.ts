@@ -2,10 +2,14 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
 	reactStrictMode: true,
+	reactCompiler: true,
 	transpilePackages: ['next-mdx-remote'],
 	allowedDevOrigins: ['MacBook-Pro-16-M4-Max-de-Florin.local'],
 	pageExtensions: ['mdx', 'ts', 'tsx'],
 	devIndicators: false,
+	experimental: {
+		turbopackFileSystemCacheForDev: true,
+	},
 	images: {
 		remotePatterns: [
 			{

@@ -80,4 +80,4 @@ export const getGitHubUserData = unstable_cache(
 	}
 );
 
-export const revalidateGitHubData = async () => revalidateTag(CACHE_TAG);
+export const revalidateGitHubData = async () => revalidateTag(CACHE_TAG, 'max');
