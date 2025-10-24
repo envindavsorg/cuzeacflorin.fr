@@ -5,14 +5,14 @@ import { metadata } from '@/app/(app)/(docs)/utils/metadata';
 import { getPostsByCategory } from '@/blog/data/posts';
 import { BlogItemsLength } from '@/blog/elements/BlogItemsLength';
 import type { Post } from '@/blog/types/post';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/Button';
 import {
 	Panel,
 	PanelContent,
 	PanelHeader,
 	PanelTitle,
-} from '@/components/ui/Panel';
-import { Prose } from '@/components/ui/Typography';
+} from '@/components/Panel';
+import { Prose } from '@/components/Typography';
 import { UtilsItem } from '@/features/root/elements/UtilsItem';
 import { dayjs } from '@/lib/dayjs';
 

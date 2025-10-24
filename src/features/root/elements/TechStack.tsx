@@ -4,14 +4,14 @@ import {
 	MarqueeContent,
 	MarqueeFade,
 	MarqueeItem,
-} from '@/components/ui/Marquee';
+} from '@/components/Marquee';
 import {
 	Panel,
 	PanelContent,
 	PanelHeader,
 	PanelTitle,
-} from '@/components/ui/Panel';
-import { Prose } from '@/components/ui/Typography';
+} from '@/components/Panel';
+import { Prose } from '@/components/Typography';
 import { type Stack, techStack } from '@/features/root/data/tech-stack';
 import { cn } from '@/lib/utils';
 

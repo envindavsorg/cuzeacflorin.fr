@@ -24,7 +24,7 @@ import { useRouter } from 'next/navigation';
 import { useTheme } from 'next-themes';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import type { Post } from '@/blog/types/post';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/Button';
 import {
 	CommandDialog,
 	CommandEmpty,
@@ -33,8 +33,8 @@ import {
 	CommandItem,
 	CommandList,
 	CommandSeparator,
-} from '@/components/ui/Command';
-import { Separator } from '@/components/ui/Separator';
+} from '@/components/Command';
+import { Separator } from '@/components/Separator';
 import { CuzeacFlorinMark } from '@/features/assets/CuzeacFlorinMark';
 import { SOCIAL_LINKS } from '@/features/root/data/social-links';
 import { cn } from '@/lib/utils';

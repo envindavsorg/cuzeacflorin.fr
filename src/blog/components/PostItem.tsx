@@ -9,14 +9,14 @@ import type React from 'react';
 import { lazy } from 'react';
 import { PostIsNew } from '@/blog/components/PostIsNew';
 import type { Post } from '@/blog/types/post';
-import { Badge } from '@/components/ui/Badge';
-import { Tag } from '@/components/ui/Tag';
-import { Prose } from '@/components/ui/Typography';
+import { Badge } from '@/components/Badge';
+import { Tag } from '@/components/Tag';
+import { Prose } from '@/components/Typography';
 import { dayjs } from '@/lib/dayjs';
 import { cn } from '@/lib/utils';
 
 const ReactIcon = lazy(() =>
-	import('@/components/icons/content/React').then((m) => ({
+	import('@/elements/icons/content/React').then((m) => ({
 		default: m.ReactIcon,
 	}))
 );

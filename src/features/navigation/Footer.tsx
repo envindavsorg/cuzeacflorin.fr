@@ -16,10 +16,10 @@ import { useIntersectionObserver } from '@uidotdev/usehooks';
 import Link from 'next/link';
 import type React from 'react';
 import { useEffect, useRef } from 'react';
-import { HeartIcon } from '@/components/icons/HeartIcon';
-import { PizzaIcon } from '@/components/icons/Pizza';
-import { Divider } from '@/components/ui/Divider';
-import { Panel } from '@/components/ui/Panel';
+import { Divider } from '@/components/Divider';
+import { Panel } from '@/components/Panel';
+import { HeartIcon } from '@/elements/icons/HeartIcon';
+import { PizzaIcon } from '@/elements/icons/Pizza';
 import { cn } from '@/lib/utils';
 import { Metadata } from './Metadata';
 

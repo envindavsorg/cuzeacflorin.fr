@@ -7,16 +7,16 @@ import {
 	PaletteIcon,
 } from '@phosphor-icons/react/ssr';
 import type React from 'react';
-import { Markdown } from '@/components/markdown/markdown';
 import {
 	CollapsibleChevronsIcon,
 	CollapsibleContent,
 	CollapsibleTrigger,
 	CollapsibleWithContext,
-} from '@/components/ui/Collapsible';
-import { Separator } from '@/components/ui/Separator';
-import { Tag } from '@/components/ui/Tag';
-import { Prose } from '@/components/ui/Typography';
+} from '@/components/Collapsible';
+import { Separator } from '@/components/Separator';
+import { Tag } from '@/components/Tag';
+import { Prose } from '@/components/Typography';
+import { Markdown } from '@/elements/markdown/markdown';
 import type {
 	ExperiencePosition,
 	ExperiencePositionIcon,

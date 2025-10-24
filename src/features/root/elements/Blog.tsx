@@ -6,14 +6,14 @@ import { PostItem } from '@/blog/components/PostItem';
 import { getPostsByCategory } from '@/blog/data/posts';
 import { BlogItemsLength } from '@/blog/elements/BlogItemsLength';
 import type { Post } from '@/blog/types/post';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/Button';
 import {
 	Panel,
 	PanelContent,
 	PanelHeader,
 	PanelTitle,
-} from '@/components/ui/Panel';
-import { Prose } from '@/components/ui/Typography';
+} from '@/components/Panel';
+import { Prose } from '@/components/Typography';
 import { dayjs } from '@/lib/dayjs';
 
 export const Blog = (): React.JSX.Element => {

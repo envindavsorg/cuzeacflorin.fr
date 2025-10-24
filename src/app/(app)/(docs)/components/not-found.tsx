@@ -1,11 +1,11 @@
 import { ArrowLeftIcon } from '@phosphor-icons/react/ssr';
 import Link from 'next/link';
 import type React from 'react';
-import { Button } from '@/components/ui/Button';
-import { Divider } from '@/components/ui/Divider';
-import { Panel, PanelContent } from '@/components/ui/Panel';
-import { Prose } from '@/components/ui/Typography';
-import { Counter } from '@/components/ux/Counter';
+import { Button } from '@/components/Button';
+import { Counter } from '@/components/Counter';
+import { Divider } from '@/components/Divider';
+import { Panel, PanelContent } from '@/components/Panel';
+import { Prose } from '@/components/Typography';
 import { cn } from '@/lib/utils';
 
 export const metadata = {

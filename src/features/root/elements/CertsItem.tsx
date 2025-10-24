@@ -1,8 +1,8 @@
 import { ArrowUpRightIcon } from '@phosphor-icons/react/ssr';
 import Link from 'next/link';
 import type React from 'react';
-import { VercelIcon } from '@/components/icons/content/Vercel';
-import { Separator } from '@/components/ui/Separator';
+import { Separator } from '@/components/Separator';
+import { VercelIcon } from '@/elements/icons/content/Vercel';
 import type { Certification } from '@/features/root/data/certifications';
 import { dayjs } from '@/lib/dayjs';
 import { cn } from '@/lib/utils';

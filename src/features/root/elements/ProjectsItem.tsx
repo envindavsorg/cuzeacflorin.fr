@@ -5,16 +5,16 @@ import {
 } from '@phosphor-icons/react/ssr';
 import Image from 'next/image';
 import type React from 'react';
-import { Markdown } from '@/components/markdown/markdown';
 import {
 	CollapsibleChevronsIcon,
 	CollapsibleContent,
 	CollapsibleTrigger,
 	CollapsibleWithContext,
-} from '@/components/ui/Collapsible';
-import { Tag } from '@/components/ui/Tag';
-import { SimpleTooltip } from '@/components/ui/Tooltip';
-import { Prose } from '@/components/ui/Typography';
+} from '@/components/Collapsible';
+import { Tag } from '@/components/Tag';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/Tooltip';
+import { Prose } from '@/components/Typography';
+import { Markdown } from '@/elements/markdown/markdown';
 import type { Project } from '@/features/root/data/projects';
 import { cn } from '@/lib/utils';
 
@@ -87,17 +87,20 @@ export const ProjectsItem = ({
 								</dl>
 							</div>
 
-							<SimpleTooltip content="Ouvrir le projet">
-								<a
-									className="after:-inset-2 relative flex size-6 shrink-0 items-center justify-center text-muted-foreground after:absolute hover:text-foreground"
-									href={project.link}
-									rel="noopener"
-									target="_blank"
-								>
-									<LinkIcon className="pointer-events-none size-5" />
-									<span className="sr-only">Ouvrir le lien du projet</span>
-								</a>
-							</SimpleTooltip>
+							<Tooltip>
+								<TooltipTrigger asChild>
+									<a
+										className="after:-inset-2 relative flex size-6 shrink-0 items-center justify-center text-muted-foreground after:absolute hover:text-foreground"
+										href={project.link}
+										rel="noopener"
+										target="_blank"
+									>
+										<LinkIcon className="pointer-events-none size-5" />
+										<span className="sr-only">Ouvrir le lien du projet</span>
+									</a>
+								</TooltipTrigger>
+								<TooltipContent>Ouvrir le projet</TooltipContent>
+							</Tooltip>
 
 							<div
 								aria-hidden

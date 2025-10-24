@@ -10,20 +10,20 @@ import Link from 'next/link';
 import { useTheme } from 'next-themes';
 import type React from 'react';
 import { toast } from 'sonner';
-import { getBonjourSVG } from '@/components/animations/effects/BonjourEffect';
-import { getHelloSVG } from '@/components/animations/effects/HelloEffect';
-import { getHolaSVG } from '@/components/animations/effects/HolaEffect';
-import { EnglishFlag } from '@/components/icons/flags/EnglishFlag';
-import { FrenchFlag } from '@/components/icons/flags/FrenchFlag';
-import { SpanishFlag } from '@/components/icons/flags/SpanishFlag';
 import {
 	ContextMenu,
 	ContextMenuContent,
 	ContextMenuItem,
 	ContextMenuSeparator,
 	ContextMenuTrigger,
-} from '@/components/ui/ContextMenu';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
+} from '@/components/ContextMenu';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/Tabs';
+import { getBonjourSVG } from '@/elements/animations/effects/BonjourEffect';
+import { getHelloSVG } from '@/elements/animations/effects/HelloEffect';
+import { getHolaSVG } from '@/elements/animations/effects/HolaEffect';
+import { EnglishFlag } from '@/elements/icons/flags/EnglishFlag';
+import { FrenchFlag } from '@/elements/icons/flags/FrenchFlag';
+import { SpanishFlag } from '@/elements/icons/flags/SpanishFlag';
 import copyText from '@/utils/copy';
 
 type GreetingsContextMenuProps = {

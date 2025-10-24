@@ -11,13 +11,13 @@ import Link from 'next/link';
 import type React from 'react';
 import { useCallback, useMemo } from 'react';
 import { toast } from 'sonner';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/Button';
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from '@/components/ui/DropdownMenu';
+} from '@/components/DropdownMenu';
 import { soundManager } from '@/lib/sound-manager';
 import copyText from '@/utils/copy';
 import { getAbsoluteUrl } from '@/utils/url';

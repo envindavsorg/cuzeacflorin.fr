@@ -5,7 +5,7 @@ import {
 	MapPinIcon,
 } from '@phosphor-icons/react/ssr';
 import type React from 'react';
-import { Panel, PanelContent } from '@/components/ui/Panel';
+import { Panel, PanelContent } from '@/components/Panel';
 import { EmailItem } from '@/features/root/components/EmailItem';
 import { JobItem } from '@/features/root/components/JobItem';
 import { PhoneItem } from '@/features/root/components/PhoneItem';

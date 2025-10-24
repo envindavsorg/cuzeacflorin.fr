@@ -9,7 +9,7 @@ import {
 	DrawerContent,
 	DrawerHeader,
 	DrawerTrigger,
-} from '@/components/ui/Drawer';
+} from '@/components/Drawer';
 import { cn } from '@/lib/utils';
 
 type PostTagFilterProps = {

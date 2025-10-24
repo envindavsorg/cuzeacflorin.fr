@@ -4,7 +4,7 @@ import Link from 'next/link';
 import type React from 'react';
 import { getAllPosts } from '@/blog/data/posts';
 import type { Post } from '@/blog/types/post';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/Button';
 import { MAIN_NAV, SOURCE_CODE_GITHUB_URL } from '@/config/site';
 import { cn } from '@/lib/utils';
 import { DesktopNav } from './navbar/DesktopNav';

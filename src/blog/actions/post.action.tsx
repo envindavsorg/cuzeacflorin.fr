@@ -11,13 +11,13 @@ import Link from 'next/link';
 import type React from 'react';
 import { lazy, useMemo, useOptimistic, useTransition } from 'react';
 import { toast } from 'sonner';
-import { variants } from '@/components/ui/Button';
+import { variants } from '@/components/Button';
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from '@/components/ui/DropdownMenu';
+} from '@/components/DropdownMenu';
 import { soundManager } from '@/lib/sound-manager';
 import { cn } from '@/lib/utils';
 import getPrompt from '@/utils/llm';
@@ -94,25 +94,25 @@ export const LLMCopyButton = ({
 };
 
 const MarkdownIcon = lazy(() =>
-	import('@/components/icons/content/Markdown').then((m) => ({
+	import('@/elements/icons/content/Markdown').then((m) => ({
 		default: m.MarkdownIcon,
 	}))
 );
 
 const V0Icon = lazy(() =>
-	import('@/components/icons/content/V0').then((m) => ({
+	import('@/elements/icons/content/V0').then((m) => ({
 		default: m.V0Icon,
 	}))
 );
 
 const ChatGPTIcon = lazy(() =>
-	import('@/components/icons/content/ChatGPT').then((m) => ({
+	import('@/elements/icons/content/ChatGPT').then((m) => ({
 		default: m.ChatGPTIcon,
 	}))
 );
 
 const ClaudeIcon = lazy(() =>
-	import('@/components/icons/content/Claude').then((m) => ({
+	import('@/elements/icons/content/Claude').then((m) => ({
 		default: m.ClaudeIcon,
 	}))
 );

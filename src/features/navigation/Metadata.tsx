@@ -9,7 +9,7 @@ import {
 import { useWindowSize } from '@uidotdev/usehooks';
 import type React from 'react';
 import { memo, useMemo } from 'react';
-import { Panel, PanelHeader, PanelTitle } from '@/components/ui/Panel';
+import { Panel, PanelHeader, PanelTitle } from '@/components/Panel';
 import useBrowser from '@/hooks/use-browser';
 import { dayjs } from '@/lib/dayjs';
 import { cn } from '@/lib/utils';

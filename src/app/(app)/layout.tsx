@@ -1,7 +1,7 @@
 import { getStatus, type StatusResponse } from '@openstatus/react';
 import dynamic from 'next/dynamic';
 import type React from 'react';
-import { Sparkles } from '@/components/animations/Sparkles';
+import { Sparkles } from '@/elements/animations/Sparkles';
 import { Footer } from '@/features/navigation/Footer';
 import { NavBar } from '@/features/navigation/NavBar';
 import { getGitHubUserData } from '@/features/root/actions/github.action';

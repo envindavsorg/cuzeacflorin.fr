@@ -4,8 +4,8 @@ import {
 	PanelContent,
 	PanelHeader,
 	PanelTitle,
-} from '@/components/ui/Panel';
-import { Prose } from '@/components/ui/Typography';
+} from '@/components/Panel';
+import { Prose } from '@/components/Typography';
 import { EXPERIENCES } from '@/features/root/data/experiences';
 import { ExperienceItem } from './ExperienceItem';
 

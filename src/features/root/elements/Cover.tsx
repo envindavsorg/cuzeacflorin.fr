@@ -1,5 +1,5 @@
 import type React from 'react';
-import { Greetings } from '@/components/animations/Greetings';
+import { Greetings } from '@/elements/animations/Greetings';
 import { GreetingsContextMenu } from '@/features/context/GreetingsContextMenu';
 import { cn } from '@/lib/utils';
 

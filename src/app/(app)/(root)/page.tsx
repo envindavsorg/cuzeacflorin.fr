@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import type { ProfilePage as PageSchema, WithContext } from 'schema-dts';
-import { Divider } from '@/components/ui/Divider';
+import { Divider } from '@/components/Divider';
 import { getGitHubUserData } from '@/features/root/actions/github.action';
 import { getLinkedInFollowers } from '@/features/root/actions/linkedin.action';
 import { USER } from '@/features/root/data/user';

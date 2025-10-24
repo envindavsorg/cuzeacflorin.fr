@@ -4,9 +4,9 @@ import {
 	PanelContent,
 	PanelHeader,
 	PanelTitle,
-} from '@/components/ui/Panel';
-import { Tag } from '@/components/ui/Tag';
-import { Prose } from '@/components/ui/Typography';
+} from '@/components/Panel';
+import { Tag } from '@/components/Tag';
+import { Prose } from '@/components/Typography';
 import { getGitHubUserData } from '@/features/root/actions/github.action';
 import { CommitsGraph, GraphFallback } from './CommitsGraph';
 

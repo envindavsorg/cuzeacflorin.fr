@@ -4,15 +4,15 @@ import { PostItem } from '@/blog/components/PostItem';
 import { PostTagFilter } from '@/blog/components/PostTagFilter';
 import { getPostsByCategory } from '@/blog/data/posts';
 import type { Post } from '@/blog/types/post';
+import { Badge } from '@/components/Badge';
 import {
 	AnimatedSpan,
 	Terminal,
 	TypingAnimation,
-} from '@/components/animations/Terminal';
-import { ReactIcon } from '@/components/icons/content/React';
-import { TailwindIcon } from '@/components/icons/content/Tailwind';
-import { TypeScriptIcon } from '@/components/icons/content/TypeScript';
-import { Badge } from '@/components/ui/Badge';
+} from '@/elements/animations/Terminal';
+import { ReactIcon } from '@/elements/icons/content/React';
+import { TailwindIcon } from '@/elements/icons/content/Tailwind';
+import { TypeScriptIcon } from '@/elements/icons/content/TypeScript';
 import { dayjs } from '@/lib/dayjs';
 import { generateOgMetadata } from '@/lib/og-image';
 

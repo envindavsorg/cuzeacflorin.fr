@@ -1,12 +1,12 @@
 import { CaretDownIcon } from '@phosphor-icons/react/ssr';
 import { Slot as SlotPrimitive } from 'radix-ui';
 import type React from 'react';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/Button';
 import {
 	Collapsible,
 	CollapsibleContent,
 	CollapsibleTrigger,
-} from '@/components/ui/Collapsible';
+} from '@/components/Collapsible';
 
 const Slot = SlotPrimitive.Slot;
 

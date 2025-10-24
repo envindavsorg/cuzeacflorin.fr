@@ -5,8 +5,8 @@ import {
 	PanelContent,
 	PanelHeader,
 	PanelTitle,
-} from '@/components/ui/Panel';
-import { Prose } from '@/components/ui/Typography';
+} from '@/components/Panel';
+import { Prose } from '@/components/Typography';
 import { CollapsibleList } from '@/features/root/components/CollapsibleList';
 import { CERTIFICATIONS } from '@/features/root/data/certifications';
 import { CertItem } from '@/features/root/elements/CertsItem';

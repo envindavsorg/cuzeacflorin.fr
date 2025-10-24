@@ -4,8 +4,8 @@ import {
 	PanelContent,
 	PanelHeader,
 	PanelTitle,
-} from '@/components/ui/Panel';
-import { Prose } from '@/components/ui/Typography';
+} from '@/components/Panel';
+import { Prose } from '@/components/Typography';
 import { SOCIAL_LINKS } from '@/features/root/data/social-links';
 import { ContactItem, type FollowerCounts } from './ContactItem';
 

@@ -15,7 +15,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/Button';
 import {
 	Dialog,
 	DialogClose,
@@ -25,7 +25,7 @@ import {
 	DialogHeader,
 	DialogTitle,
 	DialogTrigger,
-} from '@/components/ui/Dialog';
+} from '@/components/Dialog';
 import {
 	Form,
 	FormControl,
@@ -33,16 +33,16 @@ import {
 	FormItem,
 	FormLabel,
 	FormMessage,
-} from '@/components/ui/Form';
-import { Input } from '@/components/ui/Input';
+} from '@/components/Form';
+import { Input } from '@/components/Input';
 import {
 	Panel,
 	PanelContent,
 	PanelHeader,
 	PanelTitle,
-} from '@/components/ui/Panel';
-import { Spinner } from '@/components/ui/Spinner';
-import { Prose } from '@/components/ui/Typography';
+} from '@/components/Panel';
+import { Spinner } from '@/components/Spinner';
+import { Prose } from '@/components/Typography';
 import { cn } from '@/lib/utils';
 
 const emailFormSchema = z.object({

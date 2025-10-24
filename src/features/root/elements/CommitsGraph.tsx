@@ -2,7 +2,7 @@
 
 import { SpinnerIcon } from '@phosphor-icons/react';
 import type React from 'react';
-import type { Activity } from '@/components/ui/ContributionGraph';
+import type { Activity } from '@/components/ContributionGraph';
 import {
 	ContributionGraph,
 	ContributionGraphBlock,
@@ -10,12 +10,8 @@ import {
 	ContributionGraphFooter,
 	ContributionGraphLegend,
 	ContributionGraphTotalCount,
-} from '@/components/ui/ContributionGraph';
-import {
-	Tooltip,
-	TooltipContent,
-	TooltipTrigger,
-} from '@/components/ui/Tooltip';
+} from '@/components/ContributionGraph';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/Tooltip';
 import { GITHUB_USERNAME } from '@/config/site';
 import { dayjs } from '@/lib/dayjs';
 

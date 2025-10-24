@@ -16,7 +16,7 @@ import {
 	ContextMenuItem,
 	ContextMenuSeparator,
 	ContextMenuTrigger,
-} from '@/components/ui/ContextMenu';
+} from '@/components/ContextMenu';
 import { META_THEME_COLORS } from '@/config/site';
 import useMetaColor from '@/hooks/use-meta-color';
 import { soundManager } from '@/lib/sound-manager';

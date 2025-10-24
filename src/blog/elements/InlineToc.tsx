@@ -2,13 +2,13 @@ import { TextAaIcon } from '@phosphor-icons/react/ssr';
 import type { TOCItemType } from 'fumadocs-core/server';
 import Link from 'next/link';
 import type React from 'react';
-import type { Collapsible } from '@/components/ui/Collapsible';
+import type { Collapsible } from '@/components/Collapsible';
 import {
 	CollapsibleChevronsIcon,
 	CollapsibleContent,
 	CollapsibleTrigger,
 	CollapsibleWithContext,
-} from '@/components/ui/Collapsible';
+} from '@/components/Collapsible';
 import { cn } from '@/lib/utils';
 
 type InlineTocProps = {

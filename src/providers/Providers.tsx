@@ -3,14 +3,14 @@
 import { Provider as JotaiProvider } from 'jotai';
 import dynamic from 'next/dynamic';
 import type React from 'react';
-import { FaviconSwitcher } from '@/components/favicon/FaviconSwitcher';
+import { FaviconSwitcher } from '@/elements/favicon/FaviconSwitcher';
 import { Analytics } from '@/providers/analytics/Analytics';
 import ProgressProvider from '@/providers/modules/ProgressProvider';
 import ThemeProvider from '@/providers/modules/ThemeProvider';
 import { Compose, type Provider } from '@/providers/utils/Compose';
 
 const Toaster = dynamic(
-	() => import('@/components/ui/Sonner').then((mod) => mod.Toaster),
+	() => import('@/components/Sonner').then((mod) => mod.Toaster),
 	{ ssr: false }
 );
 

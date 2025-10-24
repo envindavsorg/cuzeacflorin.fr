@@ -1,12 +1,12 @@
 import type React from 'react';
-import { Markdown } from '@/components/markdown/markdown';
 import {
 	Panel,
 	PanelContent,
 	PanelHeader,
 	PanelTitle,
-} from '@/components/ui/Panel';
-import { Prose } from '@/components/ui/Typography';
+} from '@/components/Panel';
+import { Prose } from '@/components/Typography';
+import { Markdown } from '@/elements/markdown/markdown';
 import { USER } from '@/features/root/data/user';
 import { AboutToggle } from './AboutToggle';
 
