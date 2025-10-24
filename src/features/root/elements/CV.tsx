@@ -1,7 +1,13 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { EnvelopeIcon, EyeIcon, PaperPlaneIcon } from '@phosphor-icons/react';
+import {
+	EnvelopeIcon,
+	EyeIcon,
+	PaperPlaneIcon,
+	ReadCvLogoIcon,
+} from '@phosphor-icons/react';
+import { ArrowRightIcon } from '@phosphor-icons/react/ssr';
 import consola from 'consola';
 import Link from 'next/link';
 import type React from 'react';
@@ -12,6 +18,7 @@ import { z } from 'zod';
 import { Button } from '@/components/ui/Button';
 import {
 	Dialog,
+	DialogClose,
 	DialogContent,
 	DialogDescription,
 	DialogFooter,
@@ -36,6 +43,7 @@ import {
 } from '@/components/ui/Panel';
 import { Spinner } from '@/components/ui/Spinner';
 import { Prose } from '@/components/ui/Typography';
+import { cn } from '@/lib/utils';
 
 const emailFormSchema = z.object({
 	firstName: z
@@ -115,6 +123,7 @@ export const CV = (): React.JSX.Element => {
 						Voir mon CV <EyeIcon className="size-4" />
 					</Button>
 				</Link>
+
 				<Dialog onOpenChange={setOpen} open={open}>
 					<DialogTrigger asChild>
 						<Button>
@@ -122,11 +131,23 @@ export const CV = (): React.JSX.Element => {
 						</Button>
 					</DialogTrigger>
 
-					<DialogContent className="sm:max-w-[425px]">
+					<DialogContent
+						className={cn(
+							'sm:top-auto sm:right-0 sm:bottom-0 sm:left-auto sm:m-6 sm:translate-x-0 sm:translate-y-0',
+							'data-[state=open]:!zoom-in-100',
+							'data-[state=open]:slide-in-from-bottom-20',
+							'data-[state=open]:duration-600',
+							'sm:max-w-[375px]'
+						)}
+					>
+						<div className="flex items-center gap-x-3">
+							<ReadCvLogoIcon className="size-6 text-theme" />
+							<ArrowRightIcon className="size-4 text-muted-foreground" />
+							<EnvelopeIcon className="size-6 text-theme" />
+						</div>
 						<DialogHeader>
-							<DialogTitle className="text-start leading-normal">
-								Recevez mon CV directement <br className="min-sm:hidden" /> dans
-								votre boîte de réception !
+							<DialogTitle className="mt-1 text-start leading-normal">
+								Recevez mon CV directement dans votre boîte de réception !
 							</DialogTitle>
 							<DialogDescription className="text-start">
 								Entrez votre prénom et votre adresse e-mail dans le formulaire
@@ -181,6 +202,9 @@ export const CV = (): React.JSX.Element => {
 								/>
 
 								<DialogFooter className="mt-6">
+									<DialogClose asChild>
+										<Button variant="outline">Fermer</Button>
+									</DialogClose>
 									<Button
 										className="group ms-auto w-fit"
 										disabled={isLoading}
@@ -194,7 +218,7 @@ export const CV = (): React.JSX.Element => {
 											</>
 										) : (
 											<>
-												Recevoir mon CV
+												Recevoir
 												<PaperPlaneIcon className="size-4 transition-transform duration-500 ease-in-out group-hover:rotate-45" />
 											</>
 										)}
