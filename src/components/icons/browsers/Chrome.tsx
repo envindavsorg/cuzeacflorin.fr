@@ -34,6 +34,4 @@ const ChromeIcon = (props: SVGProps<SVGSVGElement>): React.JSX.Element => (
 	</svg>
 );
 
-ChromeIcon.displayName = 'ChromeIcon';
-
 export { ChromeIcon };

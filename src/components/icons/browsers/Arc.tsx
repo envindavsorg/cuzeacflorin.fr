@@ -42,6 +42,4 @@ const ArcIcon = (props: SVGProps<SVGSVGElement>): React.JSX.Element => (
 	</svg>
 );
 
-ArcIcon.displayName = 'ArcIcon';
-
 export { ArcIcon };

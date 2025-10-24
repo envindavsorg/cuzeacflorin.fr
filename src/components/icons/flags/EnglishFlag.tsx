@@ -58,6 +58,4 @@ const EnglishFlag = (props: SVGProps<SVGSVGElement>): React.JSX.Element => (
 	</svg>
 );
 
-EnglishFlag.displayName = 'EnglishFlag';
-
 export { EnglishFlag };

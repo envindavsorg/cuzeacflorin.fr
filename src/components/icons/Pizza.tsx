@@ -28,6 +28,4 @@ const PizzaIcon = ({
 	/>
 );
 
-PizzaIcon.displayName = 'PizzaIcon';
-
 export { PizzaIcon };

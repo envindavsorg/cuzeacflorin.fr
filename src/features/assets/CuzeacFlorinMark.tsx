@@ -65,6 +65,4 @@ const CuzeacFlorinMark = (
 	</svg>
 );
 
-CuzeacFlorinMark.displayName = 'CuzeacFlorinMark';
-
 export { CuzeacFlorinMark };

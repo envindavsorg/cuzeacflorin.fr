@@ -32,6 +32,4 @@ const FrenchFlag = (props: SVGProps<SVGSVGElement>): React.JSX.Element => (
 	</svg>
 );
 
-FrenchFlag.displayName = 'FrenchFlag';
-
 export { FrenchFlag };

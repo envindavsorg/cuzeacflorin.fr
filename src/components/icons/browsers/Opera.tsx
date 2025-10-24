@@ -48,6 +48,4 @@ const OperaIcon = (props: SVGProps<SVGSVGElement>): React.JSX.Element => (
 	</svg>
 );
 
-OperaIcon.displayName = 'OperaIcon';
-
 export { OperaIcon };

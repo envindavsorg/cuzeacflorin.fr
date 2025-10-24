@@ -77,6 +77,4 @@ const ScrollTop = ({
 	);
 };
 
-ScrollTop.displayName = 'ScrollTop';
-
 export { ScrollTop };

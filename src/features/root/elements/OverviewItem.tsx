@@ -37,6 +37,4 @@ const OverviewItem = ({
 	</div>
 );
 
-OverviewItem.displayName = 'IntroItem';
-
 export { OverviewItem };

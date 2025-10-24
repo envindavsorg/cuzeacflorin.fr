@@ -68,6 +68,4 @@ const Greetings = ({
 	);
 };
 
-Greetings.displayName = 'ProfileGreetings';
-
 export { Greetings };

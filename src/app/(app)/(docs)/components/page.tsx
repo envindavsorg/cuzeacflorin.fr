@@ -9,7 +9,10 @@ import {
 	Terminal,
 	TypingAnimation,
 } from '@/components/animations/Terminal';
-import { BadgeWithIcon } from '@/components/ui/Badge';
+import { ReactIcon } from '@/components/icons/content/React';
+import { TailwindIcon } from '@/components/icons/content/Tailwind';
+import { TypeScriptIcon } from '@/components/icons/content/TypeScript';
+import { Badge } from '@/components/ui/Badge';
 import { dayjs } from '@/lib/dayjs';
 import { generateOgMetadata } from '@/lib/og-image';
 
@@ -118,9 +121,18 @@ const ComponentsPage = async ({
 					<span className="font-medium">Next.js 15+</span>.
 				</p>
 				<div className="mt-3 flex flex-wrap items-center gap-3">
-					<BadgeWithIcon type="react" />
-					<BadgeWithIcon type="ts" />
-					<BadgeWithIcon type="tailwind" />
+					<Badge variant="secondary">
+						<ReactIcon />
+						<span className="leading-none">React 19+</span>
+					</Badge>
+					<Badge variant="secondary">
+						<TypeScriptIcon />
+						<span className="leading-none">TypeScript 5+</span>
+					</Badge>
+					<Badge variant="secondary">
+						<TailwindIcon />
+						<span className="leading-none">Tailwind 4+</span>
+					</Badge>
 				</div>
 			</div>
 

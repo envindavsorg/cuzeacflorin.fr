@@ -22,6 +22,4 @@ const Markdown = (
 	/>
 );
 
-Markdown.displayName = 'Markdown';
-
 export { Markdown };

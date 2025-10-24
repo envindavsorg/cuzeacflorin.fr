@@ -31,6 +31,4 @@ const JobItem = ({
 	/>
 );
 
-JobItem.displayName = 'JobItem';
-
 export { JobItem };

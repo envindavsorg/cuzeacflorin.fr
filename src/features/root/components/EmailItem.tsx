@@ -23,6 +23,4 @@ const EmailItem = ({ email }: EmailItemProps): React.JSX.Element => {
 	);
 };
 
-EmailItem.displayName = 'EmailItem';
-
 export { EmailItem };

@@ -128,6 +128,4 @@ const EdgeIcon = (props: SVGProps<SVGSVGElement>): React.JSX.Element => (
 	</svg>
 );
 
-EdgeIcon.displayName = 'EdgeIcon';
-
 export { EdgeIcon };

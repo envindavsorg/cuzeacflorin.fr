@@ -67,7 +67,6 @@
       },
       "nursery": {
         "noShadow": "off",
-        "useImageSize": "off",
         "useMaxParams": "off",
         "noReactForwardRef": "off",
         "noUnusedExpressions": "off",

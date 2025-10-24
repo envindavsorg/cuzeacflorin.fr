@@ -117,7 +117,7 @@ export const CV = (): React.JSX.Element => {
 				</Link>
 				<Dialog onOpenChange={setOpen} open={open}>
 					<DialogTrigger asChild>
-						<Button variant="default">
+						<Button>
 							Recevoir mon CV <EnvelopeIcon className="size-4" />
 						</Button>
 					</DialogTrigger>

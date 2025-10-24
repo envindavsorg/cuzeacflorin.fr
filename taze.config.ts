@@ -2,7 +2,7 @@ import { type CheckOptions, defineConfig } from 'taze';
 
 const config: Partial<CheckOptions> = defineConfig({
 	// ignore packages from bumping
-	exclude: [],
+	exclude: ['fumadocs-core', 'next'],
 	// fetch latest package info from registry without cache
 	force: true,
 	// write to package.json

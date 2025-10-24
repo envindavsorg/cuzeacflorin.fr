@@ -20,6 +20,4 @@ const PhoneItem = ({ phoneNumber }: { phoneNumber: string }) => {
 	);
 };
 
-PhoneItem.displayName = 'PhoneItem';
-
 export { PhoneItem };

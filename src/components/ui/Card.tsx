@@ -1,13 +1,14 @@
 import type React from 'react';
 import { cn } from '@/lib/utils';
 
-const Card = ({
+export const Card = ({
 	className,
 	...props
 }: React.ComponentProps<'div'>): React.JSX.Element => (
 	<div
 		className={cn(
-			'flex flex-col gap-6 rounded-xl border border-input bg-card py-6 text-card-foreground',
+			'flex flex-col gap-6',
+			'rounded-xl border border-input bg-card py-6 text-card-foreground',
 			className
 		)}
 		data-slot="card"
@@ -15,13 +16,15 @@ const Card = ({
 	/>
 );
 
-const CardHeader = ({
+export const CardHeader = ({
 	className,
 	...props
 }: React.ComponentProps<'div'>): React.JSX.Element => (
 	<div
 		className={cn(
-			'@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-2 border-input px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6',
+			'@container/card-header border-input px-6',
+			'grid auto-rows-min grid-rows-[auto_auto] items-start gap-2',
+			'has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6',
 			className
 		)}
 		data-slot="card-header"
@@ -29,7 +32,7 @@ const CardHeader = ({
 	/>
 );
 
-const CardTitle = ({
+export const CardTitle = ({
 	className,
 	...props
 }: React.ComponentProps<'div'>): React.JSX.Element => (
@@ -40,7 +43,7 @@ const CardTitle = ({
 	/>
 );
 
-const CardDescription = ({
+export const CardDescription = ({
 	className,
 	...props
 }: React.ComponentProps<'div'>): React.JSX.Element => (
@@ -51,7 +54,7 @@ const CardDescription = ({
 	/>
 );
 
-const CardAction = ({
+export const CardAction = ({
 	className,
 	...props
 }: React.ComponentProps<'div'>): React.JSX.Element => (
@@ -65,30 +68,24 @@ const CardAction = ({
 	/>
 );
 
-const CardContent = ({
+export const CardContent = ({
 	className,
 	...props
 }: React.ComponentProps<'div'>): React.JSX.Element => (
 	<div className={cn('px-6', className)} data-slot="card-content" {...props} />
 );
 
-const CardFooter = ({ className, ...props }: React.ComponentProps<'div'>) => (
+export const CardFooter = ({
+	className,
+	...props
+}: React.ComponentProps<'div'>): React.JSX.Element => (
 	<div
 		className={cn(
-			'flex items-center border-input px-6 [.border-t]:pt-6',
+			'flex items-center',
+			'border-input px-6 [.border-t]:pt-6',
 			className
 		)}
 		data-slot="card-footer"
 		{...props}
 	/>
 );
-
-export {
-	Card,
-	CardHeader,
-	CardFooter,
-	CardTitle,
-	CardAction,
-	CardDescription,
-	CardContent,
-};

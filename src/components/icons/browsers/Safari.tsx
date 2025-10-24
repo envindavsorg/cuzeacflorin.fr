@@ -117,6 +117,4 @@ const SafariIcon = (props: SVGProps<SVGSVGElement>): React.JSX.Element => (
 	</svg>
 );
 
-SafariIcon.displayName = 'SafariIcon';
-
 export { SafariIcon };

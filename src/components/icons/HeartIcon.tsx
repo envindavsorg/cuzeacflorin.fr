@@ -28,6 +28,4 @@ const HeartIcon = ({
 	/>
 );
 
-HeartIcon.displayName = 'HeartIcon';
-
 export { HeartIcon };

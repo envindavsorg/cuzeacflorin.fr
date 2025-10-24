@@ -30,6 +30,4 @@ const PopoverContent = React.forwardRef<
 	)
 );
 
-PopoverContent.displayName = Content.displayName;
-
 export { Popover, PopoverTrigger, PopoverContent };

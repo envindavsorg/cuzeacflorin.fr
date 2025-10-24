@@ -48,6 +48,4 @@ const SpanishFlag = (props: SVGProps<SVGSVGElement>): React.JSX.Element => (
 	</svg>
 );
 
-SpanishFlag.displayName = 'SpanishFlag';
-
 export { SpanishFlag };

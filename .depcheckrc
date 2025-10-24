@@ -1,2 +1,2 @@
-ignores: ["@biomejs/biome", "@tailwindcss/postcss", "shiki", "@tailwindcss/typography", "postcss", "tailwindcss", "typescript", "ultracite"]
+ignores: ["prettier", "@tailwindcss/postcss", "@tailwindcss/typography", "tailwindcss", "tw-animate-css", "ultracite"]
 skip-missing: true

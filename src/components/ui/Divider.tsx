@@ -17,6 +17,4 @@ const Divider = ({ className }: DividerProps): React.JSX.Element => (
 	/>
 );
 
-Divider.displayName = 'Divider';
-
 export { Divider };

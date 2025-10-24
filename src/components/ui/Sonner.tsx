@@ -1,38 +1,45 @@
 'use client';
 
+import {
+	CheckCircleIcon,
+	CircleNotchIcon,
+	InfoIcon,
+	WarningIcon,
+	XSquareIcon,
+} from '@phosphor-icons/react';
 import { useTheme } from 'next-themes';
 import type React from 'react';
-import type { ToasterProps } from 'sonner';
-import { Toaster as Sonner } from 'sonner';
-import { cn } from '@/lib/utils';
+import { Toaster as Sonner, type ToasterProps } from 'sonner';
 
-const Toaster = ({ ...props }: ToasterProps): React.JSX.Element => {
+export const Toaster = ({ ...props }: ToasterProps): React.JSX.Element => {
 	const { theme = 'system' } = useTheme();
 
 	return (
 		<Sonner
 			className="toaster group"
+			icons={{
+				success: (
+					<CheckCircleIcon className="size-5 text-green-600 dark:text-green-300" />
+				),
+				info: <InfoIcon className="size-5 text-blue-600 dark:text-blue-300" />,
+				warning: (
+					<WarningIcon className="size-5 text-amber-600 dark:text-amber-300" />
+				),
+				error: (
+					<XSquareIcon className="size-5 text-red-600 dark:text-red-300" />
+				),
+				loading: <CircleNotchIcon className="size-5 animate-spin text-theme" />,
+			}}
 			style={
 				{
-					'--normal-bg': 'var(--cd-popover)',
-					'--normal-text': 'var(--cd-popover-foreground)',
-					'--normal-border': 'var(--cd-border)',
-					'--border-radius': 'var(--radius-xl)',
+					'--normal-bg': 'var(--popover)',
+					'--normal-text': 'var(--popover-foreground)',
+					'--normal-border': 'var(--input)',
+					'--border-radius': 'var(--radius-lg)',
 				} as React.CSSProperties
 			}
 			theme={theme as ToasterProps['theme']}
-			toastOptions={{
-				classNames: {
-					toast: cn(
-						'group-[.toaster]:border-none! group-[.toaster]:shadow-md!',
-						'group-[.toaster]:backdrop-blur-md supports-backdrop-filter:group-[.toaster]:bg-popover/90!',
-						'group-[.toaster]:ring-1! group-[.toaster]:ring-black/10! dark:group-[.toaster]:ring-white/15!'
-					),
-				},
-			}}
 			{...props}
 		/>
 	);
 };
-
-export { Toaster };

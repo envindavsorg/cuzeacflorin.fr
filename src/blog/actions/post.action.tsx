@@ -11,7 +11,7 @@ import Link from 'next/link';
 import type React from 'react';
 import { lazy, useMemo, useOptimistic, useTransition } from 'react';
 import { toast } from 'sonner';
-import { buttonVariants } from '@/components/ui/Button';
+import { variants } from '@/components/ui/Button';
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -222,7 +222,7 @@ export const LLMCopyButtonWithViewOptions = ({
 }: LLMCopyButtonWithViewOptionsProps): React.JSX.Element => (
 	<div
 		className={cn(
-			buttonVariants({
+			variants({
 				size: 'sm',
 				variant: 'secondary',
 				className: 'gap-0 divide-x px-0 font-sans dark:divide-white/10',

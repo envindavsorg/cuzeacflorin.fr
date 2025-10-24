@@ -30,8 +30,6 @@ const MetadataItem = memo<MetadataItemProps>(({ icon: Icon, label, value }) => (
 	</div>
 ));
 
-MetadataItem.displayName = 'MetadataItem';
-
 export type MetadataProps = {
 	commit?: {
 		branch: string | undefined;
@@ -94,7 +92,5 @@ const Metadata = ({ commit }: MetadataProps): React.JSX.Element => {
 		</Panel>
 	);
 };
-
-Metadata.displayName = 'Metadata';
 
 export { Metadata };

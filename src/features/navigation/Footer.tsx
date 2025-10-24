@@ -216,6 +216,4 @@ const Footer = ({ commit, status }: FooterProps): React.JSX.Element => {
 	);
 };
 
-Footer.displayName = 'Footer';
-
 export { Footer };

@@ -81,8 +81,6 @@ const ChevronsDownUpIcon = forwardRef<
 	);
 });
 
-ChevronsDownUpIcon.displayName = 'ChevronsDownUpIcon';
-
 const Collapsible = CollapsiblePrimitive.Root;
 
 const CollapsibleTrigger = CollapsiblePrimitive.CollapsibleTrigger;
@@ -122,8 +120,6 @@ const CollapsibleContent = forwardRef<
 		</CollapsiblePrimitive.CollapsibleContent>
 	)
 );
-
-CollapsibleContent.displayName = 'CollapsibleContent';
 
 type CollapsibleContextType = {
 	open: boolean;

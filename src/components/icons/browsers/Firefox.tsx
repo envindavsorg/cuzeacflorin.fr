@@ -240,6 +240,4 @@ const FirefoxIcon = (props: SVGProps<SVGSVGElement>): React.JSX.Element => (
 	</svg>
 );
 
-FirefoxIcon.displayName = 'FirefoxIcon';
-
 export { FirefoxIcon };

@@ -28,6 +28,4 @@ const ArrowUpIcon = ({
 	/>
 );
 
-ArrowUpIcon.displayName = 'ArrowUpIcon';
-
 export { ArrowUpIcon };

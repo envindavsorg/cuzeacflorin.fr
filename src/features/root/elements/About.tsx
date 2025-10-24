@@ -33,6 +33,4 @@ const About = (): React.JSX.Element => {
 	);
 };
 
-About.displayName = 'ProfileAbout';
-
 export { About };
