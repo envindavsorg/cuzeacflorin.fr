@@ -3,7 +3,7 @@
 import { TerminalWindowIcon } from '@phosphor-icons/react';
 import type React from 'react';
 import { lazy, useMemo } from 'react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/Tabs';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
 import type { PackageManager } from '@/hooks/use-config';
 import useConfig from '@/hooks/use-config';
 import type { NpmCommands } from '@/types/unist';

@@ -3,7 +3,7 @@
 import { CheckIcon, CopyIcon, XCircleIcon } from '@phosphor-icons/react';
 import type React from 'react';
 import { useMemo, useOptimistic, useTransition } from 'react';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
 
 const ICONS = {

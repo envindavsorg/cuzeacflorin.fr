@@ -7,9 +7,9 @@ import {
 } from '@phosphor-icons/react';
 import React, { type ChangeEvent, useCallback, useState } from 'react';
 import { toast } from 'sonner';
-import { Button } from '@/components/Button';
-import { DirectionAwareTabs } from '@/components/DirectionAwareTabs';
-import { Textarea } from '@/components/Textarea';
+import { Button } from '@/components/ui/Button';
+import { DirectionAwareTabs } from '@/components/ui/DirectionAwareTabs';
+import { Textarea } from '@/components/ui/Textarea';
 import { cn } from '@/lib/utils';
 
 export const Base64 = (): React.JSX.Element => {

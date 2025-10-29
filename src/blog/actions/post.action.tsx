@@ -11,13 +11,13 @@ import Link from 'next/link';
 import type React from 'react';
 import { lazy, useMemo, useOptimistic, useTransition } from 'react';
 import { toast } from 'sonner';
-import { variants } from '@/components/Button';
+import { variants } from '@/components/ui/Button';
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from '@/components/DropdownMenu';
+} from '@/components/ui/DropdownMenu';
 import { soundManager } from '@/lib/sound-manager';
 import { cn } from '@/lib/utils';
 import getPrompt from '@/utils/llm';

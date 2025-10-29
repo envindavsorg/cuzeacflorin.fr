@@ -86,6 +86,7 @@
     "@vercel/analytics": "^1.5.0",
     "@vercel/blob": "^2.0.0",
     "@vercel/speed-insights": "^1.2.0",
+    "canvas-confetti": "^1.9.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
@@ -104,6 +105,7 @@
     "poline": "^0.11.0",
     "radix-ui": "^1.4.3",
     "react": "19.2.0",
+    "react-confetti": "^6.4.0",
     "react-dom": "19.2.0",
     "react-fast-marquee": "^1.6.5",
     "react-hook-form": "^7.65.0",
@@ -125,6 +127,7 @@
     "@skyra/gifenc": "^1.0.1",
     "@tailwindcss/postcss": "^4.1.16",
     "@tailwindcss/typography": "^0.5.19",
+    "@types/canvas-confetti": "^1.9.0",
     "@types/node": "^24.9.1",
     "@types/pngjs": "^6.0.5",
     "@types/react": "19.2.2",
@@ -135,6 +138,7 @@
     "libphonenumber-metadata-generator": "^2.0.3",
     "lint-staged": "^16.2.6",
     "pngjs": "^7.0.0",
+    "prettier": "^3.6.2",
     "puppeteer-core": "^24.26.1",
     "rehype-external-links": "^3.0.0",
     "rehype-pretty-code": "^0.14.1",
@@ -165,7 +169,7 @@
       "biome check --write --unsafe"
     ]
   },
-  "packageManager": "pnpm@10.19.0",
+  "packageManager": "pnpm@10.20.0+sha512.cf9998222162dd85864d0a8102e7892e7ba4ceadebbf5a31f9c2fce48dfce317a9c53b9f6464d1ef9042cba2e02ae02a9f7c143a2b438cd93c91840f0192b9dd",
   "private": true,
   "trustedDependencies": [
     "@tailwindcss/oxide",

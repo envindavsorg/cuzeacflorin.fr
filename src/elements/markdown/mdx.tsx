@@ -16,9 +16,9 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
-} from '@/components/Table';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/Tabs';
-import { Code, Heading } from '@/components/Typography';
+} from '@/components/ui/Table';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
+import { Code, Heading } from '@/components/ui/Typography';
 import { Base64 } from '@/elements/markdown/elements/Base64';
 import { CodeBlockCommand } from '@/elements/markdown/elements/CodeBlockCommand';
 import { CodeCollapsibleWrapper } from '@/elements/markdown/elements/CodeCollapsibleWrapper';

@@ -11,12 +11,12 @@ import {
 	getPostsByCategory,
 } from '@/blog/data/posts';
 import type { Post } from '@/blog/types/post';
-import { Button } from '@/components/Button';
-import { Divider } from '@/components/Divider';
-import { Prose } from '@/components/Typography';
+import { USER } from '@/components/features/root/data/user';
+import { Button } from '@/components/ui/Button';
+import { Divider } from '@/components/ui/Divider';
+import { Prose } from '@/components/ui/Typography';
 import { SITE_INFO } from '@/config/site';
 import { MDX } from '@/elements/markdown/mdx';
-import { USER } from '@/features/root/data/user';
 import { dayjs } from '@/lib/dayjs';
 import { generateOgMetadata } from '@/lib/og-image';
 import { cn } from '@/lib/utils';

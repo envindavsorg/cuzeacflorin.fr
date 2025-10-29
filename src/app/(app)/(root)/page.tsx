@@ -1,23 +1,22 @@
 import type { Metadata } from 'next';
 import type { ProfilePage as PageSchema, WithContext } from 'schema-dts';
-import { Divider } from '@/components/Divider';
-import { getGitHubUserData } from '@/features/root/actions/github.action';
-import { getLinkedInFollowers } from '@/features/root/actions/linkedin.action';
-import { USER } from '@/features/root/data/user';
-import { About } from '@/features/root/elements/About';
-import { Blog } from '@/features/root/elements/Blog';
-import { Certs } from '@/features/root/elements/Certs';
-import { Commits } from '@/features/root/elements/Commits';
-import { Contact } from '@/features/root/elements/Contact';
-import { Cover } from '@/features/root/elements/Cover';
-import { CoverStatic } from '@/features/root/elements/CoverStatic';
-import { CV } from '@/features/root/elements/CV';
-import { Experiences } from '@/features/root/elements/Experience';
-import { Header } from '@/features/root/elements/Header';
-import { Overview } from '@/features/root/elements/Overview';
-import { Projects } from '@/features/root/elements/Projects';
-import { TechStack } from '@/features/root/elements/TechStack';
-import { Utils } from '@/features/root/elements/Utils';
+import { getGitHubUserData } from '@/components/features/root/actions/github.action';
+import { getLinkedInFollowers } from '@/components/features/root/actions/linkedin.action';
+import { USER } from '@/components/features/root/data/user';
+import { About } from '@/components/features/root/elements/about/About';
+import { Blog } from '@/components/features/root/elements/Blog';
+import { Certs } from '@/components/features/root/elements/Certs';
+import { Commits } from '@/components/features/root/elements/commits/Commits';
+import { Contact } from '@/components/features/root/elements/contact/Contact';
+import { Cover } from '@/components/features/root/elements/cover/Cover';
+import { CV } from '@/components/features/root/elements/cv/CV';
+import { Experiences } from '@/components/features/root/elements/Experience';
+import { Header } from '@/components/features/root/elements/header/Header';
+import { Overview } from '@/components/features/root/elements/overview/Overview';
+import { Projects } from '@/components/features/root/elements/Projects';
+import { TechStack } from '@/components/features/root/elements/stack/TechStack';
+import { Utils } from '@/components/features/root/elements/Utils';
+import { Divider } from '@/components/ui/Divider';
 import { dayjs } from '@/lib/dayjs';
 import { generateOgMetadata } from '@/lib/og-image';
 
@@ -61,7 +60,7 @@ const Page = async () => {
 			/>
 
 			<div className="mx-auto md:max-w-3xl">
-				{process.env.ENV_TYPE === 'capture' ? <CoverStatic /> : <Cover />}
+				<Cover />
 				<Header />
 				<Divider />
 				<Overview />

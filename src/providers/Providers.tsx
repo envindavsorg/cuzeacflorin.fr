@@ -10,7 +10,7 @@ import ThemeProvider from '@/providers/modules/ThemeProvider';
 import { Compose, type Provider } from '@/providers/utils/Compose';
 
 const Toaster = dynamic(
-	() => import('@/components/Sonner').then((mod) => mod.Toaster),
+	() => import('@/components/ui/Sonner').then((mod) => mod.Toaster),
 	{ ssr: false }
 );
 

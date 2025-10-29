@@ -63,7 +63,8 @@
         "noUnknownAtRules": "off",
         "noArrayIndexKey": "off",
         "noImplicitAnyLet": "off",
-        "noEvolvingTypes": "off"
+        "noEvolvingTypes": "off",
+        "noConfusingVoidType": "off"
       },
       "nursery": {
         "noShadow": "off",

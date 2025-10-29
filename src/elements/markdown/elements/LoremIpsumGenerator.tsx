@@ -2,12 +2,12 @@
 
 import type React from 'react';
 import { useCallback, useEffect, useState } from 'react';
-import { Button } from '@/components/Button';
-import { Checkbox } from '@/components/Checkbox';
-import { Combobox } from '@/components/Combobox';
-import { Input } from '@/components/Input';
-import { Label } from '@/components/Label';
-import { Textarea } from '@/components/Textarea';
+import { Button } from '@/components/ui/Button';
+import { Checkbox } from '@/components/ui/Checkbox';
+import { Combobox } from '@/components/ui/Combobox';
+import { Input } from '@/components/ui/Input';
+import { Label } from '@/components/ui/Label';
+import { Textarea } from '@/components/ui/Textarea';
 import useCopyToClipboard from '@/hooks/use-copy-to-clipboard';
 import { generateLoremIpsum } from '@/lib/lorem-ipsum';
 
@@ -124,7 +124,7 @@ export const LoremIpsumGenerator = (): React.JSX.Element => {
 				<Button onClick={() => handleCopy(output)} size="sm" variant="outline">
 					{buttonText}
 				</Button>
-				<Button onClick={() => generateText()} size="sm" variant="default">
+				<Button onClick={() => generateText()} size="sm">
 					Générer à nouveau
 				</Button>
 			</div>

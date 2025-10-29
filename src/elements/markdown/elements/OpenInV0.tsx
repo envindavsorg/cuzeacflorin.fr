@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/ui/Button';
 
 const V0Icon = lazy(() =>
 	import('../../icons/content/V0').then((m) => ({

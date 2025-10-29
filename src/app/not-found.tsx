@@ -1,11 +1,11 @@
 import { ArrowLeftIcon } from '@phosphor-icons/react/ssr';
 import Link from 'next/link';
 import type React from 'react';
-import { Button } from '@/components/Button';
-import { Counter } from '@/components/Counter';
-import { Divider } from '@/components/Divider';
-import { Panel, PanelContent } from '@/components/Panel';
-import { Prose } from '@/components/Typography';
+import { Button } from '@/components/ui/Button';
+import { Counter } from '@/components/ui/Counter';
+import { Divider } from '@/components/ui/Divider';
+import { Panel, PanelContent } from '@/components/ui/Panel';
+import { Prose } from '@/components/ui/Typography';
 import { cn } from '@/lib/utils';
 
 export const metadata = {
@@ -72,9 +72,9 @@ const NotFound = (): React.JSX.Element => (
 				</Prose>
 			</PanelContent>
 			<div className="screen-line-before flex justify-center py-2">
-				<Button asChild variant="default">
+				<Button asChild>
 					<Link aria-label="Retour en arrière" href="/">
-						<ArrowLeftIcon className="size-5" />
+						<ArrowLeftIcon />
 						Retour en arrière
 					</Link>
 				</Button>

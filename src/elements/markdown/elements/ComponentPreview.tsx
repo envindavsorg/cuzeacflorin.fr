@@ -3,10 +3,14 @@
 import { CodeIcon, EyeIcon, RepeatIcon } from '@phosphor-icons/react';
 import React, { useMemo, useState } from 'react';
 import { Index } from '@/__registry__';
-import { Button } from '@/components/Button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/Tabs';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/Tooltip';
-import { Code as CodeInline } from '@/components/Typography';
+import { Button } from '@/components/ui/Button';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
+import {
+	Tooltip,
+	TooltipContent,
+	TooltipTrigger,
+} from '@/components/ui/Tooltip';
+import { Code as CodeInline } from '@/components/ui/Typography';
 import { cn } from '@/lib/utils';
 import { CodeCollapsibleWrapper } from './CodeCollapsibleWrapper';
 import { OpenInV0 } from './OpenInV0';

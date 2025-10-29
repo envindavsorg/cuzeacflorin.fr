@@ -9,8 +9,8 @@ import {
 } from '@phosphor-icons/react';
 import type React from 'react';
 import { useCallback, useRef, useState } from 'react';
-import { Button } from '@/components/Button';
-import { Card } from '@/components/Card';
+import { Button } from '@/components/ui/Button';
+import { Card } from '@/components/ui/Card';
 import { cn } from '@/lib/utils';
 
 type TestState = {
@@ -283,7 +283,6 @@ export const InternetSpeedTest = (): React.JSX.Element => {
 						}
 					}}
 					tabIndex={0}
-					variant="default"
 				>
 					{getButtonLabel(testState.status)}
 				</Button>

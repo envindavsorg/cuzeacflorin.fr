@@ -4,7 +4,7 @@ import { PostItem } from '@/blog/components/PostItem';
 import { PostTagFilter } from '@/blog/components/PostTagFilter';
 import { getPostsByCategory } from '@/blog/data/posts';
 import type { Post } from '@/blog/types/post';
-import { Badge } from '@/components/Badge';
+import { Badge } from '@/components/ui/Badge';
 import {
 	AnimatedSpan,
 	Terminal,

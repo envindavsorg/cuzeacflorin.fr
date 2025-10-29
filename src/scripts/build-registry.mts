@@ -2,7 +2,7 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { rimraf } from 'rimraf';
 import { type Registry, registrySchema } from 'shadcn/schema';
-import consola from "consola";
+import consola from 'consola';
 // @ts-ignore
 const { registryConfig } = await import('@/config/registry.js');
 // @ts-ignore
@@ -117,6 +117,6 @@ try {
 	consola.success('Registry built successfully !');
 } catch (error) {
 	consola.error(error);
-	
+
 	process.exit(1);
 }

@@ -12,14 +12,14 @@ import { motion } from 'motion/react';
 import { Poline, positionFunctions } from 'poline';
 import type React from 'react';
 import { useCallback, useState } from 'react';
-import { Button } from '@/components/Button';
-import { ColorPicker } from '@/components/ColorPicker';
+import { Button } from '@/components/ui/Button';
+import { ColorPicker } from '@/components/ui/ColorPicker';
 import {
 	Tooltip,
 	TooltipContent,
 	TooltipProvider,
 	TooltipTrigger,
-} from '@/components/Tooltip';
+} from '@/components/ui/Tooltip';
 
 type ColorScheme = {
 	[key: string]: string;
@@ -282,9 +282,7 @@ export const ColorGenerator = (): React.JSX.Element => {
 			<div className="screen-line-before w-full border-edge border-b" />
 
 			<div className="flex justify-center py-2">
-				<Button onClick={copyColorScheme} variant="default">
-					Copier toutes les couleurs
-				</Button>
+				<Button onClick={copyColorScheme}>Copier toutes les couleurs</Button>
 			</div>
 		</>
 	);

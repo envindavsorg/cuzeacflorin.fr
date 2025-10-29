@@ -1,82 +1,52 @@
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import consola from 'consola';
 import { Resend } from 'resend';
-import { z } from 'zod';
+import { USER } from '@/components/features/root/data/user';
 import { CVEmailTemplate } from '@/emails/CVEmail';
+import emailSchema from '@/schemas/email.schema';
+import type { BodyData } from '@/types/email';
+import { decodeEmail } from '@/utils/string';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const emailSchema = z.object({
-	firstName: z
-		.string()
-		.min(1, 'Le prénom est requis !')
-		.min(2, 'Le prénom doit contenir au moins 2 caractères !')
-		.max(20, 'Le prénom doit contenir moins de 20 caractères !'),
-	email: z.email('Adresse e-mail obligatoire !'),
-});
-
 export const POST = async (request: Request): Promise<Response> => {
 	try {
-		const body = await request.json();
+		const body = (await request.json()) satisfies BodyData;
 		const validation = emailSchema.safeParse(body);
 
 		if (!validation.success) {
 			return Response.json(
-				{
-					error: 'Données invalides !',
-					details: validation.error.issues,
-				},
-				{
-					status: 400,
-				}
+				{ error: 'Données invalides', details: validation.error.issues },
+				{ status: 400 }
 			);
 		}
 
-		const { firstName, email } = validation.data;
+		const { firstName, recipientEmail } = validation.data;
 
-		const cvPath = join(process.cwd(), 'public', 'documents', 'resume.pdf');
-		const cvBuffer = await readFile(cvPath);
-		const cvBase64 = cvBuffer.toString('base64');
+		const path = join(process.cwd(), 'public', 'documents', 'resume.pdf');
+		const buffer: Buffer = await readFile(path);
+		const filename = USER.documents.cv.name;
+		const content = buffer.toString('base64');
 
-		const { data, error } = await resend.emails.send({
-			from: 'Cuzeac Florin <contact@cuzeacflorin.fr>',
-			to: [email],
-			subject: 'CV - Cuzeac Florin | cuzeacflorin.fr',
-			react: CVEmailTemplate({
-				firstName,
-				recipientEmail: email,
-			}),
-			attachments: [
-				{
-					filename: 'resume_cuzeac_florin.pdf',
-					content: cvBase64,
-				},
-			],
+		const { error } = await resend.emails.send({
+			from: `${USER.firstName} ${USER.lastName} <${decodeEmail(USER.email)}>`,
+			to: [recipientEmail],
+			subject: `CV - ${USER.firstName} ${USER.lastName} | ${USER.website}`,
+			react: CVEmailTemplate({ firstName, recipientEmail }),
+			attachments: [{ filename, content }],
 		});
 
 		if (error) {
-			consola.error('Une erreur est survenue :', error);
-
 			return Response.json(
-				{ error: "Erreur lors de l'envoi de l'email !" },
+				{ error: "Erreur lors de l'envoi" },
 				{ status: 500 }
 			);
 		}
 
 		return Response.json({
-			success: true,
-			message: 'E-mail envoyé avec succès !',
-			data,
+			message: 'Email envoyé avec succès',
 		});
-	} catch (error) {
-		consola.error('Une erreur est survenue :', error);
-
-		return Response.json(
-			{ error: 'Une erreur est survenue' },
-			{
-				status: 500,
-			}
-		);
+	} catch {
+		return Response.json({ error: 'Erreur serveur' }, { status: 500 });
 	}
 };

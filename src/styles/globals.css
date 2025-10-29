@@ -117,7 +117,7 @@
 	--ring: oklch(0.705 0.015 286.067);
 	--info: oklch(0.67 0.17 244.98);
 	--success: oklch(0.723 0.219 149.579);
-	--destructive: oklch(0.577 0.245 27.325);
+	--destructive: var(--color-red-600);
 	--link: oklch(0.488 0.243 264.376);
 	--code: oklch(0.985 0 0);
 	--code-foreground: oklch(0.191 0.002 106.586);
@@ -150,7 +150,7 @@
 	--input: oklch(0.274 0.006 286.033);
 	--ring: oklch(0.552 0.016 285.938);
 	--success: oklch(0.723 0.219 149.579);
-	--destructive: oklch(0.505 0.213 27.518);
+	--destructive: var(--color-red-300);
 	--link: oklch(0.623 0.214 259.815);
 	--code: oklch(0.21 0.006 285.885);
 	--code-foreground: oklch(0.985 0 0);
