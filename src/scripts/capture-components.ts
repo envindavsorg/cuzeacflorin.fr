@@ -11,7 +11,7 @@ import puppeteer, {
 
 const executablePath =
 	'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
-const baseUrl = process.env.URL || 'http://localhost:1408';
+const baseUrl = 'http://localhost:1409';
 const outputDir = join(process.cwd(), 'public/images/blog');
 
 const COMPONENTS = [

@@ -1,6 +1,6 @@
 import type React from 'react';
-import { Header } from '@/components/features/root/elements/header/Header';
-import { Overview } from '@/components/features/root/elements/overview/Overview';
+import { Header } from '@/components/features/root/header/Header';
+import { Overview } from '@/components/features/root/overview/Overview';
 import { Divider } from '@/components/ui/Divider';
 
 const Page = (): React.JSX.Element => (

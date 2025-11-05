@@ -3,8 +3,8 @@ import { metadata } from '@/app/(app)/(docs)/utils/metadata';
 import { PostTagFilter } from '@/blog/components/PostTagFilter';
 import { getPostsByCategory } from '@/blog/data/posts';
 import type { Post } from '@/blog/types/post';
-import { UtilsItem } from '@/components/features/root/elements/UtilsItem';
 import { Prose } from '@/components/ui/Typography';
+import { UtilsItem } from '@/features/root/elements/UtilsItem';
 import { dayjs } from '@/lib/dayjs';
 import { generateOgMetadata } from '@/lib/og-image';
 

@@ -1,6 +1,6 @@
 import { getAllPosts } from '@/blog/data/posts';
-import { USER } from '@/components/features/root/data/user';
 import { SITE_INFO } from '@/config/site';
+import { USER } from '@/features/root/data/user';
 import { dayjs } from '@/lib/dayjs';
 
 export const dynamic = 'force-static';

@@ -1,13 +1,17 @@
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { Resend } from 'resend';
-import { USER } from '@/components/features/root/data/user';
 import { CVEmailTemplate } from '@/emails/CVEmail';
+import { USER } from '@/features/root/data/user';
 import emailSchema from '@/schemas/email.schema';
-import type { BodyData } from '@/types/email';
 import { decodeEmail } from '@/utils/string';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+
+type BodyData = {
+	firstName: string;
+	recipientEmail: string;
+};
 
 export const POST = async (request: Request): Promise<Response> => {
 	try {
@@ -38,15 +42,18 @@ export const POST = async (request: Request): Promise<Response> => {
 
 		if (error) {
 			return Response.json(
-				{ error: "Erreur lors de l'envoi" },
+				{ error: "Erreur lors de l'envoi du mail !" },
 				{ status: 500 }
 			);
 		}
 
 		return Response.json({
-			message: 'Email envoyé avec succès',
+			message: 'Email envoyé avec succès ! ',
 		});
 	} catch {
-		return Response.json({ error: 'Erreur serveur' }, { status: 500 });
+		return Response.json(
+			{ error: 'Une erreur serveur est survenue !' },
+			{ status: 500 }
+		);
 	}
 };

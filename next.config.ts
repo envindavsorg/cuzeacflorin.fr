@@ -1,4 +1,37 @@
+import consola from 'consola';
 import type { NextConfig } from 'next';
+import { z } from 'zod';
+
+(() => {
+	const envSchema = z.object({
+		NODE_ENV: z
+			.enum(['development', 'production', 'test'])
+			.default('development'),
+		GITHUB_API_TOKEN: z.string().min(1, 'GitHub API token is required'),
+		GITHUB_USERNAME: z.string().optional(),
+		GITHUB_REPO_NAME: z.string().optional(),
+		TURBO_TOKEN: z.string().optional(),
+		TURBO_TEAM: z.string().optional(),
+		OPENSTATUS_API_KEY: z.string().optional(),
+		OPENSTATUS_SLUG: z.string().optional().default('cuzeacflorin-fr'),
+		BLOB_READ_WRITE_TOKEN: z.string().optional(),
+		API_TOKEN: z.string().optional(),
+		RESEND_API_KEY: z.string().optional(),
+	});
+
+	const parsed = envSchema.safeParse(process.env);
+
+	if (!parsed.success) {
+		consola.error('Invalid environment variables :');
+		consola.error(`${z.treeifyError(parsed.error)}\n`);
+		process.exit(1);
+	}
+
+	if (!process.env.__ENV_VALIDATED) {
+		consola.success("Env vars look good ! You're safe to ship 🚀\n");
+		process.env.__ENV_VALIDATED = 'true';
+	}
+})();
 
 const nextConfig: NextConfig = {
 	reactStrictMode: true,

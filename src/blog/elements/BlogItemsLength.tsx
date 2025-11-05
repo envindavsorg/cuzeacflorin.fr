@@ -1,7 +1,7 @@
 import type React from 'react';
 import type { Post } from '@/blog/types/post';
-import type { Certification } from '@/components/features/root/data/certifications';
-import type { Project } from '@/components/features/root/data/projects';
+import type { Certification } from '@/features/root/data/certifications';
+import type { Project } from '@/features/root/data/projects';
 
 type BlogItemsLengthProps = {
 	items: Post[] | Certification[] | Project[];

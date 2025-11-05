@@ -7,7 +7,7 @@ import type { CaptureScreenshot, FilePath, Theme } from '@/types/capture';
 
 const executablePath =
 	'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
-const url = process.env.URL || 'http://localhost:1408';
+const url = 'http://localhost:1409';
 
 const screenshotsDir = join(process.cwd(), 'public/meta');
 const ogDir = join(process.cwd(), 'public/og');

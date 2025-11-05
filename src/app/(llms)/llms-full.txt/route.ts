@@ -1,13 +1,13 @@
 import { getAllPosts } from '@/blog/data/posts';
 import { getLLMText } from '@/blog/lib/get-llm-text';
 import type { Post } from '@/blog/types/post';
-import { CERTIFICATIONS } from '@/components/features/root/data/certifications';
-import { EXPERIENCES } from '@/components/features/root/data/experiences';
-import { PROJECTS } from '@/components/features/root/data/projects';
-import { SOCIAL_LINKS } from '@/components/features/root/data/social-links';
-import { techStack } from '@/components/features/root/data/tech-stack';
-import { USER } from '@/components/features/root/data/user';
+import { SOCIAL_LINKS } from '@/components/features/root/contact/data/social-links';
 import { SITE_INFO } from '@/config/site';
+import { CERTIFICATIONS } from '@/features/root/data/certifications';
+import { EXPERIENCES } from '@/features/root/data/experiences';
+import { PROJECTS } from '@/features/root/data/projects';
+import { techStack } from '@/features/root/data/tech-stack';
+import { USER } from '@/features/root/data/user';
 import { dayjs } from '@/lib/dayjs';
 
 const allPosts: Post[] = getAllPosts();

@@ -31,7 +31,8 @@
         "noStaticElementInteractions": "off",
         "noNoninteractiveElementInteractions": "off",
         "useSemanticElements": "off",
-        "useAltText": "off"
+        "useAltText": "off",
+        "noSvgWithoutTitle": "off"
       },
       "complexity": {
         "noExcessiveCognitiveComplexity": "off",

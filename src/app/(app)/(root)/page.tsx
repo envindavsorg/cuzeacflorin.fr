@@ -1,22 +1,22 @@
 import type { Metadata } from 'next';
 import type { ProfilePage as PageSchema, WithContext } from 'schema-dts';
-import { getGitHubUserData } from '@/components/features/root/actions/github.action';
-import { getLinkedInFollowers } from '@/components/features/root/actions/linkedin.action';
-import { USER } from '@/components/features/root/data/user';
-import { About } from '@/components/features/root/elements/about/About';
-import { Blog } from '@/components/features/root/elements/Blog';
-import { Certs } from '@/components/features/root/elements/Certs';
-import { Commits } from '@/components/features/root/elements/commits/Commits';
-import { Contact } from '@/components/features/root/elements/contact/Contact';
-import { Cover } from '@/components/features/root/elements/cover/Cover';
-import { CV } from '@/components/features/root/elements/cv/CV';
-import { Experiences } from '@/components/features/root/elements/Experience';
-import { Header } from '@/components/features/root/elements/header/Header';
-import { Overview } from '@/components/features/root/elements/overview/Overview';
-import { Projects } from '@/components/features/root/elements/Projects';
-import { TechStack } from '@/components/features/root/elements/stack/TechStack';
-import { Utils } from '@/components/features/root/elements/Utils';
+import { About } from '@/components/features/root/about/About';
+import { Contact } from '@/components/features/root/contact/Contact';
+import { Cover } from '@/components/features/root/cover/Cover';
+import { CV } from '@/components/features/root/cv/CV';
+import { Header } from '@/components/features/root/header/Header';
+import { Overview } from '@/components/features/root/overview/Overview';
 import { Divider } from '@/components/ui/Divider';
+import { getGitHubUserData } from '@/features/root/actions/github.action';
+import { getLinkedInFollowers } from '@/features/root/actions/linkedin.action';
+import { USER } from '@/features/root/data/user';
+import { Blog } from '@/features/root/elements/Blog';
+import { Certs } from '@/features/root/elements/Certs';
+import { Commits } from '@/features/root/elements/commits/Commits';
+import { Experiences } from '@/features/root/elements/Experience';
+import { Projects } from '@/features/root/elements/Projects';
+import { TechStack } from '@/features/root/elements/stack/TechStack';
+import { Utils } from '@/features/root/elements/Utils';
 import { dayjs } from '@/lib/dayjs';
 import { generateOgMetadata } from '@/lib/og-image';
 
@@ -44,11 +44,18 @@ const getPageJsonLd = (): WithContext<PageSchema> => ({
 	},
 });
 
+const isCapture = process.env.ENV_TYPE === 'capture';
+
 const Page = async () => {
 	const [github, linkedin] = await Promise.all([
 		getGitHubUserData().then((data) => data.followers),
 		getLinkedInFollowers().then((data) => data.count),
 	]);
+
+	// about
+	const paragraphs = USER.about.trim().split('\n\n');
+	const firstParagraph = paragraphs[0];
+	const restParagraphs = paragraphs.slice(1).join('\n\n');
 
 	return (
 		<>
@@ -60,16 +67,16 @@ const Page = async () => {
 			/>
 
 			<div className="mx-auto md:max-w-3xl">
-				<Cover />
-				<Header />
+				<Cover capture={isCapture} />
+				<Header capture={isCapture} />
 				<Divider />
 				<Overview />
 				<Divider />
 				<CV />
 				<Divider />
-				<Contact githubFollowers={github} linkedinFollowers={linkedin} />
+				<Contact capture={isCapture} github={github} linkedin={linkedin} />
 				<Divider />
-				<About />
+				<About first={firstParagraph} rest={restParagraphs} />
 				<Divider />
 				<Commits />
 				<Divider />

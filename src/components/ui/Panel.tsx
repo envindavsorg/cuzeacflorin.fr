@@ -38,7 +38,7 @@ export const PanelTitle = ({
 
 	return (
 		<Comp
-			className={cn('font-semibold text-theme text-xl sm:text-2xl', className)}
+			className={cn('font-semibold text-xl sm:text-2xl', className)}
 			data-slot="panel-title"
 			{...props}
 		/>

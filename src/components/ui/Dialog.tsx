@@ -25,21 +25,18 @@ const DialogPortal = ({
 const DialogClose = ({
 	...props
 }: React.ComponentProps<typeof DialogPrimitive.Close>): React.JSX.Element => (
-	<DialogPrimitive.Close
-		className="cursor-pointer"
-		data-slot="dialog-close"
-		{...props}
-	/>
+	<DialogPrimitive.Close data-slot="dialog-close" {...props} />
 );
 
 const DialogOverlay = ({
-	className,
 	...props
 }: React.ComponentProps<typeof DialogPrimitive.Overlay>): React.JSX.Element => (
 	<DialogPrimitive.Overlay
 		className={cn(
-			'data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 pointer-events-none fixed inset-0 z-50 select-none bg-black/50 data-[state=closed]:animate-out data-[state=open]:animate-in',
-			className
+			'pointer-events-none fixed inset-0 z-50 select-none',
+			'bg-background/50 backdrop-blur-xs',
+			'data-[state=closed]:fade-out-0 data-[state=closed]:animate-out',
+			'data-[state=open]:fade-in-0 data-[state=open]:animate-in'
 		)}
 		data-slot="dialog-overlay"
 		{...props}
@@ -58,11 +55,13 @@ const DialogContent = ({
 		{overlay && <DialogOverlay />}
 		<DialogPrimitive.Content
 			className={cn(
-				'data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-2xl border border-input p-5 duration-200 data-[state=closed]:animate-out data-[state=open]:animate-in sm:max-w-lg',
+				'fixed sm:top-auto sm:right-0 sm:bottom-0 sm:left-auto sm:m-6 sm:translate-x-0 sm:translate-y-0',
+				'rounded-2xl border border-input p-5 outline-none focus:outline-none',
+				'z-50 grid w-full max-w-[calc(100%-2rem)] sm:max-w-[375px]',
+				'data-[state=open]:fade-in-0 data-[state=open]:zoom-in-100 data-[state=open]:slide-in-from-bottom-20 data-[state=open]:animate-in data-[state=open]:duration-600',
+				'data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:slide-out-to-top-20 data-[state=closed]:animate-out data-[state=closed]:duration-300',
 				'bg-[radial-gradient(var(--pattern-foreground)_1px,transparent_0)]',
-				'bg-background bg-center bg-size-[10px_10px]',
-				'[--pattern-foreground:var(--color-zinc-950)]/5 dark:[--pattern-foreground:var(--color-white)]/5',
-				'outline-none focus:outline-none',
+				'bg-background bg-center bg-size-[10px_10px] [--pattern-foreground:var(--color-zinc-950)]/5 dark:[--pattern-foreground:var(--color-white)]/5',
 				className
 			)}
 			data-slot="dialog-content"

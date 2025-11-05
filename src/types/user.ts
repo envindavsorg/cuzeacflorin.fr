@@ -1,5 +1,3 @@
-import type { StaticImageData } from 'next/image';
-
 export type User = {
 	firstName: string;
 	lastName: string;
@@ -34,9 +32,9 @@ export type User = {
 	avatar: string;
 	ogImage: string;
 	namePronunciationUrl: string;
-	avatars: StaticImageData[];
 	documents: {
 		cv: {
+			content: string;
 			url: string;
 			name: string;
 			title: string;

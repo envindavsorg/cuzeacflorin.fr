@@ -18,7 +18,7 @@ export const getOgImageUrl = ({
 	title,
 	description,
 }: OgImageParams): string => {
-	const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://cuzeacflorin.fr';
+	const baseUrl = 'https://cuzeacflorin.fr';
 	const endpoint = `${baseUrl}/api/og`;
 
 	const params = new URLSearchParams({

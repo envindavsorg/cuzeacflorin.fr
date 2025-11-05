@@ -1,19 +1,19 @@
 import { getStatus, type StatusResponse } from '@openstatus/react';
 import dynamic from 'next/dynamic';
 import type React from 'react';
-import { Footer } from '@/components/features/navigation/Footer';
-import { NavBar } from '@/components/features/navigation/NavBar';
-import { getGitHubUserData } from '@/components/features/root/actions/github.action';
+import { Footer } from '@/components/navigation/Footer';
+import { NavBar } from '@/components/navigation/NavBar';
 import { Sparkles } from '@/elements/animations/Sparkles';
+import { getGitHubUserData } from '@/features/root/actions/github.action';
 
 const RootContextMenu = dynamic(() =>
-	import('@/components/features/context/RootContextMenu').then(
+	import('@/features/context/RootContextMenu').then(
 		(mod) => mod.RootContextMenu
 	)
 );
 
 const ScrollTop = dynamic(() =>
-	import('@/components/features/layout/ScrollTop').then((mod) => mod.ScrollTop)
+	import('@/features/layout/ScrollTop').then((mod) => mod.ScrollTop)
 );
 
 export type AppLayoutProps = {
