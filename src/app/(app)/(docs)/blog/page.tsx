@@ -5,10 +5,10 @@ import { PostTagFilter } from '@/blog/components/PostTagFilter';
 import { getPostsByCategory } from '@/blog/data/posts';
 import type { Post } from '@/blog/types/post';
 import { dayjs } from '@/lib/dayjs';
-import { generateOgMetadata } from '@/lib/og-image';
+import { openGraphImage } from '@/lib/open-graph';
 
 export const generateMetadata = async (): Promise<Metadata> =>
-	generateOgMetadata({
+	openGraphImage({
 		title: 'Mes articles de blog',
 		description: 'Retrouvez tous mes articles de blog.',
 		ogImageParams: {

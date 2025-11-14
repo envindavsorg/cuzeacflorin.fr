@@ -17,7 +17,7 @@ import { SITE_INFO } from '@/config/site';
 import { MDX } from '@/elements/markdown/mdx';
 import { USER } from '@/features/root/data/user';
 import { dayjs } from '@/lib/dayjs';
-import { generateOgMetadata } from '@/lib/og-image';
+import { openGraphImage } from '@/lib/open-graph';
 import { cn } from '@/lib/utils';
 
 type Props = {
@@ -44,7 +44,7 @@ export const generateMetadata = async ({
 	const { title, description } = post.metadata;
 	const postUrl = getPostUrl(post);
 
-	const og = generateOgMetadata({
+	const og = openGraphImage({
 		title,
 		description,
 		ogImageParams: {

@@ -94,6 +94,7 @@
     "consola": "^3.4.2",
     "date-fns": "^4.1.0",
     "dayjs": "^1.11.18",
+    "es-toolkit": "^1.41.0",
     "fumadocs-core": "^15.8.5",
     "jotai": "^2.15.0",
     "libphonenumber-js": "^1.12.24",

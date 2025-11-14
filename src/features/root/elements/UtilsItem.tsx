@@ -8,7 +8,6 @@ import {
 } from '@phosphor-icons/react';
 import Link from 'next/link';
 import type React from 'react';
-import { useScramble } from 'use-scramble';
 import { PostIsNew } from '@/blog/components/PostIsNew';
 import type { Post } from '@/blog/types/post';
 import { cn } from '@/lib/utils';
@@ -30,22 +29,14 @@ type UtilsItemProps = {
 };
 
 export const UtilsItem = ({ post }: UtilsItemProps): React.JSX.Element => {
-	const {
-		metadata: { title, tags, new: isNew },
-		slug,
-	} = post;
+	const { metadata, slug } = post;
+	const { title, tags, new: isNew } = metadata;
 	const Icon = getIconForTags(tags);
-
-	const { ref, replay } = useScramble({
-		text: title,
-		speed: 0.5,
-		tick: 1,
-	});
 
 	return (
 		<Link
 			aria-label={title}
-			className="flex items-center border-edge border-b pr-4 last:border-b-0"
+			className="flex items-center border-edge border-b pr-4"
 			href={`/utils/${slug}`}
 		>
 			<div
@@ -63,12 +54,7 @@ export const UtilsItem = ({ post }: UtilsItemProps): React.JSX.Element => {
 				)}
 			</div>
 
-			<h2
-				className="flex-1 text-balance border-edge border-l border-dashed p-4 font-medium text-base leading-snug sm:text-lg"
-				onFocus={replay}
-				onMouseOver={replay}
-				ref={ref}
-			>
+			<h2 className="flex-1 text-balance border-edge border-l border-dashed p-4 font-medium text-base leading-snug sm:text-lg">
 				{title}
 			</h2>
 

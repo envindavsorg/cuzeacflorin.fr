@@ -1,8 +1,11 @@
 'use client';
 
 import { CaretDownIcon } from '@phosphor-icons/react';
+import { capitalize } from 'es-toolkit/string';
 import { usePathname, useRouter } from 'next/navigation';
 import type React from 'react';
+import { Badge } from '@/components/ui/Badge';
+import { Button } from '@/components/ui/Button';
 import {
 	Drawer,
 	DrawerBody,
@@ -27,55 +30,61 @@ export const PostTagFilter = ({
 	const pathname = usePathname();
 
 	const handleTagClick = (tag: string) => {
-		const params = new URLSearchParams();
-		if (tag !== 'Tous les articles') {
-			params.set('tag', tag);
+		const params: URLSearchParams = new URLSearchParams(window.location.search);
+
+		if (tag === 'Tout') {
+			params.delete('tag');
+		} else {
+			params.set('tag', tag.toLowerCase());
 		}
-		if (tag !== 'Tous les composants') {
-			params.set('tag', tag);
-		}
-		if (tag !== 'Tous les outils') {
-			params.set('tag', tag);
-		}
-		router.push(`${pathname}?${params.toString()}`);
+
+		router.push(`${pathname}?${params.toString()}`, {
+			scroll: false,
+		});
 	};
 
 	const DesktopTagFilter = () => (
-		<div className="hidden flex-wrap gap-2 md:flex">
-			{tags.map((tag) => (
-				<button
-					className={cn(
-						'flex h-8 cursor-pointer items-center rounded-lg border border-input px-2 pl-2 text-sm transition-colors',
-						selectedTag === tag
-							? 'border-theme text-theme'
-							: 'border-input bg-background'
-					)}
-					key={tag}
-					onClick={() => handleTagClick(tag)}
-					type="button"
-				>
-					<span>{tag}</span>
-					{tagCounts?.[tag] && (
-						<span
+		<div className="screen-line-after hidden flex-wrap gap-x-4 px-3 py-1.5 md:flex">
+			{tags.map((tag: string) => {
+				const isActive =
+					tag === 'Tout'
+						? selectedTag === 'Tout'
+						: selectedTag === tag.toLowerCase();
+
+				return (
+					<div className="flex items-center gap-x-1.5" key={tag}>
+						<Button
 							className={cn(
-								'ml-2 flex h-5 min-w-5 items-center justify-center rounded-md border font-medium text-xs',
-								selectedTag === tag
-									? 'border-theme bg-background text-theme'
-									: 'border-input'
+								'px-0',
+								isActive ? 'text-theme' : 'text-foreground'
 							)}
+							onClick={() => handleTagClick(tag)}
+							variant="link"
 						>
-							{tagCounts[tag]}
-						</span>
-					)}
-				</button>
-			))}
+							{tag}
+						</Button>
+						{tagCounts?.[tag] && (
+							<sup
+								className={cn(
+									'font-medium text-[10px]',
+									isActive ? 'text-theme' : 'text-foreground'
+								)}
+							>
+								{tagCounts[tag]}
+							</sup>
+						)}
+					</div>
+				);
+			})}
 		</div>
 	);
 
 	const MobileTagFilter = () => (
 		<Drawer>
-			<DrawerTrigger className="flex w-full items-center justify-between rounded-lg border border-border px-4 py-2 transition-colors hover:bg-muted md:hidden">
-				<span className="font-medium text-sm">{selectedTag}</span>
+			<DrawerTrigger className="screen-line-after flex size-full items-center justify-between p-3 md:hidden">
+				<span className="font-medium text-sm">
+					Catégorie: {capitalize(selectedTag)}
+				</span>
 				<CaretDownIcon className="size-4" />
 			</DrawerTrigger>
 
@@ -86,29 +95,41 @@ export const PostTagFilter = ({
 
 				<DrawerBody>
 					<div className="space-y-3">
-						{tags.map((tag: string) => (
-							<button
-								className="flex w-full cursor-pointer items-center justify-between font-medium text-sm transition-colors"
-								key={tag}
-								onClick={() => handleTagClick(tag)}
-								type="button"
-							>
-								<span
-									className={`flex w-full cursor-pointer items-center justify-between font-medium text-base transition-colors ${
-										selectedTag === tag
-											? 'text-theme underline underline-offset-4'
-											: 'text-muted-foreground'
-									}`}
-								>
-									{tag}
-								</span>
-								{tagCounts?.[tag] && (
-									<span className="ml-2 flex h-6 min-w-6 flex-shrink-0 items-center justify-center rounded-md border border-input">
-										{tagCounts[tag]}
-									</span>
-								)}
-							</button>
-						))}
+						{tags.map((tag: string) => {
+							const isActive =
+								tag === 'Tout'
+									? selectedTag === 'Tout'
+									: selectedTag === tag.toLowerCase();
+
+							return (
+								<div className="flex items-center justify-between" key={tag}>
+									<Button
+										className={cn(
+											'px-0 font-medium text-base',
+											isActive
+												? 'text-theme underline underline-offset-4'
+												: 'text-foreground'
+										)}
+										onClick={() => handleTagClick(tag)}
+										variant="link"
+									>
+										{tag}
+									</Button>
+									{tagCounts?.[tag] && (
+										<Badge
+											className={cn(
+												'aspect-square border',
+												isActive
+													? 'border-theme text-theme'
+													: 'border-input text-foreground'
+											)}
+										>
+											{tagCounts[tag]}
+										</Badge>
+									)}
+								</div>
+							);
+						})}
 					</div>
 				</DrawerBody>
 			</DrawerContent>
@@ -117,8 +138,12 @@ export const PostTagFilter = ({
 
 	return (
 		<>
-			<DesktopTagFilter />
-			<MobileTagFilter />
+			{tags.length > 1 && (
+				<>
+					<DesktopTagFilter />
+					<MobileTagFilter />
+				</>
+			)}
 		</>
 	);
 };

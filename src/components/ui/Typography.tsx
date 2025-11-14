@@ -17,7 +17,7 @@ const Prose = ({
 	return (
 		<Comp
 			className={cn(
-				'prose prose-sm prose-zinc dark:prose-invert max-w-none font-mono text-foreground',
+				'prose prose-sm sm:prose-base prose-zinc dark:prose-invert max-w-none font-mono text-foreground',
 				'prose-headings:text-balance prose-headings:font-sans prose-headings:font-semibold',
 				'prose-h2:border-edge prose-h2:border-b prose-h2:pb-2 prose-h2:text-2xl',
 				'prose-lead:text-base',

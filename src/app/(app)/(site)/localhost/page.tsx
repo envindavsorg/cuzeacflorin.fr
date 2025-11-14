@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
 import { Prose } from '@/components/ui/Typography';
 import { USER } from '@/features/root/data/user';
-import { generateOgMetadata } from '@/lib/og-image';
+import { openGraphImage } from '@/lib/open-graph';
 import { Localhost } from './components/Localhost';
 import { metadata } from './metadata';
 
 export const generateMetadata = async (): Promise<Metadata> =>
-	generateOgMetadata({
+	openGraphImage({
 		title: `${USER.firstName} ${USER.lastName}`,
 		description: USER.bio,
 		ogImageParams: {

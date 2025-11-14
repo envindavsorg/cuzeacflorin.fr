@@ -14,10 +14,10 @@ import { ReactIcon } from '@/elements/icons/content/React';
 import { TailwindIcon } from '@/elements/icons/content/Tailwind';
 import { TypeScriptIcon } from '@/elements/icons/content/TypeScript';
 import { dayjs } from '@/lib/dayjs';
-import { generateOgMetadata } from '@/lib/og-image';
+import { openGraphImage } from '@/lib/open-graph';
 
 export const generateMetadata = async (): Promise<Metadata> =>
-	generateOgMetadata({
+	openGraphImage({
 		title: 'Composants React',
 		description: 'Ma collection de snippets React réutilisables.',
 		ogImageParams: {

@@ -18,10 +18,10 @@ import { Projects } from '@/features/root/elements/Projects';
 import { TechStack } from '@/features/root/elements/stack/TechStack';
 import { Utils } from '@/features/root/elements/Utils';
 import { dayjs } from '@/lib/dayjs';
-import { generateOgMetadata } from '@/lib/og-image';
+import { openGraphImage } from '@/lib/open-graph';
 
 export const generateMetadata = async (): Promise<Metadata> =>
-	generateOgMetadata({
+	openGraphImage({
 		title: `${USER.firstName} ${USER.lastName}`,
 		description: USER.bio,
 		ogImageParams: {

@@ -51,7 +51,7 @@ export const getAllPosts = () =>
 export const getPostBySlug = (slug: string) =>
 	getAllPosts().find((post) => post.slug === slug);
 
-export const getPostsByCategory = (category: string) =>
+export const getPostsByCategory = (category: PageType) =>
 	getAllPosts().filter((post) => post.metadata?.category === category);
 
 export const findNeighbour = (posts: Post[], slug: string) => {
