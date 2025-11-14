@@ -5,7 +5,7 @@ import type React from 'react';
 import type { ComponentProps } from 'react';
 import { cn } from '@/lib/utils';
 
-const TooltipProvider = ({
+export const TooltipProvider = ({
 	delayDuration = 0,
 	...props
 }: ComponentProps<typeof Primitive.Provider>): React.JSX.Element => (

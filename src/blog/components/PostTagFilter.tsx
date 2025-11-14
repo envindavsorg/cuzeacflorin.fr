@@ -56,7 +56,9 @@ export const PostTagFilter = ({
 						<Button
 							className={cn(
 								'px-0',
-								isActive ? 'text-theme' : 'text-foreground'
+								isActive
+									? 'text-theme underline underline-offset-4'
+									: 'text-foreground'
 							)}
 							onClick={() => handleTagClick(tag)}
 							variant="link"

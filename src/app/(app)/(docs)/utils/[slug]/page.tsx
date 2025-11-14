@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { BlogPosting as PageSchema, WithContext } from 'schema-dts';
+import { metadata } from '@/app/(app)/(docs)/utils/metadata';
+import { PostIsNew } from '@/blog/components/PostIsNew';
 import { PostKeyboardShortcuts } from '@/blog/components/PostKeyboardShortcuts';
 import { PostShareMenu } from '@/blog/components/PostShareMenu';
 import {
@@ -19,7 +21,8 @@ import { MDX } from '@/elements/markdown/mdx';
 import { USER } from '@/features/root/data/user';
 import { dayjs } from '@/lib/dayjs';
 import { openGraphImage } from '@/lib/open-graph';
-import { cn } from '@/lib/utils';
+
+const { type } = metadata;
 
 type Props = {
 	params: Promise<{
@@ -28,16 +31,14 @@ type Props = {
 };
 
 export const generateStaticParams = async () => {
-	const posts = getPostsByCategory('utils');
-	return posts.map((post) => ({
-		slug: post.slug,
-	}));
+	const posts: Post[] = getPostsByCategory(type);
+	return posts.map(({ slug }) => ({ slug }));
 };
 
 export const generateMetadata = async ({
 	params,
 }: Props): Promise<Metadata> => {
-	const slug = (await params).slug;
+	const { slug } = await params;
 	const post = getPostBySlug(slug);
 
 	if (!post) {
@@ -50,11 +51,7 @@ export const generateMetadata = async ({
 	const og = openGraphImage({
 		title,
 		description,
-		ogImageParams: {
-			type: 'utilsArticle',
-			title,
-			description,
-		},
+		ogImageParams: { type: 'utilsArticle', title, description },
 	});
 
 	return {
@@ -85,18 +82,19 @@ const getPageJsonLd = (post: Post): WithContext<PageSchema> => ({
 });
 
 const Page = async ({ params }: Props) => {
-	const slug = (await params).slug;
+	const { slug } = await params;
 	const post = getPostBySlug(slug);
 
 	if (!post) {
 		notFound();
 	}
 
-	if (post.metadata.category !== 'utils') {
+	const { category } = post.metadata;
+	if (category !== type) {
 		notFound();
 	}
 
-	const allPosts = getPostsByCategory('utils');
+	const allPosts: Post[] = getPostsByCategory(type);
 	const { previous, next } = findNeighbour(allPosts, slug);
 
 	return (
@@ -114,7 +112,7 @@ const Page = async ({ params }: Props) => {
 				previous={previous}
 			/>
 
-			<div className="flex items-center justify-between p-2 pl-4">
+			<div className="screen-line-after flex items-center justify-between p-2 pl-4">
 				<Button
 					asChild
 					className="h-7 gap-2 rounded-lg px-0 font-mono text-muted-foreground"
@@ -149,26 +147,21 @@ const Page = async ({ params }: Props) => {
 				</div>
 			</div>
 
-			<div className="screen-line-before screen-line-after">
-				<div
-					className={cn(
-						'h-8',
-						'before:-left-[100vw] before:-z-1 before:absolute before:h-full before:w-[200vw]',
-						'before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-edge)]/56'
-					)}
-				/>
-			</div>
+			<Divider />
 
-			<Prose className="px-4">
-				<h1 className="screen-line-after mb-6 font-semibold">
+			<div className="screen-line-after flex items-center justify-between px-3">
+				<h1 className="font-semibold text-2xl sm:text-3xl">
 					{post.metadata.title}
 				</h1>
+				{post.metadata.new && <PostIsNew />}
+			</div>
 
-				<p className="lead my-6">{post.metadata.description}</p>
+			<div className="px-3 py-1.5">
+				<Prose>{post.metadata.description}</Prose>
+			</div>
 
-				<div>
-					<MDX code={post.content} />
-				</div>
+			<Prose className="px-3">
+				<MDX code={post.content} />
 			</Prose>
 
 			<div className="screen-line-before w-full" />

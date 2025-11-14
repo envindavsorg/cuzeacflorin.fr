@@ -1,64 +1,41 @@
 'use client';
 
-import {
-	GlobeIcon,
-	PaletteIcon,
-	TextTIcon,
-	VaultIcon,
-} from '@phosphor-icons/react';
 import Link from 'next/link';
 import type React from 'react';
+import { memo } from 'react';
 import { PostIsNew } from '@/blog/components/PostIsNew';
 import type { Post } from '@/blog/types/post';
+import { Prose } from '@/components/ui/Typography';
+import { getIconForUtilsTags } from '@/lib/tags';
 import { cn } from '@/lib/utils';
-
-const TAG_ICONS = {
-	Base64: VaultIcon,
-	Couleurs: PaletteIcon,
-	Texte: TextTIcon,
-	Internet: GlobeIcon,
-} as const;
-
-const getIconForTags = (tags?: string[]) => {
-	const tag = tags?.find((t) => t in TAG_ICONS);
-	return tag ? TAG_ICONS[tag as keyof typeof TAG_ICONS] : null;
-};
 
 type UtilsItemProps = {
 	post: Post;
 };
 
-export const UtilsItem = ({ post }: UtilsItemProps): React.JSX.Element => {
+export const UtilsItem = memo(({ post }: UtilsItemProps): React.JSX.Element => {
 	const { metadata, slug } = post;
 	const { title, tags, new: isNew } = metadata;
-	const Icon = getIconForTags(tags);
+	const Icon = getIconForUtilsTags(tags);
 
 	return (
-		<Link
-			aria-label={title}
-			className="flex items-center border-edge border-b pr-4"
-			href={`/utils/${slug}`}
-		>
-			<div
-				aria-hidden
-				className={cn(
-					'mx-4 flex size-8 shrink-0 items-center justify-center bg-muted',
-					'rounded-lg border border-muted-foreground/15 ring-1 ring-edge ring-offset-1 ring-offset-background'
-				)}
-			>
-				{Icon && (
-					<Icon
-						className="pointer-events-none size-5 text-theme"
-						weight="duotone"
-					/>
-				)}
-			</div>
+		<Link aria-label={title} href={`/utils/${slug}`}>
+			<article className="group/utils screen-line-after flex items-center pr-4 hover:bg-accent2">
+				<div
+					className={cn(
+						'm-3 flex aspect-square size-8 shrink-0 items-center justify-center',
+						'rounded-lg border border-edge bg-muted ring-1 ring-edge ring-offset-1 ring-offset-background'
+					)}
+				>
+					{Icon && <Icon className="pointer-events-none size-5 text-theme" />}
+				</div>
 
-			<h2 className="flex-1 text-balance border-edge border-l border-dashed p-4 font-medium text-base leading-snug sm:text-lg">
-				{title}
-			</h2>
+				<Prose className="flex h-14 flex-1 items-center border-edge border-l px-3 underline-offset-4 group-hover/utils:underline">
+					{title}
+				</Prose>
 
-			{isNew && <PostIsNew className="ms-auto" />}
+				{isNew && <PostIsNew className="ms-auto" />}
+			</article>
 		</Link>
 	);
-};
+});

@@ -129,7 +129,7 @@ export const InternetSpeedTest = (): React.JSX.Element => {
 
 	return (
 		<>
-			<div className="grid grid-cols-2 gap-6 py-6 md:grid-cols-4">
+			<div className="grid grid-cols-2 gap-3 py-3 md:grid-cols-4">
 				<Card
 					className={cn(
 						'relative row-span-1 flex flex-col gap-y-8 border-edge p-4 md:col-span-2 md:gap-y-12 md:p-6',
