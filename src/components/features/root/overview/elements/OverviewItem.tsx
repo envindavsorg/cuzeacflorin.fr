@@ -15,12 +15,12 @@ export const OverviewItem = ({
 	content,
 	href,
 	className,
-}: OverviewItemProps): React.JSX.Element => (
+}: OverviewItemProps) => (
 	<div
 		className={cn(
 			'flex items-center gap-4',
 			'font-medium font-mono text-sm',
-			className
+			className,
 		)}
 	>
 		<div
@@ -28,7 +28,7 @@ export const OverviewItem = ({
 			className={cn(
 				'flex size-8 shrink-0 items-center justify-center rounded-lg bg-muted',
 				'ring-1 ring-edge ring-offset-1 ring-offset-background',
-				'border border-muted-foreground/15'
+				'border border-muted-foreground/15',
 			)}
 		>
 			<Icon

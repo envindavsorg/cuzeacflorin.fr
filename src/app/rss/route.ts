@@ -1,6 +1,6 @@
-import { getAllPosts } from '@/blog/data/posts';
 import { SITE_INFO } from '@/config/site';
 import { USER } from '@/features/root/data/user';
+import { getAllPosts } from '@/lib/blog/posts';
 import { dayjs } from '@/lib/dayjs';
 
 export const dynamic = 'force-static';
@@ -34,7 +34,7 @@ export const GET = () => {
         <br />
         <br />
       </content:encoded>
-    </item>`
+    </item>`,
 		)
 		.join('\n');
 

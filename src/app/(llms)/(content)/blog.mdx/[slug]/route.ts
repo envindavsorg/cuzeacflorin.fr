@@ -1,7 +1,6 @@
 import { notFound } from 'next/navigation';
-import { getAllPosts } from '@/blog/data/posts';
-import { getLLMText } from '@/blog/lib/get-llm-text';
-import type { Post } from '@/blog/types/post';
+import { getLLMText } from '@/lib/blog/llm';
+import { getAllPosts } from '@/lib/blog/posts';
 
 export const generateStaticParams = async (): Promise<{ slug: string }[]> => {
 	const posts: Post[] = getAllPosts();
@@ -14,7 +13,7 @@ type ParamsProps = {
 
 export const GET = async (
 	_request: Request,
-	{ params }: ParamsProps
+	{ params }: ParamsProps,
 ): Promise<Response> => {
 	const { slug } = await params;
 

@@ -1,9 +1,5 @@
 import { CheckIcon, InfoIcon } from '@phosphor-icons/react/ssr';
 import type { Metadata } from 'next';
-import { PostItem } from '@/blog/components/PostItem';
-import { PostTagFilter } from '@/blog/components/PostTagFilter';
-import { getPostsByCategory } from '@/blog/data/posts';
-import type { Post } from '@/blog/types/post';
 import { Badge } from '@/components/ui/Badge';
 import {
 	AnimatedSpan,
@@ -13,6 +9,9 @@ import {
 import { ReactIcon } from '@/elements/icons/content/React';
 import { TailwindIcon } from '@/elements/icons/content/Tailwind';
 import { TypeScriptIcon } from '@/elements/icons/content/TypeScript';
+import { Post } from '@/features/blog/components/Post';
+import { TagsFilter } from '@/features/blog/components/TagsFilter';
+import { getPostsByCategory } from '@/lib/blog/posts';
 import { dayjs } from '@/lib/dayjs';
 import { openGraphImage } from '@/lib/open-graph';
 
@@ -49,8 +48,10 @@ const ComponentsPage = async ({
 		'Tous les composants',
 		...Array.from(
 			new Set(
-				components.flatMap((article: Post) => article.metadata.tags || [])
-			)
+				components.flatMap(
+					(article: Post) => article.metadata.tags || [],
+				),
+			),
 		).sort(),
 	];
 	const selectedTag = resolvedSearchParams.tag || 'Tous les composants';
@@ -58,7 +59,7 @@ const ComponentsPage = async ({
 		selectedTag === 'Tous les composants'
 			? components
 			: components.filter((article: Post) =>
-					article.metadata.tags?.includes(selectedTag)
+					article.metadata.tags?.includes(selectedTag),
 				);
 
 	const tagCounts = allTags.reduce(
@@ -67,12 +68,12 @@ const ComponentsPage = async ({
 				acc[tag] = components.length;
 			} else {
 				acc[tag] = components.filter((article: Post) =>
-					article.metadata.tags?.includes(tag)
+					article.metadata.tags?.includes(tag),
 				).length;
 			}
 			return acc;
 		},
-		{} as Record<string, number>
+		{} as Record<string, number>,
 	);
 
 	return (
@@ -88,11 +89,17 @@ const ComponentsPage = async ({
 					&gt; pnpm dlx shadcn@latest add @envindavsorg/composant
 				</TypingAnimation>
 				<AnimatedSpan className="mt-2 flex items-center gap-x-2 text-xs sm:text-sm">
-					<CheckIcon className="size-3 text-green-500" weight="bold" />
+					<CheckIcon
+						className="size-3 text-green-500"
+						weight="bold"
+					/>
 					<span>Vérification du registre ...</span>
 				</AnimatedSpan>
 				<AnimatedSpan className="mt-2 flex items-center gap-x-2 text-xs sm:text-sm">
-					<CheckIcon className="size-3 text-green-500" weight="bold" />
+					<CheckIcon
+						className="size-3 text-green-500"
+						weight="bold"
+					/>
 					<span>Installation de votre composant ...</span>
 				</AnimatedSpan>
 				<AnimatedSpan className="mt-2 flex flex-col gap-y-1 text-xs sm:text-sm">
@@ -112,13 +119,13 @@ const ComponentsPage = async ({
 			<div className="screen-line-after border-edge border-t p-4">
 				<p className="font-mono text-muted-foreground text-sm">
 					Accélérez vos développements avec une collection complète de
-					composants et hooks React optimisés, conçus pour des applications
-					modernes et performantes. Compatibles{' '}
+					composants et hooks React optimisés, conçus pour des
+					applications modernes et performantes. Compatibles{' '}
 					<span className="font-medium">App Router</span>,
 					<span className="font-medium">Server Components</span> et{' '}
-					<span className="font-medium">Server Actions</span>. Intégration
-					transparente avec les dernières fonctionnalités de{' '}
-					<span className="font-medium">Next.js 15+</span>.
+					<span className="font-medium">Server Actions</span>.
+					Intégration transparente avec les dernières fonctionnalités
+					de <span className="font-medium">Next.js 15+</span>.
 				</p>
 				<div className="mt-3 flex flex-wrap items-center gap-3">
 					<Badge variant="secondary">
@@ -139,7 +146,7 @@ const ComponentsPage = async ({
 			<div className="screen-line-after p-4">
 				{allTags.length > 0 && (
 					<div className="mx-auto w-full max-w-7xl">
-						<PostTagFilter
+						<TagsFilter
 							selectedTag={selectedTag}
 							tagCounts={tagCounts}
 							tags={allTags}
@@ -158,10 +165,12 @@ const ComponentsPage = async ({
 					{filteredComponents
 						.slice()
 						.sort((a, b) =>
-							dayjs(b.metadata.createdAt).diff(dayjs(a.metadata.createdAt))
+							dayjs(b.metadata.createdAt).diff(
+								dayjs(a.metadata.createdAt),
+							),
 						)
 						.map((post: Post, idx: number) => (
-							<PostItem
+							<Post
 								key={post.slug}
 								post={post}
 								shouldPreloadImage={idx <= 4}

@@ -19,10 +19,7 @@ type ColorPickerProps = {
 	onChangeAction: (color: string) => void;
 };
 
-export const ColorPicker = ({
-	color,
-	onChangeAction,
-}: ColorPickerProps): React.JSX.Element => {
+export const ColorPicker = ({ color, onChangeAction }: ColorPickerProps) => {
 	const [hsl, setHsl] = useState<[number, number, number]>([0, 0, 0]);
 	const [colorInput, setColorInput] = useState(color);
 	const [isOpen, setIsOpen] = useState(false);
@@ -45,7 +42,9 @@ export const ColorPicker = ({
 		}
 
 		setHsl([h, s, l]);
-		onChangeAction(`hsl(${h.toFixed(1)}, ${s.toFixed(1)}%, ${l.toFixed(1)}%)`);
+		onChangeAction(
+			`hsl(${h.toFixed(1)}, ${s.toFixed(1)}%, ${l.toFixed(1)}%)`,
+		);
 	};
 
 	const handleHueChange = (hue: number) => {
@@ -55,7 +54,7 @@ export const ColorPicker = ({
 	};
 
 	const handleSaturationLightnessChange = (
-		event: React.MouseEvent<HTMLDivElement>
+		event: React.MouseEvent<HTMLDivElement>,
 	) => {
 		const rect = event.currentTarget.getBoundingClientRect();
 		const x = event.clientX - rect.left;
@@ -68,7 +67,7 @@ export const ColorPicker = ({
 	};
 
 	const handleColorInputChange = (
-		event: React.ChangeEvent<HTMLInputElement>
+		event: React.ChangeEvent<HTMLInputElement>,
 	) => {
 		const newColor = event.target.value;
 		setColorInput(newColor);
@@ -106,7 +105,9 @@ export const ColorPicker = ({
 						className="mr-2 size-4 rounded-full shadow-sm"
 						style={{ backgroundColor: colorInput }}
 					/>
-					<span className="flex-grow">{trimColorString(colorInput)}</span>
+					<span className="flex-grow">
+						{trimColorString(colorInput)}
+					</span>
 					<CaretDownIcon className="size-4 opacity-50" />
 				</Button>
 			</PopoverTrigger>
@@ -144,7 +145,9 @@ export const ColorPicker = ({
 						className="h-3 w-full cursor-pointer appearance-none rounded-full"
 						max="360"
 						min="0"
-						onChange={(e) => handleHueChange(Number(e.target.value))}
+						onChange={(e) =>
+							handleHueChange(Number(e.target.value))
+						}
 						style={{
 							background: `linear-gradient(to right,
                 hsl(0, 100%, 50%), hsl(60, 100%, 50%), hsl(120, 100%, 50%),

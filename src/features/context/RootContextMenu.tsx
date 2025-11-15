@@ -25,9 +25,7 @@ type RootContextMenuProps = {
 	children: React.ReactNode;
 };
 
-export const RootContextMenu = ({
-	children,
-}: RootContextMenuProps): React.JSX.Element => {
+export const RootContextMenu = ({ children }: RootContextMenuProps) => {
 	const router = useRouter();
 	const { resolvedTheme, setTheme } = useTheme();
 	const { setMetaColor } = useMetaColor();
@@ -46,7 +44,7 @@ export const RootContextMenu = ({
 		setMetaColor(
 			resolvedTheme === 'dark'
 				? META_THEME_COLORS.light
-				: META_THEME_COLORS.dark
+				: META_THEME_COLORS.dark,
 		);
 	}, [resolvedTheme, setTheme, setMetaColor]);
 

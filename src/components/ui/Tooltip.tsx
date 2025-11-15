@@ -1,14 +1,13 @@
 'use client';
 
 import { Tooltip as Primitive } from 'radix-ui';
-import type React from 'react';
 import type { ComponentProps } from 'react';
 import { cn } from '@/lib/utils';
 
 export const TooltipProvider = ({
 	delayDuration = 0,
 	...props
-}: ComponentProps<typeof Primitive.Provider>): React.JSX.Element => (
+}: ComponentProps<typeof Primitive.Provider>) => (
 	<Primitive.Provider
 		data-slot="tooltip-provider"
 		delayDuration={delayDuration}
@@ -18,7 +17,7 @@ export const TooltipProvider = ({
 
 export const Tooltip = ({
 	...props
-}: ComponentProps<typeof Primitive.Root>): React.JSX.Element => (
+}: ComponentProps<typeof Primitive.Root>) => (
 	<TooltipProvider>
 		<Primitive.Root data-slot="tooltip" {...props} />
 	</TooltipProvider>
@@ -26,7 +25,7 @@ export const Tooltip = ({
 
 export const TooltipTrigger = ({
 	...props
-}: ComponentProps<typeof Primitive.Trigger>): React.JSX.Element => (
+}: ComponentProps<typeof Primitive.Trigger>) => (
 	<Primitive.Trigger data-slot="tooltip-trigger" {...props} />
 );
 
@@ -35,7 +34,7 @@ export const TooltipContent = ({
 	sideOffset = 4,
 	children,
 	...props
-}: ComponentProps<typeof Primitive.Content>): React.JSX.Element => (
+}: ComponentProps<typeof Primitive.Content>) => (
 	<Primitive.Portal>
 		<Primitive.Content
 			className={cn(
@@ -47,7 +46,7 @@ export const TooltipContent = ({
 				'data-[side=left]:slide-in-from-right-2',
 				'data-[side=right]:slide-in-from-left-2',
 				'data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=closed]:animate-out',
-				className
+				className,
 			)}
 			data-slot="tooltip-content"
 			sideOffset={sideOffset}
@@ -57,7 +56,7 @@ export const TooltipContent = ({
 			<Primitive.Arrow
 				className={cn(
 					'z-50 size-2.5 rounded-[2px] bg-primary fill-primary',
-					'translate-y-[calc(-50%-2px)] rotate-45'
+					'translate-y-[calc(-50%-2px)] rotate-45',
 				)}
 			/>
 		</Primitive.Content>

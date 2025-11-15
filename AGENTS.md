@@ -172,7 +172,7 @@ See `.env.example` for required variables:
 
 ### Site Configuration
 
-- **Navigation**: `MAIN_NAV` in `src/config/site.ts` (Accueil, Blog, Composants)
+- **TopBar**: `MAIN_NAV` in `src/config/site.ts` (Accueil, Blog, Composants)
 - **Theme Colors**: `META_THEME_COLORS` (light: #FFFFFF, dark: #09090B)
 - **GitHub Username**: envindavsorg
 - **GitHub Repo**: envindavsorg/cuzeacflorin.fr

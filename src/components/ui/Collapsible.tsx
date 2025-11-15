@@ -2,7 +2,6 @@
 
 import { motion, useAnimation } from 'motion/react';
 import { Collapsible as Primitive } from 'radix-ui';
-import type React from 'react';
 import {
 	type ComponentProps,
 	createContext,
@@ -24,7 +23,7 @@ type ChevronsDownUpIconProps = ComponentProps<'svg'>;
 const ChevronsDownUpIcon = forwardRef<
 	ChevronsDownUpIconHandle,
 	ChevronsDownUpIconProps
->((props, ref): React.JSX.Element => {
+>((props, ref) => {
 	const controls = useAnimation();
 
 	useImperativeHandle(ref, () => ({
@@ -89,38 +88,36 @@ export const CollapsibleTrigger = Primitive.CollapsibleTrigger;
 export const CollapsibleContent = forwardRef<
 	HTMLDivElement,
 	ComponentProps<typeof Primitive.CollapsibleContent>
->(
-	({ children, className, ...props }, ref): React.JSX.Element => (
-		<Primitive.CollapsibleContent
-			asChild
-			className={className}
-			ref={ref}
-			{...props}
+>(({ children, className, ...props }, ref) => (
+	<Primitive.CollapsibleContent
+		asChild
+		className={className}
+		ref={ref}
+		{...props}
+	>
+		<motion.div
+			animate="open"
+			exit="collapsed"
+			initial="collapsed"
+			transition={{
+				duration: 0.3,
+				ease: [0.4, 0, 0.2, 1],
+			}}
+			variants={{
+				open: {
+					opacity: 1,
+					height: 'auto',
+				},
+				collapsed: {
+					opacity: 0,
+					height: 0,
+				},
+			}}
 		>
-			<motion.div
-				animate="open"
-				exit="collapsed"
-				initial="collapsed"
-				transition={{
-					duration: 0.3,
-					ease: [0.4, 0, 0.2, 1],
-				}}
-				variants={{
-					open: {
-						opacity: 1,
-						height: 'auto',
-					},
-					collapsed: {
-						opacity: 0,
-						height: 0,
-					},
-				}}
-			>
-				{children}
-			</motion.div>
-		</Primitive.CollapsibleContent>
-	)
-);
+			{children}
+		</motion.div>
+	</Primitive.CollapsibleContent>
+));
 
 type CollapsibleContextType = {
 	open: boolean;
@@ -133,7 +130,7 @@ const useCollapsible = () => {
 
 	if (!context) {
 		throw new Error(
-			'Collapsible components must be used within a CollapsibleWithContext'
+			'Collapsible components must be used within a CollapsibleWithContext',
 		);
 	}
 
@@ -143,7 +140,7 @@ const useCollapsible = () => {
 export const CollapsibleWithContext = ({
 	defaultOpen,
 	...props
-}: ComponentProps<typeof Collapsible>): React.JSX.Element => {
+}: ComponentProps<typeof Collapsible>) => {
 	const [open, setOpen] = useState(defaultOpen ?? false);
 
 	return (
@@ -153,7 +150,7 @@ export const CollapsibleWithContext = ({
 	);
 };
 
-export const CollapsibleChevronsIcon = (): React.JSX.Element => {
+export const CollapsibleChevronsIcon = () => {
 	const { open } = useCollapsible();
 
 	const ref = useRef<ChevronsDownUpIconHandle>(null);

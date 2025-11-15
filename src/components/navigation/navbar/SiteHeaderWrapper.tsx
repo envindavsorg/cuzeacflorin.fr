@@ -4,9 +4,7 @@ import { useMotionValueEvent, useScroll } from 'motion/react';
 import type React from 'react';
 import { useState } from 'react';
 
-export const SiteHeaderWrapper = (
-	props: React.ComponentProps<'header'>
-): React.JSX.Element => {
+export const SiteHeaderWrapper = (props: React.ComponentProps<'header'>) => {
 	const { scrollY } = useScroll();
 
 	const [affix, setAffix] = useState(false);

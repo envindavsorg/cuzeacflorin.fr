@@ -16,7 +16,7 @@ const PizzaIcon = ({
 	ref,
 	size = 18,
 	state,
-}: PizzaIconProps): React.JSX.Element => (
+}: PizzaIconProps) => (
 	<Player
 		colorize={colorize}
 		direction={1}

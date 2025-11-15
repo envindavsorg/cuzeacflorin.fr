@@ -1,5 +1,4 @@
 import { CaretDownIcon, CaretUpIcon } from '@phosphor-icons/react';
-import type React from 'react';
 import { Button } from '@/components/ui/Button';
 
 type ToggleButtonProps = {
@@ -10,7 +9,7 @@ type ToggleButtonProps = {
 export const ToggleButton = ({
 	isExpanded,
 	setIsExpanded,
-}: ToggleButtonProps): React.JSX.Element => (
+}: ToggleButtonProps) => (
 	<div className="screen-line-before flex justify-center py-2 md:justify-end">
 		<Button onClick={() => setIsExpanded(!isExpanded)}>
 			Voir {isExpanded ? 'moins' : 'plus'}

@@ -1,7 +1,6 @@
 'use client';
 
 import { SpinnerIcon } from '@phosphor-icons/react';
-import type React from 'react';
 import type { Activity } from '@/components/ui/ContributionGraph';
 import {
 	ContributionGraph,
@@ -23,9 +22,7 @@ type CommitsGraphProps = {
 	contributions: Activity[];
 };
 
-export const CommitsGraph = ({
-	contributions,
-}: CommitsGraphProps): React.JSX.Element => (
+export const CommitsGraph = ({ contributions }: CommitsGraphProps) => (
 	<ContributionGraph
 		blockMargin={3}
 		blockRadius={0}
@@ -48,7 +45,8 @@ export const CommitsGraph = ({
 
 					<TooltipContent className="font-sans" sideOffset={0}>
 						<p>
-							{activity.count} contribution{activity.count > 1 ? 's' : null} le{' '}
+							{activity.count} contribution
+							{activity.count > 1 ? 's' : null} le{' '}
 							{dayjs(activity.date).format('dddd DD MMM YYYY')}
 						</p>
 					</TooltipContent>
@@ -60,7 +58,8 @@ export const CommitsGraph = ({
 			<ContributionGraphTotalCount>
 				{({ totalCount, year }) => (
 					<div className="text-muted-foreground text-xs">
-						{totalCount.toLocaleString('en')} contributions en {year} sur{' '}
+						{totalCount.toLocaleString('en')} contributions en{' '}
+						{year} sur{' '}
 						<a
 							className="font-medium underline underline-offset-4"
 							href={`https://github.com/${GITHUB_USERNAME}`}
@@ -79,7 +78,7 @@ export const CommitsGraph = ({
 	</ContributionGraph>
 );
 
-export const GraphFallback = (): React.JSX.Element => (
+export const GraphFallback = () => (
 	<div className="flex h-[162px] w-full items-center justify-center">
 		<SpinnerIcon className="animate-spin text-muted-foreground" />
 	</div>

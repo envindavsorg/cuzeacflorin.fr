@@ -4,7 +4,6 @@ import {
 	GlobeIcon,
 	MapPinIcon,
 } from '@phosphor-icons/react/ssr';
-import type React from 'react';
 import { Panel, PanelContent } from '@/components/ui/Panel';
 import { USER } from '@/features/root/data/user';
 import { urlToName } from '@/utils/url';
@@ -13,7 +12,7 @@ import { JobItem } from './elements/JobItem';
 import { OverviewItem } from './elements/OverviewItem';
 import { PhoneItem } from './elements/PhoneItem';
 
-export const Overview = (): React.JSX.Element => (
+export const Overview = () => (
 	<Panel>
 		<PanelContent className="grid grid-cols-2 gap-4 sm:grid-cols-3">
 			{USER.jobs.map(({ company, title, website }, idx: number) => (
@@ -31,7 +30,10 @@ export const Overview = (): React.JSX.Element => (
 				phoneNumber={USER.phoneNumber}
 			/>
 
-			<EmailItem className="col-span-full sm:col-span-2" email={USER.email} />
+			<EmailItem
+				className="col-span-full sm:col-span-2"
+				email={USER.email}
+			/>
 
 			<OverviewItem
 				className="col-span-1"
@@ -49,7 +51,9 @@ export const Overview = (): React.JSX.Element => (
 			<OverviewItem
 				className="col-span-1"
 				content={USER.pronouns}
-				icon={USER.gender === 'homme' ? GenderMaleIcon : GenderFemaleIcon}
+				icon={
+					USER.gender === 'homme' ? GenderMaleIcon : GenderFemaleIcon
+				}
 			/>
 		</PanelContent>
 	</Panel>

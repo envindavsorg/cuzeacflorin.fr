@@ -1,9 +1,8 @@
 import Image from 'next/image';
-import type React from 'react';
 import { USER } from '@/features/root/data/user';
 import { cn } from '@/lib/utils';
 
-export const ProfileImage = (): React.JSX.Element => (
+export const ProfileImage = () => (
 	<div className="shrink-0 border-edge border-r">
 		<div className="mx-[2px] my-[3px]">
 			<Image
@@ -11,7 +10,7 @@ export const ProfileImage = (): React.JSX.Element => (
 				className={cn(
 					'size-26 select-none sm:size-32 lg:size-40',
 					'rounded-full object-cover object-top',
-					'ring-1 ring-border ring-offset-2 ring-offset-background'
+					'ring-1 ring-border ring-offset-2 ring-offset-background',
 				)}
 				fetchPriority="high"
 				height={1404}

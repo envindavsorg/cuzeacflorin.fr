@@ -1,5 +1,4 @@
 import { BriefcaseIcon } from '@phosphor-icons/react/ssr';
-import type React from 'react';
 import { OverviewItem } from './OverviewItem';
 
 type JobItemProps = {
@@ -14,7 +13,7 @@ export const JobItem = ({
 	company,
 	website,
 	className,
-}: JobItemProps): React.JSX.Element => (
+}: JobItemProps) => (
 	<OverviewItem
 		className={className}
 		content={

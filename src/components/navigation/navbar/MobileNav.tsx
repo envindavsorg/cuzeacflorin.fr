@@ -9,7 +9,6 @@ import {
 	XIcon,
 } from '@phosphor-icons/react';
 import Link from 'next/link';
-import type React from 'react';
 import type { NavigationItem } from '@/components/navigation/navbar/Nav';
 import { Button } from '@/components/ui/Button';
 import {
@@ -25,10 +24,7 @@ type MobileNavProps = {
 	className?: string;
 };
 
-export const MobileNav = ({
-	items,
-	className,
-}: MobileNavProps): React.JSX.Element => (
+export const MobileNav = ({ items, className }: MobileNavProps) => (
 	<DropdownMenu>
 		<DropdownMenuTrigger asChild>
 			<Button
@@ -65,7 +61,9 @@ export const MobileNav = ({
 
 						<Link href={link.href}>
 							{link.title}{' '}
-							<sup className="font-semibold text-theme">0{idx + 1}</sup>
+							<sup className="font-semibold text-theme">
+								0{idx + 1}
+							</sup>
 						</Link>
 					</div>
 				</DropdownMenuItem>

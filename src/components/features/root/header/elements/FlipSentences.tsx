@@ -1,7 +1,6 @@
 'use client';
 
 import { AnimatePresence, motion } from 'motion/react';
-import type React from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -15,7 +14,7 @@ export const FlipSentences = ({
 	className,
 	sentences,
 	interval = 2500,
-}: FlipSentencesProps): React.JSX.Element => {
+}: FlipSentencesProps) => {
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -45,7 +44,10 @@ export const FlipSentences = ({
 			if (intervalRef.current) {
 				clearInterval(intervalRef.current);
 			}
-			document.removeEventListener('visibilitychange', handleVisibilityChange);
+			document.removeEventListener(
+				'visibilitychange',
+				handleVisibilityChange,
+			);
 		};
 	}, [sentences.length, interval]);
 
@@ -55,7 +57,7 @@ export const FlipSentences = ({
 				animate={{ y: 0, opacity: 1 }}
 				className={cn(
 					'select-none text-balance font-mono text-muted-foreground text-sm',
-					className
+					className,
 				)}
 				exit={{ y: -8, opacity: 0 }}
 				initial={{ y: 8, opacity: 0 }}

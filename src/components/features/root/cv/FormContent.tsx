@@ -1,4 +1,3 @@
-import type React from 'react';
 import { memo } from 'react';
 import { Button } from '@/components/ui/Button';
 import {
@@ -29,25 +28,23 @@ type EmailFormContentProps = {
 };
 
 export const EmailFormContent = memo(
-	({
-		form,
-		isLoading,
-		onSubmit,
-		onClose,
-	}: EmailFormContentProps): React.JSX.Element => (
+	({ form, isLoading, onSubmit, onClose }: EmailFormContentProps) => (
 		<>
 			<DialogHeader className="text-start">
 				<DialogTitle>
 					Recevez mon CV <br /> directement dans votre boîte mail !
 				</DialogTitle>
 				<DialogDescription>
-					Entrez votre prénom et votre adresse e-mail dans le formulaire
-					ci-dessous pour recevoir immédiatement mon CV.
+					Entrez votre prénom et votre adresse e-mail dans le
+					formulaire ci-dessous pour recevoir immédiatement mon CV.
 				</DialogDescription>
 			</DialogHeader>
 
 			<Form {...form}>
-				<form className="mt-3 space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
+				<form
+					className="mt-3 space-y-4"
+					onSubmit={form.handleSubmit(onSubmit)}
+				>
 					<FormField
 						control={form.control}
 						name="firstName"
@@ -55,7 +52,11 @@ export const EmailFormContent = memo(
 							<FormItem>
 								<FormLabel>Votre prénom :</FormLabel>
 								<FormControl>
-									<Input disabled={isLoading} placeholder="..." {...field} />
+									<Input
+										disabled={isLoading}
+										placeholder="..."
+										{...field}
+									/>
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -103,5 +104,5 @@ export const EmailFormContent = memo(
 				</form>
 			</Form>
 		</>
-	)
+	),
 );

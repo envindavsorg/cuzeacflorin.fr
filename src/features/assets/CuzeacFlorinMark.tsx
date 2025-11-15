@@ -1,8 +1,6 @@
 import type React from 'react';
 
-export const CuzeacFlorinMark = (
-	props: React.ComponentProps<'svg'>
-): React.JSX.Element => (
+export const CuzeacFlorinMark = (props: React.ComponentProps<'svg'>) => (
 	<svg
 		fill="none"
 		height="26"

@@ -1,9 +1,6 @@
-import type React from 'react';
 import type { SVGProps } from 'react';
 
-export const HTML5Icon = (
-	props: SVGProps<SVGSVGElement>
-): React.JSX.Element => (
+export const HTML5Icon = (props: SVGProps<SVGSVGElement>) => (
 	<svg
 		height="1em"
 		viewBox="0 0 452 520"

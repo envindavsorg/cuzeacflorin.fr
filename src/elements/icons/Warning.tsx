@@ -18,7 +18,7 @@ export const WarningIcon = ({
 	size = 18,
 	state,
 	onCompleteAction,
-}: WarningIconProps): React.JSX.Element => (
+}: WarningIconProps) => (
 	<Player
 		colorize={colorize}
 		direction={1}

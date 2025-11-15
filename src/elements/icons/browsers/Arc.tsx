@@ -1,7 +1,6 @@
-import type React from 'react';
 import type { SVGProps } from 'react';
 
-const ArcIcon = (props: SVGProps<SVGSVGElement>): React.JSX.Element => (
+const ArcIcon = (props: SVGProps<SVGSVGElement>) => (
 	<svg
 		height="1em"
 		preserveAspectRatio="xMidYMid"

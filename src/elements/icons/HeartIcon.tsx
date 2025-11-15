@@ -16,7 +16,7 @@ const HeartIcon = ({
 	ref,
 	size = 18,
 	state,
-}: HeartIconProps): React.JSX.Element => (
+}: HeartIconProps) => (
 	<Player
 		colorize={colorize}
 		direction={1}

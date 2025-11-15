@@ -1,4 +1,3 @@
-import type React from 'react';
 import {
 	Panel,
 	PanelContent,
@@ -6,7 +5,7 @@ import {
 	PanelTitle,
 } from '@/components/ui/Panel';
 import { Prose } from '@/components/ui/Typography';
-import { Markdown } from '@/elements/markdown/markdown';
+import { Markdown } from '@/features/blog/markdown/markdown';
 import { ToggleContent } from './elements/ToggleContent';
 
 type AboutProps = {
@@ -14,10 +13,7 @@ type AboutProps = {
 	rest: string;
 };
 
-export const About = ({
-	first,
-	rest,
-}: Readonly<AboutProps>): React.JSX.Element => (
+export const About = ({ first, rest }: Readonly<AboutProps>) => (
 	<Panel id="about">
 		<PanelHeader>
 			<PanelTitle>Quelques mots sur moi</PanelTitle>

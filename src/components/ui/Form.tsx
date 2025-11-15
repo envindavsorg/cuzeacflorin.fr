@@ -2,7 +2,6 @@
 
 import type { Label as LabelPrimitive } from 'radix-ui';
 import { Slot as SlotPrimitive } from 'radix-ui';
-import type React from 'react';
 import { type ComponentProps, createContext, useContext, useId } from 'react';
 import {
 	Controller,
@@ -28,7 +27,7 @@ type FormFieldContextValue<
 };
 
 const FormFieldContext = createContext<FormFieldContextValue>(
-	{} as FormFieldContextValue
+	{} as FormFieldContextValue,
 );
 
 const FormField = <
@@ -36,7 +35,7 @@ const FormField = <
 	TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 >({
 	...props
-}: ControllerProps<TFieldValues, TName>): React.JSX.Element => (
+}: ControllerProps<TFieldValues, TName>) => (
 	<FormFieldContext.Provider value={{ name: props.name }}>
 		<Controller {...props} />
 	</FormFieldContext.Provider>
@@ -70,13 +69,10 @@ type FormItemContextValue = {
 };
 
 const FormItemContext = createContext<FormItemContextValue>(
-	{} as FormItemContextValue
+	{} as FormItemContextValue,
 );
 
-const FormItem = ({
-	className,
-	...props
-}: ComponentProps<'div'>): React.JSX.Element => {
+const FormItem = ({ className, ...props }: ComponentProps<'div'>) => {
 	const id = useId();
 
 	return (
@@ -93,14 +89,14 @@ const FormItem = ({
 const FormLabel = ({
 	className,
 	...props
-}: ComponentProps<typeof LabelPrimitive.Root>): React.JSX.Element => {
+}: ComponentProps<typeof LabelPrimitive.Root>) => {
 	const { error, formItemId } = useFormField();
 
 	return (
 		<Label
 			className={cn(
 				'font-medium text-xs data-[error=true]:text-destructive',
-				className
+				className,
 			)}
 			data-error={!!error}
 			data-slot="form-label"
@@ -110,16 +106,16 @@ const FormLabel = ({
 	);
 };
 
-const FormControl = ({
-	...props
-}: ComponentProps<typeof Slot>): React.JSX.Element => {
+const FormControl = ({ ...props }: ComponentProps<typeof Slot>) => {
 	const { error, formItemId, formDescriptionId, formMessageId } =
 		useFormField();
 
 	return (
 		<Slot
 			aria-describedby={
-				error ? `${formDescriptionId} ${formMessageId}` : `${formDescriptionId}`
+				error
+					? `${formDescriptionId} ${formMessageId}`
+					: `${formDescriptionId}`
 			}
 			aria-invalid={!!error}
 			data-slot="form-control"
@@ -129,10 +125,7 @@ const FormControl = ({
 	);
 };
 
-const FormDescription = ({
-	className,
-	...props
-}: ComponentProps<'p'>): React.JSX.Element => {
+const FormDescription = ({ className, ...props }: ComponentProps<'p'>) => {
 	const { formDescriptionId } = useFormField();
 
 	return (
@@ -145,10 +138,7 @@ const FormDescription = ({
 	);
 };
 
-const FormMessage = ({
-	className,
-	...props
-}: ComponentProps<'p'>): React.JSX.Element | null => {
+const FormMessage = ({ className, ...props }: ComponentProps<'p'>) => {
 	const { error, formMessageId } = useFormField();
 	const body = error ? String(error?.message ?? '') : props.children;
 

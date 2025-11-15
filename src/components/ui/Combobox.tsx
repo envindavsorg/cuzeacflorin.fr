@@ -1,7 +1,6 @@
 'use client';
 
 import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons';
-import type React from 'react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import {
@@ -29,7 +28,7 @@ type ComboboxProps = {
 	disabled?: boolean;
 };
 
-export const Combobox = (props: ComboboxProps): React.JSX.Element => {
+export const Combobox = (props: ComboboxProps) => {
 	const [open, setOpen] = useState(false);
 	const selectedItem = props.data.find((item) => item.value === props.value);
 
@@ -68,7 +67,9 @@ export const Combobox = (props: ComboboxProps): React.JSX.Element => {
 									<CheckIcon
 										className={cn(
 											'ml-auto h-4 w-4',
-											props.value === item.value ? 'opacity-100' : 'opacity-0'
+											props.value === item.value
+												? 'opacity-100'
+												: 'opacity-0',
 										)}
 									/>
 								</CommandItem>

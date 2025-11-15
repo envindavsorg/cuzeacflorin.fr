@@ -6,37 +6,37 @@ import { cn } from '@/lib/utils';
 
 const Dialog = ({
 	...props
-}: React.ComponentProps<typeof DialogPrimitive.Root>): React.JSX.Element => (
+}: React.ComponentProps<typeof DialogPrimitive.Root>) => (
 	<DialogPrimitive.Root data-slot="dialog" {...props} />
 );
 
 const DialogTrigger = ({
 	...props
-}: React.ComponentProps<typeof DialogPrimitive.Trigger>): React.JSX.Element => (
+}: React.ComponentProps<typeof DialogPrimitive.Trigger>) => (
 	<DialogPrimitive.Trigger data-slot="dialog-trigger" {...props} />
 );
 
 const DialogPortal = ({
 	...props
-}: React.ComponentProps<typeof DialogPrimitive.Portal>): React.JSX.Element => (
+}: React.ComponentProps<typeof DialogPrimitive.Portal>) => (
 	<DialogPrimitive.Portal data-slot="dialog-portal" {...props} />
 );
 
 const DialogClose = ({
 	...props
-}: React.ComponentProps<typeof DialogPrimitive.Close>): React.JSX.Element => (
+}: React.ComponentProps<typeof DialogPrimitive.Close>) => (
 	<DialogPrimitive.Close data-slot="dialog-close" {...props} />
 );
 
 const DialogOverlay = ({
 	...props
-}: React.ComponentProps<typeof DialogPrimitive.Overlay>): React.JSX.Element => (
+}: React.ComponentProps<typeof DialogPrimitive.Overlay>) => (
 	<DialogPrimitive.Overlay
 		className={cn(
 			'pointer-events-none fixed inset-0 z-50 select-none',
 			'bg-background/50 backdrop-blur-xs',
 			'data-[state=closed]:fade-out-0 data-[state=closed]:animate-out',
-			'data-[state=open]:fade-in-0 data-[state=open]:animate-in'
+			'data-[state=open]:fade-in-0 data-[state=open]:animate-in',
 		)}
 		data-slot="dialog-overlay"
 		{...props}
@@ -50,7 +50,7 @@ const DialogContent = ({
 	...props
 }: React.ComponentProps<typeof DialogPrimitive.Content> & {
 	overlay?: boolean;
-}): React.JSX.Element => (
+}) => (
 	<DialogPortal data-slot="dialog-portal">
 		{overlay && <DialogOverlay />}
 		<DialogPrimitive.Content
@@ -62,7 +62,7 @@ const DialogContent = ({
 				'data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:slide-out-to-top-20 data-[state=closed]:animate-out data-[state=closed]:duration-300',
 				'bg-[radial-gradient(var(--pattern-foreground)_1px,transparent_0)]',
 				'bg-background bg-center bg-size-[10px_10px] [--pattern-foreground:var(--color-zinc-950)]/5 dark:[--pattern-foreground:var(--color-white)]/5',
-				className
+				className,
 			)}
 			data-slot="dialog-content"
 			{...props}
@@ -72,23 +72,23 @@ const DialogContent = ({
 	</DialogPortal>
 );
 
-const DialogHeader = ({
-	className,
-	...props
-}: React.ComponentProps<'div'>): React.JSX.Element => (
+const DialogHeader = ({ className, ...props }: React.ComponentProps<'div'>) => (
 	<div
-		className={cn('flex flex-col gap-2 text-center sm:text-left', className)}
+		className={cn(
+			'flex flex-col gap-2 text-center sm:text-left',
+			className,
+		)}
 		data-slot="dialog-header"
 		{...props}
 	/>
 );
 
-const DialogFooter = ({
-	className,
-	...props
-}: React.ComponentProps<'div'>): React.JSX.Element => (
+const DialogFooter = ({ className, ...props }: React.ComponentProps<'div'>) => (
 	<div
-		className={cn('mt-6 flex flex-row items-center justify-between', className)}
+		className={cn(
+			'mt-6 flex flex-row items-center justify-between',
+			className,
+		)}
 		data-slot="dialog-footer"
 		{...props}
 	/>
@@ -97,7 +97,7 @@ const DialogFooter = ({
 const DialogTitle = ({
 	className,
 	...props
-}: React.ComponentProps<typeof DialogPrimitive.Title>): React.JSX.Element => (
+}: React.ComponentProps<typeof DialogPrimitive.Title>) => (
 	<DialogPrimitive.Title
 		className={cn('font-semibold text-lg leading-normal', className)}
 		data-slot="dialog-title"
@@ -108,9 +108,7 @@ const DialogTitle = ({
 const DialogDescription = ({
 	className,
 	...props
-}: React.ComponentProps<
-	typeof DialogPrimitive.Description
->): React.JSX.Element => (
+}: React.ComponentProps<typeof DialogPrimitive.Description>) => (
 	<DialogPrimitive.Description
 		className={cn('text-muted-foreground text-sm', className)}
 		data-slot="dialog-description"

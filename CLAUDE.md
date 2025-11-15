@@ -54,7 +54,7 @@ src/
 ├── features/         # Feature-based organization
 │   ├── blog/         # Blog functionality
 │   ├── context/      # Context menu features
-│   ├── navigation/   # Navigation components (NavBar, Footer)
+│   ├── navigation/   # TopBar components (NavBar, Footer)
 │   ├── profile/      # User profile data and components
 │   └── root/         # Root-level features
 ├── components/       # Reusable components
@@ -118,7 +118,7 @@ npx shadcn@latest add @envindavsorg/apple-hello-effect
 
 - **Biome**: `biome.json` - Linting and formatting rules (extends ultracite)
 - **TypeScript**: `tsconfig.json` - Strict mode enabled, `@/*` path alias
-- **Site Config**: `src/config/site.ts` - Navigation, metadata, GitHub repo info
+- **Site Config**: `src/config/site.ts` - TopBar, metadata, GitHub repo info
 - **Registry Config**: `src/config/registry.ts` - Component registry configuration
 - **Environment**: `.env.local` - Required for GitHub token and app URL
 

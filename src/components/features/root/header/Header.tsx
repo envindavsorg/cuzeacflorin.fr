@@ -1,4 +1,3 @@
-import type React from 'react';
 import { USER } from '@/features/root/data/user';
 import { FlipSentences } from './elements/FlipSentences';
 import { ProfileImage } from './elements/ProfileImage';
@@ -9,7 +8,7 @@ export type HeaderProps = {
 	capture?: boolean;
 };
 
-export const Header = ({ capture }: HeaderProps): React.JSX.Element => (
+export const Header = ({ capture }: HeaderProps) => (
 	<div className="screen-line-after flex border-edge border-x">
 		<ProfileImage />
 
@@ -23,7 +22,9 @@ export const Header = ({ capture }: HeaderProps): React.JSX.Element => (
 					</h1>
 
 					{USER.namePronunciationUrl && !capture && (
-						<PronounceName namePronunciationUrl={USER.namePronunciationUrl} />
+						<PronounceName
+							namePronunciationUrl={USER.namePronunciationUrl}
+						/>
 					)}
 				</div>
 

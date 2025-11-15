@@ -1,9 +1,6 @@
-import type React from 'react';
 import type { SVGProps } from 'react';
 
-export const ShadcnIcon = (
-	props: SVGProps<SVGSVGElement>
-): React.JSX.Element => (
+export const ShadcnIcon = (props: SVGProps<SVGSVGElement>) => (
 	<svg
 		height="1em"
 		viewBox="0 0 256 256"

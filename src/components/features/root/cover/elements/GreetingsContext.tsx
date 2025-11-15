@@ -30,9 +30,7 @@ type GreetingsContextProps = {
 	children: React.ReactNode;
 };
 
-export const GreetingsContext = ({
-	children,
-}: GreetingsContextProps): React.JSX.Element => {
+export const GreetingsContext = ({ children }: GreetingsContextProps) => {
 	const { resolvedTheme } = useTheme();
 	const isDark = resolvedTheme === 'dark';
 
@@ -58,11 +56,16 @@ export const GreetingsContext = ({
 						<ContextMenuItem
 							className="cursor-pointer"
 							onClick={() => {
-								const svg = getBonjourSVG(isDark ? 'black' : 'white');
+								const svg = getBonjourSVG(
+									isDark ? 'black' : 'white',
+								);
 								copyText(svg);
-								toast.success('SVG copié dans le presse-papiers', {
-									description: `Couleur appliquée: ${isDark ? 'noir (#000000)' : 'blanc (#FFFFFF)'}`,
-								});
+								toast.success(
+									'SVG copié dans le presse-papiers',
+									{
+										description: `Couleur appliquée: ${isDark ? 'noir (#000000)' : 'blanc (#FFFFFF)'}`,
+									},
+								);
 							}}
 						>
 							<TriangleDashedIcon className="size-5" />
@@ -75,7 +78,9 @@ export const GreetingsContext = ({
 								href={`/assets/bonjour/svg/bonjour-${resolvedTheme}.svg`}
 							>
 								<FileSvgIcon className="size-5" />
-								<p className="text-sm">Télécharger au format SVG</p>
+								<p className="text-sm">
+									Télécharger au format SVG
+								</p>
 							</Link>
 						</ContextMenuItem>
 						<ContextMenuItem asChild className="cursor-pointer">
@@ -85,7 +90,9 @@ export const GreetingsContext = ({
 								href={`/assets/bonjour/png/bonjour-${resolvedTheme}.png`}
 							>
 								<FilePngIcon className="size-5" />
-								<p className="text-sm">Télécharger au format PNG</p>
+								<p className="text-sm">
+									Télécharger au format PNG
+								</p>
 							</Link>
 						</ContextMenuItem>
 					</TabsContent>
@@ -94,11 +101,16 @@ export const GreetingsContext = ({
 						<ContextMenuItem
 							className="cursor-pointer"
 							onClick={() => {
-								const svg = getHelloSVG(isDark ? 'black' : 'white');
+								const svg = getHelloSVG(
+									isDark ? 'black' : 'white',
+								);
 								copyText(svg);
-								toast.success('SVG copié dans le presse-papiers', {
-									description: `Couleur appliquée: ${isDark ? 'noir (#000000)' : 'blanc (#FFFFFF)'}`,
-								});
+								toast.success(
+									'SVG copié dans le presse-papiers',
+									{
+										description: `Couleur appliquée: ${isDark ? 'noir (#000000)' : 'blanc (#FFFFFF)'}`,
+									},
+								);
 							}}
 						>
 							<TriangleDashedIcon className="size-5" />
@@ -111,7 +123,9 @@ export const GreetingsContext = ({
 								href={`/assets/hello/svg/hello-${resolvedTheme}.svg`}
 							>
 								<FileSvgIcon className="size-5" />
-								<p className="text-sm">Télécharger au format SVG</p>
+								<p className="text-sm">
+									Télécharger au format SVG
+								</p>
 							</Link>
 						</ContextMenuItem>
 						<ContextMenuItem asChild className="cursor-pointer">
@@ -121,7 +135,9 @@ export const GreetingsContext = ({
 								href={`/assets/hello/png/hello-${resolvedTheme}.png`}
 							>
 								<FilePngIcon className="size-5" />
-								<p className="text-sm">Télécharger au format PNG</p>
+								<p className="text-sm">
+									Télécharger au format PNG
+								</p>
 							</Link>
 						</ContextMenuItem>
 					</TabsContent>
@@ -130,11 +146,16 @@ export const GreetingsContext = ({
 						<ContextMenuItem
 							className="cursor-pointer"
 							onClick={() => {
-								const svg = getHolaSVG(isDark ? 'black' : 'white');
+								const svg = getHolaSVG(
+									isDark ? 'black' : 'white',
+								);
 								copyText(svg);
-								toast.success('SVG copié dans le presse-papiers', {
-									description: `Couleur appliquée: ${isDark ? 'noir (#000000)' : 'blanc (#FFFFFF)'}`,
-								});
+								toast.success(
+									'SVG copié dans le presse-papiers',
+									{
+										description: `Couleur appliquée: ${isDark ? 'noir (#000000)' : 'blanc (#FFFFFF)'}`,
+									},
+								);
 							}}
 						>
 							<TriangleDashedIcon className="size-5" />
@@ -147,7 +168,9 @@ export const GreetingsContext = ({
 								href={`/assets/hola/svg/hola-${resolvedTheme}.svg`}
 							>
 								<FileSvgIcon className="size-5" />
-								<p className="text-sm">Télécharger au format SVG</p>
+								<p className="text-sm">
+									Télécharger au format SVG
+								</p>
 							</Link>
 						</ContextMenuItem>
 						<ContextMenuItem asChild className="cursor-pointer">
@@ -157,7 +180,9 @@ export const GreetingsContext = ({
 								href={`/assets/hola/png/hola-${resolvedTheme}.png`}
 							>
 								<FilePngIcon className="size-5" />
-								<p className="text-sm">Télécharger au format PNG</p>
+								<p className="text-sm">
+									Télécharger au format PNG
+								</p>
 							</Link>
 						</ContextMenuItem>
 					</TabsContent>

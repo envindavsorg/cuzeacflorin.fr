@@ -1,7 +1,7 @@
 'use client';
 
 import { AnimatePresence, MotionConfig, motion } from 'motion/react';
-import React, { type ReactNode, useMemo, useState } from 'react';
+import { type ReactNode, useMemo, useState } from 'react';
 import useMeasure from 'react-use-measure';
 import { cn } from '@/lib/utils';
 
@@ -21,14 +21,16 @@ export const DirectionAwareTabs = ({
 	tabs,
 	className,
 	onChangeAction,
-}: OgImageSectionProps): React.JSX.Element => {
+}: OgImageSectionProps) => {
 	const [activeTab, setActiveTab] = useState(0);
 	const [direction, setDirection] = useState(0);
 	const [isAnimating, setIsAnimating] = useState(false);
 	const [ref, bounds] = useMeasure();
 
 	const content = useMemo(() => {
-		const activeTabContent = tabs.find((tab) => tab.id === activeTab)?.content;
+		const activeTabContent = tabs.find(
+			(tab) => tab.id === activeTab,
+		)?.content;
 		return activeTabContent || null;
 	}, [activeTab, tabs]);
 
@@ -64,7 +66,7 @@ export const DirectionAwareTabs = ({
 			<div
 				className={cn(
 					'grid w-full cursor-pointer grid-cols-2 space-x-1 rounded-md border border-input px-1 py-1.5',
-					className
+					className,
 				)}
 			>
 				{tabs.map((tab) => (
@@ -74,7 +76,7 @@ export const DirectionAwareTabs = ({
 							'cursor-pointer',
 							activeTab === tab.id
 								? 'text-theme'
-								: 'text-foreground hover:text-muted-foreground'
+								: 'text-foreground hover:text-muted-foreground',
 						)}
 						key={tab.id}
 						onClick={() => handleTabClick(tab.id)}
@@ -85,7 +87,11 @@ export const DirectionAwareTabs = ({
 							<motion.span
 								className="absolute inset-0 z-10 rounded-md border border-theme"
 								layoutId="bubble"
-								transition={{ type: 'spring', bounce: 0.19, duration: 0.4 }}
+								transition={{
+									type: 'spring',
+									bounce: 0.19,
+									duration: 0.4,
+								}}
 							/>
 						)}
 
@@ -94,7 +100,9 @@ export const DirectionAwareTabs = ({
 				))}
 			</div>
 
-			<MotionConfig transition={{ duration: 0.4, type: 'spring', bounce: 0.2 }}>
+			<MotionConfig
+				transition={{ duration: 0.4, type: 'spring', bounce: 0.2 }}
+			>
 				<motion.div
 					animate={{ height: bounds.height }}
 					className="relative mx-auto h-full w-full overflow-hidden"
@@ -112,7 +120,9 @@ export const DirectionAwareTabs = ({
 								exit="exit"
 								initial="initial"
 								key={activeTab}
-								onAnimationComplete={() => setIsAnimating(false)}
+								onAnimationComplete={() =>
+									setIsAnimating(false)
+								}
 								onAnimationStart={() => setIsAnimating(true)}
 								variants={variants}
 							>

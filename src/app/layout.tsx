@@ -104,12 +104,12 @@ type RootLayoutProps = {
 	children: React.ReactNode;
 };
 
-const RootLayout = ({ children }: RootLayoutProps): React.JSX.Element => (
+const RootLayout = ({ children }: RootLayoutProps) => (
 	<html
 		className={cn(
 			'no-scrollbar h-full antialiased',
 			sans.variable,
-			mono.variable
+			mono.variable,
 		)}
 		lang="en"
 		suppressHydrationWarning
@@ -119,10 +119,15 @@ const RootLayout = ({ children }: RootLayoutProps): React.JSX.Element => (
 				dangerouslySetInnerHTML={{ __html: darkModeScript }}
 				type="text/javascript"
 			/>
-			<Script src={`data:text/javascript;base64,${btoa(darkModeScript)}`} />
+			<Script
+				src={`data:text/javascript;base64,${btoa(darkModeScript)}`}
+			/>
 			<script
 				dangerouslySetInnerHTML={{
-					__html: JSON.stringify(getWebSiteJsonLd()).replace(/</g, '\\u003c'),
+					__html: JSON.stringify(getWebSiteJsonLd()).replace(
+						/</g,
+						'\\u003c',
+					),
 				}}
 				type="application/ld+json"
 			/>

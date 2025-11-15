@@ -25,7 +25,7 @@ type DrawerProps = {
 	children: React.ReactNode;
 };
 
-export const Drawer = ({ children }: DrawerProps): React.JSX.Element => {
+export const Drawer = ({ children }: DrawerProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	useEffect(() => {
@@ -52,10 +52,7 @@ type DrawerTriggerProps = {
 	className?: string;
 };
 
-export const DrawerTrigger = ({
-	children,
-	className,
-}: DrawerTriggerProps): React.JSX.Element => {
+export const DrawerTrigger = ({ children, className }: DrawerTriggerProps) => {
 	const { setIsOpen } = useDrawer();
 
 	return (
@@ -74,10 +71,7 @@ type DrawerContentProps = {
 	className?: string;
 };
 
-export const DrawerContent = ({
-	children,
-	className,
-}: DrawerContentProps): React.JSX.Element => {
+export const DrawerContent = ({ children, className }: DrawerContentProps) => {
 	const { isOpen, setIsOpen } = useDrawer();
 
 	return (
@@ -100,7 +94,7 @@ export const DrawerContent = ({
 						}}
 						className={cn(
 							'fixed right-0 bottom-0 left-0 z-50 mx-auto flex max-h-[70vh] w-[100%] flex-col overflow-hidden border-input border-t bg-background',
-							className
+							className,
 						)}
 						exit={{
 							y: '100%',
@@ -133,14 +127,14 @@ export const DrawerHeader = ({
 	children,
 	className,
 	showCloseButton = true,
-}: DrawerHeaderProps): React.JSX.Element => {
+}: DrawerHeaderProps) => {
 	const { setIsOpen } = useDrawer();
 
 	return (
 		<div
 			className={cn(
 				'flex items-center justify-between border-border border-b p-4',
-				className
+				className,
 			)}
 		>
 			<div className="flex-1">{children}</div>
@@ -164,11 +158,10 @@ type DrawerBodyProps = {
 	className?: string;
 };
 
-export const DrawerBody = ({
-	children,
-	className,
-}: DrawerBodyProps): React.JSX.Element => (
-	<div className={cn('flex-1 overflow-y-auto p-4', className)}>{children}</div>
+export const DrawerBody = ({ children, className }: DrawerBodyProps) => (
+	<div className={cn('flex-1 overflow-y-auto p-4', className)}>
+		{children}
+	</div>
 );
 
 type DrawerFooterProps = {
@@ -176,9 +169,6 @@ type DrawerFooterProps = {
 	className?: string;
 };
 
-export const DrawerFooter = ({
-	children,
-	className,
-}: DrawerFooterProps): React.JSX.Element => (
+export const DrawerFooter = ({ children, className }: DrawerFooterProps) => (
 	<div className={cn('border-border border-t', className)}>{children}</div>
 );

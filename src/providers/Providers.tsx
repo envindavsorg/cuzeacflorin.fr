@@ -11,20 +11,20 @@ import { Compose, type Provider } from '@/providers/utils/Compose';
 
 const Toaster = dynamic(
 	() => import('@/components/ui/Sonner').then((mod) => mod.Toaster),
-	{ ssr: false }
+	{ ssr: false },
 );
 
 const AppProviders: Provider = Compose(
 	JotaiProvider,
 	ThemeProvider,
-	ProgressProvider
+	ProgressProvider,
 );
 
 type ProvidersProps = {
 	children: React.ReactNode;
 };
 
-export const Providers = ({ children }: ProvidersProps): React.JSX.Element => (
+export const Providers = ({ children }: ProvidersProps) => (
 	<AppProviders>
 		<FaviconSwitcher />
 		{children}

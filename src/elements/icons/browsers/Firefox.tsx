@@ -1,7 +1,6 @@
-import type React from 'react';
 import type { SVGProps } from 'react';
 
-const FirefoxIcon = (props: SVGProps<SVGSVGElement>): React.JSX.Element => (
+const FirefoxIcon = (props: SVGProps<SVGSVGElement>) => (
 	<svg
 		height="1em"
 		preserveAspectRatio="xMidYMid"

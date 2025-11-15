@@ -16,7 +16,7 @@ export const NavItem = ({
 	<Link
 		className={cn(
 			'font-mono text-foreground text-sm transition-all duration-300',
-			active && 'font-semibold text-theme'
+			active && 'font-semibold text-theme',
 		)}
 		{...props}
 	/>
@@ -28,11 +28,7 @@ type NavProps = {
 	className?: string;
 };
 
-export const Nav = ({
-	items,
-	activeId,
-	className,
-}: NavProps): React.JSX.Element => (
+export const Nav = ({ items, activeId, className }: NavProps) => (
 	<nav
 		className={cn('flex items-center gap-4', className)}
 		data-active-id={activeId}

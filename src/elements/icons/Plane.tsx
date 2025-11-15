@@ -18,7 +18,7 @@ export const PlaneIcon = ({
 	size = 18,
 	state,
 	onCompleteAction,
-}: PlaneIconProps): React.JSX.Element => (
+}: PlaneIconProps) => (
 	<Player
 		colorize={colorize}
 		direction={1}

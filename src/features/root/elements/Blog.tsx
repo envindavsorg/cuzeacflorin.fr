@@ -1,11 +1,6 @@
 import { ArrowRightIcon } from '@phosphor-icons/react/ssr';
 import Link from 'next/link';
-import type React from 'react';
 import { metadata } from '@/app/(app)/(docs)/blog/metadata';
-import { PostItem } from '@/blog/components/PostItem';
-import { getPostsByCategory } from '@/blog/data/posts';
-import { BlogItemsLength } from '@/blog/elements/BlogItemsLength';
-import type { Post } from '@/blog/types/post';
 import { Button } from '@/components/ui/Button';
 import {
 	Panel,
@@ -14,12 +9,15 @@ import {
 	PanelTitle,
 } from '@/components/ui/Panel';
 import { Prose } from '@/components/ui/Typography';
+import { Post } from '@/features/blog/components/Post';
+import { PostsLength } from '@/features/blog/components/PostsLength';
+import { getPostsByCategory } from '@/lib/blog/posts';
 import { dayjs } from '@/lib/dayjs';
 
-export const Blog = (): React.JSX.Element => {
+export const Blog = () => {
 	const articles: Post[] = getPostsByCategory('article')
 		.sort((a: Post, b: Post) =>
-			dayjs(b.metadata.createdAt).diff(dayjs(a.metadata.createdAt))
+			dayjs(b.metadata.createdAt).diff(dayjs(a.metadata.createdAt)),
 		)
 		.slice(0, 4);
 
@@ -27,11 +25,13 @@ export const Blog = (): React.JSX.Element => {
 		<Panel id="blog">
 			<PanelHeader className="flex items-center justify-between">
 				<PanelTitle>{metadata.title}</PanelTitle>
-				<BlogItemsLength items={articles} slug="article" />
+				<PostsLength items={articles} slug="article" />
 			</PanelHeader>
 
 			<PanelContent className="screen-line-after">
-				<Prose className="text-muted-foreground">{metadata.description}</Prose>
+				<Prose className="text-muted-foreground">
+					{metadata.description}
+				</Prose>
 			</PanelContent>
 
 			<div className="relative py-4">
@@ -42,7 +42,7 @@ export const Blog = (): React.JSX.Element => {
 
 				<div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
 					{articles.map((post: Post) => (
-						<PostItem key={post.slug} post={post} />
+						<Post key={post.slug} post={post} />
 					))}
 				</div>
 			</div>

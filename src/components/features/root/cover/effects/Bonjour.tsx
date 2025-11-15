@@ -142,7 +142,7 @@ export const BonjourEffect = ({
 	);
 };
 
-export const BonjourStaticEffect = (): React.JSX.Element => (
+export const BonjourStaticEffect = () => (
 	<svg
 		className="h-20 sm:h-30"
 		fill="none"

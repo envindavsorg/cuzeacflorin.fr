@@ -1,6 +1,5 @@
-import { getAllPosts } from '@/blog/data/posts';
-import type { Post } from '@/blog/types/post';
 import { SITE_INFO } from '@/config/site';
+import { getAllPosts } from '@/lib/blog/posts';
 
 const allPosts: Post[] = getAllPosts();
 

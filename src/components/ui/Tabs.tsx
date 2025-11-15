@@ -1,14 +1,13 @@
 'use client';
 
 import { Tabs as Primitive } from 'radix-ui';
-import type React from 'react';
 import type { ComponentProps } from 'react';
 import { cn } from '@/lib/utils';
 
 export const Tabs = ({
 	className,
 	...props
-}: ComponentProps<typeof Primitive.Root>): React.JSX.Element => (
+}: ComponentProps<typeof Primitive.Root>) => (
 	<Primitive.Root
 		className={cn('flex flex-col gap-2', className)}
 		data-slot="tabs"
@@ -19,12 +18,12 @@ export const Tabs = ({
 export const TabsList = ({
 	className,
 	...props
-}: ComponentProps<typeof Primitive.List>): React.JSX.Element => (
+}: ComponentProps<typeof Primitive.List>) => (
 	<Primitive.List
 		className={cn(
 			'inline-flex h-8 w-fit items-center justify-center rounded-lg p-0.5',
 			'bg-zinc-100 text-muted-foreground dark:bg-zinc-900',
-			className
+			className,
 		)}
 		data-slot="tabs-list"
 		{...props}
@@ -34,7 +33,7 @@ export const TabsList = ({
 export const TabsTrigger = ({
 	className,
 	...props
-}: ComponentProps<typeof Primitive.Trigger>): React.JSX.Element => (
+}: ComponentProps<typeof Primitive.Trigger>) => (
 	<Primitive.Trigger
 		className={cn(
 			'inline-flex flex-1 items-center justify-center gap-2',
@@ -49,7 +48,7 @@ export const TabsTrigger = ({
 			'focus-visible:ring-[3px]',
 			'focus-visible:ring-ring/50',
 			'transition-[color]',
-			className
+			className,
 		)}
 		data-slot="tabs-trigger"
 		{...props}
@@ -59,7 +58,7 @@ export const TabsTrigger = ({
 export const TabsContent = ({
 	className,
 	...props
-}: ComponentProps<typeof Primitive.Content>): React.JSX.Element => (
+}: ComponentProps<typeof Primitive.Content>) => (
 	<Primitive.Content
 		className={cn('flex-1 outline-none', className)}
 		data-slot="tabs-content"

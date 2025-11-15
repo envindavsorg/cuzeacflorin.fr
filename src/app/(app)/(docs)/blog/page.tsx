@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
 import { metadata } from '@/app/(app)/(docs)/blog/metadata';
-import { PostItem } from '@/blog/components/PostItem';
-import { PostTagFilter } from '@/blog/components/PostTagFilter';
-import { getPostsByCategory } from '@/blog/data/posts';
-import type { Post } from '@/blog/types/post';
+import { Post } from '@/features/blog/components/Post';
+import { TagsFilter } from '@/features/blog/components/TagsFilter';
+import { getPostsByCategory } from '@/lib/blog/posts';
 import { dayjs } from '@/lib/dayjs';
 import { openGraphImage } from '@/lib/open-graph';
 
@@ -28,12 +27,17 @@ const BlogArticlesPage = async ({
 	searchParams,
 }: Readonly<BlogArticlesPageProps>) => {
 	const resolvedSearchParams = await searchParams;
+	// @ts-expect-error
 	const articles: Post[] = getPostsByCategory('article');
 
 	const allTags = [
 		'Tous les articles',
 		...Array.from(
-			new Set(articles.flatMap((article: Post) => article.metadata.tags || []))
+			new Set(
+				articles.flatMap(
+					(article: Post) => article.metadata.tags || [],
+				),
+			),
 		).sort(),
 	];
 	const selectedTag = resolvedSearchParams.tag || 'Tous les articles';
@@ -41,7 +45,7 @@ const BlogArticlesPage = async ({
 		selectedTag === 'Tous les articles'
 			? articles
 			: articles.filter((article: Post) =>
-					article.metadata.tags?.includes(selectedTag)
+					article.metadata.tags?.includes(selectedTag),
 				);
 
 	const tagCounts = allTags.reduce(
@@ -50,18 +54,20 @@ const BlogArticlesPage = async ({
 				acc[tag] = articles.length;
 			} else {
 				acc[tag] = articles.filter((article: Post) =>
-					article.metadata.tags?.includes(tag)
+					article.metadata.tags?.includes(tag),
 				).length;
 			}
 			return acc;
 		},
-		{} as Record<string, number>
+		{} as Record<string, number>,
 	);
 
 	return (
 		<div className="min-h-svh">
 			<div className="screen-line-after px-4">
-				<h1 className="font-semibold text-3xl sm:text-4xl">{metadata.title}</h1>
+				<h1 className="font-semibold text-3xl sm:text-4xl">
+					{metadata.title}
+				</h1>
 			</div>
 
 			<div className="screen-line-after p-4">
@@ -73,7 +79,7 @@ const BlogArticlesPage = async ({
 			<div className="screen-line-after p-4">
 				{allTags.length > 0 && (
 					<div className="mx-auto w-full max-w-7xl">
-						<PostTagFilter
+						<TagsFilter
 							selectedTag={selectedTag}
 							tagCounts={tagCounts}
 							tags={allTags}
@@ -92,10 +98,12 @@ const BlogArticlesPage = async ({
 					{filteredArticles
 						.slice()
 						.sort((a, b) =>
-							dayjs(b.metadata.createdAt).diff(dayjs(a.metadata.createdAt))
+							dayjs(b.metadata.createdAt).diff(
+								dayjs(a.metadata.createdAt),
+							),
 						)
 						.map((post: Post, idx: number) => (
-							<PostItem
+							<Post
 								key={post.slug}
 								post={post}
 								shouldPreloadImage={idx <= 4}

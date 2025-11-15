@@ -1,10 +1,5 @@
 import { ArrowRightIcon } from '@phosphor-icons/react/ssr';
 import Link from 'next/link';
-import type React from 'react';
-import { metadata } from '@/app/(app)/(docs)/utils/metadata';
-import { getPostsByCategory } from '@/blog/data/posts';
-import { BlogItemsLength } from '@/blog/elements/BlogItemsLength';
-import type { Post } from '@/blog/types/post';
 import { Button } from '@/components/ui/Button';
 import {
 	Panel,
@@ -13,13 +8,16 @@ import {
 	PanelTitle,
 } from '@/components/ui/Panel';
 import { Prose } from '@/components/ui/Typography';
+import { PostsLength } from '@/features/blog/components/PostsLength';
 import { UtilsItem } from '@/features/root/elements/UtilsItem';
+import { getPostsByCategory } from '@/lib/blog/posts';
+import { metadata } from '@/lib/blog/utils/metadata';
 import { dayjs } from '@/lib/dayjs';
 
-export const Utils = (): React.JSX.Element => {
+export const Utils = () => {
 	const utils: Post[] = getPostsByCategory('utils')
 		.sort((a: Post, b: Post) =>
-			dayjs(b.metadata.createdAt).diff(dayjs(a.metadata.createdAt))
+			dayjs(b.metadata.createdAt).diff(dayjs(a.metadata.createdAt)),
 		)
 		.slice(0, 4);
 
@@ -27,11 +25,13 @@ export const Utils = (): React.JSX.Element => {
 		<Panel id="utils">
 			<PanelHeader className="flex items-center justify-between">
 				<PanelTitle>{metadata.title}</PanelTitle>
-				<BlogItemsLength items={utils} slug="outil" />
+				<PostsLength items={utils} slug="outil" />
 			</PanelHeader>
 
 			<PanelContent className="screen-line-after">
-				<Prose className="text-muted-foreground">{metadata.description}</Prose>
+				<Prose className="text-muted-foreground">
+					{metadata.description}
+				</Prose>
 			</PanelContent>
 
 			<div className="relative">

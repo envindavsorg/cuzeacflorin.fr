@@ -9,9 +9,7 @@ type ToggleContentProps = {
 	children: React.ReactNode;
 };
 
-export const ToggleContent = ({
-	children,
-}: ToggleContentProps): React.JSX.Element => {
+export const ToggleContent = ({ children }: ToggleContentProps) => {
 	const [isExpanded, setIsExpanded] = useState(false);
 
 	return (
@@ -29,7 +27,10 @@ export const ToggleContent = ({
 				)}
 			</AnimatePresence>
 
-			<ToggleButton isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
+			<ToggleButton
+				isExpanded={isExpanded}
+				setIsExpanded={setIsExpanded}
+			/>
 		</>
 	);
 };

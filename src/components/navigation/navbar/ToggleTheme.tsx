@@ -2,14 +2,13 @@
 
 import { CircleHalfIcon } from '@phosphor-icons/react';
 import { useTheme } from 'next-themes';
-import type React from 'react';
 import { useCallback } from 'react';
 import { Button } from '@/components/ui/Button';
 import { META_THEME_COLORS } from '@/config/site';
 import useMetaColor from '@/hooks/use-meta-color';
 import { soundManager } from '@/lib/sound-manager';
 
-export const ToggleTheme = (): React.JSX.Element => {
+export const ToggleTheme = () => {
 	const { resolvedTheme, setTheme } = useTheme();
 	const { setMetaColor } = useMetaColor();
 
@@ -19,7 +18,7 @@ export const ToggleTheme = (): React.JSX.Element => {
 		setMetaColor(
 			resolvedTheme === 'dark'
 				? META_THEME_COLORS.light
-				: META_THEME_COLORS.dark
+				: META_THEME_COLORS.dark,
 		);
 	}, [resolvedTheme, setTheme, setMetaColor]);
 

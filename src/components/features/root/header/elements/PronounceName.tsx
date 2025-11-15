@@ -2,7 +2,6 @@
 
 import { SpeakerHighIcon } from '@phosphor-icons/react';
 import { motion } from 'motion/react';
-import type React from 'react';
 import { soundManager } from '@/lib/sound-manager';
 import { cn } from '@/lib/utils';
 
@@ -14,13 +13,13 @@ type PronounceNameProps = {
 export const PronounceName = ({
 	className,
 	namePronunciationUrl,
-}: PronounceNameProps): React.JSX.Element => (
+}: PronounceNameProps) => (
 	<motion.button
 		aria-label="Prononcer mon prénom"
 		className={cn(
 			'relative translate-y-px select-none',
 			'cursor-pointer text-muted-foreground hover:text-foreground',
-			className
+			className,
 		)}
 		onClick={() => soundManager.playAudio(namePronunciationUrl)}
 		title="Prononcer mon prénom"

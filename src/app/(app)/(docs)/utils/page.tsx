@@ -1,11 +1,10 @@
 import type { Metadata } from 'next';
-import { metadata } from '@/app/(app)/(docs)/utils/metadata';
-import { PostTagFilter } from '@/blog/components/PostTagFilter';
-import { getPostsByCategory } from '@/blog/data/posts';
-import type { Post } from '@/blog/types/post';
 import { Divider } from '@/components/ui/Divider';
 import { Prose } from '@/components/ui/Typography';
+import { TagsFilter } from '@/features/blog/components/TagsFilter';
 import { UtilsItem } from '@/features/root/elements/UtilsItem';
+import { getPostsByCategory } from '@/lib/blog/posts';
+import { metadata } from '@/lib/blog/utils/metadata';
 import { dayjs } from '@/lib/dayjs';
 import { openGraphImage } from '@/lib/open-graph';
 
@@ -29,7 +28,7 @@ const UtilsPage = async ({ searchParams }: UtilsPageProps) => {
 	const selectedTag = tag?.toLowerCase() || 'Tout';
 
 	const allPosts: Post[] = getPostsByCategory(type).sort((a: Post, b: Post) =>
-		dayjs(b.metadata.createdAt).diff(dayjs(a.metadata.createdAt))
+		dayjs(b.metadata.createdAt).diff(dayjs(a.metadata.createdAt)),
 	);
 
 	const tagCounts: Record<string, number> = {};
@@ -51,12 +50,12 @@ const UtilsPage = async ({ searchParams }: UtilsPageProps) => {
 			? allPosts
 			: allPosts.filter((article: Post) =>
 					article.metadata.tags?.some(
-						(tag) => tag.toLowerCase() === selectedTag
-					)
+						(tag) => tag.toLowerCase() === selectedTag,
+					),
 				);
 
 	return (
-		<div className="min-h-svh">
+		<>
 			<div className="screen-line-after px-3">
 				<h1 className="font-semibold text-2xl sm:text-3xl">
 					{metadata.title}{' '}
@@ -70,7 +69,7 @@ const UtilsPage = async ({ searchParams }: UtilsPageProps) => {
 				<Prose>{metadata.description}</Prose>
 			</div>
 
-			<PostTagFilter
+			<TagsFilter
 				selectedTag={selectedTag}
 				tagCounts={finalTagCounts}
 				tags={allTags}
@@ -78,12 +77,10 @@ const UtilsPage = async ({ searchParams }: UtilsPageProps) => {
 
 			<Divider />
 
-			<div className="min-h-svh">
-				{utils.map((post: Post) => (
-					<UtilsItem key={post.slug} post={post} />
-				))}
-			</div>
-		</div>
+			{utils.map((post: Post) => (
+				<UtilsItem key={post.slug} post={post} />
+			))}
+		</>
 	);
 };
 

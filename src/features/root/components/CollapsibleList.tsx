@@ -20,12 +20,16 @@ export const CollapsibleList = <T,>({
 	max?: number;
 	keyExtractor?: (item: T) => string;
 	renderItem: (item: T) => React.ReactNode;
-}): React.JSX.Element => (
+}) => (
 	<Collapsible>
 		{items.slice(0, max).map((award, index) => (
 			<Slot
 				className="border-edge border-b"
-				key={typeof keyExtractor === 'function' ? keyExtractor(award) : index}
+				key={
+					typeof keyExtractor === 'function'
+						? keyExtractor(award)
+						: index
+				}
 			>
 				{renderItem(award)}
 			</Slot>

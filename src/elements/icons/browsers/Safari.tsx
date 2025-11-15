@@ -1,7 +1,6 @@
-import type React from 'react';
 import type { SVGProps } from 'react';
 
-const SafariIcon = (props: SVGProps<SVGSVGElement>): React.JSX.Element => (
+const SafariIcon = (props: SVGProps<SVGSVGElement>) => (
 	<svg
 		height="1em"
 		viewBox="0 0 66.165833 65.803795"

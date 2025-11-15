@@ -1,6 +1,5 @@
 import { ArrowLeftIcon } from '@phosphor-icons/react/ssr';
 import Link from 'next/link';
-import type React from 'react';
 import { Button } from '@/components/ui/Button';
 import { Counter } from '@/components/ui/Counter';
 import { Divider } from '@/components/ui/Divider';
@@ -14,7 +13,7 @@ export const metadata = {
 		'Oups ! Cette page n’existe pas, peut-être avez-vous cliqué sur un ancien lien ou avez-vous fait une faute de frappe.',
 };
 
-const NotFound = (): React.JSX.Element => (
+const NotFound = () => (
 	<div className="mx-auto flex h-[calc(100svh-5.5rem)] flex-col justify-center">
 		<div className="screen-line-after after:-bottom-px grow border-edge border-x">
 			<div className="flex h-4" />
@@ -29,7 +28,7 @@ const NotFound = (): React.JSX.Element => (
 							'size-26 select-none sm:size-32 lg:size-40',
 							'ring-1 ring-border ring-offset-2 ring-offset-background',
 							'font-extrabold font-mono text-3xl text-theme md:text-5xl',
-							'bg-[radial-gradient(var(--pattern-foreground)_1px,transparent_0)] bg-center bg-size-[10px_10px] [--pattern-foreground:var(--color-zinc-950)]/5 dark:[--pattern-foreground:var(--color-white)]/5'
+							'bg-[radial-gradient(var(--pattern-foreground)_1px,transparent_0)] bg-center bg-size-[10px_10px] [--pattern-foreground:var(--color-zinc-950)]/5 dark:[--pattern-foreground:var(--color-white)]/5',
 						)}
 					>
 						<Counter step={2} value={4} />
@@ -43,7 +42,7 @@ const NotFound = (): React.JSX.Element => (
 				<div
 					className={cn(
 						'flex grow items-end pb-1 pl-4',
-						'bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] bg-size-[10px_10px] [--pattern-foreground:var(--color-edge)]/56'
+						'bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] bg-size-[10px_10px] [--pattern-foreground:var(--color-edge)]/56',
 					)}
 				>
 					<div className="line-clamp-1 select-none font-mono text-xs text-zinc-300 dark:text-zinc-800">
@@ -67,8 +66,8 @@ const NotFound = (): React.JSX.Element => (
 		<Panel>
 			<PanelContent>
 				<Prose className="text-muted-foreground">
-					Oups, peut-être avez-vous cliqué sur un ancien lien ou avez-vous fait
-					une faute de frappe ...
+					Oups, peut-être avez-vous cliqué sur un ancien lien ou
+					avez-vous fait une faute de frappe ...
 				</Prose>
 			</PanelContent>
 			<div className="screen-line-before flex justify-center py-2">

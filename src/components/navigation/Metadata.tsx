@@ -38,7 +38,7 @@ export type MetadataProps = {
 	};
 };
 
-const Metadata = ({ commit }: MetadataProps): React.JSX.Element => {
+const Metadata = ({ commit }: MetadataProps) => {
 	const { name, icon: BrowserIcon } = useBrowser();
 	const { width = 0, height = 0 } = useWindowSize();
 
@@ -65,7 +65,7 @@ const Metadata = ({ commit }: MetadataProps): React.JSX.Element => {
 				value: `${width}x${height} pixels`,
 			},
 		],
-		[BrowserIcon, name, commit, width, height]
+		[BrowserIcon, name, commit, width, height],
 	);
 
 	return (
@@ -77,7 +77,7 @@ const Metadata = ({ commit }: MetadataProps): React.JSX.Element => {
 			<div
 				className={cn(
 					'grid grid-cols-2 lg:grid-cols-4',
-					'divide-x divide-edge *:p-4 max-lg:divide-y'
+					'divide-x divide-edge *:p-4 max-lg:divide-y',
 				)}
 			>
 				{items.map((item) => (

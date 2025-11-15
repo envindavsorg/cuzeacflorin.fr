@@ -16,7 +16,7 @@ const ArrowUpIcon = ({
 	ref,
 	size = 24,
 	state,
-}: ArrowUpIconProps): React.JSX.Element => (
+}: ArrowUpIconProps) => (
 	<Player
 		colorize={colorize}
 		direction={1}

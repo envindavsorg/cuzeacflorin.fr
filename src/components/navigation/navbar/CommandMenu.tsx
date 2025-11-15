@@ -23,7 +23,6 @@ import Image, { type StaticImageData } from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useTheme } from 'next-themes';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import type { Post } from '@/blog/types/post';
 import { SOCIAL_LINKS } from '@/components/features/root/contact/data/social-links';
 import { Button } from '@/components/ui/Button';
 import {
@@ -113,7 +112,7 @@ const CommandLinkGroup = ({
 	links,
 	fallbackIcon,
 	onLinkSelect,
-}: CommandLinkGroupProps): React.JSX.Element => (
+}: CommandLinkGroupProps) => (
 	<CommandGroup heading={heading}>
 		{links.map((link: CommandLinkItem, idx: number) => {
 			const Icon = link?.icon ?? fallbackIcon ?? React.Fragment;
@@ -138,7 +137,9 @@ const CommandLinkGroup = ({
 					)}
 					{link.title}{' '}
 					{heading === 'Menu principal :' && (
-						<sup className="font-semibold text-theme">0{idx + 1}</sup>
+						<sup className="font-semibold text-theme">
+							0{idx + 1}
+						</sup>
 					)}
 				</CommandItem>
 			);
@@ -191,9 +192,9 @@ const ENTER_ACTION_LABELS: Record<CommandKind, string> = {
 	link: 'Ouvrir le lien',
 };
 
-const CommandMenuFooter = (): React.JSX.Element => {
+const CommandMenuFooter = () => {
 	const selectedCommandKind = useCommandState(
-		(state) => COMMAND_META_MAP.get(state.value)?.commandKind ?? 'page'
+		(state) => COMMAND_META_MAP.get(state.value)?.commandKind ?? 'page',
 	);
 
 	return (
@@ -213,7 +214,9 @@ const CommandMenuFooter = (): React.JSX.Element => {
 						orientation="vertical"
 					/>
 					<span>Fermer</span>
-					<CommandMenuKbd className="font-medium text-xs">esc</CommandMenuKbd>
+					<CommandMenuKbd className="font-medium text-xs">
+						esc
+					</CommandMenuKbd>
 				</div>
 			</div>
 		</>
@@ -223,11 +226,11 @@ const CommandMenuFooter = (): React.JSX.Element => {
 const CommandMenuKbd = ({
 	className,
 	...props
-}: React.ComponentProps<'kbd'>): React.JSX.Element => (
+}: React.ComponentProps<'kbd'>) => (
 	<kbd
 		className={cn(
 			"pointer-events-none flex h-5 min-w-6 select-none items-center justify-center gap-1 rounded-sm bg-black/5 px-1 font-normal font-sans text-[13px] text-foreground shadow-[inset_0_-1px_2px] shadow-black/10 dark:bg-white/10 dark:text-shadow-xs dark:shadow-white/10 [&_svg:not([class*='size-'])]:size-3",
-			className
+			className,
 		)}
 		{...props}
 	/>
@@ -247,7 +250,7 @@ type CommandMenuProps = {
 	posts: Post[];
 };
 
-export const CommandMenu = ({ posts }: CommandMenuProps): React.JSX.Element => {
+export const CommandMenu = ({ posts }: CommandMenuProps) => {
 	const router = useRouter();
 
 	const { setTheme } = useTheme();
@@ -266,9 +269,13 @@ export const CommandMenu = ({ posts }: CommandMenuProps): React.JSX.Element => {
 		document.addEventListener(
 			'keydown',
 			(e: KeyboardEvent) => {
-				if ((e.key === 'k' && (e.metaKey || e.ctrlKey)) || e.key === '/') {
+				if (
+					(e.key === 'k' && (e.metaKey || e.ctrlKey)) ||
+					e.key === '/'
+				) {
 					if (
-						(e.target instanceof HTMLElement && e.target.isContentEditable) ||
+						(e.target instanceof HTMLElement &&
+							e.target.isContentEditable) ||
 						e.target instanceof HTMLInputElement ||
 						e.target instanceof HTMLTextAreaElement ||
 						e.target instanceof HTMLSelectElement
@@ -280,7 +287,7 @@ export const CommandMenu = ({ posts }: CommandMenuProps): React.JSX.Element => {
 					setOpen((open) => !open);
 				}
 			},
-			{ signal }
+			{ signal },
 		);
 
 		return () => abortController.abort();
@@ -296,7 +303,7 @@ export const CommandMenu = ({ posts }: CommandMenuProps): React.JSX.Element => {
 				router.push(href);
 			}
 		},
-		[router]
+		[router],
 	);
 
 	const handleThemeChange = useCallback(
@@ -304,7 +311,7 @@ export const CommandMenu = ({ posts }: CommandMenuProps): React.JSX.Element => {
 			setOpen(false);
 			setTheme(theme);
 		},
-		[setTheme]
+		[setTheme],
 	);
 
 	const { articlesLinks, componentLinks, utilsLinks } = useMemo(
@@ -319,7 +326,7 @@ export const CommandMenu = ({ posts }: CommandMenuProps): React.JSX.Element => {
 				.filter((post) => post.metadata?.category === 'utils')
 				.map(postToCommandLinkItem),
 		}),
-		[posts]
+		[posts],
 	);
 
 	return (
@@ -327,7 +334,7 @@ export const CommandMenu = ({ posts }: CommandMenuProps): React.JSX.Element => {
 			<Button
 				className={cn(
 					'h-8 select-none gap-1.5 rounded-full px-2.5',
-					'border dark:inset-shadow-[1px_1px_1px,0px_0px_2px] dark:inset-shadow-white/15 dark:border-0'
+					'border dark:inset-shadow-[1px_1px_1px,0px_0px_2px] dark:inset-shadow-white/15 dark:border-0',
 				)}
 				onClick={() => setOpen(true)}
 				variant="outline"

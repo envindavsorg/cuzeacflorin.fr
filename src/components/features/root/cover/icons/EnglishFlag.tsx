@@ -1,8 +1,6 @@
 import type React from 'react';
 
-export const EnglishFlag = (
-	props: React.SVGProps<SVGSVGElement>
-): React.JSX.Element => (
+export const EnglishFlag = (props: React.SVGProps<SVGSVGElement>) => (
 	<svg
 		height="32"
 		viewBox="0 0 32 32"

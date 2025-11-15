@@ -6,7 +6,6 @@ import {
 	InfinityIcon,
 	PaletteIcon,
 } from '@phosphor-icons/react/ssr';
-import type React from 'react';
 import {
 	CollapsibleChevronsIcon,
 	CollapsibleContent,
@@ -16,7 +15,7 @@ import {
 import { Separator } from '@/components/ui/Separator';
 import { Tag } from '@/components/ui/Tag';
 import { Prose } from '@/components/ui/Typography';
-import { Markdown } from '@/elements/markdown/markdown';
+import { Markdown } from '@/features/blog/markdown/markdown';
 import type {
 	ExperiencePosition,
 	ExperiencePositionIcon,
@@ -34,7 +33,7 @@ export const ExperienceIcon = ({
 	...props
 }: {
 	icon: ExperiencePositionIcon | undefined;
-} & IconProps): React.JSX.Element => {
+} & IconProps) => {
 	const IconComponent = icon ? iconMap[icon] : BriefcaseIcon;
 	return <IconComponent {...props} />;
 };
@@ -45,7 +44,7 @@ type ExperiencePositionItemProps = {
 
 export const ExperiencePositionItem = ({
 	position,
-}: ExperiencePositionItemProps): React.JSX.Element => {
+}: ExperiencePositionItemProps) => {
 	const { start, end } = position.employmentPeriod;
 	const isOngoing = !end;
 
@@ -55,7 +54,7 @@ export const ExperiencePositionItem = ({
 				<CollapsibleTrigger
 					className={cn(
 						'block w-full select-none text-left',
-						'before:-top-1 before:-right-1 before:-bottom-1.5 before:-z-1 relative before:absolute before:left-7 before:rounded-lg hover:before:bg-accent2'
+						'before:-top-1 before:-right-1 before:-bottom-1.5 before:-z-1 relative before:absolute before:left-7 before:rounded-lg hover:before:bg-accent2',
 					)}
 				>
 					<div className="relative z-1 mb-1 flex items-center gap-3">
@@ -64,7 +63,7 @@ export const ExperiencePositionItem = ({
 							className={cn(
 								'flex size-6 shrink-0 items-center justify-center rounded-lg',
 								'bg-muted text-muted-foreground',
-								'border border-muted-foreground/15 ring-1 ring-edge ring-offset-1 ring-offset-background'
+								'border border-muted-foreground/15 ring-1 ring-edge ring-offset-1 ring-offset-background',
 							)}
 						>
 							<ExperienceIcon
@@ -112,7 +111,9 @@ export const ExperiencePositionItem = ({
 											aria-hidden
 											className="size-4 translate-y-[0.5px]"
 										/>
-										<span className="sr-only">Aujourd'hui</span>
+										<span className="sr-only">
+											Aujourd'hui
+										</span>
 									</>
 								) : (
 									<span>{end}</span>
@@ -129,15 +130,16 @@ export const ExperiencePositionItem = ({
 						</Prose>
 					)}
 
-					{Array.isArray(position.skills) && position.skills.length > 0 && (
-						<ul className="flex flex-wrap gap-1.5 pt-2 pl-9">
-							{position.skills.map((skill, index) => (
-								<li className="flex" key={index + skill}>
-									<Tag>{skill}</Tag>
-								</li>
-							))}
-						</ul>
-					)}
+					{Array.isArray(position.skills) &&
+						position.skills.length > 0 && (
+							<ul className="flex flex-wrap gap-1.5 pt-2 pl-9">
+								{position.skills.map((skill, index) => (
+									<li className="flex" key={index + skill}>
+										<Tag>{skill}</Tag>
+									</li>
+								))}
+							</ul>
+						)}
 				</CollapsibleContent>
 			</div>
 		</CollapsibleWithContext>

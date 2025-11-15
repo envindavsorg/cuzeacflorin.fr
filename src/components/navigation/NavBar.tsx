@@ -1,11 +1,9 @@
 import { GithubLogoIcon, RssIcon } from '@phosphor-icons/react/ssr';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import type React from 'react';
-import { getAllPosts } from '@/blog/data/posts';
-import type { Post } from '@/blog/types/post';
 import { Button } from '@/components/ui/Button';
 import { MAIN_NAV, SOURCE_CODE_GITHUB_URL } from '@/config/site';
+import { getAllPosts } from '@/lib/blog/posts';
 import { cn } from '@/lib/utils';
 import { DesktopNav } from './navbar/DesktopNav';
 import { SiteHeaderMark } from './navbar/SiteHeaderMark';
@@ -13,14 +11,14 @@ import { SiteHeaderWrapper } from './navbar/SiteHeaderWrapper';
 import { ToggleTheme } from './navbar/ToggleTheme';
 
 const CommandMenu = dynamic(() =>
-	import('./navbar/CommandMenu').then((mod) => mod.CommandMenu)
+	import('./navbar/CommandMenu').then((mod) => mod.CommandMenu),
 );
 
 const MobileNav = dynamic(() =>
-	import('./navbar/MobileNav').then((mod) => mod.MobileNav)
+	import('./navbar/MobileNav').then((mod) => mod.MobileNav),
 );
 
-export const NavBar = (): React.JSX.Element => {
+export const NavBar = () => {
 	const posts: Post[] = getAllPosts();
 
 	return (
@@ -29,7 +27,7 @@ export const NavBar = (): React.JSX.Element => {
 				'sticky top-0 z-50 max-w-screen overflow-x-hidden bg-background px-2 pt-2',
 				'data-[affix=true]:shadow-[0_0_16px_0_black]/8 dark:data-[affix=true]:shadow-[0_0_16px_0_black]/80',
 				'not-dark:data-[affix=true]:**:data-header-container:after:bg-border',
-				'transition-shadow duration-300'
+				'transition-shadow duration-300',
 			)}
 		>
 			<div
@@ -53,7 +51,11 @@ export const NavBar = (): React.JSX.Element => {
 						size="icon"
 						variant="outline"
 					>
-						<Link href={SOURCE_CODE_GITHUB_URL} rel="noopener" target="_blank">
+						<Link
+							href={SOURCE_CODE_GITHUB_URL}
+							rel="noopener"
+							target="_blank"
+						>
 							<GithubLogoIcon />
 							<span className="sr-only">GitHub</span>
 						</Link>

@@ -4,22 +4,21 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { BlogPosting as PageSchema, WithContext } from 'schema-dts';
-import { LLMCopyButtonWithViewOptions } from '@/blog/actions/post.action';
-import { PostKeyboardShortcuts } from '@/blog/components/PostKeyboardShortcuts';
-import { PostShareMenu } from '@/blog/components/PostShareMenu';
-import {
-	findNeighbour,
-	getPostBySlug,
-	getPostsByCategory,
-} from '@/blog/data/posts';
-import { InlineToc } from '@/blog/elements/InlineToc';
-import type { Post } from '@/blog/types/post';
 import { Button } from '@/components/ui/Button';
 import { Divider } from '@/components/ui/Divider';
 import { Prose } from '@/components/ui/Typography';
 import { SITE_INFO } from '@/config/site';
-import { MDX } from '@/elements/markdown/mdx';
+import { LLMCopyButtonWithViewOptions } from '@/features/blog/actions/post.action';
+import { InlineToc } from '@/features/blog/components/InlineToc';
+import { KeyboardShortcuts } from '@/features/blog/components/KeyboardShortcuts';
+import { ShareMenu } from '@/features/blog/components/ShareMenu';
+import { MDX } from '@/features/blog/markdown/mdx';
 import { USER } from '@/features/root/data/user';
+import {
+	findNeighbour,
+	getPostBySlug,
+	getPostsByCategory,
+} from '@/lib/blog/posts';
 import { dayjs } from '@/lib/dayjs';
 import { openGraphImage } from '@/lib/open-graph';
 import { cn } from '@/lib/utils';
@@ -107,12 +106,15 @@ const Page = async ({ params }: Props) => {
 		<>
 			<script
 				dangerouslySetInnerHTML={{
-					__html: JSON.stringify(getPageJsonLd(post)).replace(/</g, '\\u003c'),
+					__html: JSON.stringify(getPageJsonLd(post)).replace(
+						/</g,
+						'\\u003c',
+					),
 				}}
 				type="application/ld+json"
 			/>
 
-			<PostKeyboardShortcuts
+			<KeyboardShortcuts
 				basePath="/components"
 				next={next}
 				previous={previous}
@@ -136,7 +138,7 @@ const Page = async ({ params }: Props) => {
 						markdownUrl={`/components/${post.slug}.mdx`}
 					/>
 
-					<PostShareMenu url={`/components/${post.slug}`} />
+					<ShareMenu url={`/components/${post.slug}`} />
 
 					{previous && (
 						<Button asChild size="icon:sm" variant="secondary">
@@ -163,7 +165,7 @@ const Page = async ({ params }: Props) => {
 					className={cn(
 						'h-8',
 						'before:-left-[100vw] before:-z-1 before:absolute before:h-full before:w-[200vw]',
-						'before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-edge)]/56'
+						'before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-edge)]/56',
 					)}
 				/>
 			</div>

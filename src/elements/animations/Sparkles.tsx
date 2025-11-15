@@ -4,7 +4,6 @@ import type { ISourceOptions } from '@tsparticles/engine';
 import Particles, { initParticlesEngine } from '@tsparticles/react';
 import { loadSlim } from '@tsparticles/slim';
 import { useTheme } from 'next-themes';
-import type React from 'react';
 import { memo, useEffect, useMemo, useState } from 'react';
 import { checkPerformanceSupport, createSparkleOptions } from '@/lib/sparkles';
 import { cn } from '@/lib/utils';
@@ -32,7 +31,7 @@ export const Sparkles = memo(
 		background = 'transparent',
 		particleColor,
 		delayLoad = 1000,
-	}: SparklesProps): React.JSX.Element | null => {
+	}: SparklesProps) => {
 		const { resolvedTheme } = useTheme();
 		const [isInitialized, setIsInitialized] = useState(false);
 		const [shouldRender, setShouldRender] = useState(false);
@@ -83,7 +82,7 @@ export const Sparkles = memo(
 					color,
 					background,
 				}),
-			[density, minSize, maxSize, speed, color, background]
+			[density, minSize, maxSize, speed, color, background],
 		);
 
 		if (!(shouldRender && isInitialized)) {
@@ -94,11 +93,11 @@ export const Sparkles = memo(
 			<div
 				className={cn(
 					'-z-10 pointer-events-none fixed inset-0 size-full overflow-hidden',
-					className
+					className,
 				)}
 			>
 				<Particles className="size-full" id={id} options={options} />
 			</div>
 		);
-	}
+	},
 );

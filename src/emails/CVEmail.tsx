@@ -10,16 +10,13 @@ import {
 	Preview,
 	Text,
 } from '@react-email/components';
-import type React from 'react';
 
 type CVEmailTemplateProps = {
 	firstName: string;
 	recipientEmail: string;
 };
 
-export const CVEmailTemplate = ({
-	firstName,
-}: CVEmailTemplateProps): React.JSX.Element => (
+export const CVEmailTemplate = ({ firstName }: CVEmailTemplateProps) => (
 	<Html>
 		<Head />
 		<Body style={main}>
@@ -34,9 +31,9 @@ export const CVEmailTemplate = ({
 				/>
 				<Heading style={heading}>Bonjour {firstName} !</Heading>
 				<Text style={paragraph}>
-					Merci de votre intérêt pour mon profil. Vous trouverez en pièce jointe
-					mon CV au format PDF. N'hésitez pas à me contacter si vous avez des
-					questions.
+					Merci de votre intérêt pour mon profil. Vous trouverez en
+					pièce jointe mon CV au format PDF. N'hésitez pas à me
+					contacter si vous avez des questions.
 				</Text>
 
 				<Hr style={hr} />

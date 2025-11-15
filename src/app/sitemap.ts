@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
-import { getAllPosts, getPostsByCategory } from '@/blog/data/posts';
 import { SITE_INFO } from '@/config/site';
+import { getAllPosts, getPostsByCategory } from '@/lib/blog/posts';
 import { dayjs } from '@/lib/dayjs';
 
 const sitemap = (): MetadataRoute.Sitemap => {

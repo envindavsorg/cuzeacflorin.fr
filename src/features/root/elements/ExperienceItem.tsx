@@ -1,4 +1,3 @@
-import type React from 'react';
 import type { Experience } from '@/features/root/data/experiences';
 import { ExperiencePositionItem } from './ExperiencePositionItem';
 
@@ -6,9 +5,7 @@ type ExperienceItemProps = {
 	experience: Experience;
 };
 
-export const ExperienceItem = ({
-	experience,
-}: ExperienceItemProps): React.JSX.Element => (
+export const ExperienceItem = ({ experience }: ExperienceItemProps) => (
 	<div className="screen-line-after space-y-4 py-4">
 		<div className="flex items-center gap-3">
 			<div className="flex size-6 shrink-0 select-none items-center justify-center">

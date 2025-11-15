@@ -1,24 +1,15 @@
-import { ArrowLeftIcon, ArrowRightIcon } from '@phosphor-icons/react/ssr';
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { BlogPosting as PageSchema, WithContext } from 'schema-dts';
-import { metadata } from '@/app/(app)/(docs)/utils/metadata';
-import { PostIsNew } from '@/blog/components/PostIsNew';
-import { PostKeyboardShortcuts } from '@/blog/components/PostKeyboardShortcuts';
-import { PostShareMenu } from '@/blog/components/PostShareMenu';
-import {
-	findNeighbour,
-	getPostBySlug,
-	getPostsByCategory,
-} from '@/blog/data/posts';
-import type { Post } from '@/blog/types/post';
-import { Button } from '@/components/ui/Button';
 import { Divider } from '@/components/ui/Divider';
 import { Prose } from '@/components/ui/Typography';
 import { SITE_INFO } from '@/config/site';
-import { MDX } from '@/elements/markdown/mdx';
+import { IsNew } from '@/features/blog/components/IsNew';
+import { TopBar } from '@/features/blog/components/TopBar';
+import { MDX } from '@/features/blog/markdown/mdx';
 import { USER } from '@/features/root/data/user';
+import { getPostBySlug, getPostsByCategory } from '@/lib/blog/posts';
+import { metadata } from '@/lib/blog/utils/metadata';
 import { dayjs } from '@/lib/dayjs';
 import { openGraphImage } from '@/lib/open-graph';
 
@@ -94,58 +85,25 @@ const Page = async ({ params }: Props) => {
 		notFound();
 	}
 
-	const allPosts: Post[] = getPostsByCategory(type);
-	const { previous, next } = findNeighbour(allPosts, slug);
-
 	return (
 		<>
 			<script
 				dangerouslySetInnerHTML={{
-					__html: JSON.stringify(getPageJsonLd(post)).replace(/</g, '\\u003c'),
+					__html: JSON.stringify(getPageJsonLd(post)).replace(
+						/</g,
+						'\\u003c',
+					),
 				}}
 				type="application/ld+json"
 			/>
 
-			<PostKeyboardShortcuts
-				basePath="/utils"
-				next={next}
-				previous={previous}
+			<TopBar
+				type={type}
+				slug={slug}
+				baseUrl="/utils"
+				postSlug={post.slug}
+				title="Tous les outils"
 			/>
-
-			<div className="screen-line-after flex items-center justify-between p-2 pl-4">
-				<Button
-					asChild
-					className="h-7 gap-2 rounded-lg px-0 font-mono text-muted-foreground"
-					variant="link"
-				>
-					<Link href="/utils">
-						<ArrowLeftIcon className="size-4" />
-						Tous les outils
-					</Link>
-				</Button>
-
-				<div className="flex items-center gap-2">
-					<PostShareMenu url={`/utils/${post.slug}`} />
-
-					{previous && (
-						<Button asChild size="icon:sm" variant="secondary">
-							<Link href={`/utils/${previous.slug}`}>
-								<ArrowLeftIcon className="size-4" />
-								<span className="sr-only">Précédent</span>
-							</Link>
-						</Button>
-					)}
-
-					{next && (
-						<Button asChild size="icon:sm" variant="secondary">
-							<Link href={`/utils/${next.slug}`}>
-								<span className="sr-only">Suivant</span>
-								<ArrowRightIcon className="size-4" />
-							</Link>
-						</Button>
-					)}
-				</div>
-			</div>
 
 			<Divider />
 
@@ -153,7 +111,7 @@ const Page = async ({ params }: Props) => {
 				<h1 className="font-semibold text-2xl sm:text-3xl">
 					{post.metadata.title}
 				</h1>
-				{post.metadata.new && <PostIsNew />}
+				{post.metadata.new && <IsNew />}
 			</div>
 
 			<div className="px-3 py-1.5">
@@ -163,9 +121,6 @@ const Page = async ({ params }: Props) => {
 			<Prose className="px-3">
 				<MDX code={post.content} />
 			</Prose>
-
-			<div className="screen-line-before w-full" />
-			<Divider className="border-x-0" />
 		</>
 	);
 };

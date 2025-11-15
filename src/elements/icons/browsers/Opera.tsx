@@ -1,7 +1,6 @@
-import type React from 'react';
 import type { SVGProps } from 'react';
 
-const OperaIcon = (props: SVGProps<SVGSVGElement>): React.JSX.Element => (
+const OperaIcon = (props: SVGProps<SVGSVGElement>) => (
 	<svg
 		height="1em"
 		viewBox="0 0 1000 1000"

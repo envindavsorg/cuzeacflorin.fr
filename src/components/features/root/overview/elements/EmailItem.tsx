@@ -2,7 +2,6 @@
 
 import { EnvelopeIcon } from '@phosphor-icons/react';
 import { useIsClient } from '@uidotdev/usehooks';
-import type React from 'react';
 import { decodeEmail } from '@/utils/string';
 import { OverviewItem } from './OverviewItem';
 
@@ -11,10 +10,7 @@ type EmailItemProps = {
 	className?: string;
 };
 
-export const EmailItem = ({
-	email,
-	className,
-}: EmailItemProps): React.JSX.Element => {
+export const EmailItem = ({ email, className }: EmailItemProps) => {
 	const isClient = useIsClient();
 	const emailDecoded = decodeEmail(email);
 

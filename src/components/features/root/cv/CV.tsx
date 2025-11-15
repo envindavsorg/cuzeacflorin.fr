@@ -2,7 +2,6 @@
 
 import type { Player } from '@lordicon/react';
 import Link from 'next/link';
-import type React from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/Dialog';
@@ -23,7 +22,7 @@ import { SuccessContent } from './SuccessContent';
 
 type DialogState = 'form' | 'success' | 'error';
 
-export const CV = (): React.JSX.Element => {
+export const CV = () => {
 	const [open, setOpen] = useState(false);
 	const [dialogState, setDialogState] = useState<DialogState>('form');
 
@@ -38,7 +37,7 @@ export const CV = (): React.JSX.Element => {
 				clearTimeout(resetTimeoutRef.current);
 			}
 		},
-		[]
+		[],
 	);
 
 	const handleSubmit = useCallback(
@@ -46,7 +45,7 @@ export const CV = (): React.JSX.Element => {
 			const success = await sendEmail(data);
 			setDialogState(success ? 'success' : 'error');
 		},
-		[sendEmail]
+		[sendEmail],
 	);
 
 	const handleClose = useCallback(() => {
@@ -76,7 +75,7 @@ export const CV = (): React.JSX.Element => {
 				}, 600);
 			}
 		},
-		[form]
+		[form],
 	);
 
 	return (
@@ -88,18 +87,25 @@ export const CV = (): React.JSX.Element => {
 			<PanelContent className="space-y-3 *:text-muted-foreground">
 				<Prose>
 					Découvrez mon parcours professionnel à travers mon{' '}
-					<span className="font-medium text-foreground">CV détaillé</span>, qui
-					retrace mes expériences, compétences techniques et réalisations dans
-					le développement web full-stack. Vous y trouverez un{' '}
-					<span className="font-medium text-foreground">aperçu complet</span> de
-					mon expertise et de ma progression dans le domaine.
+					<span className="font-medium text-foreground">
+						CV détaillé
+					</span>
+					, qui retrace mes expériences, compétences techniques et
+					réalisations dans le développement web full-stack. Vous y
+					trouverez un{' '}
+					<span className="font-medium text-foreground">
+						aperçu complet
+					</span>{' '}
+					de mon expertise et de ma progression dans le domaine.
 				</Prose>
 				<Prose>
 					Pour recevoir une{' '}
-					<span className="font-medium text-foreground">copie actualisée</span>{' '}
-					directement dans votre boîte e-mail, cliquez sur le bouton ci-dessous.
-					Je serai ravi d'échanger avec vous sur d'éventuelles opportunités de
-					collaboration.
+					<span className="font-medium text-foreground">
+						copie actualisée
+					</span>{' '}
+					directement dans votre boîte e-mail, cliquez sur le bouton
+					ci-dessous. Je serai ravi d'échanger avec vous sur
+					d'éventuelles opportunités de collaboration.
 				</Prose>
 			</PanelContent>
 
@@ -121,12 +127,15 @@ export const CV = (): React.JSX.Element => {
 					<DialogContent
 						className={cn(
 							dialogState !== 'form' &&
-								'flex aspect-square items-center justify-center'
+								'flex aspect-square items-center justify-center',
 						)}
 						onInteractOutside={(event) => event.preventDefault()}
 					>
 						{dialogState === 'success' && (
-							<SuccessContent onClose={handleClose} ref={iconRef} />
+							<SuccessContent
+								onClose={handleClose}
+								ref={iconRef}
+							/>
 						)}
 
 						{dialogState === 'error' && (
