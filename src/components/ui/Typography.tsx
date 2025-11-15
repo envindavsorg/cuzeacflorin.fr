@@ -1,4 +1,3 @@
-import { LinkIcon } from '@phosphor-icons/react/ssr';
 import { Slot as SlotPrimitive } from 'radix-ui';
 import type React from 'react';
 import { cn } from '@/lib/utils';
@@ -18,9 +17,7 @@ const Prose = ({
 		<Comp
 			className={cn(
 				'prose prose-sm sm:prose-base prose-zinc dark:prose-invert max-w-none font-mono text-foreground',
-				'prose-headings:text-balance prose-headings:font-sans prose-headings:font-semibold',
-				'prose-h2:border-edge prose-h2:border-b prose-h2:pb-2 prose-h2:text-2xl',
-				'prose-lead:text-base',
+				'prose-headings:text-balance prose-headings:font-sans prose-headings:font-semibold prose-lead:text-base',
 				'prose-a:break-words prose-a:font-medium prose-a:text-foreground prose-a:underline prose-a:underline-offset-4',
 				'prose-code:rounded-md prose-code:border prose-code:bg-muted/50 prose-code:px-[0.3rem] prose-code:py-[0.2rem] prose-code:font-normal prose-code:text-sm prose-code:before:content-none prose-code:after:content-none',
 				'prose-hr:border-edge',
@@ -65,18 +62,8 @@ const Heading = <T extends HeadingTypes = 'h1'>({
 	}
 
 	return (
-		<Comp
-			className={cn('flex flex-row items-center gap-2', className)}
-			{...props}
-		>
-			<a className="peer not-prose" href={`#${props.id}`}>
-				{props.children}
-			</a>
-
-			<LinkIcon
-				aria-label="Link to section"
-				className="size-4 shrink-0 text-muted-foreground opacity-0 transition-opacity peer-hover:opacity-100"
-			/>
+		<Comp className={className} {...props}>
+			{props.children}
 		</Comp>
 	);
 };

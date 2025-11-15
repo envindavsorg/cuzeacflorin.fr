@@ -13,13 +13,11 @@ type Tab = {
 
 type OgImageSectionProps = {
 	tabs: Tab[];
-	className?: string;
 	onChangeAction?: () => void;
 };
 
 export const DirectionAwareTabs = ({
 	tabs,
-	className,
 	onChangeAction,
 }: OgImageSectionProps) => {
 	const [activeTab, setActiveTab] = useState(0);
@@ -63,16 +61,11 @@ export const DirectionAwareTabs = ({
 
 	return (
 		<div className="flex w-full flex-col items-center">
-			<div
-				className={cn(
-					'grid w-full cursor-pointer grid-cols-2 space-x-1 rounded-md border border-input px-1 py-1.5',
-					className,
-				)}
-			>
+			<div className="screen-line-after grid w-full cursor-pointer grid-cols-2 gap-x-3 py-3">
 				{tabs.map((tab) => (
 					<button
 						className={cn(
-							'relative flex items-center justify-center gap-x-2 rounded-md px-3.5 py-1.5 font-medium text-sm transition focus-visible:outline-none focus-visible:outline-1 focus-visible:ring-1 sm:text-base',
+							'relative flex items-center justify-center gap-x-2 rounded-md border px-3.5 py-2 font-medium text-sm transition focus-visible:outline-none focus-visible:outline-1 focus-visible:ring-1',
 							'cursor-pointer',
 							activeTab === tab.id
 								? 'text-theme'
@@ -108,7 +101,7 @@ export const DirectionAwareTabs = ({
 					className="relative mx-auto h-full w-full overflow-hidden"
 					initial={false}
 				>
-					<div className="pt-6" ref={ref}>
+					<div ref={ref}>
 						<AnimatePresence
 							custom={direction}
 							mode="popLayout"

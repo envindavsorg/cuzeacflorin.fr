@@ -45,7 +45,7 @@ const captureGif = async (
 	_page: Page,
 	componentElement: ElementHandle,
 	duration: number,
-	outputPath: string
+	outputPath: string,
 ): Promise<void> => {
 	const box = await componentElement.boundingBox();
 	if (!box) {
@@ -57,10 +57,13 @@ const captureGif = async (
 	const totalFrames = Math.ceil(duration / frameInterval);
 
 	consola.info(
-		`Recording ${totalFrames} frames at ${fps}fps for ${duration}ms...`
+		`Recording ${totalFrames} frames at ${fps}fps for ${duration}ms...`,
 	);
 
-	const encoder = new GifEncoder(Math.round(box.width), Math.round(box.height));
+	const encoder = new GifEncoder(
+		Math.round(box.width),
+		Math.round(box.height),
+	);
 	const stream = createWriteStream(outputPath);
 	encoder.createReadStream().pipe(stream);
 
@@ -140,7 +143,7 @@ const captureComponent = async ({
 	await new Promise((resolve) => setTimeout(resolve, 3000));
 
 	const componentElement = await page.$(
-		'[data-screenshot-anchor-target-for-capture]'
+		'[data-screenshot-anchor-target-for-capture]',
 	);
 
 	if (!componentElement) {
@@ -154,7 +157,7 @@ const captureComponent = async ({
 	if (canReplay && duration) {
 		const buttonFound = await page.evaluate(() => {
 			const preview = document.querySelector(
-				'[role="tabpanel"][data-state="active"]'
+				'[role="tabpanel"][data-state="active"]',
 			);
 
 			if (!preview) {
@@ -185,12 +188,12 @@ const captureComponent = async ({
 		await new Promise((resolve) => setTimeout(resolve, 300));
 
 		const remountedElement = await page.$(
-			'[data-screenshot-anchor-target-for-capture]'
+			'[data-screenshot-anchor-target-for-capture]',
 		);
 
 		if (!remountedElement) {
 			consola.warn(
-				`Component element not found after remount for ${componentName}`
+				`Component element not found after remount for ${componentName}`,
 			);
 
 			await page.close();
@@ -204,7 +207,10 @@ const captureComponent = async ({
 
 		consola.success(`GIF saved: ${gifPath}`);
 	} else {
-		const filePath = join(componentDir, `${theme}.webp`) as `${string}.webp`;
+		const filePath = join(
+			componentDir,
+			`${theme}.webp`,
+		) as `${string}.webp`;
 
 		await componentElement.screenshot({
 			path: filePath,
@@ -226,7 +232,7 @@ const main = async (): Promise<void> => {
 	try {
 		for (const component of COMPONENTS) {
 			consola.info(
-				`Capturing ${component.canReplay ? 'GIFs' : 'screenshots'} for ${component.name}...`
+				`Capturing ${component.canReplay ? 'GIFs' : 'screenshots'} for ${component.name}...`,
 			);
 
 			for (const theme of THEMES) {
@@ -235,7 +241,10 @@ const main = async (): Promise<void> => {
 					componentName: component.name,
 					theme,
 					canReplay: component.canReplay,
-					duration: 'duration' in component ? component.duration : undefined,
+					duration:
+						'duration' in component
+							? component.duration
+							: undefined,
 				});
 			}
 		}

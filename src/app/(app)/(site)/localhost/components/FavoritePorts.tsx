@@ -31,7 +31,7 @@ const PortLink: React.FC<{
 				'[--pattern-foreground:var(--color-zinc-950)]/5 dark:[--pattern-foreground:var(--color-white)]/5',
 				'outline-1 outline-offset-1',
 				'transform transition-transform hover:scale-102',
-				port.color
+				port.color,
 			)}
 		>
 			<div className="flex items-center justify-between">
@@ -45,7 +45,7 @@ const PortLink: React.FC<{
 							'absolute inline-flex size-3 rounded-full opacity-50',
 							port.isActive !== undefined && port.isActive
 								? 'animate-ping bg-green-600 dark:bg-green-300'
-								: 'bg-red-600 dark:bg-red-300'
+								: 'bg-red-600 dark:bg-red-300',
 						)}
 					/>
 					<span
@@ -53,7 +53,7 @@ const PortLink: React.FC<{
 							'relative inline-flex size-2 rounded-full',
 							port.isActive !== undefined && port.isActive
 								? 'bg-green-600 dark:bg-green-300'
-								: 'bg-red-600 dark:bg-red-300'
+								: 'bg-red-600 dark:bg-red-300',
 						)}
 					/>
 				</div>

@@ -25,7 +25,7 @@ import { SearchEngine } from '../types';
 export const SearchSection: React.FC = () => {
 	const [query, setQuery] = useState('');
 	const [selectedEngine, setSelectedEngine] = useState<SearchEngine>(
-		SearchEngine.Google
+		SearchEngine.Google,
 	);
 
 	const handleSearch = () => {
@@ -34,7 +34,9 @@ export const SearchSection: React.FC = () => {
 			return;
 		}
 
-		const engine = SEARCH_ENGINES.find(({ name }) => name === selectedEngine);
+		const engine = SEARCH_ENGINES.find(
+			({ name }) => name === selectedEngine,
+		);
 		if (engine) {
 			const url: string = `${engine.url}${encodeURIComponent(query)}`;
 			window.open(url, '_blank');
@@ -56,7 +58,9 @@ export const SearchSection: React.FC = () => {
 
 			<PanelContent className="flex items-center gap-x-3">
 				<Select
-					onValueChange={(value) => setSelectedEngine(value as SearchEngine)}
+					onValueChange={(value) =>
+						setSelectedEngine(value as SearchEngine)
+					}
 					value={selectedEngine}
 				>
 					<SelectTrigger>

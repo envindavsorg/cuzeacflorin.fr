@@ -10,6 +10,9 @@
 	"css": {
 		"formatter": {
 			"lineWidth": 120
+		},
+		"parser": {
+			"tailwindDirectives": true
 		}
 	},
 	"assist": {

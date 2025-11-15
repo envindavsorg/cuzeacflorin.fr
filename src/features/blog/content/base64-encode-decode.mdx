@@ -7,15 +7,19 @@ updatedAt: 2025-10-09
 tags: ["Base64"]
 ---
 
+<div className="screen-line-before w-full border-edge border-b" />
+
 <Base64Component />
+
+<div className="screen-line-before w-full border-edge border-b" />
+
+### Utilisation
 
 Utilisez cet encodeur et décodeur Base64 gratuit pour convertir facilement entre texte brut et chaînes encodées en Base64.
 Cet outil est parfait pour décoder les réponses API.
 Aucune inscription nécessaire — collez simplement vos données et convertissez instantanément.
 
-<div className="screen-line-before w-full border-edge border-b" />
-
-## Comment utiliser l'outil de décodage Base64 :
+### Comment utiliser l'outil de décodage Base64 :
 
 Vous pouvez utiliser cet outil pour décoder des chaînes encodées en Base64,
 ou pour reconvertir des chaînes de texte Base64 vers leur chaîne binaire d'origine.
@@ -26,10 +30,9 @@ Collez simplement vos données et copiez le résultat.
 - **Conversion de données :** Convertissez des chaînes de texte vers leur forme binaire d'origine, utile pour traiter des données textuelles encodées.
 - **Débogage :** Décodez des données Base64 lors du dépannage ou de l'analyse de ressources web.
 
-## Utiliser Base64 en JavaScript :
+### Utiliser Base64 en JavaScript :
 
-En JavaScript, l'encodage et le décodage Base64 peuvent être effectués
-en utilisant les fonctions natives **btoa** et **atob**, comme illustré ci-dessous :
+En JavaScript, l'encodage et le décodage Base64 peuvent être effectués en utilisant les fonctions natives **btoa** et **atob**, comme illustré ci-dessous :
 
 ```javascript
 const text = "Hello, world!";
@@ -43,6 +46,47 @@ const decoded = atob(encoded);
 console.log(decoded); // Résultat: "Hello, world!"
 ```
 
-Ces fonctions facilitent la gestion de l'encodage et du décodage directement dans votre code JavaScript, permettant un traitement et une transmission fluides des données dans les applications web.
+### Utiliser Base64 en TypeScript (Node.js) :
 
-<div className="h-6" />
+En TypeScript avec Node.js, l'encodage et le décodage Base64 peuvent être effectués en utilisant la classe native **Buffer**, comme illustré ci-dessous :
+
+```typescript
+const text: string = "Hello, world!";
+const encoded: string = Buffer.from(text).toString("base64");
+console.log(encoded); // Résultat: "SGVsbG8sIHdvcmxkIQ=="
+```
+```typescript
+const encoded: string = "SGVsbG8sIHdvcmxkIQ==";
+const decoded: string = Buffer.from(encoded, "base64").toString("utf-8");
+console.log(decoded); // Résultat: "Hello, world!"
+```
+
+### Utiliser Base64 en Rust :
+
+En Rust, l'encodage et le décodage Base64 peuvent être effectués en utilisant la crate **base64**, comme illustré ci-dessous :
+
+```rust
+use base64::{Engine as _, engine::general_purpose};
+
+let text = "Hello, world!";
+let encoded = general_purpose::STANDARD.encode(text);
+println!("{}", encoded); // Résultat: "SGVsbG8sIHdvcmxkIQ=="
+```
+
+```rust
+use base64::{Engine as _, engine::general_purpose};
+
+let encoded = "SGVsbG8sIHdvcmxkIQ==";
+let decoded = general_purpose::STANDARD.decode(encoded).unwrap();
+let text = String::from_utf8(decoded).unwrap();
+println!("{}", text); // Résultat: "Hello, world!"
+```
+
+Ajouter dans `Cargo.toml` :
+
+```toml
+[dependencies]
+base64 = "0.21"
+```
+
+Ces fonctions facilitent la gestion de l'encodage et du décodage directement dans votre code, permettant un traitement et une transmission fluides des données dans les applications web et le backend.

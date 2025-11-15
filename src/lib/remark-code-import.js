@@ -12,7 +12,7 @@ const extractLines = (
 	fromLine,
 	hasDash,
 	toLine,
-	preserveTrailingNewline = false
+	preserveTrailingNewline = false,
 ) => {
 	const lines = content.split(EOL);
 	const start = fromLine || 1;
@@ -58,7 +58,7 @@ export const remarkCodeImport = (options = {}) => {
 
 			const res =
 				/^file=(?<path>.+?)(?:(?:#(?:L(?<from>\d+)(?<dash>-)?)?)(?:L(?<to>\d+))?)?$/.exec(
-					fileMeta
+					fileMeta,
 				);
 
 			if (!res?.groups?.path) {
@@ -91,7 +91,7 @@ export const remarkCodeImport = (options = {}) => {
 				path.isAbsolute(relativePathFromRootDir)
 			) {
 				throw new Error(
-					`Attempted to import code from "${fileAbsPath}", which is outside from the rootDir "${rootDir}"`
+					`Attempted to import code from "${fileAbsPath}", which is outside from the rootDir "${rootDir}"`,
 				);
 			}
 
@@ -102,7 +102,7 @@ export const remarkCodeImport = (options = {}) => {
 				fromLine,
 				hasDash,
 				toLine,
-				options.preserveTrailingNewline
+				options.preserveTrailingNewline,
 			);
 
 			if (options.removeRedundantIndentations) {

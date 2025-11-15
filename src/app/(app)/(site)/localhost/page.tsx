@@ -19,11 +19,15 @@ export const generateMetadata = async (): Promise<Metadata> =>
 const Page = () => (
 	<div className="min-h-svh">
 		<div className="screen-line-after px-4">
-			<h1 className="font-semibold text-3xl sm:text-4xl">{metadata.title}</h1>
+			<h1 className="font-semibold text-3xl sm:text-4xl">
+				{metadata.title}
+			</h1>
 		</div>
 
 		<div className="p-4">
-			<Prose className="text-muted-foreground">{metadata.description}</Prose>
+			<Prose className="text-muted-foreground">
+				{metadata.description}
+			</Prose>
 		</div>
 
 		<Localhost />

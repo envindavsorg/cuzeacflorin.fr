@@ -19,7 +19,6 @@ import {
 } from '@/components/ui/Table';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
 import { Code, Heading } from '@/components/ui/Typography';
-import { Base64 } from '@/features/blog/elements/Base64';
 import { CodeBlockCommand } from '@/features/blog/elements/CodeBlockCommand';
 import { CodeCollapsibleWrapper } from '@/features/blog/elements/CodeCollapsibleWrapper';
 import { CodeTabs } from '@/features/blog/elements/CodeTabs';
@@ -28,7 +27,8 @@ import { ComponentPreview } from '@/features/blog/elements/ComponentPreview';
 import { ComponentSource } from '@/features/blog/elements/ComponentSource';
 import { CopyButton } from '@/features/blog/elements/CopyButton';
 import { FramedImage, YouTubeEmbed } from '@/features/blog/elements/Embed';
-import { LoremIpsumGenerator } from '@/features/blog/elements/LoremIpsumGenerator';
+import { Base64 } from '@/features/blog/elements/utils/Base64';
+import { LoremIpsumGenerator } from '@/features/blog/elements/utils/LoremIpsumGenerator';
 import { SpeedTest } from '@/features/blog/elements/utils/SpeedTest';
 import { rehypeAddQueryParams } from '@/lib/rehype-add-query-params';
 import { rehypeComponent } from '@/lib/rehype-component';

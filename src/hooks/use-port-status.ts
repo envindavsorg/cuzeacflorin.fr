@@ -14,7 +14,7 @@ type UsePortStatusOptions = {
 // vérifie si chaque port est actif via une requête HEAD HTTP.
 export const usePortStatus = (
 	ports: number[],
-	options: UsePortStatusOptions = {}
+	options: UsePortStatusOptions = {},
 ) => {
 	const { interval = 30_000, timeout = 3000, enabled = true } = options;
 
@@ -29,7 +29,7 @@ export const usePortStatus = (
 				const controller: AbortController = new AbortController();
 				const timeoutId: NodeJS.Timeout = setTimeout(
 					() => controller.abort(),
-					timeout
+					timeout,
 				);
 
 				await fetch(`http://localhost:${port}`, {
@@ -45,7 +45,7 @@ export const usePortStatus = (
 				return false;
 			}
 		},
-		[timeout]
+		[timeout],
 	);
 
 	// vérifie le statut de tous les ports.

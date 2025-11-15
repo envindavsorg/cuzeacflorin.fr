@@ -19,8 +19,6 @@ import {
 } from '@/components/ui/Item';
 import { cn } from '@/lib/utils';
 
-// --- Types ---
-
 type SpeedResult = ReturnType<
 	typeof SpeedTestEngine.prototype.results.getSummary
 >;
@@ -30,8 +28,6 @@ type TestState = {
 	result: Partial<SpeedResult>;
 };
 
-// --- Constants ---
-
 const INITIAL_RESULT: Partial<SpeedResult> = {
 	download: undefined,
 	upload: undefined,
@@ -39,25 +35,18 @@ const INITIAL_RESULT: Partial<SpeedResult> = {
 	jitter: undefined,
 };
 
-// --- SpeedTest Engine Config ---
-
 const createSpeedTestEngine = () => {
 	return new SpeedTestEngine({
 		autoStart: false,
 		measurements: [
-			// Quick latency check (1-2 seconds)
 			{ type: 'latency', numPackets: 5 },
-			// Download test (4-5 seconds)
 			{ type: 'download', bytes: 1e6, count: 2, bypassMinDuration: true },
 			{ type: 'download', bytes: 1e7, count: 1, bypassMinDuration: true },
-			// Upload test (4-5 seconds)
 			{ type: 'upload', bytes: 1e6, count: 2, bypassMinDuration: true },
 			{ type: 'upload', bytes: 1e7, count: 1, bypassMinDuration: true },
 		],
 	});
 };
-
-// --- Child Components ---
 
 type PulsatingCircleProps = {
 	isRunning: boolean;
@@ -82,9 +71,6 @@ const PulsatingCircle = memo((props: PulsatingCircleProps) => (
 		/>
 	</span>
 ));
-PulsatingCircle.displayName = 'PulsatingCircle';
-
-// --- Helpers ---
 
 const getButtonLabel = (status: TestState['status']) => {
 	switch (status) {
@@ -99,18 +85,12 @@ const getButtonLabel = (status: TestState['status']) => {
 	}
 };
 
-/**
- * Helper to filter out undefined values from the speedtest summary.
- */
 const cleanSummary = (summary: SpeedResult): Partial<SpeedResult> => {
 	return Object.fromEntries(
 		Object.entries(summary).filter(([, value]) => value !== undefined),
 	) as Partial<SpeedResult>;
 };
 
-/**
- * Format value based on unit type
- */
 const formatValue = (val: number | undefined, unit: string): string => {
 	const num = val ?? 0;
 	if (unit === 'Mb/s') {
@@ -121,8 +101,6 @@ const formatValue = (val: number | undefined, unit: string): string => {
 	}
 	return num.toFixed(2);
 };
-
-// --- Child Components ---
 
 type SpeedTestProps = {
 	status: TestState['status'];
@@ -175,9 +153,6 @@ const SpeedTestItem = memo(
 		);
 	},
 );
-SpeedTestItem.displayName = 'SpeedTestItem';
-
-// --- Main Component ---
 
 export const SpeedTest = () => {
 	const [testState, setTestState] = useState<TestState>({
@@ -188,11 +163,9 @@ export const SpeedTest = () => {
 	const engineRef = useRef<SpeedTestEngine | null>(null);
 	const statusRef = useRef<TestState['status']>('idle');
 
-	// Keep statusRef in sync with testState.status
 	statusRef.current = testState.status;
 
 	const toggleTest = useCallback(() => {
-		// Stop running test
 		if (statusRef.current === 'running') {
 			engineRef.current?.pause?.();
 			engineRef.current = null;
@@ -203,7 +176,6 @@ export const SpeedTest = () => {
 			return;
 		}
 
-		// Start new test (from 'idle' or 'finished')
 		setTestState((prev) => ({
 			...prev,
 			status: 'running',
@@ -213,12 +185,10 @@ export const SpeedTest = () => {
 		engineRef.current = speedTest;
 
 		speedTest.onResultsChange = () => {
-			// Check for staleness
 			if (engineRef.current !== speedTest) {
 				return;
 			}
 
-			// Merge the new (cleaned) results with the previous results
 			const newResults = cleanSummary(speedTest.results.getSummary());
 			setTestState((prev) => ({
 				status: prev.status,
@@ -233,7 +203,7 @@ export const SpeedTest = () => {
 			if (engineRef.current !== speedTest) {
 				return;
 			}
-			// Keep all final results
+
 			const finalResults = speedTest.results.getSummary();
 			setTestState({
 				status: 'finished',
@@ -247,7 +217,6 @@ export const SpeedTest = () => {
 				return;
 			}
 			engineRef.current = null;
-			// On error, reset to idle but keep results
 			setTestState((prev) => ({
 				...prev,
 				status: 'idle',

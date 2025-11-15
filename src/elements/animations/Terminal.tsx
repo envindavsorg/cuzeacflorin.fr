@@ -62,13 +62,20 @@ export const AnimatedSpan = ({
 		if (sequence.activeIndex === itemIndex) {
 			setHasStarted(true);
 		}
-	}, [sequence?.activeIndex, sequence?.sequenceStarted, hasStarted, itemIndex]);
+	}, [
+		sequence?.activeIndex,
+		sequence?.sequenceStarted,
+		hasStarted,
+		itemIndex,
+	]);
 
 	const shouldAnimate = sequence ? hasStarted : startOnView ? isInView : true;
 
 	return (
 		<motion.div
-			animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 0, y: -5 }}
+			animate={
+				shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 0, y: -5 }
+			}
 			className={cn('grid font-normal text-sm tracking-tight', className)}
 			initial={{ opacity: 0, y: -5 }}
 			onAnimationComplete={() => {
@@ -108,7 +115,9 @@ export const TypingAnimation = ({
 	...props
 }: TypingAnimationProps) => {
 	if (typeof children !== 'string') {
-		throw new Error('TypingAnimation: children must be a string. Received:');
+		throw new Error(
+			'TypingAnimation: children must be a string. Received:',
+		);
 	}
 
 	const MotionComponent = useMemo(
@@ -116,7 +125,7 @@ export const TypingAnimation = ({
 			motion.create(Component, {
 				forwardMotionProps: true,
 			}),
-		[Component]
+		[Component],
 	);
 
 	const [displayedText, setDisplayedText] = useState<string>('');
@@ -229,7 +238,7 @@ export const Terminal = ({
 		return {
 			completeItem: (index: number) => {
 				setActiveIndex((current) =>
-					index === current ? current + 1 : current
+					index === current ? current + 1 : current,
 				);
 			},
 			activeIndex,
@@ -253,7 +262,10 @@ export const Terminal = ({
 
 	const content = (
 		<div
-			className={cn('z-0 h-full max-h-[400px] w-full bg-background', className)}
+			className={cn(
+				'z-0 h-full max-h-[400px] w-full bg-background',
+				className,
+			)}
 			ref={containerRef}
 		>
 			<pre className="no-scrollbar p-4">

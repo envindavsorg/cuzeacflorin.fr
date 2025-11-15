@@ -284,6 +284,11 @@
 			clip-path: polygon(171% 50%, 50% 171%, -50% 71%, 50% -71%);
 		}
 	}
+
+	.prose ul li::marker {
+		/* biome-ignore lint/complexity/noImportantStyles: need it to overwrite */
+		color: var(--color-theme) !important;
+	}
 }
 
 @layer components {

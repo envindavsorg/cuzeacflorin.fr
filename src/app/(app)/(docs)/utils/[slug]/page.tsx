@@ -118,7 +118,7 @@ const Page = async ({ params }: Props) => {
 				<Prose>{post.metadata.description}</Prose>
 			</div>
 
-			<Prose className="px-3">
+			<Prose className="px-3 pb-6">
 				<MDX code={post.content} />
 			</Prose>
 		</>

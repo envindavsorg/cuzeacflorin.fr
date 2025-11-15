@@ -10,7 +10,7 @@ import { SearchSection } from './SearchSection';
 export const Localhost = () => {
 	const portNumbers = useMemo(
 		() => INITIAL_FAVORITE_PORTS.map((port) => port.number),
-		[INITIAL_FAVORITE_PORTS]
+		[INITIAL_FAVORITE_PORTS],
 	);
 
 	const { portStatus } = usePortStatus(portNumbers, {
@@ -25,7 +25,7 @@ export const Localhost = () => {
 				...port,
 				isActive: portStatus[port.number],
 			})),
-		[INITIAL_FAVORITE_PORTS, portStatus]
+		[INITIAL_FAVORITE_PORTS, portStatus],
 	);
 
 	return (

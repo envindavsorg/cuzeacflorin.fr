@@ -81,7 +81,7 @@ const captureScreenshot = async ({
 		const relativePath = path.replace(process.cwd(), '');
 
 		consola.info(
-			`${size === 'og-image' ? 'OG Image' : 'Screenshot'} saved : ${yellow(relativePath)}`
+			`${size === 'og-image' ? 'OG Image' : 'Screenshot'} saved : ${yellow(relativePath)}`,
 		);
 
 		await page.close();
@@ -107,10 +107,13 @@ const main = async (): Promise<void> => {
 		});
 
 		consola.success(
-			`All screenshots and og image ${green('captured successfully')} !`
+			`All screenshots and og image ${green('captured successfully')} !`,
 		);
 	} catch (error) {
-		consola.error(`${red('Error capturing')} screenshots or og image:`, error);
+		consola.error(
+			`${red('Error capturing')} screenshots or og image:`,
+			error,
+		);
 	} finally {
 		await browser.close();
 	}

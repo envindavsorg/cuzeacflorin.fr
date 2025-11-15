@@ -26,6 +26,8 @@ type ComboboxProps = {
 	onSelect(value: string): void;
 	value?: string;
 	disabled?: boolean;
+	search: boolean;
+	className?: string;
 };
 
 export const Combobox = (props: ComboboxProps) => {
@@ -42,18 +44,19 @@ export const Combobox = (props: ComboboxProps) => {
 			<PopoverTrigger asChild>
 				<Button
 					aria-expanded={open}
-					className="justify-between"
+					className="h-10 rounded-none"
 					disabled={props.disabled}
 					role="combobox"
 					variant="outline"
 				>
-					{selectedItem ? selectedItem.label : 'Select...'}
-					<CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+					{selectedItem ? selectedItem.label : 'Choisir ...'}
+					<CaretSortIcon />
 				</Button>
 			</PopoverTrigger>
-			<PopoverContent className="h-auto p-0">
+
+			<PopoverContent className={cn('h-auto p-0', props.className)}>
 				<Command>
-					<CommandInput placeholder="Search..." />
+					{props.search && <CommandInput placeholder="Search..." />}
 					<CommandList className="h-auto">
 						<CommandEmpty>Nothing to see here.</CommandEmpty>
 						<CommandGroup>
@@ -66,7 +69,7 @@ export const Combobox = (props: ComboboxProps) => {
 									{item.label}
 									<CheckIcon
 										className={cn(
-											'ml-auto h-4 w-4',
+											'ml-auto size-4',
 											props.value === item.value
 												? 'opacity-100'
 												: 'opacity-0',

@@ -27,9 +27,7 @@ export const Toaster = ({ ...props }: ToasterProps) => {
 				warning: (
 					<WarningIcon className="size-5 text-amber-600 dark:text-amber-300" />
 				),
-				error: (
-					<XSquareIcon className="size-5 text-red-600 dark:text-red-300" />
-				),
+				error: <XSquareIcon className="size-5 text-destructive" />,
 				loading: (
 					<CircleNotchIcon className="size-5 animate-spin text-theme" />
 				),

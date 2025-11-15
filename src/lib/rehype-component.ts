@@ -20,10 +20,10 @@ export const rehypeComponent = () => {
 				}) || {};
 
 			if (node.name === 'ComponentSource') {
-				const name = getNodeAttributeByName(node, 'name')?.value as string;
-				const fileName = getNodeAttributeByName(node, 'fileName')?.value as
-					| string
-					| undefined;
+				const name = getNodeAttributeByName(node, 'name')
+					?.value as string;
+				const fileName = getNodeAttributeByName(node, 'fileName')
+					?.value as string | undefined;
 
 				if (!(name || srcPath)) {
 					return null;
@@ -58,7 +58,7 @@ export const rehypeComponent = () => {
 					const title = getNodeAttributeByName(node, 'title');
 					const showLineNumbers = getNodeAttributeByName(
 						node,
-						'showLineNumbers'
+						'showLineNumbers',
 					);
 
 					// Add code as children so that rehype can take over at build time.
@@ -70,12 +70,18 @@ export const rehypeComponent = () => {
 								u('element', {
 									tagName: 'code',
 									properties: {
-										className: [`language-${path.extname(filePath).slice(1)}`],
+										className: [
+											`language-${path.extname(filePath).slice(1)}`,
+										],
 									},
 									data: {
 										meta: [
-											title ? `title="${title.value}"` : '',
-											showLineNumbers ? 'showLineNumbers' : '',
+											title
+												? `title="${title.value}"`
+												: '',
+											showLineNumbers
+												? 'showLineNumbers'
+												: '',
 										].join(' '),
 									},
 									children: [
@@ -86,7 +92,7 @@ export const rehypeComponent = () => {
 									],
 								}),
 							],
-						})
+						}),
 					);
 				} catch (error) {
 					logger.error(error);
@@ -94,7 +100,8 @@ export const rehypeComponent = () => {
 			}
 
 			if (node.name === 'ComponentPreview') {
-				const name = getNodeAttributeByName(node, 'name')?.value as string;
+				const name = getNodeAttributeByName(node, 'name')
+					?.value as string;
 
 				if (!name) {
 					return null;
@@ -132,7 +139,7 @@ export const rehypeComponent = () => {
 									],
 								}),
 							],
-						})
+						}),
 					);
 				} catch (error) {
 					logger.error(error);

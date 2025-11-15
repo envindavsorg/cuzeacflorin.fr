@@ -9,6 +9,7 @@ import { type ChangeEvent, useCallback, useState } from 'react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/Button';
 import { DirectionAwareTabs } from '@/components/ui/DirectionAwareTabs';
+import { Label } from '@/components/ui/Label';
 import { Textarea } from '@/components/ui/Textarea';
 import { cn } from '@/lib/utils';
 
@@ -116,18 +117,20 @@ export const Base64 = () => {
 		setError(null);
 	}, []);
 
-	// tabs
 	const tabs = [
 		{
 			id: 0,
-			label: 'Encoder',
+			label: 'Encoder la chaîne',
 			content: (
-				<div className="flex w-full flex-col gap-y-6 overflow-hidden">
+				<div className="flex w-full flex-col gap-y-6 overflow-hidden py-3">
 					<div className="flex flex-col gap-y-3">
 						<div className="flex items-center justify-between">
-							<h3 className="mt-0 font-semibold text-base">
+							<Label
+								className="text-xl sm:text-2xl"
+								htmlFor="encodeText"
+							>
 								Texte à encoder
-							</h3>
+							</Label>
 							{encodeInputText && (
 								<Button
 									onClick={() =>
@@ -136,31 +139,40 @@ export const Base64 = () => {
 											'encode-input',
 										)
 									}
-									size="icon:sm"
-									variant="ghost"
+									variant="outline"
 								>
 									{copiedField === 'encode-input' ? (
-										<CheckIcon className="size-5" />
+										<>
+											<CheckIcon /> Copié !
+										</>
 									) : (
-										<CopyIcon className="size-5" />
+										<>
+											<CopyIcon /> Copier
+										</>
 									)}
 								</Button>
 							)}
 						</div>
 						<Textarea
-							className="min-h-[120px] font-mono sm:min-h-[150px]"
+							className="outline-0"
 							onChange={(
 								event: ChangeEvent<HTMLTextAreaElement>,
 							) => handleEncodeInputChange(event.target.value)}
 							placeholder="Entrez votre texte ici..."
 							value={encodeInputText}
+							rows={4}
+							id="encodeText"
 						/>
 					</div>
+
 					<div className="flex flex-col gap-y-3">
 						<div className="flex items-center justify-between">
-							<h3 className="mt-0 font-semibold text-base">
+							<Label
+								className="text-xl sm:text-2xl"
+								htmlFor="decodedText"
+							>
 								Base64
-							</h3>
+							</Label>
 							{encodeOutputText && (
 								<Button
 									onClick={() =>
@@ -169,18 +181,21 @@ export const Base64 = () => {
 											'encode-output',
 										)
 									}
-									size="sm"
-									variant="ghost"
+									variant="outline"
 								>
 									{copiedField === 'encode-output' ? (
-										<CheckIcon className="size-5" />
+										<>
+											<CheckIcon /> Copié !
+										</>
 									) : (
-										<CopyIcon className="size-5" />
+										<>
+											<CopyIcon /> Copier
+										</>
 									)}
 								</Button>
 							)}
 						</div>
-						<div className="min-h-[120px] w-full overflow-auto rounded-md border border-input bg-background px-3 py-2 font-mono text-sm sm:min-h-[150px]">
+						<div className="min-h-[100px] w-full overflow-auto rounded-md bg-accent px-3 py-2 text-sm">
 							{encodeOutputText}
 						</div>
 					</div>
@@ -189,14 +204,17 @@ export const Base64 = () => {
 		},
 		{
 			id: 1,
-			label: 'Décoder',
+			label: 'Décoder la chaîne',
 			content: (
-				<div className="flex w-full flex-col gap-y-6 overflow-hidden">
+				<div className="flex w-full flex-col gap-y-6 overflow-hidden py-3">
 					<div className="flex flex-col gap-y-3">
 						<div className="flex items-center justify-between">
-							<h3 className="mt-0 font-semibold text-base">
+							<Label
+								className="text-xl sm:text-2xl"
+								htmlFor="encodedText"
+							>
 								Base64
-							</h3>
+							</Label>
 							{decodeInputText && (
 								<Button
 									onClick={() =>
@@ -205,31 +223,39 @@ export const Base64 = () => {
 											'decode-input',
 										)
 									}
-									size="sm"
-									variant="ghost"
+									variant="outline"
 								>
 									{copiedField === 'decode-input' ? (
-										<CheckIcon className="size-5" />
+										<>
+											<CheckIcon /> Copié !
+										</>
 									) : (
-										<CopyIcon className="size-5" />
+										<>
+											<CopyIcon /> Copier
+										</>
 									)}
 								</Button>
 							)}
 						</div>
 						<Textarea
-							className="min-h-[120px] font-mono sm:min-h-[150px]"
+							className="outline-0"
 							onChange={(
 								event: ChangeEvent<HTMLTextAreaElement>,
 							) => handleDecodeInputChange(event.target.value)}
 							placeholder="Collez du Base64 ici pour le décoder..."
 							value={decodeInputText}
+							id="encodedText"
 						/>
 					</div>
+
 					<div className="flex flex-col gap-y-3">
 						<div className="flex items-center justify-between">
-							<h3 className="mt-0 font-semibold text-base">
+							<Label
+								className="text-xl sm:text-2xl"
+								htmlFor="decodesText"
+							>
 								Texte décodé
-							</h3>
+							</Label>
 							{decodeOutputText && (
 								<Button
 									onClick={() =>
@@ -238,21 +264,24 @@ export const Base64 = () => {
 											'decode-output',
 										)
 									}
-									size="sm"
-									variant="ghost"
+									variant="outline"
 								>
 									{copiedField === 'decode-output' ? (
-										<CheckIcon className="size-5" />
+										<>
+											<CheckIcon /> Copié !
+										</>
 									) : (
-										<CopyIcon className="size-5" />
+										<>
+											<CopyIcon /> Copier
+										</>
 									)}
 								</Button>
 							)}
 						</div>
 						<div
 							className={cn(
-								'min-h-[120px] w-full overflow-auto rounded-md border border-input bg-background px-3 py-2 font-mono text-sm sm:min-h-[150px]',
-								error && 'text-red-600 dark:text-red-300',
+								'min-h-[100px] w-full overflow-auto rounded-md bg-accent px-3 py-2 text-sm',
+								error && 'text-destructive',
 							)}
 						>
 							{error ? error : decodeOutputText}
@@ -265,24 +294,14 @@ export const Base64 = () => {
 
 	return (
 		<>
-			<div className="screen-line-before w-full border-edge border-b" />
+			<DirectionAwareTabs tabs={tabs} />
 
-			<div className="p-4">
-				<DirectionAwareTabs tabs={tabs} />
-
-				<div className="mt-6 flex justify-end">
-					<Button
-						className="text-sm"
-						onClick={handleReset}
-						variant="outline"
-					>
-						<ArrowsClockwiseIcon className="size-5" />
-						Réinitialiser les champs
-					</Button>
-				</div>
+			<div className="screen-line-before flex justify-end py-1.5">
+				<Button onClick={handleReset} variant="outline">
+					<ArrowsClockwiseIcon />
+					Réinitialiser les champs
+				</Button>
 			</div>
-
-			<div className="screen-line-before w-full border-edge border-b" />
 		</>
 	);
 };

@@ -61,7 +61,10 @@ const Page = async () => {
 		<>
 			<script
 				dangerouslySetInnerHTML={{
-					__html: JSON.stringify(getPageJsonLd()).replace(/</g, '\\u003c'),
+					__html: JSON.stringify(getPageJsonLd()).replace(
+						/</g,
+						'\\u003c',
+					),
 				}}
 				type="application/ld+json"
 			/>
@@ -74,7 +77,11 @@ const Page = async () => {
 				<Divider />
 				<CV />
 				<Divider />
-				<Contact capture={isCapture} github={github} linkedin={linkedin} />
+				<Contact
+					capture={isCapture}
+					github={github}
+					linkedin={linkedin}
+				/>
 				<Divider />
 				<About first={firstParagraph} rest={restParagraphs} />
 				<Divider />

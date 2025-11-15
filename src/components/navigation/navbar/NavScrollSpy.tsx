@@ -22,7 +22,7 @@ const useActiveItem = (itemIds: string[], enabled = true) => {
 			},
 			{
 				rootMargin: '0% 0% -80% 0%',
-			}
+			},
 		);
 
 		for (const id of itemIds) {
@@ -52,10 +52,16 @@ type NavScrollSpyProps = {
 
 export const NavScrollSpy = ({ items, className }: NavScrollSpyProps) => {
 	const shouldObserve = useMediaQuery('(min-width: 48rem)'); // 768px
-	const itemIds = items.map((link) => link.href?.split('#')[1]).filter(Boolean);
+	const itemIds = items
+		.map((link) => link.href?.split('#')[1])
+		.filter(Boolean);
 	const activeItemId = useActiveItem(itemIds, shouldObserve);
 
 	return (
-		<Nav activeId={`#${activeItemId}`} className={className} items={items} />
+		<Nav
+			activeId={`#${activeItemId}`}
+			className={className}
+			items={items}
+		/>
 	);
 };

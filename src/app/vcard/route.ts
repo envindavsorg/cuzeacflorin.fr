@@ -39,8 +39,7 @@ const getVCardPhoto = async (url: string) => {
 export const GET = async (): Promise<Response> => {
 	const card = new VCard();
 
-	card
-		.addName(USER.lastName, USER.firstName)
+	card.addName(USER.lastName, USER.firstName)
 		.addPhoneNumber(decodePhoneNumber(USER.phoneNumber))
 		.addAddress(USER.address)
 		.addEmail(decodeEmail(USER.email))

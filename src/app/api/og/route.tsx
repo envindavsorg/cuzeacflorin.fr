@@ -183,7 +183,7 @@ export const GET = async (req: NextRequest) => {
 						weight: 800,
 					},
 				],
-			}
+			},
 		);
 	} catch (error) {
 		logger.error('Error generating OG image:', error);
@@ -198,7 +198,8 @@ export const GET = async (req: NextRequest) => {
 					flexDirection: 'column',
 					alignItems: 'center',
 					justifyContent: 'center',
-					background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+					background:
+						'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
 					color: 'white',
 					fontSize: '48px',
 					fontWeight: 'bold',
@@ -206,7 +207,7 @@ export const GET = async (req: NextRequest) => {
 			>
 				Something went wrong
 			</div>,
-			{ width: 1200, height: 630 }
+			{ width: 1200, height: 630 },
 		);
 	}
 };

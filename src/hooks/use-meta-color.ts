@@ -10,7 +10,7 @@ const useMetaColor = () => {
 			resolvedTheme === 'dark'
 				? META_THEME_COLORS.dark
 				: META_THEME_COLORS.light,
-		[resolvedTheme]
+		[resolvedTheme],
 	);
 
 	const setMetaColor = React.useCallback((color: string) => {
