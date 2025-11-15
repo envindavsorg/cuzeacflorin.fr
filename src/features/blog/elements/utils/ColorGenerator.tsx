@@ -11,14 +11,11 @@ import {
 import { motion } from 'motion/react';
 import { Poline, positionFunctions } from 'poline';
 import { useCallback, useState } from 'react';
+import { toast } from 'sonner';
 import { Button } from '@/components/ui/Button';
 import { ColorPicker } from '@/components/ui/ColorPicker';
-import {
-	Tooltip,
-	TooltipContent,
-	TooltipProvider,
-	TooltipTrigger,
-} from '@/components/ui/Tooltip';
+import { Prose } from '@/components/ui/Typography';
+import { soundManager } from '@/lib/sound-manager';
 
 type ColorScheme = {
 	[key: string]: string;
@@ -134,13 +131,18 @@ export const ColorGenerator = () => {
 			.map(([key, value]) => `--${key}: ${value};`)
 			.join('\n    ');
 
-		const fullCss = `@layer base {
+		const fullCss = `
+@layer base {
   :root {
     ${cssVariables}
   }
 }`;
 		navigator.clipboard.writeText(fullCss);
 		setCopiedColor('all');
+
+		soundManager.playToastSound();
+		toast.success('CSS copié dans le presse-papier !');
+
 		setTimeout(() => setCopiedColor(null), 2000);
 	}, [colorScheme]);
 
@@ -156,46 +158,34 @@ export const ColorGenerator = () => {
 
 	return (
 		<>
-			<div className="screen-line-before w-full border-edge border-b" />
-
-			<div className="flex flex-row justify-between gap-x-3 p-4">
-				<Button
-					className="text-sm"
-					onClick={genColors}
-					variant="outline"
-				>
-					<SwatchesIcon className="size-5" />
-					Générer
-				</Button>
-				<Button
-					className="text-sm"
-					onClick={resetColors}
-					variant="outline"
-				>
-					<ArrowsClockwiseIcon className="size-5" />
+			<div className="screen-line-before flex items-center justify-between py-3">
+				<Button onClick={resetColors} variant="outline">
+					<ArrowsClockwiseIcon />
 					Réinitialiser
+				</Button>
+				<Button onClick={genColors}>
+					<SwatchesIcon />
+					Générer
 				</Button>
 			</div>
 
-			<div className="screen-line-before w-full border-edge border-b" />
-
-			<div className="grid grid-cols-1 gap-6 p-4 sm:grid-cols-2">
+			<div className="screen-line-before grid grid-cols-1 gap-3 py-3 sm:grid-cols-2">
 				{Object.entries(colorScheme).map(([key, value]) => (
 					<div className="relative" key={key}>
 						<div className="flex items-center justify-between">
-							<span className="block font-medium text-muted-foreground text-sm">
+							<span className="text-muted-foreground text-xs">
 								{key}
 							</span>
 							<Button
-								className="ml-2"
+								className="mr-6"
 								onClick={() => toggleLock(key)}
 								size="icon"
 								variant="ghost"
 							>
 								{lockedColor === key ? (
-									<LockKeyIcon className="size-5" />
+									<LockKeyIcon />
 								) : (
-									<LockSimpleOpenIcon className="size-5" />
+									<LockSimpleOpenIcon />
 								)}
 							</Button>
 						</div>
@@ -218,88 +208,66 @@ export const ColorGenerator = () => {
 				))}
 			</div>
 
-			<div className="screen-line-before w-full border-edge border-b" />
+			<div className="screen-line-before py-1.5">
+				<Prose>
+					Explorez une palette de couleurs harmonieuses générée pour
+					vos projets web. Chaque couleur est soigneusement
+					sélectionnée pour assurer une esthétique cohérente et
+					attrayante.
+				</Prose>
+			</div>
 
-			<div className="p-4">
+			<div className="screen-line-before py-3">
 				<motion.div
 					animate={{ opacity: 1, y: 0 }}
-					className="h-full min-h-[24rem] w-full overflow-hidden rounded-lg p-6 shadow-lg transition-colors duration-300 ease-in-out"
+					className="grid gap-3 overflow-hidden transition-colors duration-300 ease-in-out md:grid-cols-2 md:gap-6"
 					initial={{ opacity: 0, y: 20 }}
-					style={{
-						backgroundColor: `hsl(${colorScheme.background})`,
-						color: `hsl(${colorScheme.foreground})`,
-						borderColor: `hsl(${colorScheme.border})`,
-						borderWidth: 2,
-						borderStyle: 'solid',
-					}}
 					transition={{ duration: 0.5 }}
 				>
-					<h3 className="mt-0 mb-2 font-semibold text-black text-xl">
-						Aperçu des couleurs
-					</h3>
-					<p className="mb-6 font-medium text-sm">
-						Explorez une palette de couleurs harmonieuses générée
-						pour vos projets web. Chaque couleur est soigneusement
-						sélectionnée pour assurer une esthétique cohérente et
-						attrayante.
-					</p>
-					<div className="space-y-6">
-						{Object.entries(colorScheme).map(([key, value]) => (
-							<div
-								className="flex flex-col justify-between gap-2 md:flex-row md:items-center"
-								key={key}
+					{Object.entries(colorScheme).map(([key, value]) => (
+						<div
+							className="flex items-center justify-between"
+							key={key}
+						>
+							<span className="text-muted-foreground text-xs">
+								{key}
+							</span>
+							<Button
+								className="font-mono"
+								onClick={() => {
+									navigator.clipboard.writeText(
+										`--${key}: ${value};`,
+									);
+									setCopiedColor(key);
+									setTimeout(
+										() => setCopiedColor(null),
+										2000,
+									);
+								}}
+								size="sm"
+								style={{
+									backgroundColor: `hsl(${value})`,
+									color: `hsl(${getContrastColor(value)})`,
+									borderColor: `hsl(${colorScheme.border})`,
+								}}
+								variant="outline"
 							>
-								<span>{key}</span>
-								<TooltipProvider>
-									<Tooltip>
-										<TooltipTrigger asChild>
-											<Button
-												className="font-mono"
-												onClick={() => {
-													navigator.clipboard.writeText(
-														`--${key}: ${value};`,
-													);
-													setCopiedColor(key);
-													setTimeout(
-														() =>
-															setCopiedColor(
-																null,
-															),
-														2000,
-													);
-												}}
-												size="sm"
-												style={{
-													backgroundColor: `hsl(${value})`,
-													color: `hsl(${getContrastColor(value)})`,
-													borderColor: `hsl(${colorScheme.border})`,
-												}}
-												variant="outline"
-											>
-												{value}
-												{copiedColor === key ? (
-													<CheckIcon className="ml-2 size-4" />
-												) : (
-													<CopyIcon className="ml-2 size-4" />
-												)}
-											</Button>
-										</TooltipTrigger>
-										<TooltipContent>
-											<p>Copier la couleur</p>
-										</TooltipContent>
-									</Tooltip>
-								</TooltipProvider>
-							</div>
-						))}
-					</div>
+								{value}
+								{copiedColor === key ? (
+									<CheckIcon className="ml-2 size-4" />
+								) : (
+									<CopyIcon className="ml-2 size-4" />
+								)}
+							</Button>
+						</div>
+					))}
 				</motion.div>
 			</div>
 
-			<div className="screen-line-before w-full border-edge border-b" />
-
-			<div className="flex justify-center py-2">
-				<Button onClick={copyColorScheme}>
-					Copier toutes les couleurs
+			<div className="screen-line-before flex justify-end py-1.5">
+				<Button onClick={copyColorScheme} variant="outline">
+					<CopyIcon />
+					Copier les couleurs
 				</Button>
 			</div>
 		</>
