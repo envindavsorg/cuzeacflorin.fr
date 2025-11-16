@@ -2,6 +2,7 @@ import {
 	GaugeIcon,
 	type IconProps,
 	PaletteIcon,
+	TableIcon,
 	TextTIcon,
 	VaultIcon,
 } from '@phosphor-icons/react';
@@ -12,6 +13,7 @@ const UTILS_TAG_ICONS = {
 	Couleurs: PaletteIcon,
 	Texte: TextTIcon,
 	Internet: GaugeIcon,
+	Json: TableIcon,
 } as const;
 
 export const getIconForUtilsTags = (

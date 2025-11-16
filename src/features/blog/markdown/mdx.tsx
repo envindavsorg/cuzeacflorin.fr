@@ -28,6 +28,7 @@ import { CopyButton } from '@/features/blog/elements/CopyButton';
 import { FramedImage, YouTubeEmbed } from '@/features/blog/elements/Embed';
 import { Base64 } from '@/features/blog/elements/utils/Base64';
 import { ColorGenerator } from '@/features/blog/elements/utils/ColorGenerator';
+import { JSONFormatter } from '@/features/blog/elements/utils/JSONFormatter';
 import { LoremIpsumGenerator } from '@/features/blog/elements/utils/LoremIpsumGenerator';
 import { SpeedTest } from '@/features/blog/elements/utils/SpeedTest';
 import { rehypeAddQueryParams } from '@/lib/rehype-add-query-params';
@@ -203,10 +204,12 @@ const components: MDXRemoteProps['components'] = {
 	),
 	YouTubeEmbed,
 	FramedImage,
-	Base64Component: Base64,
-	ColorGeneratorComponent: ColorGenerator,
-	LoremIpsumGeneratorComponent: LoremIpsumGenerator,
-	InternetSpeedTestComponent: SpeedTest,
+	// utils
+	Base64Utils: Base64,
+	ColorGeneratorUtils: ColorGenerator,
+	LoremIpsumGeneratorUtils: LoremIpsumGenerator,
+	InternetSpeedTestUtils: SpeedTest,
+	JSONFormatterUtils: JSONFormatter,
 };
 
 const options: MDXRemoteProps['options'] = {
